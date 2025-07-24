@@ -29,7 +29,7 @@ delivery date:
 
 - Language supports this paradigm by providing facilities for passing arguments to functions and returning values from functions.  
 
-Refer code: [[vector2d_struct.c]]
+Refer code: [procedural code](../code/lecture2/procedural)
 
 
 ---
@@ -43,7 +43,7 @@ Refer code: [[vector2d_struct.c]]
 > Decide which modules you want;
 > partition program so that data is hidden within modules.
 
-Refer [modular code](../code/Lecture2/modular)
+Refer [modular code](../code/lecture2/modular)
 
 ---
 #### Namespaces
@@ -93,7 +93,7 @@ g++ main.cpp vector2D.cpp -o vector_program
 ---
 #### Object Oriented Programming
 
-Refer [oop code](../code/Lecture2/oop)
+Refer [oop code](../code/lecture2/oop)
 
 ---
 #### Information organization
