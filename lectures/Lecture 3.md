@@ -29,7 +29,7 @@ delivery date:
 
 - Language supports this paradigm by providing facilities for passing arguments to functions and returning values from functions.  
 
-Refer code: [[Professional/ProfessionalProjects/DAIICT academics/IT206/code/Lecture2/procedural/vector2d_struct.c]]
+Refer code: [procedural code](../code/lecture2/procedural)
 
 
 ---
