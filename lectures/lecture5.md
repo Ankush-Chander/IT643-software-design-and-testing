@@ -28,6 +28,7 @@ delivery date:
 #### Types of UML diagrams
 
 ![](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/uml/images/uml_diagram_types.jpeg?raw=true)
+Pic Credit: [UML Diagrams Full Course (Unified Modeling Language)](https://www.youtube.com/watch?v=WnMQ8HlmeXc)
 
 ---
 #### Class Diagram
@@ -43,6 +44,7 @@ delivery date:
 ##### Design Elements
 
 ![](https://www.conceptdraw.com/How-To-Guide/picture/Design-elements-UML-class-diagrams.png)
+Pic Credit: [conceptdraw.com](https://www.conceptdraw.com/)
 
 ---
 #### #Example
@@ -55,6 +57,7 @@ Used to describe interactions among classes in terms of an exchange of messages 
 ---
 ##### Design elements
 ![](https://www.conceptdraw.com/How-To-Guide/picture/Design_Elements-UML_Sequence.png)
+Pic Credit: [conceptdraw.com](https://www.conceptdraw.com/)
 
 ---
 ##### Example
@@ -68,13 +71,11 @@ Models the "physical aspect of an object-oriented software system," showing "**s
 ---
 ##### Design elements
 ![](https://www.conceptdraw.com/How-To-Guide/picture/Design-elements-UML-deployment-diagrams.png)
+Pic Credit: [conceptdraw.com](https://www.conceptdraw.com/)
 
 ---
 ##### Example
 ![](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/uml/images/deployment_diagram.png?raw=true)
-
----
-
 
 ---
 #### References
