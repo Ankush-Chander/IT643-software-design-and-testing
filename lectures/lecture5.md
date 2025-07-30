@@ -27,7 +27,7 @@ delivery date:
 ---
 #### Types of UML diagrams
 
-![](../images/uml_diagram_types.jpeg)
+![](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/uml/images/uml_diagram_types.jpeg?raw=true)
 
 ---
 #### Class Diagram
@@ -45,8 +45,9 @@ delivery date:
 ![](https://www.conceptdraw.com/How-To-Guide/picture/Design-elements-UML-class-diagrams.png)
 
 ---
-#### Example
-![](../images/movie_booking_uml.png)
+#### #Example
+![](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/uml/images/movie_booking_uml.png?raw=true)
+
 ---
 #### Sequence Diagram:
 Used to describe interactions among classes in terms of an exchange of messages over time
@@ -58,12 +59,19 @@ Used to describe interactions among classes in terms of an exchange of messages 
 ---
 ##### Example
 
-![](../images/movie_booking_sequence_uml.png)
+![](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/uml/images/movie_booking_sequence_uml.png?raw=true)
 
 ---
 #### Deployment diagram
+Models the "physical aspect of an object-oriented software system," showing "**system architecture as deployment** or distribution of software artifacts."
 
 ---
+##### Design elements
+![](https://www.conceptdraw.com/How-To-Guide/picture/Design-elements-UML-deployment-diagrams.png)
+
+---
+##### Example
+![](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/uml/images/deployment_diagram.png?raw=true)
 
 ---
 
