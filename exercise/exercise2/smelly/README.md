@@ -1,10 +1,7 @@
-.
-├── logic
-│   └── order_validator.py
-├── models
-│   └── order.py
-├── presenters
-│   └── order_presenter.py
-└── README.md
+├── logic  
+│   └── order_validator.py  
+├── models  
+│   └── order.py  
+├── presenters  
+│   └── order_presenter.py  
 
-4 directories, 4 files
