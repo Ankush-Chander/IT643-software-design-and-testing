@@ -1,8 +1,5 @@
-.
 ├── company_common  
-│   └── mega_utils.py  
-├── README.md  
+│   └── mega_utils.py   
 └── reporting_service  
-    └── report_generator.py  
+│   └── report_generator.py  
 
-3 directories, 3 files
