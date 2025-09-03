@@ -18,3 +18,6 @@ python src/main.py
 ```bash
 pytest tests/play_performance.py
 ```
+
+## References:
+1. Refactoring by Martin Fowler
