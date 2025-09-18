@@ -36,3 +36,7 @@ Lecture notes for Software Design and Testing(IT643)
     - Refactoring
     - Code smells
     - Common refactoring techniques
+1. [Lecture 14](lectures/lecture14.md)
+   - Refactoring(continued)
+1. [Lecture 15 16_17](lectures/lecture15_16_17.md)
+   - Unit Testing fundamentals with gtest 
