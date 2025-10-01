@@ -39,4 +39,12 @@ Lecture notes for Software Design and Testing(IT643)
 1. [Lecture 14](lectures/lecture14.md)
    - Refactoring(continued)
 1. [Lecture 15 16_17](lectures/lecture15_16_17.md)
-   - Unit Testing fundamentals with gtest 
+   - Unit Testing fundamentals with gtest
+1. [Lecture 18](lectures/lecture18.md)
+   - Unit Testing
+   - AAA framework
+1. [Lecture 19](lectures/lecture19.md)
+   - Unit testing (continued)
+1. [Lecture 20](lectures/lecture20.md)
+   - Testing with external dependencies
+   
