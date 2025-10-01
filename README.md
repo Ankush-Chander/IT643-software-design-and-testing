@@ -29,6 +29,8 @@ Lecture notes for Software Design and Testing(IT643)
       -  Reuse/Release Equivalence Principle (REP)
       - Common Closure Principle (CCP)
       - Common Reuse Principle (CRP)
+1. [Lecture 9](lectures/lecture9.md)
+   - Component coupling
 1. [Lecture 10,11](lectures/lecture10_11.md)
     - Complexity
     - Deep modules vs shallow modules
