@@ -29,7 +29,7 @@ delivery date:
 
 - Language supports this paradigm by providing facilities for passing arguments to functions and returning values from functions.  
 
-Refer code: [procedural code](../code/lecture2/procedural)
+Refer code: [procedural code](../code/lecture3/procedural)
 
 
 ---
@@ -43,7 +43,7 @@ Refer code: [procedural code](../code/lecture2/procedural)
 > Decide which modules you want;
 > partition program so that data is hidden within modules.
 
-Refer [modular code](../code/Lecture2/modular)
+Refer [modular code](..code/lecture3/modular)
 
 ---
 #### Namespaces
@@ -51,7 +51,7 @@ Refer [modular code](../code/Lecture2/modular)
 
 
 ---
-![](images/modular_diagram.jpeg)
+![](../images/modular_diagram.png)
 
 ---
 #### Multi-file compilation
@@ -93,7 +93,7 @@ g++ main.cpp vector2D.cpp -o vector_program
 ---
 #### Object Oriented Programming
 
-Refer [oop code](../code/Lecture2/oop)
+Refer [oop code](../code/lecture3/oop)
 
 ---
 #### Information organization
@@ -110,7 +110,7 @@ Refer [oop code](../code/Lecture2/oop)
 > parameterize them so that they work for
 > a variety of suitable types and data structures.
 
-Refer [generic code](../code/lecture2/generic)
+Refer [generic code](../code/lecture3/generic)
 
 ---
 #### References
