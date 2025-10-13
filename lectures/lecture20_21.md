@@ -31,7 +31,7 @@ When your code depends on _external systems_ (databases, third-party APIs, file 
 - Your main code talks only to the interface, not directly to the external system.
 - During testing, you substitute the real dependency with a **fake**, **stub**, or **mock**.
 
-Refer snake example
+Refer example [here](../code/mock_stubs/tests/order_test_real_objects.cpp#L14)
 
 ---
 
