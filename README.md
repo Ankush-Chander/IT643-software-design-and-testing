@@ -47,6 +47,8 @@ Lecture notes for Software Design and Testing(IT643)
    - AAA framework
 1. [Lecture 19](lectures/lecture19.md)
    - Unit testing (continued)
-1. [Lecture 20](lectures/lecture20.md)
+1. [Lecture 20_21](lectures/lecture20_21.md)
    - Testing with external dependencies
+       - Test doubles
+       - Mocks vs stubs      
    
