@@ -115,7 +115,25 @@ public class UserController{
 Refer snake code for leaky API  
 
 ---
+### Types of test double
+- **Dummy** objects are passed around but never actually used. Usually they are just used to fill parameter lists.
+- **Fake** objects actually have working implementations, but usually take some shortcut which makes them not suitable for production (an [in memory database](https://martinfowler.com/bliki/InMemoryTestDatabase.html) is a good example).
+- **Stubs** provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test.
+- **Spies** are mocks that also record some information based on how they were called. One form of this might be an email service that records how many messages it was sent.
+- **Mocks** are the objects pre-programmed with expectations which form a specification of the calls they are expected to receive.
+---
+![](../images/testing/mock_stub_classification.png)
+
+---
+Refer code example [here](../code/mock_stubs)
+
+---
 #### References
 1. [Chapter 5, Unit Testing, Principles Practices and Patterns by Vladimir Khorikov](https://www.manning.com/books/unit-testing) 
+2. [Mocks Aren't Stubs](https://martinfowler.com/articles/mocksArentStubs.html)
+3. [gMock for Dummies | GoogleTest](https://google.github.io/googletest/gmock_for_dummies.html)
+4. [gMock Cookbook | GoogleTest](https://google.github.io/googletest/gmock_cook_book.html)
+5. [gMock Cheat Sheet](https://android.googlesource.com/platform/external/googletest/+/refs/heads/main-cg-testing-release/docs/gmock_cheat_sheet.md)
+ 
 ---
 
