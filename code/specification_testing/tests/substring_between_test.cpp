@@ -6,7 +6,7 @@ g++ -std=c++17 ../tests/string_between_test.cpp -lgtest -lgtest_main -pthread -o
 #include <vector>
 #include <string>
 #include <algorithm>
-#include "../src/string_between.h"
+#include "../src/substrings_between.h"
 
 using namespace testing;
 

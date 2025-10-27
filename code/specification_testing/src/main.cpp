@@ -1,4 +1,4 @@
-#include "string_between.h"
+#include "substrings_between.h"
 
 int main(int argc, char* argv[]) {
     // collect from arguments
