@@ -24,9 +24,6 @@ delivery date:
 
 
 ---
-Here’s a concise summary of the testing process described:
-
----
 
 ### **Steps for Specification-Based Testing**
 
