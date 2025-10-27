@@ -2,19 +2,7 @@
 delivery date:
   - "[[2025-10-27]]"
 ---
-## Project evaluation criteria
-**Cieling:**
-- If you have a working project which is deployed, hosted and  people outside your team are using it you get graded out of 10.
-- Else if you have a working MVP project(deployed with key functionalities working), then you get graded out of 8.5.
-- Else you get graded out of 7.
-**Expectations:**
-- Design docs upto date with the code(iun sync with code)
-- *Test coverage:* Key functionalities are covered under tests (Path to test file folder with an markdown file summarising the tests)
-- *Commentary on your design decisions*(Make Design md  file) to jot down following:
-	- How you have improved design of software.
-	- Where you have applied what design principles?
-	- Key refactoring you have done to improve the design of your project
----
+
 ## Quick recap
 - Testing with external dependencies
 - Test Doubles
