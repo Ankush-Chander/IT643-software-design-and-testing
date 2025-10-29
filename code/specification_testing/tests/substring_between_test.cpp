@@ -83,3 +83,8 @@ TEST(StringUtilsTest, NoSubstringBetweenOpenAndCloseTags) {
     EXPECT_TRUE(VectorsEqual(substringsBetween("aabb", "aa", "bb"), {""}));
 }
 
+
+
+TEST(StringUtilsTest, SameOpenAndCloseTags){
+    EXPECT_TRUE(VectorsEqual(substringsBetween("abcdabefgab", "ab", "ab"), {"cd", "efg"}));
+}

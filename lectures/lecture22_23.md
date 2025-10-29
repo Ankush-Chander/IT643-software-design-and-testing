@@ -2,45 +2,55 @@
 delivery date:
   - "[[2025-10-27]]"
 ---
-## Project evaluation criteria
-**Cieling:**
-- If you have a working project which is deployed, hosted and  people outside your team are using it you get graded out of 10.
-- Else if you have a working MVP project(deployed with key functionalities working), then you get graded out of 8.5.
-- Else you get graded out of 7.
-**Expectations:**
-- Design docs upto date with the code(iun sync with code)
-- *Test coverage:* Key functionalities are covered under tests (Path to test file folder with an markdown file summarising the tests)
-- *Commentary on your design decisions*(Make Design md  file) to jot down following:
-	- How you have improved design of software.
-	- Where you have applied what design principles?
-	- Key refactoring you have done to improve the design of your project
----
-## Quick recap
+### Quick recap
 - Testing with external dependencies
 - Test Doubles
 	- mock, stub, spy, dummies, fake
 
 ---
-## Agenda
+### Agenda
 - How to derive test cases?
 ---
-## Types of Unit Test
-1. Specification tests
-2. Boundary tests
-3. Property-Based Testing
-4. Structural Testing
+### Types of Unit Test
+1. **Specification tests**: Derive tests directly from the _specification_ of a function or class - that is, what it _should_ do, not how it’s implemented.   You don’t look at the code - you look at the **requirements**.
+2. **Boundary tests**:  Boundaries are where most bugs hide — just below, at, and just above the limits of input ranges.
+3. **Property-Based Testing**: In property-based testing, instead of coming up with concrete examples, we express the property that should hold for that method. The framework then randomly generates hundreds of different inputs.
+4. **Structural Testing**: Design tests to ensure **every path**, **branch**, or **statement** in the code executes at least once.
+
 ---
-## Specification based tests
+### Specification based tests
 
 ![Specification based Testing](../images/testing/specification_nutshell.png)
 
 
 ---
-Here’s a concise summary of the testing process described:
+#### Example: 
+**Method**: substringsBetween()
+Searches a string for substrings delimited by a start and end tag, returning all
+matching substrings in an array.
+-  str - The string containing the substrings. Null returns null; an empty
+string returns another empty string.
+-  open - The string identifying the start of the substring. An empty string
+returns null.
+-  close- The string identifying the end of the substring. An empty string
+returns null.
+The program returns a string array of substrings, or null if there is no match.
 
 ---
+#### Code structure
+Refer code: [here](../code/specification_testing)
+```
+.
+├── src
+│   ├── main.cpp
+│   └── substrings_between.h
+└── tests
+    └── substring_between_test.cpp
 
-### **Steps for Specification-Based Testing**
+3 directories, 3 files
+```
+---
+#### **Steps for Specification-Based Testing**
 
 1. **Understand the Requirements**
     - Grasp what the program should and shouldn’t do.
@@ -64,11 +74,7 @@ Here’s a concise summary of the testing process described:
     - Review the test suite for gaps.
     - Add additional cases based on intuition or domain knowledge.
 ---
-Here’s a **concise summary** of Section 2.4 (“Specification-based testing in the real world”) — capturing its **key lessons and principles**:
-
----
-
-### Specification-Based Testing in Practice
+#### Specification-Based Testing in Practice
 
 1. **Iterative, not sequential:**  
     The process of deriving test cases is **cyclic** — you often go back to refine partitions or boundaries while writing tests.
@@ -99,9 +105,79 @@ Here’s a **concise summary** of Section 2.4 (“Specification-based testing in
     Systematic steps help, but experienced testers will design **better, more focused tests** based on intuition and domain insight.
 
 ---
-## Excercise
-1.Implement adder : https://leetcode.com/problems/add-strings
-1. Write specification based test cases for the same
+#### Exercise
+1. Implement adder : https://leetcode.com/problems/add-strings
+2. Write specification based test cases for the same
+
+---
+## Boundary Testing
+Boundaries are where most bugs hide — just below, at, and just above the limits of input ranges.
+
+### Example
+
+For a function:
+> “`gradeFromMarks(int marks)` returns grade A/B/C/F based on:
+> - 90–100 → A
+> - 75–89 → B
+> - 50–74 → C
+> - <50 → F”
+
+Test code:
+```cpp
+#include <string>
+#include <cassert>
+
+std::string gradeFromMarks(int marks) {
+    if (marks >= 90) return "A";
+    else if (marks >= 75) return "B";
+    else if (marks >= 50) return "C";
+    else return "F";
+}
+
+void test_grade_boundaries() {
+    // Boundary values around grade cutoffs
+    assert(gradeFromMarks(89) == "B"); // just below A
+    assert(gradeFromMarks(90) == "A"); // at A boundary
+    assert(gradeFromMarks(91) == "A"); // just above
+
+    assert(gradeFromMarks(49) == "F"); // below pass
+    assert(gradeFromMarks(50) == "C"); // at pass boundary
+}
+
+```
+
+## Structural Testing
+Design tests to ensure **every path**, **branch**, or **statement** in the code executes at least once.
+### Example
+Code to be testing
+```cpp
+double discount(double amount, bool isMember) {
+    if (amount < 0) return 0;
+    if (amount > 1000) return isMember ? 0.2 : 0.1;
+    else return isMember ? 0.05 : 0.0;
+}
+
+```
+Test code:
+```cpp
+#include <cassert>
+
+void test_discount_structure() {
+    // Path 1: Negative amount
+    assert(discount(-10, false) == 0);
+    // Path 2: amount > 1000 and member = true
+    assert(discount(1500, true) == 0.2);
+    // Path 3: amount > 1000 and member = false
+    assert(discount(1500, false) == 0.1);
+    // Path 4: amount <= 1000 and member = true
+    assert(discount(800, true) == 0.05);
+    // Path 5: amount <= 1000 and member = false
+    assert(discount(800, false) == 0.0);
+}
+
+```
+
+### Code coverage criteria
 
 ---
 ## References
