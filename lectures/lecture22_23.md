@@ -178,7 +178,31 @@ void test_discount_structure() {
 ```
 
 ### Code coverage criteria
-
+#### 1. Line Coverage
+- **Goal:** Every line of code is executed at least once.
+- **Example:** A single test that passes through an `if` statement counts as covered, even if only one branch is taken.
+- **Limitation:** Doesn’t ensure all conditions or outcomes are tested.
 ---
+
+#### 2. Branch Coverage
+- **Goal:** Each branch of decision points (`if`, `for`, `while`, etc.) is executed at least once.
+- **Example:** For `if (a && b)`, one test makes it true, another makes it false.
+- **Measure:** 100% branch coverage means every _true/false edge_ in the control-flow graph (CFG) is covered. 
+---
+
+#### 3. Condition + Branch Coverage
+
+- **Goal:** Each individual condition in a branch is evaluated both `true` and `false`, **and** each branch outcome (`true`/`false`) is covered.
+- **Example:** For `if (A || B)`, testing A and B both true/false isn’t enough unless the whole `if` can also evaluate to false.
+- **Benefit:** Prevents missing cases where the overall branch is always true or false.
+---
+
+#### 4. Path Coverage
+- **Goal:** Every possible _execution path_ through the program is tested.
+- **Strength:** Most rigorous and complete form of structural testing.
+- **Limitation:** Exponential growth in paths (e.g., 3 conditions → 8 paths; 10 → 1024).  
+    Loops make it practically impossible due to infinite or very large combinations.
+---
+
 ## References
 1. Chapter 2, Effective Software testing by MAURÍCIO ANICHE
