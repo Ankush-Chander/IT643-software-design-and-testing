@@ -51,4 +51,5 @@ Lecture notes for Software Design and Testing(IT643)
    - Testing with external dependencies
        - Test doubles
        - Mocks vs stubs      
-   
+1. [Lecture 22_23](lectures/lecture22_23.md)
+   - Specification based testing
