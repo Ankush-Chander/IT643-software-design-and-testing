@@ -53,3 +53,5 @@ Lecture notes for Software Design and Testing(IT643)
        - Mocks vs stubs      
 1. [Lecture 22_23](lectures/lecture22_23.md)
    - Specification based testing
+1. [Lecture 24_25](lectures/lecture24_25.md)
+   - Testability and design
