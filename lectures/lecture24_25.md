@@ -322,6 +322,16 @@ Ensure that your classes provide developers with simple and easy ways to assert 
 Common way:
 - Introducing methods to facilitate assertions
 - void methods are hard to test and can be improved by making them return some assertable value instead
+
+Example:
+
+| Aspect          | Not-so-good design                                                                                                                                                                                                                                        | Good design                                                                                                                                                                                                     |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Diagram         | ![](../images/testing/not_so_observable_class.png)                                                                                                                                                                                                        | ![](../images/testing/observable_class.png)                                                                                                                                                                     |
+| **Testability** | - The only way to verify behavior is to **spy** on `scheduleDelivery()`.<br>    <br>- If someone refactors the internals (e.g., calls a helper method), test breaks even though externally behavior is same → brittle.  <br>- No direct observable state. | - Test checks behavior through **observable program state**, not implementation details.<br>    <br>- No mocking or spying needed for verification.<br>    <br>- Easier to read, maintain, and refactor safely. |
+
+
+
 ---
 ### 4. Dependency via class constructor or value via method parameter
 - Receiving a dependency via constructor adds a little complexity to the overall class and its tests but simplifies its client classes. 
