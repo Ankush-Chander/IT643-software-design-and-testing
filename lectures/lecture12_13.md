@@ -170,7 +170,7 @@ getBasePrice() {
 }
 
 // call function instead of temp variable
-return this.getBasePrice() > 1000 ? this.getBasePrice() * 0.95 : this.basePrice * 0.98;
+return this.getBasePrice() > 1000 ? this.getBasePrice() * 0.95 : this.getBasePrice() * 0.98;
 
 ```
 ---
