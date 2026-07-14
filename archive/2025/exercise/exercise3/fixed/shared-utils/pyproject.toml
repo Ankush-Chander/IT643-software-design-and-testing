@@ -1,0 +1,7 @@
+[project]
+name = "my-corp-shared-utils"
+version = "1.0.0" # The crucial version number!
+authors = [
+  { name="Your Name", email="you@example.com" },
+]
+description = "A shared utility library"
