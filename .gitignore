@@ -1,0 +1,7 @@
+build
+exams
+.idea
+.ipynb_checkpoints
+*.orig
+*.out
+__pycache__
