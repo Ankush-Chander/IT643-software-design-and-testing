@@ -1,0 +1,11 @@
+fastapi
+mkdocs
+mkdocs-exclude
+mkdocs-jupyter
+mkdocs-material
+pandas
+pymdown-extensions
+requests
+mkdocs-rss-plugin
+uvicorn
+fire

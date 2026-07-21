@@ -1,0 +1,182 @@
+## Project information
+site_name: IT643 - Software Design and Testing | DAU
+site_url: https://IT643.ankushchander.com
+site_description: Home of IT643 - Software Design and Testing, DAU
+
+
+# Copyright
+copyright: Ankush Chander
+
+## Page tree
+nav:
+  - Home: 'index.md'
+  - Lectures:
+      - 0:Course Overview: 'lectures/Lecture0.md'
+      # - 1:Requirements Discovery: 'lectures/Lecture1.md'
+  # - Code:
+  #     - Storage Engines: 'code/storage_engines/README.md'
+  #     - SSTable: 'https://github.com/Ankush-Chander/sorted-string-table-101'
+  #     - B-Tree:
+  #       - "SQLite Demo": 'notebooks/sql_demo.ipynb'
+  #     - Batch Processing:
+  #       - "Hadoop Single Node Cluster": 'code/batch_processing/hadoop single node cluster.md'
+  #       - "Non Sudoer Hadoop Single Node Cluster": 'code/batch_processing/non_sudoer_hadoop_single_node_cluster.md'
+  #       - "Non Sudoer Hadoop Multi Node Cluster": 'code/batch_processing/non_sudoer_hadoop_multi_node_cluster.md'
+  #       - "Spark Single Node Cluster": 'notebooks/spark_demo.ipynb'
+  #     - Demos:
+  #       - "Normal forms": 'demo/db-normalization-demo.html'
+  #     - Stream Processing:
+  #       - "Introduction": 'notebooks/stream_processing.ipynb'
+  #       - "CDC": 'notebooks/cdc.ipynb'
+  #     - Distributed Systems:
+  #       - "Replication with Opensearch": 'code/distributed_systems/opensearch-lab.md'
+
+## Configuration
+theme:
+  name: material
+#  custom_dir: docs/theme_override_home/
+  # 404 page
+#  static_templates:
+#    - 404.html
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.footer
+    # - navigation.indexes
+  palette:
+    primary: indigo
+    accent: purple
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+#  icon:  # from .icons path. Add to theme override for custom logo.
+#    logo: up42-logo  # top left header logo
+#  favicon: assets/logo-up42.ico #browser tab logo
+#
+## Plugins
+plugins:
+  - mkdocs-jupyter
+#   - blog:
+#       enabled: true
+#       blog_dir: blog
+#       post_dir: "blog/posts"
+#       post_date_format: medium
+#       post_url_format: "{slug}"
+#   - rss:
+#       feeds_filenames:
+#         json_created: feed.json
+#         json_updated: feed-updated.json
+#         rss_created: rss.xml
+#         rss_updated: rss-updated.xml
+#       match_path: blog/posts/*
+#       date_from_meta:
+#         as_creation: date
+#       categories:
+#         - categories
+#         - tags
+# extra:
+#   social:
+#     - icon: fontawesome/solid/paper-plane
+#       link: mailto:ankush_chander@dau.ac.in
+#     - icon: fontawesome/brands/github
+#       name: Ankush Chander on GitHub
+#       link: https://github.com/Ankush-Chander
+#     - icon: fontawesome/brands/linkedin
+#       name: Ankush Chander on LinkedIn
+#       link: https://linkedin.com/in/Ankush-Chander
+#     - icon: fontawesome/brands/x-twitter
+#       name: Ankush Chander on X
+#       link: https://x.com/AnkushChander
+
+# hooks:
+#   - hooks/socialmedia.py
+
+
+
+#  - search
+#  - autolinks
+#  - mkdocs-jupyter:
+#      include_source: False
+#      ignore_h1_titles: True
+#      include: ["examples/data-block-examples/pleiades-download-example.ipynb",
+#                "examples/data-block-examples/nextmapone-viewshed-data-example.ipynb",
+#                "examples/data-block-examples/osm-example.ipynb",
+#                "examples/advanced/ship-identification.ipynb",
+#                "examples/tasking/tasking-example.ipynb",
+#                "examples/asset/asset-example.ipynb"]
+#  - macros:
+#      module_name: docs/macros
+  - exclude:
+     glob:
+       - "*config*.json"
+       - "*cfg*.json"
+       - ".ipynb_checkpoints"
+       - "*examples/project*"
+       - "*swagger*"
+       - PULL_REQUEST_TEMPLATE.md
+       - "*taxi_data/*"
+       - "*.parquet"
+       - "*.db"
+#  - mkdocstrings:
+#      default_handler: python
+#      handlers:
+#        python:
+#          rendering:
+#            show_root_toc_entry: False
+#            show_root_heading: False
+#            show_source: True
+#            show_category_heading: True
+#            show_bases: False
+#          selection:
+#            filters:
+#              - "!^_"  # exclude all members starting with _
+#      watch:
+#        - up42
+#
+### Custom theme additions
+#extra_javascript:
+#        - 'stylesheets/extra.js'
+#extra_css:
+#        - stylesheets/extra.css
+#
+### Extensions
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.md_in_html
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+#  - markdown.extensions.toc:
+#      baselevel: 1
+#      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
