@@ -1,9 +1,5 @@
 # Software Engineering in post LLM era
 
-> Framing question for the course: if an AI can write, debug, and refactor code
-> on demand, what is left for a software engineer to do — and how do we get good
-> at *that*?
-
 By early 2026, AI-assisted coding has moved from experiment to default across most
 professional software teams. The three readings below argue, from different angles,
 that the *craft* of programming is changing rather than disappearing — the scarce
@@ -49,8 +45,12 @@ the machine got it right**.
   discover builds a ladder. Osmani draws the career corollary — *there's no point
   solving the easy version of a problem; the value is in the hard version.*
 - The right place for human knowledge moves too: not into hand-written solution
-  detail, but into **problem setup** — specifying intent, curating the data, and
-  defining how correctness is verified.
+  detail, but into **problem setup**: 
+    - specifying intent, 
+    - curating the data, and
+    - defining how correctness is verified.
+
+
 
 ### Skepticism about AI
 - **Loss of craft.** An (anonymous) Apple engineer in the NYT: *"I believe that it can
@@ -66,6 +66,40 @@ the machine got it right**.
   carries a real capability penalty — a structural break from the open, local
   developer stack of the past decades.
 
+### Response: AI as a tool, not an ideology
+- **Linux does not take an anti-AI stance.** Linus Torvalds, top-level maintainer of the Linux kernel,
+  has drawn a hard line against ideological resistance: *"Linux is not one of those anti-AI projects,
+  and if somebody has issues with that, they can do the open-source thing and fork it. Or just walk
+  away."* The utility of AI tools is no longer debatable; anyone claiming otherwise simply hasn't
+  used them seriously.
+- **The right response is to make LLMs serve maintainers, not burden them.** Yes, AI introduces new
+  pain points — extra maintainer workload, embarrassing bugs slipping through. But the answer isn't
+  denial; it's ensuring these tools help rather than hurt collaborative workflows. Torvalds puts it
+  bluntly: *"I will very loudly ignore people who try to argue against other people from using it."*
+- **Natural intelligence is imperfect too.** Pointing out AI's flaws carries no moral weight unless you
+  are also honest about the fallibility of human developers. *"Anybody who points to the problems with
+  AI had better be looking in the mirror and pointing at themselves at the same time."*
+- **Open source decisions are technical, not ideological.** The kernel community works in open source
+  because it produces better technology — not from religious conviction. The project has never been,
+  and will never be, a "social warrior" project. Decisions follow technical merit, not fear of new
+  tools.
+
+### The bottleneck shifts from implementation to product sense
+- **Product management used to sit idle while waiting for coders.** David H. Hanlon (37signals/Basecamp)
+  long dismissed the PM role as full of "bullshit" — product managers would decide what to build, then
+  underutilize themselves for weeks while expensive engineers did the actual implementation. The scarce
+  resource was always writing the code, not figuring out what to write.
+- **AI flips that equation.** Pure implementation is increasingly solvable by agents, so the bottleneck
+  moves upstream: *what* should be built, *how* it should be structured, and *which customers* matter
+  most. These are the core questions of product management — and they are exactly what a prompt cannot
+  automate.
+- **Designers as product managers.** At 37signals, designers are expected to do more than polish
+  specifications; they are the "finders of the how and the why," deducing what needs building from
+  customer feedback and intuition, then actively implementing it in HTML, CSS, and code.
+- **PMs will ship directly.** Hanlon anticipates a future where product managers themselves are
+  empowered by AI agents to produce working, shippable changes without waiting for an engineering team —
+  making the ability to frame problems dramatically more valuable than the ability to write code.
+
 ---
 
 ## How LLMs have changed how online forums, open source collaboration works
@@ -78,6 +112,7 @@ the machine got it right**.
   reference commons that made these tools good may stop being replenished at the old
   rate.
 
+![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ericholscher.com%2F_images%2Fstack-overflows-decline_image_1.webp&f=1&nofb=1&ipt=9627f3e157196d8e23d910aafaf2dc6ac0d0c7a18462af961e6e639c47e60a8e)
 ### Decline of online forums
 - Q&A that used to happen in public (forums, mailing lists, chat) increasingly happens
   in private conversations with an assistant. Programmers have an advantage here that
@@ -140,3 +175,5 @@ the machine got it right**.
 - [Coding After Coders: The End of Computer Programming as We Know It](https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?unlocked_article_code=1.SlA.DBan.wbQDi-hptjj6) — Clive Thompson, *NYT Magazine* (unlocked link)
 - [The Agent-Era Career](https://addyosmani.com/blog/career-advice-age-of-agents) — Addy Osmani
 - [The Bitter Lesson Keeps Winning](https://pytholic.github.io/posts/the-bitter-lesson/index.html) — Raja Haseeb
+- [DHH’s new way of writing code](https://www.youtube.com/watch?v=JiWgKRgdgpI)
+- [Linus take on AI](https://lore.kernel.org/all/CAHk-%3Dwi4zC%2BZe8e%2Bp3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com)
