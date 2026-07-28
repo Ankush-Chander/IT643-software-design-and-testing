@@ -7,5 +7,6 @@ pandas
 pymdown-extensions
 requests
 mkdocs-rss-plugin
+mkdocs-slides
 uvicorn
 fire

@@ -12,7 +12,7 @@ nav:
   - Home: 'index.md'
   - Lectures:
       - 0:Course Overview: 'lectures/Lecture0.md'
-      # - 1:Requirements Discovery: 'lectures/Lecture1.md'
+      - 1:Requirements Discovery: 'lectures/Lecture1.md'
   # - Code:
   #     - Storage Engines: 'code/storage_engines/README.md'
   #     - SSTable: 'https://github.com/Ankush-Chander/sorted-string-table-101'
@@ -62,6 +62,7 @@ theme:
 ## Plugins
 plugins:
   - mkdocs-jupyter
+  - slides
 #   - blog:
 #       enabled: true
 #       blog_dir: blog
@@ -114,6 +115,7 @@ plugins:
 #      module_name: docs/macros
   - exclude:
      glob:
+       - "lectures/lecture1_slides/*"
        - "*config*.json"
        - "*cfg*.json"
        - ".ipynb_checkpoints"
