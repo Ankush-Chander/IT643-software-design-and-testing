@@ -1,0 +1,1046 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture1/">
+      
+      
+        <link rel="prev" href="../Lecture0/">
+      
+      
+        <link rel="next" href="../Lecture2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>1:Requirements Discovery - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#requirement-engineering" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1:Requirements Discovery
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirement-engineering_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement Engineering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-user-requirements-to-system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping user requirements to system requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System stakeholders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feasibility-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feasibility studies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cost-of-getting-requirements-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The cost of getting requirements wrong
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-vs-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional vs. non-functional requirements.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functional vs. non-functional requirements.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-functional requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirement-engineering_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement Engineering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-user-requirements-to-system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping user requirements to system requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System stakeholders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feasibility-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feasibility studies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cost-of-getting-requirements-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The cost of getting requirements wrong
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-vs-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional vs. non-functional requirements.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functional vs. non-functional requirements.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-functional requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="requirement-engineering">Requirement Engineering</h1>
+<ul>
+<li>Requirements discovery and where requirements come from. </li>
+</ul>
+<h2 id="requirement-engineering_1">Requirement Engineering</h2>
+<p>The requirements for a system are the descriptions of the services that a system should provide and the constraints on its operation. The process of finding out, analyzing, documenting and checking these services and constraints is called requirements engineering (RE).<br />
+The term requirement is not used consistently in the software industry.<br />
+For example,  If I were to raise a contract, I might not specify exactly what I need the system to do. This leaves room for interpretation and the vendor can envision different ways to fulfill the contract.</p>
+<h2 id="user-requirements">User requirements</h2>
+<p>User communicate their needs in the form of natural language + some diagrams. This primarily points at what the user wants the system to do.
+They usually dont specify the technical details of the system.</p>
+<h2 id="system-requirements">System requirements</h2>
+<p>System requirements are the formalized, specific, and measurable requirements that define what the system must do. For a given requirement, the system must fulfill the requirement.</p>
+<h2 id="mapping-user-requirements-to-system-requirements">Mapping user requirements to system requirements</h2>
+<table>
+<thead>
+<tr>
+<th>User Requirement</th>
+<th>System Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. The Mentcare system shall generate monthly management reports showing the cost of drugs prescribed by each clinic during that month.</td>
+<td>1.1 On the last working day of each month, a summary of the drugs prescribed, their cost and the prescribing clinics shall be generated.</td>
+</tr>
+<tr>
+<td></td>
+<td>1.2 The system shall generate the report for printing after 17:30 on the last working day of the month.</td>
+</tr>
+<tr>
+<td></td>
+<td>1.3 A report shall be created for each clinic and shall list the individual drug names, the total number of prescriptions, the number of doses prescribed and the total cost of the prescribed drugs.</td>
+</tr>
+<tr>
+<td></td>
+<td>1.4 If drugs are available in different dose units (e.g. 10mg, 20mg, etc.) separate reports shall be created for each dose unit.</td>
+</tr>
+<tr>
+<td></td>
+<td>1.5 Access to drug cost reports shall be restricted to authorized users as listed on a management access control list.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="system-stakeholders">System stakeholders</h2>
+<p>Anyone who is genuinely interested in the system's functionality and is involved in its development and use can be considered a stakeholder.  </p>
+<table>
+<thead>
+<tr>
+<th>User requirement</th>
+<th>System requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client managers</td>
+<td>System end-users</td>
+</tr>
+<tr>
+<td>System end-users</td>
+<td>Client engineers</td>
+</tr>
+<tr>
+<td>Client engineers</td>
+<td>System architects</td>
+</tr>
+<tr>
+<td>Contractor managers</td>
+<td>Software developers</td>
+</tr>
+<tr>
+<td>System architects</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="feasibility-studies">Feasibility studies</h2>
+<p>A feasibility study is a short, focused study that should take place early in the RE process. It should answer three
+key questions: <br />
+1. Does the system contribute to the overall objectives of the organization?<br />
+2. Can the system be implemented within schedule and budget using current technology?<br />
+3. Can the system be integrated with other systems that are used?  </p>
+<p><strong>In-class exercise:</strong> six institute-wide system proposals that sound attractive but fail one or more of these questions. Each is a flash card — the pitch on one slide, the feasibility verdict on the next.</p>
+<div class="slides-deck" style="
+            --slide-padding: 64px;
+            --slide-max-width: 1200px;
+            --slide-aspect-ratio: 16/9;
+            --slide-font-size: 24px;
+        "><div class="slides-viewport"><iframe class="slide" src="../../slides/lecture1_slides/01_title.html" style="display: block"></iframe><iframe class="slide" src="../../slides/lecture1_slides/02_three_questions.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/03_p1_pitch.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/04_p1_verdict.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/05_p2_pitch.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/06_p2_verdict.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/07_p3_pitch.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/08_p3_verdict.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/09_p4_pitch.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/10_p4_verdict.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/11_p5_pitch.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/12_p5_verdict.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/13_p6_pitch.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/14_p6_verdict.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/15_pattern.html" style="display: none"></iframe><iframe class="slide" src="../../slides/lecture1_slides/16_takeaway.html" style="display: none"></iframe></div><div class="slides-controls"><div class="nav-controls"><button class="prev-slide" title="Previous (← Left arrow)">←</button><span class="slide-progress">1 / 16</span><button class="next-slide" title="Next (→ Right arrow)">→</button></div><button class="fullscreen-toggle" title="Toggle fullscreen (F)">⛶</button></div></div>
+
+<h2 id="the-cost-of-getting-requirements-wrong">The cost of getting requirements wrong</h2>
+<p>Poor requirements → perfect but unwanted software. 
+Some notorious examples:  </p>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>What it was</th>
+<th>The loss</th>
+<th>The requirements failure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UK NHS National Programme for IT</strong></td>
+<td>A single electronic patient-record system for the entire UK National Health Service — the world's largest civilian IT project at the time</td>
+<td>£12 billion; scrapped in 2011</td>
+<td>Requirements defined top-down; the end users (doctors, nurses) were never consulted. Vendors were locked into contracts before the complexity was understood.</td>
+</tr>
+<tr>
+<td><strong>FBI Virtual Case File</strong></td>
+<td>Software to replace the FBI's paper-based case management with a digital system for tracking investigations</td>
+<td>Never deployed; project restarted from scratch</td>
+<td>Vague initial requirements plus constant scope changes — no stable baseline to build against.</td>
+</tr>
+<tr>
+<td><strong>Berlin Brandenburg Airport</strong></td>
+<td>A new international airport intended to replace Berlin's two ageing airports</td>
+<td>9-year delay (opened 2020 instead of 2011)</td>
+<td>Fire-safety systems designed before the scope was finalized; designs kept changing mid-construction without re-aligning stakeholders.</td>
+</tr>
+<tr>
+<td><strong>Denver Airport Baggage System</strong></td>
+<td>A fully automated baggage-handling system meant to route luggage across the airport with no human intervention</td>
+<td>Years of manual operation; costs far beyond estimates</td>
+<td>Requirements demanded automation beyond what the technology could actually deliver — aspiration mistaken for feasibility.</td>
+</tr>
+<tr>
+<td><strong>Ford Edsel (1957)</strong></td>
+<td>A new car brand Ford launched into the mid-priced market, backed by one of the biggest marketing campaigns of its era</td>
+<td>$350 million lost</td>
+<td>Market research existed but executives ignored it — requirements were a post-rationalization of a pre-decided product.</td>
+</tr>
+<tr>
+<td><strong>Fintech AI dashboard</strong></td>
+<td>An AI-powered analytics dashboard a fintech firm built for its business customers</td>
+<td>Months of development; &lt;5% user engagement</td>
+<td>Requirements came from internal assumptions, not customer interviews — no prototypes, no discovery.</td>
+</tr>
+</tbody>
+</table>
+<p>Recurring pattern across these failures:<br />
+1. <strong>No end-user input</strong> — you build the wrong thing perfectly (NHS, fintech dashboard).<br />
+2. <strong>Vague requirements + uncontrolled scope change</strong> — rework compounds until the project collapses (FBI VCF, Berlin airport).<br />
+3. <strong>Requirements not grounded in evidence or feasibility</strong> — wishes written down as specs (Denver baggage, Ford Edsel).  </p>
+<p>Note the connection backwards to feasibility studies (these projects would have failed the three questions) and forward to elicitation: most of these losses trace to <em>whom you asked</em> and <em>what you validated</em>, not to bad engineering.</p>
+<h2 id="functional-vs-non-functional-requirements">Functional vs. non-functional requirements.</h2>
+<p>Software system requirements are often classified as:<br />
+- <strong>Functional requirements</strong> — statements of services the system should provide, how it should react to particular inputs, and how it should behave in particular situations. May also state explicitly what the system should <em>not</em> do.<br />
+- <strong>Non-functional requirements</strong> — constraints on the services or functions offered by the system (timing constraints, constraints on the development process, constraints imposed by standards). They usually apply to the system <em>as a whole</em> rather than to individual features.</p>
+<p>In reality the distinction is not clear-cut. A user requirement about security ("limit access to authorized users") looks non-functional, but when developed in detail it generates clearly functional requirements (e.g. user authentication facilities). Requirements are not independent — one requirement often generates or constrains others.</p>
+<p><img alt="" src="../../images/functional_non_functional_req.png" /></p>
+<h3 id="functional-requirements">Functional requirements</h3>
+<p>Describe <strong>what the system should do</strong>. As user requirements they are written in natural language; as system requirements they expand these for developers — functions, inputs, outputs, and exceptions in detail.</p>
+<p>Examples from the Mentcare system (mental-health patient records):<br />
+1. A user shall be able to search the appointments lists for all clinics.<br />
+2. The system shall generate each day, for each clinic, a list of patients who are expected to attend appointments that day.<br />
+3. Each staff member using the system shall be uniquely identified by his or her eight-digit employee number.  </p>
+<p>Note that functional requirements can be written at very different levels of detail (contrast 1 and 3).  </p>
+<p><strong>Imprecision causes disputes.</strong> Developers naturally interpret an ambiguous requirement in the way that is easiest to implement — often not what the customer wants. <br />
+E.g. in requirement 1, medical staff expect "search" to mean: given a patient name, look across <em>all</em> clinics (confused patients may show up at the wrong clinic). Developers may instead implement "pick a clinic, then search" because it is simpler — more user input, slower searches, new requirements, delays, and cost.</p>
+<p>Ideally the functional specification should be:<br />
+- <strong>Complete</strong> — all services and information required by the user are defined.<br />
+- <strong>Consistent</strong> — requirements do not contradict each other.  </p>
+<p>In practice this is only achievable for very small systems: large specifications contain mistakes and omissions, and large systems have many stakeholders with different — often inconsistent — needs that may only surface during deeper analysis or development.</p>
+<h3 id="non-functional-requirements">Non-functional requirements</h3>
+<p>Not directly concerned with specific services delivered to users; they specify or constrain <strong>characteristics of the system as a whole</strong> — emergent properties such as reliability, response time, and memory use, or implementation constraints such as I/O device capabilities and data representations in interfaces.</p>
+<p>They are often <strong>more critical than individual functional requirements</strong>: users can usually work around a missing function, but failing a non-functional requirement can make the whole system unusable (an aircraft system that misses its reliability requirement won't be certified; an embedded controller that misses its performance requirement won't control correctly).</p>
+<p>Their implementation tends to be <strong>spread throughout the system</strong>, because:<br />
+1. They may affect the overall architecture rather than individual components (e.g. minimizing inter-component communication to meet performance requirements).<br />
+2. A single non-functional requirement (e.g. security) may generate several related functional requirements (new services) and constrain existing ones.</p>
+<!--**Classification (Figure 4.3, Sommerville):**
+
+| Class | Source | Examples |
+|---|---|---|
+| **Product requirements** | Required characteristics of the software itself; constrain runtime behavior | Performance (speed, memory), reliability (acceptable failure rate), security, usability |
+| **Organizational requirements** | Policies and procedures of the customer's and developer's organizations | Operational process (how the system is used), development process (programming language, environment, process standards), environmental |
+| **External requirements** | Factors external to the system and its development | Regulatory (approval by e.g. a nuclear safety authority), legislative (operating within the law), ethical (acceptability to users and the public) |
+
+Mentcare examples of each:
+- *Product:* The system shall be available to all clinics during normal working hours (Mon–Fri, 08:30–17:30); downtime within working hours shall not exceed 5 seconds per day.
+- *Organizational:* Users shall identify themselves using their health authority identity card.
+- *External:* The system shall implement patient privacy provisions as set out in HStan-03-2006-priv.
+
+**Goals vs. verifiable requirements.** Stakeholders often propose non-functional requirements as vague goals ("easy to use", "recovers rapidly from failure") that leave room for interpretation and later dispute:
+> The system should be easy to use by medical staff and should be organized in such a way that user errors are minimized.
+
+Rewritten as a *testable* requirement:
+> Medical staff shall be able to use all the system functions after two hours of training. After this training, the average number of errors made by experienced users shall not exceed two per hour of system use.
+
+Whenever possible, write non-functional requirements **quantitatively** so they can be objectively tested. Useful metrics (Figure 4.5, Sommerville):
+
+| Property | Measure |
+|---|---|
+| Speed | Processed transactions/second; user/event response time; screen refresh time |
+| Size | Megabytes; number of ROM chips |
+| Ease of use | Training time; number of help frames |
+| Reliability | Mean time to failure; probability of unavailability; rate of failure occurrence; availability |
+| Robustness | Time to restart after failure; percentage of events causing failure; probability of data corruption on failure |
+| Portability | Percentage of target-dependent statements; number of target systems |
+
+In practice quantification is hard: some goals (e.g. maintainability) have no simple metric, customers may not relate their needs to numbers, and objective verification can cost more than customers are willing to pay.
+
+**Conflicts and interactions.** Non-functional requirements often conflict with other functional or non-functional requirements. E.g. the identity-card requirement above needs a card reader on every computer — but a requirement for mobile access from tablets/smartphones (no card readers) forces an alternative identification method.
+
+It is difficult to separate functional and non-functional requirements cleanly in a requirements document — stating them apart can hide the relationships between them. Still, requirements tied to emergent properties (performance, reliability) should ideally be highlighted, e.g. in a separate section or distinguished in some way.-->
+
+<h2 id="references">References</h2>
+<ol>
+<li>Chapter 4, Requirements Engineering, Software Engineering, Ian Sommerville</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture0/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 0:Course Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                0:Course Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture2/" class="md-footer__link md-footer__link--next" aria-label="Next: 2:Elicitation &amp; Stakeholder Interactions">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2:Elicitation & Stakeholder Interactions
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

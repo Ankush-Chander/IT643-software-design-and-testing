@@ -1,0 +1,701 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture3/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lecture 3: Deep modules vs Shallow modules - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-3-deep-modules-vs-shallow-modules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 3: Deep modules vs Shallow modules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Complexity?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics-of-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symptoms-of-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symptoms of Complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#causes-of-the-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Causes of the complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-manage-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to manage complexity?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to manage complexity?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface-vs-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface vs Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-vs-shallow-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep vs Shallow modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lecture-3-deep-modules-vs-shallow-modules">Lecture 3: Deep modules vs Shallow modules</h1>
+<h3 id="agenda">Agenda</h3>
+<p><img alt="" src="../../images/red_flags/big_picture.png" /></p>
+<h3 id="what-is-complexity">What is Complexity?</h3>
+<p>"Complexity is anything related to the structure of a software system that makes it <strong>hard to understand and modify</strong> the system."</p>
+<hr />
+<h3 id="characteristics-of-complexity">Characteristics of complexity</h3>
+<ul>
+<li><strong>Cost and Benefit:</strong> In a complex system, "it takes a lot of work to implement even small improvements" </li>
+<li><strong>Developer Experience:</strong> System size or sophisticated features do not inherently define complexity if the system is easy to work on.</li>
+<li><strong>Activity-Based Impact:</strong> The overall complexity is <em>weighted by how frequently developers interact with a particular part of the system.</em> </li>
+<li><strong>Readability Over Writability:</strong> Code that appears simple to its author but complex to others <em>is</em> complex. </li>
+</ul>
+<hr />
+<h2 id="symptoms-of-complexity">Symptoms of Complexity</h2>
+<p><strong>1. Change Amplification:</strong> A simple change necessitates modifications in many different places. 
+* <strong>Example:</strong> Changing a banner color in an old website required modifying every page individually, unlike modern sites using a central variable.<br />
+* <strong>Goal of Good Design:</strong> "Reduce the amount of code that is affected by each design decision."</p>
+<hr />
+<p><strong>2. Cognitive Load:</strong> The amount of information a developer must know to complete a task. High cognitive load increases learning time and bug risk.<br />
+- <strong>Example:</strong> A C function allocating memory and returning a pointer, requiring the caller to free it, increases cognitive load due to the explicit memory management responsibility. 
+ - <strong>Caveat:</strong> Shorter lines of code do not necessarily mean simplicity if cognitive load remains high. "Sometimes an approach that requires more lines of code is actually simpler, because it reduces cognitive load."</p>
+<hr />
+<p><strong>3. Unknown Unknowns:</strong> It's unclear which code needs modification or what information is required for a task. This is the "worst" symptom. 
+-  <strong>Impact:</strong> Developers "won’t find out about it until bugs appear after you make a change." The only certainty often involves reading "every line of code in the system," which is impractical.  </p>
+<hr />
+<p><img alt="" src="../../images/red_flags/complexity_symptoms.png" /></p>
+<hr />
+<h2 id="causes-of-the-complexity">Causes of the complexity</h2>
+<ol>
+<li><strong>Dependencies:</strong> A piece of code "cannot be understood and modified in isolation" because it relates to other code that must be considered or modified.</li>
+<li><strong>Obscurity:</strong> Important information is not obvious.  <ul>
+<li><strong>Examples:</strong> Generic variable names, undocumented units, hidden dependencies</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="how-to-manage-complexity">How to manage complexity?</h2>
+<p>Modular design is a crucial technique to manage complexity by allowing developers to <strong>"only need to face a small fraction of the overall complexity at any given time."</strong></p>
+<p><strong>Modular Decomposition:</strong> Systems are broken into relatively independent modules (classes, subsystems, services).</p>
+<hr />
+<h3 id="interface-vs-implementation">Interface vs Implementation</h3>
+<ul>
+<li><strong>Interface:</strong> "Everything that a developer working in a different module must know in order to use the given module." It describes <em>what</em> the module does, not <em>how</em>. </li>
+<li><strong>Implementation:</strong> The code that fulfills the interface's promises. <em>(The how part)</em></li>
+</ul>
+<hr />
+<p><strong>Interface Components:</strong> 
+-  <strong>Formal:</strong> Explicitly specified in code (e.g., method signatures, public variables) and check-able by the language. 
+- <strong>Informal:</strong> High-level behavior, usage constraints, not enforceable by the language, typically described in comments. These are often "larger and more complex than the formal aspects."</p>
+<hr />
+<h2 id="deep-vs-shallow-modules">Deep vs Shallow modules</h2>
+<p><img alt="" src="../../images/red_flags/deep_shallow_modules.png" /></p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Deep modules</th>
+<th>Shallow modules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provide powerful functionality yet have simple interfaces.</td>
+<td>Interface is relatively complex in comparison to the functionality that it provides.</td>
+</tr>
+<tr>
+<td>If the interface is simple, many internal changes won't affect other modules.</td>
+<td>"Don’t provide help much in managing complexity" because the benefit of hiding internal workings is negated by the cost of learning the complex interface.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Unix I/O is a beautiful example of a deep module <br />
+- <strong>Simple interface:</strong>
+<div class="highlight"><pre><span></span><code>int open(const char* path, int flags, mode_t permissions);
+ssize_t read(int fd, void* buffer, size_t count);
+ssize_t write(int fd, const void* buffer, size_t count);
+off_t lseek(int fd, off_t offset, int referencePosition);
+int close(int fd);
+</code></pre></div></p>
+<hr />
+<p><strong>Implementation (deep)</strong>:
+- <code>open</code> → looks up file path in directory tree, checks permissions, allocates a file descriptor.
+- <code>read</code> → may involve disk seeks, block cache, interrupts, device driver interaction, copying data between kernel/user space.
+- <code>write</code> → may buffer data, update metadata, interact with storage devices.
+- <code>close</code> → releases resources, may flush pending writes to disk.</p>
+<hr />
+<p>Refer <a href="">copy example</a></p>
+<hr />
+<p>Example of a shallow module
+<div class="highlight"><pre><span></span><code>private void addNullValueForAttribute(String attribute) {
+data.put(attribute, null);
+}
+</code></pre></div></p>
+<hr />
+<blockquote>
+<p><strong>Red Flag:</strong> Shallow Module
+A shallow module is one whose interface is complicated relative to the
+functionality it provides. Shallow modules don’t help much in the battle
+against complexity, because <strong>the benefit they provide (not having to learn about</strong>
+<strong>how they work internally) is negated by the cost of learning and using their</strong>
+<strong>interfaces.</strong> Small modules tend to be shallow.</p>
+</blockquote>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li>Chapter 2,4 Philosophy of Software Design</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

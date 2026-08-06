@@ -1,0 +1,1014 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture2/">
+      
+      
+        <link rel="prev" href="../Lecture1/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>2:Elicitation & Stakeholder Interactions - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-elicitation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2:Elicitation & Stakeholder Interactions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-elicitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is elicitation?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dark-arts-vs-occlumency-vs-legilimency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dark arts vs occlumency vs legilimency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elicitation-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elicitation techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elicitation techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interviews-vs-ethnography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interviews vs Ethnography
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stories-vs-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stories vs Scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volere-trawling-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volere "trawling" approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-elicitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is elicitation?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dark-arts-vs-occlumency-vs-legilimency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dark arts vs occlumency vs legilimency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elicitation-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elicitation techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elicitation techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interviews-vs-ethnography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interviews vs Ethnography
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stories-vs-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stories vs Scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volere-trawling-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volere "trawling" approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>2:Elicitation & Stakeholder Interactions</h1>
+
+<p><strong>Lecture 2: Elicitation &amp; Stakeholder Interactions</strong></p>
+<h2 id="what-is-elicitation">What is elicitation?</h2>
+<div class="admonition question">
+<p class="admonition-title">💬 Your first question</p>
+<p>You have 30 minutes with a hospital receptionist to figure out what their appointment system should do. What is your <em>first</em> question to them?</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>If your instinct was "what do you want the system to do?" — that's the one question that reliably fails. They will answer in vague generalities or ask for the impossible.</li>
+<li>Better openers get them talking about their <em>work</em>: "Walk me through what happens when a patient calls," "What went wrong yesterday?"</li>
+<li>This gap — between what people know and what they can articulate — is the whole problem this lecture is about.</li>
+</ul>
+</details>
+</div>
+<p>To <em>elicit</em> is to draw out information from someone — not by asking directly, but through skilled conversation. The term comes from espionage: intelligence officers use elicitation to extract information from a source through seemingly casual conversation, without the source realizing what has been revealed. The best elicitors don't interrogate; they get people talking about what they know.</p>
+<p>Requirements elicitation borrows the same idea. Stakeholders <em>have</em> the information we need — how they work, what frustrates them, what they'd change — but they can rarely hand it over on request. Saying "tell me your requirements" fails the same way "tell me your secrets" would. The engineer's job is to understand the work stakeholders do and how a system might support it: the application domain, work activities, desired services and features, required performance, hardware constraints.</p>
+<p><strong>Why it is hard:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Difficulty</th>
+<th>What it looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stakeholders don't know what they want</td>
+<td>Only vague, general terms; unrealistic demands (they don't know what's feasible)</td>
+</tr>
+<tr>
+<td>Implicit domain knowledge</td>
+<td>Requirements expressed in their own jargon, with assumptions left unstated</td>
+</tr>
+<tr>
+<td>Diverse stakeholders</td>
+<td>Different people express requirements in different ways; commonalities and conflicts must be discovered</td>
+</tr>
+<tr>
+<td>Politics</td>
+<td>Managers demand requirements that increase their influence in the organization</td>
+</tr>
+<tr>
+<td>Dynamic environment</td>
+<td>Business context changes during analysis; priorities shift; new stakeholders bring new requirements</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition question">
+<p class="admonition-title">💬 Stakeholders in conflict</p>
+<p>Our institute wants a new course-registration system. Name five stakeholders — then find two whose requirements will directly conflict.</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>Students, faculty, academic office, hostel/mess admin, IT support, management…</li>
+<li>Conflicts are everywhere: students want late add/drop, the academic office wants early locks; faculty want small caps, management wants full utilization; students want open elective access, departments want prerequisites enforced.</li>
+<li>Every one of these conflicts must be <em>discovered</em>, then resolved by negotiation — nobody hands you a conflict-free list.</li>
+</ul>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">💬 Fixable or permanent?</p>
+<p>Look at the five difficulties in the table above. Which can be <em>fixed</em> by a better elicitation process, and which are permanent facts of life you can only <em>manage</em>?</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>Better process helps with: articulation problems (use prototypes, stories), implicit knowledge (use ethnography), diverse expression (use viewpoints).</li>
+<li>Permanent: politics and the changing environment. No technique eliminates them — you manage them with regular stakeholder meetings, negotiation, and iteration.</li>
+</ul>
+</details>
+</div>
+<h2 id="dark-arts-vs-occlumency-vs-legilimency">Dark arts vs occlumency vs legilimency</h2>
+<p>A Potter-flavored way to remember the stakeholder dynamics:</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>In the books</th>
+<th>In requirements engineering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Legilimency</strong></td>
+<td>Extracting what is in another's mind</td>
+<td>What the analyst is trying to do: get at knowledge stakeholders can't articulate — the elicitation techniques below are our legilimency</td>
+</tr>
+<tr>
+<td><strong>Occlumency</strong></td>
+<td>Shielding the mind from intrusion</td>
+<td>What stakeholders (often unknowingly) do: jargon, "too obvious to mention" knowledge, reluctance to reveal real power structures and politics</td>
+</tr>
+<tr>
+<td><strong>Dark arts</strong></td>
+<td>Manipulation and deception</td>
+<td>Political requirements — demands made to increase influence; stakeholders undermining the RE process when they feel unheard. Counter with regular stakeholder meetings and negotiated compromises</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition question">
+<p class="admonition-title">💬 Occlumency in daily life</p>
+<p>Explain — in words only — how you unlock your smartphone, to someone who has never used one. Which steps would you skip without noticing?</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>Almost everyone skips: pressing/raising to wake the screen, swiping up first, what to do when the fingerprint fails, the difference between the lock screen and the home screen.</li>
+<li>You skip them because they are <em>second nature</em> — exactly what stakeholders do when describing their work. The librarian never mentions that acquisitions are catalogued before shelving; it "goes without saying."</li>
+</ul>
+</details>
+</div>
+<h2 id="elicitation-techniques">Elicitation techniques</h2>
+<p>Elicitation and analysis is an iterative cycle of four activities, with continual feedback between them. The cycle starts with discovery and ends when the requirements document is produced.</p>
+<p><img alt="" src="../images/elicitation_process.png" /></p>
+<!-- Diagram placeholder: Figure 4.7 Sommerville — cycle of the 4 activities below -->
+
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Discovery &amp; understanding</td>
+<td>Interact with stakeholders to discover their requirements; gather domain requirements from stakeholders and documentation</td>
+</tr>
+<tr>
+<td>2. Classification &amp; organization</td>
+<td>Group related requirements from the unstructured collection into coherent clusters (e.g. by stakeholder <strong>viewpoint</strong> or by subsystem)</td>
+</tr>
+<tr>
+<td>3. Prioritization &amp; negotiation</td>
+<td>Multiple stakeholders ⇒ conflicting requirements; prioritize, then resolve conflicts through negotiation and compromise</td>
+</tr>
+<tr>
+<td>4. Documentation</td>
+<td>Requirements documented (early SRS draft, or informally on wikis/whiteboards) and fed into the next round of the cycle</td>
+</tr>
+</tbody>
+</table>
+<p>At the documentation stage, use simple language and diagrams, in a shared document or wiki accessible to all stakeholders.  </p>
+<h3 id="interviews-vs-ethnography">Interviews vs Ethnography</h3>
+<p>Two fundamental approaches: <strong>interviewing</strong> (talk to people about what they do) and <strong>observation/ethnography</strong> (watch people doing their job). Use a mix of both.  </p>
+<p><strong>Interviews</strong> may be <em>closed</em> (predefined questions) or <em>open</em> (no fixed agenda); in practice they are a mixture — some questions to get started and keep focus, then less structured exploration.  </p>
+<p>Being an effective interviewer:<br />
+1. Be open-minded — no preconceived ideas; be willing to change your mind if stakeholders surprise you.<br />
+2. Prompt with a springboard — a question, a requirements proposal, or a prototype. "Tell me what you want" doesn't work; people talk more easily in a defined context.  </p>
+<p><strong>Ethnography</strong>: an analyst immerses themselves in the working environment, observes day-to-day work, and notes the actual tasks people do. Its value: it discovers <em>implicit</em> requirements reflecting how people <strong>actually</strong> work rather than the formal processes the organization defines. It is especially effective for:<br />
+1. Requirements from actual practice — e.g. air-traffic controllers switching off a conflict-alert system that formal procedure says must be on, because its warnings are distracting.<br />
+2. Requirements from cooperation and awareness — e.g. controllers watching adjacent sectors to predict workload, so an automated system should keep that visibility.  </p>
+<p>Ethnography combines well with <strong>prototyping</strong>: the ethnography informs the prototype (fewer refinement cycles), and the prototype focuses the ethnography by raising questions to investigate.  </p>
+<p><img alt="" src="../images/ethnography_prototyping.png" /></p>
+<!-- Diagram placeholder: Figure 4.8 Sommerville — ethnographic analysis ↔ debriefing meetings ↔ focused ethnography, feeding system prototyping -->
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Interviews</th>
+<th>Ethnography</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Good for</td>
+<td>Overall understanding of what stakeholders do, how they'd interact with the system, difficulties with current systems</td>
+<td>Implicit requirements, actual (not formal) work practice, social/organizational factors</td>
+</tr>
+<tr>
+<td>Weak at</td>
+<td>Domain knowledge (jargon, "too obvious to say"); organizational politics and real power structures</td>
+<td>Broader organizational/domain requirements; <strong>innovation</strong> (it studies existing practice — cf. Nokia's ethnography vs Apple's iPhone)</td>
+</tr>
+<tr>
+<td>Caveat</td>
+<td>People can't visualize a system without a prototype; expect to derive requirements from answers, not receive them</td>
+<td>End-user focused; must be combined with other techniques</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition question">
+<p class="admonition-title">💬 Should the system fight back?</p>
+<p>Air-traffic controllers switch off the conflict-alert system even though formal procedure says it must stay on. Should the <em>new</em> system prevent them from switching it off?</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>There is no clean answer — that's the point. Locking it on enforces the formal process but ignores <em>why</em> controllers switch it off (false alarms are distracting, possibly dangerous).</li>
+<li>Preventing the workaround without fixing its cause just breeds new workarounds. The ethnographic finding says: fix the alert's sensitivity, don't just enforce the rule.</li>
+<li>Requirements built only from official process documents would have missed this entirely.</li>
+</ul>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">💬 When is ethnography wasted?</p>
+<p>Ethnography is powerful but expensive. Give a situation where spending weeks observing users would be largely wasted effort.</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>When the goal is <em>innovation</em> rather than supporting existing practice — there is no current work practice to observe for a genuinely new product (Apple didn't study existing phone usage to design the iPhone).</li>
+<li>Also weak for broader organizational or domain requirements — it only sees what end-users do.</li>
+</ul>
+</details>
+</div>
+<h3 id="stories-vs-scenarios">Stories vs Scenarios</h3>
+<p>People are bad at stating requirements but good at describing real-life examples — how they handle particular situations, or things they might do in a new way of working. Stories and scenarios capture this and seed discussion with other stakeholders.  </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Story</th>
+<th>Scenario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Narrative text</td>
+<td>Structured description</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>High-level "big picture" of system use</td>
+<td>Detailed example of a user interaction session</td>
+</tr>
+<tr>
+<td>Use</td>
+<td>Relatable; can be shared on a wiki for comment from a wide community</td>
+<td>Developed from parts of stories; concrete enough to propose requirements</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example story:</em> "Photo sharing in the classroom" (iLearn) — Jack, a primary-school teacher, runs a class project on the local fishing industry; pupils gather stories on a wiki and need a photo-sharing site where the teacher can moderate content (KidsTakePics). </p>
+<p>A full <strong>scenario</strong> structure:<br />
+1. What the system and users expect when the scenario starts (<em>initial assumption</em>)<br />
+2. Normal flow of events<br />
+3. What can go wrong, and how problems are handled<br />
+4. Other activities that may run concurrently<br />
+5. System state when the scenario ends  </p>
+<p><em>Example scenario:</em> "Uploading photos to KidsTakePics" — user selects photos, project, keywords; system emails the moderator on completion. What can go wrong: no moderator assigned (email school admin, warn user of delay); duplicate filenames (re-upload/rename/cancel). End state: photos uploaded, status "awaiting moderation."  </p>
+<p>Agile <em>user stories</em> (e.g. in XP) are actually narrative scenarios, not general stories.  </p>
+<div class="admonition question">
+<p class="admonition-title">💬 Write the failure clauses</p>
+<p>Scenario: a student uploads an assignment to the LMS 30 seconds before the deadline. Write the "what can go wrong" section.</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>Upload still in progress when the deadline hits — accepted or rejected? Timestamped at start or end of upload?</li>
+<li>Wrong file attached (last week's assignment, a .tmp file) — is re-submission allowed after the deadline?</li>
+<li>Network drops mid-upload; LMS clock differs from the student's clock; file exceeds the size limit at the worst possible moment.</li>
+<li>Notice how much <em>policy</em> hides in failure handling — most requirements disputes live in these clauses, not in the normal flow.</li>
+</ul>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">💬 Same event, three requirements</p>
+<p>From the Jack/KidsTakePics story, extract three concrete requirements. Compare with a classmate — do your lists match?</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>Plausible extractions: teacher moderation of uploads before photos are visible; class/teacher account structure; integration with iLearn authentication; upload from mobile devices; a setup service to add third-party tools.</li>
+<li>Lists rarely match — the same story supports many readings. That divergence is exactly why stories must be refined into structured scenarios before they can serve as requirements.</li>
+</ul>
+</details>
+</div>
+<h3 id="volere-trawling-approach">Volere "trawling" approach</h3>
+<p>The Volere method (Robertson &amp; Robertson) describes elicitation as <strong>trawling</strong> — dragging a net through the organization to catch requirements. Key ideas:<br />
+- Different mesh sizes catch different requirements: a wide net first for the big ones, finer nets on later passes for details.<br />
+- No single technique suffices — trawl with a toolkit: apprenticing (sit with the user and learn the work), interviews, workshops, brainstorming, document archaeology (mining existing documents and systems), prototyping, mind maps.<br />
+- Expect to iterate: requirements "grow" as understanding improves, and some of what you catch gets thrown back.  </p>
+<p><img alt="" src="../images/volere_trawling.png" /></p>
+<!-- Diagram placeholder: trawling metaphor / Volere requirements process overview -->
+
+<div class="admonition question">
+<p class="admonition-title">💬 Trawling the kirana shop</p>
+<p>You are building software for a kirana shop owner who cannot articulate any requirements. Pick two trawling techniques and justify your choice.</p>
+<details class="hint">
+<summary>Answer</summary>
+<ul>
+<li>Strong picks: <strong>apprenticing</strong> (spend a day behind the counter — the udhaar notebook, the supplier calls, the peak-hour chaos all surface) and <strong>document archaeology</strong> (the ledger, the khata book, and supplier bills encode the real business rules).</li>
+<li>Interviews alone would fail here for the same reason "tell me what you want" always fails — the owner's expertise is embodied in practice, not in words.</li>
+<li>There is no single right pair; what matters is matching the technique to <em>where the knowledge lives</em>.</li>
+</ul>
+</details>
+</div>
+<h2 id="references">References</h2>
+<ol>
+<li>Chapter 4, Requirements Engineering, <em>Software Engineering</em>, Ian Sommerville</li>
+<li><em>Mastering the Requirements Process</em>, Suzanne &amp; James Robertson (Volere)</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1:Requirements Discovery">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1:Requirements Discovery
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
