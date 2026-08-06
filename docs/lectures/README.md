@@ -14,11 +14,11 @@ This course covers the foundations of software engineering in the post-LLM era â
 
 
 ### Module 1: Requirements Discovery
-- [0: Software Engineering in post LLM era](lectures/Lecture0.md)
-- [1: Requirement Engineering](lectures/Lecture1.md)
-- [2: Elicitation & Stakeholder Interactions](lectures/Lecture2.md)
-<!--### Module 2: Taming Complexity
-- [3: Deep modules vs Shallow modules](lectures/Lecture3.md)-->
+- [0: Software Engineering in post LLM era](Lecture0.md)
+- [1: Requirement Engineering](Lecture1.md)
+- [2: Elicitation & Stakeholder Interactions](Lecture2.md)
+### Module 2: Taming Complexity
+- [3: Deep modules vs Shallow modules](lectures/Lecture3.md)
 
 ---
 

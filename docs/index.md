@@ -18,8 +18,8 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [0: Software Engineering in post LLM era](lectures/Lecture0.md)
 - [1: Requirement Engineering](lectures/Lecture1.md)
 - [2: Elicitation & Stakeholder Interactions](lectures/Lecture2.md)
-<!--### Module 2: Taming Complexity
-- [3: Deep modules vs Shallow modules](lectures/Lecture3.md)-->
+### Module 2: Taming Complexity
+- [3: Deep modules vs Shallow modules](lectures/Lecture3.md)
 
 ---
 
