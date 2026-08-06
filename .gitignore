@@ -5,3 +5,4 @@ exams
 *.orig
 *.out
 __pycache__
+.venv
