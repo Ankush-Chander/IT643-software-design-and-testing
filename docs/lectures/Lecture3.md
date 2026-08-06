@@ -6,7 +6,12 @@
 ### What is Complexity?
 "Complexity is anything related to the structure of a software system that makes it **hard to understand and modify** the system."
 
+### How to manage complexity
+- Make code simple and more obvious
+- Modular design: Encapsulate code into small, reusable modules, so that progammers can work on different parts of the system without the need to understand the entire system.
+
 ---
+
 ### Characteristics of complexity
 - **Cost and Benefit:** In a complex system, "it takes a lot of work to implement even small improvements" 
 - **Developer Experience:** System size or sophisticated features do not inherently define complexity if the system is easy to work on.
@@ -21,11 +26,11 @@
 ---
 
 **2. Cognitive Load:** The amount of information a developer must know to complete a task. High cognitive load increases learning time and bug risk.  
-- **Example:** A C function allocating memory and returning a pointer, requiring the caller to free it, increases cognitive load due to the explicit memory management responsibility. 
+- **Example:** A C function allocating memory and returning a pointer, requiring the caller to free it, increases cognitive load due to the explicit memory management responsibility.   
  - **Caveat:** Shorter lines of code do not necessarily mean simplicity if cognitive load remains high. "Sometimes an approach that requires more lines of code is actually simpler, because it reduces cognitive load."
 ---
 
-**3. Unknown Unknowns:** It's unclear which code needs modification or what information is required for a task. This is the "worst" symptom. 
+**3. Unknown Unknowns:** It's unclear which code needs modification or what information is required for a task. This is the "worst" symptom.   
 -  **Impact:** Developers "won’t find out about it until bugs appear after you make a change." The only certainty often involves reading "every line of code in the system," which is impractical.  
 
 ---
@@ -75,11 +80,18 @@ int close(int fd);
 ```
 ---
 
-**Implementation (deep)**:
-- `open` → looks up file path in directory tree, checks permissions, allocates a file descriptor.
-- `read` → may involve disk seeks, block cache, interrupts, device driver interaction, copying data between kernel/user space.
-- `write` → may buffer data, update metadata, interact with storage devices.
-- `close` → releases resources, may flush pending writes to disk.
+**Implementation (deep)**:  
+
+| Interface (what you learn) | Implementation (what it hides) |
+|---|---|
+| `open(path, flags, perms)` — "give me a handle to this file" | Walking the directory tree, translating a path string into inodes, checking permissions and ownership, resolving symlinks and mount points, allocating a file descriptor and kernel file-table entry, honoring `O_CREAT`/`O_TRUNC`/`O_APPEND` semantics, and deciding *which* filesystem driver even handles this path (ext4, XFS, NFS, tmpfs, procfs…). |
+| `read(fd, buf, count)` — "give me some bytes" | Checking the buffer/page cache first, issuing block requests to the device only on a miss, speculative read-ahead of blocks you haven't asked for yet, disk-head scheduling / SSD flash translation, DMA transfers, blocking the process and context-switching to another until data arrives, and returning short reads at end-of-file or on a pipe. |
+| `write(fd, buf, count)` — "store these bytes" | Copying into the page cache and returning *before* the disk is touched (write-back), delayed/coalesced flushing, block allocation and free-space management, journaling so a mid-write crash doesn't corrupt the filesystem, `O_APPEND` atomicity, and enforcing quotas and `ulimit`s. |
+| `lseek(fd, offset, whence)` — "move my position" | Maintaining a per-open-file cursor, mapping a logical byte offset to physical block locations that may be fragmented anywhere on the medium, and creating sparse "holes" when you seek past the end and write. |
+| `close(fd)` — "I'm done" | Flushing outstanding dirty buffers, releasing the descriptor and kernel structures, decrementing reference counts (the file may still be open elsewhere; blocks may need freeing only when the *last* handle closes), and firing final cleanup for pipes, sockets, or devices. |
+| `int fd` — the one value you carry around | A small integer that indexes into a per-process table pointing at a shared kernel file object — which may be backing a disk file, a pipe, a socket, a terminal, or a device, all behind the identical five calls. This is what lets "everything is a file" work. |
+| *(the whole interface, collectively)* | Concurrency control so simultaneous readers/writers don't corrupt each other, crash recovery, caching policy, the physical layout of data on the medium, and the entire device-driver layer — none of which appears in a single argument above, and all of which has been rewritten repeatedly without the five signatures ever changing. |
+
 ---
 Refer [copy example]()
 
