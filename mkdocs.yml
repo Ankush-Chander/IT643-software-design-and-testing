@@ -13,23 +13,8 @@ nav:
   - Lectures:
       - 0:Course Overview: 'lectures/Lecture0.md'
       - 1:Requirements Discovery: 'lectures/Lecture1.md'
-  # - Code:
-  #     - Storage Engines: 'code/storage_engines/README.md'
-  #     - SSTable: 'https://github.com/Ankush-Chander/sorted-string-table-101'
-  #     - B-Tree:
-  #       - "SQLite Demo": 'notebooks/sql_demo.ipynb'
-  #     - Batch Processing:
-  #       - "Hadoop Single Node Cluster": 'code/batch_processing/hadoop single node cluster.md'
-  #       - "Non Sudoer Hadoop Single Node Cluster": 'code/batch_processing/non_sudoer_hadoop_single_node_cluster.md'
-  #       - "Non Sudoer Hadoop Multi Node Cluster": 'code/batch_processing/non_sudoer_hadoop_multi_node_cluster.md'
-  #       - "Spark Single Node Cluster": 'notebooks/spark_demo.ipynb'
-  #     - Demos:
-  #       - "Normal forms": 'demo/db-normalization-demo.html'
-  #     - Stream Processing:
-  #       - "Introduction": 'notebooks/stream_processing.ipynb'
-  #       - "CDC": 'notebooks/cdc.ipynb'
-  #     - Distributed Systems:
-  #       - "Replication with Opensearch": 'code/distributed_systems/opensearch-lab.md'
+      - "2:Elicitation & Stakeholder Interactions": 'lectures/Lecture2.md'
+      # - "3.Code Complexity ": 'lectures/Lecture3.md'
 
 ## Configuration
 theme:
