@@ -23,7 +23,7 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [2: Elicitation & Stakeholder Interactions](docs/lectures/Lecture2.md)
  ### Module 2: Taming Complexity
 - [3: Deep modules vs Shallow modules](docs/lectures/Lecture3.md) 
-
+- [3_b: Code review - exercise ](docs/lectures/Lecture3-demo.md)
 ---
 
 ## How This Site Works
