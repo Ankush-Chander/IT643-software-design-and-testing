@@ -1,0 +1,1249 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture3-demo/">
+      
+      
+        <link rel="prev" href="../Lecture3/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3b.Complexity: measured on your own code - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-3-demo-complexity-measured-on-your-own-code" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3b.Complexity: measured on your own code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#last-years-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Last year's code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drill-a-the-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drill A — The Swap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Drill A — The Swap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q3-is-the-lecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3 is the lecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-repos-same-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two repos, same job
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth, measured
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Depth, measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-result-nobody-expects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The result nobody expects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#but-depth-is-not-sufficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        But depth is not sufficient
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-third-failure-two-of-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The third failure: two of everything
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-metric-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The metric trap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The metric trap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-five-lines-this-was-always-trying-to-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The five lines this was always trying to be
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#take-away" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Take away
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#last-years-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Last year's code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drill-a-the-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drill A — The Swap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Drill A — The Swap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q3-is-the-lecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3 is the lecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-repos-same-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two repos, same job
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth, measured
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Depth, measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-result-nobody-expects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The result nobody expects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#but-depth-is-not-sufficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        But depth is not sufficient
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-third-failure-two-of-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The third failure: two of everything
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-metric-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The metric trap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The metric trap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-five-lines-this-was-always-trying-to-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The five lines this was always trying to be
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#take-away" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Take away
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lecture-3-demo-complexity-measured-on-your-own-code">Lecture 3 (demo): Complexity, measured on your own code</h1>
+<blockquote>
+<p>Companion to <a href="../Lecture3/">Lecture 3</a>.
+Every number on these slides comes from the 36 snake games this class submitted last year.</p>
+</blockquote>
+<hr />
+<h2 id="last-years-code">Last year's code</h2>
+<p>These 36 repositories are yours — the snake games this class submitted last year.</p>
+<table>
+<thead>
+<tr>
+<th>Repositories</th>
+<th>36</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groups</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Students</td>
+<td>113</td>
+</tr>
+<tr>
+<td>Lines of code</td>
+<td>121 – 1,570</td>
+</tr>
+</tbody>
+</table>
+<p>Same core game in every one. Different design in every one.</p>
+<p>Today you read someone else's, and someone else reads yours.</p>
+<hr />
+<h2 id="drill-a-the-swap">Drill A — The Swap</h2>
+<p>Your group has been assigned <strong>someone else's</strong> repo. Find your code (<code>A01</code>–<code>A42</code>) on the sheet.</p>
+<p><strong>25 minutes. No compiler. Reading only.</strong> Split the questions across your group.</p>
+<ol>
+<li>Where do I change the snake's <strong>speed</strong>?</li>
+<li>Where do I change what happens when it <strong>eats the fruit</strong>?</li>
+<li><strong>Two snakes on one board</strong> — player 2 on <code>WASD</code>, both eat the same fruit,
+   each keeps their own score. Which functions must change?</li>
+<li><strong>One line</strong> — what single <strong>design change</strong> would most reduce the cost of
+   the <em>next</em> change to this code?</li>
+</ol>
+<p>Answer in your row. <code>file:line</code>, not prose.</p>
+<blockquote>
+<p><strong>Rule for the whole hour.</strong> Findings name files and lines, never people. Every
+repo here compiles and works — which is more than most software achieves. The
+question is not whether it is good. The question is what it costs to change.</p>
+</blockquote>
+<hr />
+<h3 id="q3-is-the-lecture">Q3 is the lecture</h3>
+<p>Q1 and Q2 are findable. Q3 is the one that matters.</p>
+<p>A second snake forces you to find <strong>every place that assumes there is exactly one</strong>.
+Where does the snake's state live? Who owns the board? Who decides collisions?
+Who draws?</p>
+<p>If <code>Snake</code> is a type, the answer is "construct it twice". If the snake is a global
+array plus a global direction plus a global length, there is no answer shorter
+than reading all of it.</p>
+<p>That is <strong>unknown unknowns</strong> — Lecture 3's worst symptom. <em>You won't find out
+about it until bugs appear after you make a change.</em></p>
+<hr />
+<h3 id="two-repos-same-job">Two repos, same job</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>Nevil-Nandasana/Snake-Game</code></th>
+<th><code>Jeet0105/SnakeGame</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High score saved to a file</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Menu screen</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Obstacles</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Pause</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Lines of code</td>
+<td>925</td>
+<td>789</td>
+</tr>
+<tr>
+<td><strong>Source files</strong></td>
+<td><strong>1</strong></td>
+<td><strong>9</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Same four features. Comparable size. One file against nine.</p>
+<p>Whatever differs between these two is <strong>design</strong> — not ambition, not effort.</p>
+<p><strong>A25</strong> and <strong>A32</strong> reviewed the same repo independently, without conferring.</p>
+<blockquote>
+<p>Two groups who never spoke found the same problem. Design defects are not taste.</p>
+</blockquote>
+<hr />
+<h2 id="depth-measured">Depth, measured</h2>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{depth} = \frac{\text{implementation LOC}}{\text{public interface members}}</div>
+<script type="math/tex; mode=display">\text{depth} = \frac{\text{implementation LOC}}{\text{public interface members}}</script>
+</div>
+<p>Interface is the <strong>cost</strong> a caller pays. Implementation is the <strong>benefit</strong> they get.</p>
+<p><img alt="Depth across 36 snake games" src="../../images/depth_chart.svg" /></p>
+<p>Find your bar. Range <strong>7.2 to 42.2</strong>, median <strong>17.2</strong> — a six-fold spread on one game.</p>
+<hr />
+<h3 id="the-result-nobody-expects">The result nobody expects</h3>
+<p>The <strong>deepest</strong> module in this class is the one with a <strong>god class</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>sagar-dot-bera/ByteHebi</code></th>
+<th><code>maitry4/code_crafters</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lines</td>
+<td>929</td>
+<td>890</td>
+</tr>
+<tr>
+<td>Classes</td>
+<td>5</td>
+<td><strong>19</strong></td>
+</tr>
+<tr>
+<td>Public interface members</td>
+<td><strong>22</strong></td>
+<td><strong>109</strong></td>
+</tr>
+<tr>
+<td><strong>Depth</strong></td>
+<td><strong>42.2</strong> — highest</td>
+<td><strong>8.2</strong> — near lowest</td>
+</tr>
+</tbody>
+</table>
+<p><code>ByteHebi</code>'s entire <code>Game</code> class is public in exactly <strong>three</strong> places:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Game</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Player&quot;</span><span class="p">);</span>
+<span class="o">~</span><span class="n">Game</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">run</span><span class="p">();</span>
+</code></pre></div>
+<p>18 data members and 9 more methods are <code>private</code>. You cannot see them, so you do
+not have to learn them. <strong>That is a deep module</strong>, exactly as defined last lecture.</p>
+<p><code>code_crafters</code> split the same game into 19 classes and made 109 things public.
+Every split that exposed an internal made the interface bigger.</p>
+<blockquote>
+<p><strong>More classes is not better design.</strong> Decomposition is not the goal.
+Information hiding is.</p>
+</blockquote>
+<hr />
+<h3 id="but-depth-is-not-sufficient">But depth is not sufficient</h3>
+<p><code>ByteHebi</code> has a beautiful interface and this behind it:</p>
+<div class="highlight"><pre><span></span><code>source/game.cpp:315   void Game::render() const     422 lines
+source/game.cpp:109   void Game::processInput()     203 lines
+</code></pre></div>
+<p>A 422-line function is a fine score and an unreadable morning. Depth measures the
+<strong>interface</strong>; it says nothing about the <strong>interior</strong>.</p>
+<p>Corpus-wide: <strong>46 functions over 60 lines.</strong> The red bars on the chart are repos
+carrying one over 200.</p>
+<p><strong>Both must hold.</strong> Small interface <em>and</em> no unit you cannot hold in your head.</p>
+<hr />
+<h3 id="the-third-failure-two-of-everything">The third failure: two of everything</h3>
+<p>Five repos define the same class in more than one file:</p>
+<table>
+<thead>
+<tr>
+<th>Repo</th>
+<th>Classes defined twice or more</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Shiroilt/solo-leveling…</code></td>
+<td><code>Point</code> <code>Snake</code> <code>Food</code> <code>GameBoard</code> <code>GameManager</code> <code>HighScore</code> <code>HighScoreManager</code></td>
+</tr>
+<tr>
+<td><code>24Chessman/SnakeX</code></td>
+<td><code>Snake</code> <code>Food</code> <code>Game</code> <code>GameBoard</code> <code>Position</code> <code>Terminal</code></td>
+</tr>
+<tr>
+<td><code>202512057Meetsheth/Debug-Thugs</code></td>
+<td><code>CyberSnake</code> <code>Fruit</code> <code>Pt</code> <code>Raw</code> <code>TermSize</code></td>
+</tr>
+<tr>
+<td><code>Neel1585/Snake_Game</code></td>
+<td><code>Snake</code> <code>Food</code> <code>GameBoard</code> <code>node</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>Shiroilt</code> ships <strong>three copies</strong> of the whole game: modular headers, a monolithic
+<code>game.cpp</code> that redefines all seven classes, and a third copy in <code>test.cpp</code>.</p>
+<p>Fix a bug in one. The other two still have it, and they look authoritative.</p>
+<hr />
+<h2 id="the-metric-trap">The metric trap</h2>
+<p>I ran a design-smell scanner over all 36 repos. It ranked <code>ByteHebi</code> <strong>31<sup>st</sup> of 36</strong> — near-cleanest.</p>
+<p>Its rule for oversized functions never fires on <code>void Game::render() const</code>,
+because it does not recognise <code>Class::method</code> definitions. It looked straight
+past a <strong>422-line function</strong> and reported the repo as clean.</p>
+<p>And the depth metric I just ranked you with? It scores that same 422-line
+function as <em>excellent</em>.</p>
+<blockquote>
+<p>Every metric on these slides is a <strong>proxy</strong>. Both of mine can be gamed by
+writing one enormous function. I showed you <code>max_unit</code> next to <code>depth</code>
+precisely because neither survives alone.</p>
+</blockquote>
+<p><strong>You will be tempted to optimise the number. Optimise the change cost.</strong></p>
+<hr />
+<h3 id="the-five-lines-this-was-always-trying-to-be">The five lines this was always trying to be</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SnakeGame</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">SnakeGame</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">seed</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">handle</span><span class="p">(</span><span class="n">Input</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">tick</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isOver</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Board</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">board</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Five members. Same game as all 36. Resizing the board is one argument.</p>
+<p>You already know this shape — it is <code>open</code> / <code>read</code> / <code>write</code> / <code>lseek</code> / <code>close</code>
+from last lecture, wearing a different name.</p>
+<hr />
+<h3 id="take-away">Take away</h3>
+<ol>
+<li><strong>Change amplification</strong> — count how many places a change reaches, not how many lines it edits.</li>
+<li><strong>Cognitive load</strong> — 46 functions here are over 60 lines. That is the interior.</li>
+<li><strong>Unknown unknowns</strong> — if nobody in your group could answer Q3, that is the symptom, not a skill issue.</li>
+</ol>
+<p>Depth is necessary. It is not sufficient. And no number replaces reading the code.</p>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li>Chapter 2, 4 — <em>A Philosophy of Software Design</em>, Ousterhout</li>
+</ol>
+<hr />
+<h1 id="appendix-drill-b">Appendix — Drill B</h1>
+<blockquote>
+<p>Not part of the 50-minute hour. Use it if Drill A finishes early, or as the
+opening of the next session.</p>
+</blockquote>
+<h2 id="drill-b-resize-the-board">Drill B — Resize the board</h2>
+<p>One change request:</p>
+<blockquote>
+<p><strong>The board is 20 × 12. Make it 40 × 15.</strong></p>
+</blockquote>
+<p>Not a feature. Not a redesign. One number, twice.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>Heer117/Snake_Game</code></th>
+<th><code>CharmiBhayani/SnakeCycle</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source files</td>
+<td><strong>1</strong></td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Lines</td>
+<td>244</td>
+<td>862</td>
+</tr>
+<tr>
+<td>Dimension <strong>declared</strong></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Dimension <strong>referenced</strong></td>
+<td>12</td>
+<td><strong>47</strong></td>
+</tr>
+<tr>
+<td>Lines to inspect</td>
+<td>10</td>
+<td><strong>37</strong></td>
+</tr>
+<tr>
+<td>Hardcoded offsets on a dimension</td>
+<td>2</td>
+<td><strong>22</strong></td>
+</tr>
+<tr>
+<td>Positioning calls with a baked-in row</td>
+<td><strong>0</strong></td>
+<td><strong>18</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Both are a single file.</strong> Both declare the board size exactly once. File count is
+not the variable here — and that is the point.</p>
+<hr />
+<h3 id="the-18">The 18</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="o">::</span><span class="n">gotoxy</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">  </span><span class="mi">5</span><span class="p">);</span>
+<span class="n">Console</span><span class="o">::</span><span class="n">gotoxy</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="n">Console</span><span class="o">::</span><span class="n">gotoxy</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+<span class="n">Console</span><span class="o">::</span><span class="n">gotoxy</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">);</span><span class="w">   </span><span class="c1">// ...and 14, and 15</span>
+</code></pre></div>
+<p>Nobody wrote a bug. Somebody wrote <code>width + 5</code> when 20 was narrow enough for the
+HUD to fit beside the board, and <code>12</code> because the board happened to be 12 tall.</p>
+<p>Change the board and the HUD lands <strong>on top of the game</strong>.</p>
+<p>The dimension was declared once. The <em>assumption that the board is small</em> was
+restated <strong>18 times</strong>, in no variable at all — so there is nothing to change.</p>
+<p><code>Heer117</code> never writes a literal position: every draw is a loop over <code>WIDTH</code> and
+<code>HEIGHT</code>. It resizes correctly on the first try, in 244 lines, in one file.</p>
+<blockquote>
+<p>A decision you named once costs one edit. A decision you assumed costs you
+every line that assumed it — and those lines do not announce themselves.</p>
+<p><strong>Goal of good design:</strong> reduce the amount of code affected by each design
+decision. — Lecture 3</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.Code Complexity ">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3.Code Complexity 
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

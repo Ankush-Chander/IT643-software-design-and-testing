@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="848" viewBox="0 0 1000 848" font-family="Inter,Helvetica,Arial,sans-serif">
+<rect width="1000" height="848" fill="#ffffff"/>
+<text x="20" y="27" font-size="17" font-weight="600" fill="#111">Module depth across 36 snake games — same game, 36 designs</text>
+<text x="20" y="45" font-size="11.5" fill="#666">implementation LOC per public interface member — longer bar = more functionality behind a smaller interface</text>
+<line x1="419.0" y1="48" x2="419.0" y2="816" stroke="#c8c8c8" stroke-dasharray="3 3"/>
+<text x="423.0" y="828" font-size="10.5" fill="#888">median 17.2</text>
+<text x="142" y="68" font-size="11" fill="#333" text-anchor="end">R22</text>
+<rect x="150" y="56" width="112.6" height="16" fill="#4c72b0" rx="2"/>
+<text x="268.6" y="68" font-size="10.5" fill="#444">7.2</text>
+<text x="142" y="89" font-size="11" fill="#333" text-anchor="end">R26</text>
+<rect x="150" y="77" width="128.2" height="16" fill="#4c72b0" rx="2"/>
+<text x="284.2" y="89" font-size="10.5" fill="#444">8.2</text>
+<text x="142" y="110" font-size="11" fill="#333" text-anchor="end">R13</text>
+<rect x="150" y="98" width="145.5" height="16" fill="#4c72b0" rx="2"/>
+<text x="301.5" y="110" font-size="10.5" fill="#444">9.3</text>
+<text x="142" y="131" font-size="11" fill="#333" text-anchor="end">R04</text>
+<rect x="150" y="119" width="156.4" height="16" fill="#4c72b0" rx="2"/>
+<text x="312.4" y="131" font-size="10.5" fill="#444">10.0</text>
+<text x="142" y="152" font-size="11" fill="#333" text-anchor="end">R29</text>
+<rect x="150" y="140" width="161.1" height="16" fill="#4c72b0" rx="2"/>
+<text x="317.1" y="152" font-size="10.5" fill="#444">10.3</text>
+<text x="142" y="173" font-size="11" fill="#333" text-anchor="end">R11</text>
+<rect x="150" y="161" width="165.8" height="16" fill="#4c72b0" rx="2"/>
+<text x="321.8" y="173" font-size="10.5" fill="#444">10.6</text>
+<text x="142" y="194" font-size="11" fill="#333" text-anchor="end">R03</text>
+<rect x="150" y="182" width="168.9" height="16" fill="#4c72b0" rx="2"/>
+<text x="324.9" y="194" font-size="10.5" fill="#444">10.8</text>
+<text x="142" y="215" font-size="11" fill="#333" text-anchor="end">R36</text>
+<rect x="150" y="203" width="173.6" height="16" fill="#4c72b0" rx="2"/>
+<text x="329.6" y="215" font-size="10.5" fill="#444">11.1</text>
+<text x="142" y="236" font-size="11" fill="#333" text-anchor="end">R32</text>
+<rect x="150" y="224" width="187.7" height="16" fill="#4c72b0" rx="2"/>
+<text x="343.7" y="236" font-size="10.5" fill="#444">12.0</text>
+<text x="142" y="257" font-size="11" fill="#333" text-anchor="end">R31</text>
+<rect x="150" y="245" width="208.0" height="16" fill="#4c72b0" rx="2"/>
+<text x="364.0" y="257" font-size="10.5" fill="#444">13.3</text>
+<text x="142" y="278" font-size="11" fill="#333" text-anchor="end">R08</text>
+<rect x="150" y="266" width="211.1" height="16" fill="#4c72b0" rx="2"/>
+<text x="367.1" y="278" font-size="10.5" fill="#444">13.5</text>
+<text x="142" y="299" font-size="11" fill="#333" text-anchor="end">R18</text>
+<rect x="150" y="287" width="212.7" height="16" fill="#4c72b0" rx="2"/>
+<text x="368.7" y="299" font-size="10.5" fill="#444">13.6</text>
+<text x="142" y="320" font-size="11" fill="#333" text-anchor="end">R10</text>
+<rect x="150" y="308" width="217.4" height="16" fill="#4c72b0" rx="2"/>
+<text x="373.4" y="320" font-size="10.5" fill="#444">13.9</text>
+<text x="142" y="341" font-size="11" fill="#333" text-anchor="end">R25</text>
+<rect x="150" y="329" width="223.6" height="16" fill="#4c72b0" rx="2"/>
+<text x="379.6" y="341" font-size="10.5" fill="#444">14.3</text>
+<text x="142" y="362" font-size="11" fill="#333" text-anchor="end">R06</text>
+<rect x="150" y="350" width="231.5" height="16" fill="#4c72b0" rx="2"/>
+<text x="387.5" y="362" font-size="10.5" fill="#444">14.8</text>
+<text x="142" y="383" font-size="11" fill="#333" text-anchor="end">R05</text>
+<rect x="150" y="371" width="240.9" height="16" fill="#4c72b0" rx="2"/>
+<text x="396.9" y="383" font-size="10.5" fill="#444">15.4</text>
+<text x="142" y="404" font-size="11" fill="#333" text-anchor="end">R01</text>
+<rect x="150" y="392" width="251.8" height="16" fill="#4c72b0" rx="2"/>
+<text x="407.8" y="404" font-size="10.5" fill="#444">16.1</text>
+<text x="142" y="425" font-size="11" fill="#333" text-anchor="end">R19</text>
+<rect x="150" y="413" width="262.7" height="16" fill="#4c72b0" rx="2"/>
+<text x="418.7" y="425" font-size="10.5" fill="#444">16.8</text>
+<text x="142" y="446" font-size="11" fill="#333" text-anchor="end">R14</text>
+<rect x="150" y="434" width="269.0" height="16" fill="#4c72b0" rx="2"/>
+<text x="425.0" y="446" font-size="10.5" fill="#444">17.2</text>
+<text x="142" y="467" font-size="11" fill="#333" text-anchor="end">R16</text>
+<rect x="150" y="455" width="270.6" height="16" fill="#4c72b0" rx="2"/>
+<text x="426.6" y="467" font-size="10.5" fill="#444">17.3</text>
+<text x="142" y="488" font-size="11" fill="#333" text-anchor="end">R17</text>
+<rect x="150" y="476" width="281.5" height="16" fill="#4c72b0" rx="2"/>
+<text x="437.5" y="488" font-size="10.5" fill="#444">18.0</text>
+<text x="142" y="509" font-size="11" fill="#333" text-anchor="end">R27</text>
+<rect x="150" y="497" width="295.6" height="16" fill="#4c72b0" rx="2"/>
+<text x="451.6" y="509" font-size="10.5" fill="#444">18.9</text>
+<text x="142" y="530" font-size="11" fill="#333" text-anchor="end">R23</text>
+<rect x="150" y="518" width="297.2" height="16" fill="#d1495b" rx="2"/>
+<text x="453.2" y="530" font-size="10.5" fill="#444">19.0  ← one 297-line function</text>
+<text x="142" y="551" font-size="11" fill="#333" text-anchor="end">R21</text>
+<rect x="150" y="539" width="301.8" height="16" fill="#4c72b0" rx="2"/>
+<text x="457.8" y="551" font-size="10.5" fill="#444">19.3</text>
+<text x="142" y="572" font-size="11" fill="#333" text-anchor="end">R35</text>
+<rect x="150" y="560" width="322.2" height="16" fill="#4c72b0" rx="2"/>
+<text x="478.2" y="572" font-size="10.5" fill="#444">20.6</text>
+<text x="142" y="593" font-size="11" fill="#333" text-anchor="end">R20</text>
+<rect x="150" y="581" width="325.3" height="16" fill="#4c72b0" rx="2"/>
+<text x="481.3" y="593" font-size="10.5" fill="#444">20.8</text>
+<text x="142" y="614" font-size="11" fill="#333" text-anchor="end">R24</text>
+<rect x="150" y="602" width="336.3" height="16" fill="#4c72b0" rx="2"/>
+<text x="492.3" y="614" font-size="10.5" fill="#444">21.5</text>
+<text x="142" y="635" font-size="11" fill="#333" text-anchor="end">R02</text>
+<rect x="150" y="623" width="336.3" height="16" fill="#4c72b0" rx="2"/>
+<text x="492.3" y="635" font-size="10.5" fill="#444">21.5</text>
+<text x="142" y="656" font-size="11" fill="#333" text-anchor="end">R12</text>
+<rect x="150" y="644" width="340.9" height="16" fill="#d1495b" rx="2"/>
+<text x="496.9" y="656" font-size="10.5" fill="#444">21.8  ← one 211-line function</text>
+<text x="142" y="677" font-size="11" fill="#333" text-anchor="end">R34</text>
+<rect x="150" y="665" width="340.9" height="16" fill="#4c72b0" rx="2"/>
+<text x="496.9" y="677" font-size="10.5" fill="#444">21.8</text>
+<text x="142" y="698" font-size="11" fill="#333" text-anchor="end">R28</text>
+<rect x="150" y="686" width="362.8" height="16" fill="#4c72b0" rx="2"/>
+<text x="518.8" y="698" font-size="10.5" fill="#444">23.2</text>
+<text x="142" y="719" font-size="11" fill="#333" text-anchor="end">R07</text>
+<rect x="150" y="707" width="367.5" height="16" fill="#4c72b0" rx="2"/>
+<text x="523.5" y="719" font-size="10.5" fill="#444">23.5</text>
+<text x="142" y="740" font-size="11" fill="#333" text-anchor="end">R09</text>
+<rect x="150" y="728" width="394.1" height="16" fill="#4c72b0" rx="2"/>
+<text x="550.1" y="740" font-size="10.5" fill="#444">25.2</text>
+<text x="142" y="761" font-size="11" fill="#333" text-anchor="end">R30</text>
+<rect x="150" y="749" width="473.9" height="16" fill="#4c72b0" rx="2"/>
+<text x="629.9" y="761" font-size="10.5" fill="#444">30.3</text>
+<text x="142" y="782" font-size="11" fill="#333" text-anchor="end">R15</text>
+<rect x="150" y="770" width="542.7" height="16" fill="#4c72b0" rx="2"/>
+<text x="698.7" y="782" font-size="10.5" fill="#444">34.7</text>
+<text x="142" y="803" font-size="11" fill="#333" text-anchor="end">R33</text>
+<rect x="150" y="791" width="660.0" height="16" fill="#d1495b" rx="2"/>
+<text x="816.0" y="803" font-size="10.5" fill="#444">42.2  ← one 422-line function</text>
+<text x="20" y="840" font-size="10.5" fill="#999">red = contains a single function over 200 lines — the metric rewards it, your reader does not</text>
+</svg>

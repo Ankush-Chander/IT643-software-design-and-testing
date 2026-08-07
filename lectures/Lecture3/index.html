@@ -13,21 +13,25 @@
         <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture3/">
       
       
+        <link rel="prev" href="../Lecture2/">
+      
+      
+        <link rel="next" href="../Lecture3-demo/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Lecture 3: Deep modules vs Shallow modules - IT643 - Software Design and Testing | DAU</title>
+        <title>3.Code Complexity - IT643 - Software Design and Testing | DAU</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lecture 3: Deep modules vs Shallow modules
+              3.Code Complexity 
             
           </span>
         </div>
@@ -158,10 +162,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../Lecture0/" class="md-tabs__link">
           
   
@@ -238,26 +244,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -275,7 +284,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -370,6 +379,225 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Complexity?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-manage-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to manage complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics-of-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symptoms-of-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symptoms of Complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#causes-of-the-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Causes of the complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-manage-complexity_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to manage complexity?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to manage complexity?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface-vs-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface vs Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-vs-shallow-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep vs Shallow modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -426,6 +654,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-to-manage-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to manage complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#characteristics-of-complexity" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -459,7 +698,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-manage-complexity" class="md-nav__link">
+  <a href="#how-to-manage-complexity_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         How to manage complexity?
@@ -530,6 +769,11 @@
 <p><img alt="" src="../../images/red_flags/big_picture.png" /></p>
 <h3 id="what-is-complexity">What is Complexity?</h3>
 <p>"Complexity is anything related to the structure of a software system that makes it <strong>hard to understand and modify</strong> the system."</p>
+<h3 id="how-to-manage-complexity">How to manage complexity</h3>
+<ul>
+<li>Make code simple and more obvious</li>
+<li>Modular design: Encapsulate code into small, reusable modules, so that progammers can work on different parts of the system without the need to understand the entire system.</li>
+</ul>
 <hr />
 <h3 id="characteristics-of-complexity">Characteristics of complexity</h3>
 <ul>
@@ -545,10 +789,10 @@
 * <strong>Goal of Good Design:</strong> "Reduce the amount of code that is affected by each design decision."</p>
 <hr />
 <p><strong>2. Cognitive Load:</strong> The amount of information a developer must know to complete a task. High cognitive load increases learning time and bug risk.<br />
-- <strong>Example:</strong> A C function allocating memory and returning a pointer, requiring the caller to free it, increases cognitive load due to the explicit memory management responsibility. 
+- <strong>Example:</strong> A C function allocating memory and returning a pointer, requiring the caller to free it, increases cognitive load due to the explicit memory management responsibility. <br />
  - <strong>Caveat:</strong> Shorter lines of code do not necessarily mean simplicity if cognitive load remains high. "Sometimes an approach that requires more lines of code is actually simpler, because it reduces cognitive load."</p>
 <hr />
-<p><strong>3. Unknown Unknowns:</strong> It's unclear which code needs modification or what information is required for a task. This is the "worst" symptom. 
+<p><strong>3. Unknown Unknowns:</strong> It's unclear which code needs modification or what information is required for a task. This is the "worst" symptom. <br />
 -  <strong>Impact:</strong> Developers "won’t find out about it until bugs appear after you make a change." The only certainty often involves reading "every line of code in the system," which is impractical.  </p>
 <hr />
 <p><img alt="" src="../../images/red_flags/complexity_symptoms.png" /></p>
@@ -562,7 +806,7 @@
 </li>
 </ol>
 <hr />
-<h2 id="how-to-manage-complexity">How to manage complexity?</h2>
+<h2 id="how-to-manage-complexity_1">How to manage complexity?</h2>
 <p>Modular design is a crucial technique to manage complexity by allowing developers to <strong>"only need to face a small fraction of the overall complexity at any given time."</strong></p>
 <p><strong>Modular Decomposition:</strong> Systems are broken into relatively independent modules (classes, subsystems, services).</p>
 <hr />
@@ -607,11 +851,45 @@ off_t lseek(int fd, off_t offset, int referencePosition);
 int close(int fd);
 </code></pre></div></p>
 <hr />
-<p><strong>Implementation (deep)</strong>:
-- <code>open</code> → looks up file path in directory tree, checks permissions, allocates a file descriptor.
-- <code>read</code> → may involve disk seeks, block cache, interrupts, device driver interaction, copying data between kernel/user space.
-- <code>write</code> → may buffer data, update metadata, interact with storage devices.
-- <code>close</code> → releases resources, may flush pending writes to disk.</p>
+<p><strong>Implementation (deep)</strong>:  </p>
+<table>
+<thead>
+<tr>
+<th>Interface (what you learn)</th>
+<th>Implementation (what it hides)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open(path, flags, perms)</code> — "give me a handle to this file"</td>
+<td>Walking the directory tree, translating a path string into inodes, checking permissions and ownership, resolving symlinks and mount points, allocating a file descriptor and kernel file-table entry, honoring <code>O_CREAT</code>/<code>O_TRUNC</code>/<code>O_APPEND</code> semantics, and deciding <em>which</em> filesystem driver even handles this path (ext4, XFS, NFS, tmpfs, procfs…).</td>
+</tr>
+<tr>
+<td><code>read(fd, buf, count)</code> — "give me some bytes"</td>
+<td>Checking the buffer/page cache first, issuing block requests to the device only on a miss, speculative read-ahead of blocks you haven't asked for yet, disk-head scheduling / SSD flash translation, DMA transfers, blocking the process and context-switching to another until data arrives, and returning short reads at end-of-file or on a pipe.</td>
+</tr>
+<tr>
+<td><code>write(fd, buf, count)</code> — "store these bytes"</td>
+<td>Copying into the page cache and returning <em>before</em> the disk is touched (write-back), delayed/coalesced flushing, block allocation and free-space management, journaling so a mid-write crash doesn't corrupt the filesystem, <code>O_APPEND</code> atomicity, and enforcing quotas and <code>ulimit</code>s.</td>
+</tr>
+<tr>
+<td><code>lseek(fd, offset, whence)</code> — "move my position"</td>
+<td>Maintaining a per-open-file cursor, mapping a logical byte offset to physical block locations that may be fragmented anywhere on the medium, and creating sparse "holes" when you seek past the end and write.</td>
+</tr>
+<tr>
+<td><code>close(fd)</code> — "I'm done"</td>
+<td>Flushing outstanding dirty buffers, releasing the descriptor and kernel structures, decrementing reference counts (the file may still be open elsewhere; blocks may need freeing only when the <em>last</em> handle closes), and firing final cleanup for pipes, sockets, or devices.</td>
+</tr>
+<tr>
+<td><code>int fd</code> — the one value you carry around</td>
+<td>A small integer that indexes into a per-process table pointing at a shared kernel file object — which may be backing a disk file, a pipe, a socket, a terminal, or a device, all behind the identical five calls. This is what lets "everything is a file" work.</td>
+</tr>
+<tr>
+<td><em>(the whole interface, collectively)</em></td>
+<td>Concurrency control so simultaneous readers/writers don't corrupt each other, crash recovery, caching policy, the physical layout of data on the medium, and the entire device-driver layer — none of which appears in a single argument above, and all of which has been rewritten repeatedly without the five signatures ever changing.</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>Refer <a href="">copy example</a></p>
 <hr />
@@ -659,6 +937,44 @@ against complexity, because <strong>the benefit they provide (not having to lear
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2:Elicitation &amp; Stakeholder Interactions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2:Elicitation & Stakeholder Interactions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture3-demo/" class="md-footer__link md-footer__link--next" aria-label="Next: 3b.Complexity: measured on your own code">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3b.Complexity: measured on your own code
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -692,7 +1008,7 @@ against complexity, because <strong>the benefit they provide (not having to lear
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/slides/js/slides.js"></script>
       
