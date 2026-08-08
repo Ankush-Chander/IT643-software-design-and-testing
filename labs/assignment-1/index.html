@@ -1,0 +1,1306 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/labs/assignment-1/">
+      
+      
+        <link rel="prev" href="../../lectures/Lecture3-demo/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1:Make it multiplayer - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-assignment-3-make-it-multiplayer-in-someone-elses-code" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1:Make it multiplayer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lectures/Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-assignment-3-make-it-multiplayer-in-someone-elses-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Assignment 3: Make it multiplayer — in someone else's code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Assignment 3: Make it multiplayer — in someone else&#39;s code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem Statement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-a-the-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part A – The change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-b-getting-the-code-and-opening-the-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part B – Getting the code and opening the PR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-c-using-an-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part C – Using an LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-d-the-measurement-and-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part D – The measurement and the analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-e-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part E – Submission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-it-will-not-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If it will not build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-do-not-finish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you do not finish
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deliverables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliverables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluation Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-assignment-3-make-it-multiplayer-in-someone-elses-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Assignment 3: Make it multiplayer — in someone else's code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Assignment 3: Make it multiplayer — in someone else&#39;s code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem Statement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-a-the-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part A – The change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-b-getting-the-code-and-opening-the-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part B – Getting the code and opening the PR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-c-using-an-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part C – Using an LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-d-the-measurement-and-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part D – The measurement and the analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-e-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part E – Submission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-it-will-not-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If it will not build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-do-not-finish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you do not finish
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deliverables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliverables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluation Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>1:Make it multiplayer</h1>
+
+<h2 id="lab-assignment-3-make-it-multiplayer-in-someone-elses-code"><strong>Lab Assignment 3: Make it multiplayer — in someone else's code</strong></h2>
+<h4 id="problem-statement"><strong>Problem Statement</strong></h4>
+<p>In Lecture 3 you read another group's snake game and predicted which functions
+would have to change to support a second player. Now you make that change.</p>
+<p>You are modifying <strong>the repository you reviewed</strong>, not your own.</p>
+<p>That is deliberate. A design is easy to change if a <em>stranger</em> can change it. You
+are the stranger. What it costs you is the measurement.</p>
+<p><strong>Deadline: Wednesday, 12:00 PM.</strong></p>
+<hr />
+<h4 id="part-a-the-change"><strong>Part A – The change</strong></h4>
+<p>Implement exactly this, and nothing more:</p>
+<ol>
+<li>A <strong>second snake</strong>, controlled by <code>W</code> <code>A</code> <code>S</code> <code>D</code>. Player 1 keeps whatever
+   controls the game already uses.</li>
+<li>Both snakes eat the <strong>same fruit</strong>. Whoever reaches it first grows.</li>
+<li>Each player has their <strong>own score</strong>, both visible during play.</li>
+<li>The game ends when <strong>either</strong> snake hits a wall, itself, or the other snake.
+   Announce which player lost.</li>
+</ol>
+<p><strong>Do not do anything else.</strong> No new menus, no colours, no renaming, no tidying up
+code you dislike, no reformatting. Every extra edit makes your measurement
+incomparable to the other 41 groups, and the comparison is the assignment.</p>
+<p>If you think the code needs restructuring before a second snake is possible, that
+is a finding — write it in Part D. Do not act on it.</p>
+<hr />
+<h4 id="part-b-getting-the-code-and-opening-the-pr"><strong>Part B – Getting the code and opening the PR</strong></h4>
+<p>You do not have write access, so you work from a fork.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Fork the repo on GitHub (the &quot;Fork&quot; button), then:</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;your-username&gt;/&lt;repo-name&gt;.git
+<span class="nb">cd</span><span class="w"> </span>&lt;repo-name&gt;
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feat/multiplayer
+
+<span class="c1"># 2. Before you touch anything, protect the diff from line-ending noise:</span>
+git<span class="w"> </span>config<span class="w"> </span>core.autocrlf<span class="w"> </span><span class="nb">false</span>
+
+<span class="c1"># 3. ... make the change ...</span>
+
+git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;Add second player&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/multiplayer
+</code></pre></div>
+<p>Then open a <strong>Pull Request from your fork to the original repository</strong>.</p>
+<p><strong>Before you push, sanity-check your diff:</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>diff<span class="w"> </span>--stat
+</code></pre></div>
+<p>If this says you changed 800 lines in a file you barely touched, your editor
+reformatted it or rewrote the line endings. Fix that before pushing — a diff full
+of whitespace noise cannot be measured and will be sent back.</p>
+<p><strong>If more than one of you is writing code</strong>, do not open separate PRs. One member
+forks and creates <code>feat/multiplayer</code>; everyone else branches off <em>that</em> and merges
+back into it:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>feat/multiplayer
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feat/multiplayer-scoring<span class="w">   </span><span class="c1"># your slice of the work</span>
+<span class="c1"># ... work, commit, push ...</span>
+</code></pre></div>
+<p>Open your sub-branch PR <strong>into <code>feat/multiplayer</code> on the fork</strong>, not into the
+original repo. Your group submits exactly one PR upstream, from <code>feat/multiplayer</code>.
+That keeps the diff whole — split across two PRs, your measurement is wrong.</p>
+<blockquote>
+<p><strong>If your repo is one of the six reviewed by two groups</strong>, work independently.
+Do not look at the other group's fork or PR until both are submitted. Those six
+repos are the only place we can tell "hard codebase" apart from "unlucky group",
+and comparing notes destroys that.</p>
+</blockquote>
+<hr />
+<h4 id="part-c-using-an-llm"><strong>Part C – Using an LLM</strong></h4>
+<p><strong>You may use ChatGPT, Claude, Copilot, or anything else.</strong> There is no penalty.</p>
+<p><strong>You must submit the artifacts.</strong> Add a file <code>LLM-LOG.md</code> to your PR containing:</p>
+<p><strong>1. Your setup</strong>, at the top:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model(s)</td>
+<td>e.g. GPT-5.1, Claude Opus 4.5, Gemini 3 Pro</td>
+</tr>
+<tr>
+<td>Tool / harness</td>
+<td>web chat, Copilot, Claude Code, Cursor agent, CLI</td>
+</tr>
+<tr>
+<td>IDE / editor</td>
+<td>VS Code, Visual Studio, CLion, Vim</td>
+</tr>
+<tr>
+<td>Did you paste this assignment document into it?</td>
+<td>y/n — and which parts</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. The session:</strong></p>
+<ol>
+<li>Every prompt you sent, numbered and in order.</li>
+<li>The relevant part of each reply — the code it produced, not the whole essay.</li>
+<li>Which attempt finally worked, and what was wrong with the earlier ones.</li>
+<li><strong>The total number of prompts it took to get working code.</strong></li>
+<li><strong>What code you gave it.</strong> Whole files, selected functions, or the whole
+   repository? Name the files. If you had to hunt for which files to supply, say
+   how you found them.</li>
+</ol>
+<p>Why each of these is asked for:</p>
+<ul>
+<li><strong>Setup.</strong> A web chat you paste into and an agent that reads the repo itself are
+  not the same instrument. Prompt counts are only comparable within a tool.</li>
+<li><strong>The assignment document.</strong> If you pasted it, the assistant already knew the
+  four requirements and was not working them out from the code. That changes what
+  your prompt count means. Saying so costs nothing; hiding it makes your row
+  useless.</li>
+<li><strong>Prompt count (4).</strong> Fifteen attempts on your codebase and three on someone
+  else's is evidence about the two codebases, not about the assistant.</li>
+<li><strong>What code you gave it (5).</strong> An assistant handed one whole file has the entire
+  program in front of it and never has to go looking. One working across nine
+  files only sees what you thought to give it. We cannot interpret your results
+  without knowing which you were in.</li>
+</ul>
+<p>A PR with LLM-written code and no <code>LLM-LOG.md</code> scores zero for Parts C and D.
+Submitting the log costs you nothing and is the honest, easy path.</p>
+<hr />
+<h4 id="part-d-the-measurement-and-the-analysis"><strong>Part D – The measurement and the analysis</strong></h4>
+<p>With your PR branch checked out:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># lines and files</span>
+git<span class="w"> </span>diff<span class="w"> </span>--shortstat<span class="w"> </span>-w<span class="w"> </span>main...feat/multiplayer
+git<span class="w"> </span>diff<span class="w"> </span>--stat<span class="w">      </span>-w<span class="w"> </span>main...feat/multiplayer
+
+<span class="c1"># functions -- git prints the enclosing function after each @@ marker</span>
+git<span class="w"> </span>diff<span class="w"> </span>-U0<span class="w"> </span>-w<span class="w"> </span>main...feat/multiplayer<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;^@@&#39;</span>
+</code></pre></div>
+<p>(Use <code>master</code> if that is the repo's default branch.)</p>
+<p>The <code>grep</code> gives you a starting list. <strong>Check it by hand</strong> — git guesses the
+enclosing function from indentation and gets it wrong on tightly packed code, and
+it says nothing at all for lines changed outside any function. Lines you changed
+at global scope still count as reach: note them as <code>(global)</code>.</p>
+<p>Put this table in the <strong>PR description</strong>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Functions changed</strong> (the headline number)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Names of those functions</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Files changed</td>
+<td></td>
+</tr>
+<tr>
+<td>Lines added / deleted</td>
+<td></td>
+</tr>
+<tr>
+<td>% of codebase touched</td>
+<td>lines changed ÷ total lines</td>
+</tr>
+<tr>
+<td>Hours your group spent</td>
+<td></td>
+</tr>
+<tr>
+<td>LLM model + tool</td>
+<td>e.g. Claude Opus 4.5 via Cursor; <code>none</code></td>
+</tr>
+<tr>
+<td>LLM prompts to working code</td>
+<td></td>
+</tr>
+<tr>
+<td>What code you gave the LLM</td>
+<td>whole file / selected functions / whole repo / none</td>
+</tr>
+<tr>
+<td>Pasted this assignment doc into the LLM?</td>
+<td>y/n</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The number that counts is functions changed, not lines.</strong> If <code>render()</code> assumes
+there is one snake, then <code>render()</code> has to change — whether you edited it by hand
+or an assistant rewrote it. The <em>reach</em> of the change is a property of the code.
+The <em>volume</em> is mostly a property of whoever typed it, and an assistant that
+rewrites a whole function to alter two lines will inflate your line count without
+telling us anything. Report the lines, but do not read anything into them.</p>
+<p>"Functions changed" means every function your diff touches, <strong>including ones with
+nothing to do with snakes</strong> — rendering, scoring, input, file I/O. List them by
+name. Those are the interesting ones.</p>
+<p>Then answer, in <strong>no more than 400 words</strong>:</p>
+<ol>
+<li>Which functions did you have to change that are <strong>not about snakes at all</strong>?
+   Why did a second snake reach them?</li>
+<li>Was there a <strong>single place</strong> where "there is exactly one snake" was written
+   down — or was that assumption spread across the code?</li>
+<li>In Lecture 3 your group predicted which functions would change. <strong>Compare your
+   prediction to what actually happened.</strong> What did you miss, and why was it not
+   visible from reading?</li>
+<li>What <strong>one design change</strong> to this codebase would have made this a
+   twenty-minute job?</li>
+</ol>
+<p>Question 3 is worth the most, and here is why.</p>
+<p>Your Lecture 3 prediction was made by hand, from reading, with no assistant and no
+compiler — before anyone had touched this code. That makes it the <strong>control</strong> for
+this whole exercise. Whatever you use to write the change today, that prediction
+is a clean record of what the design told a human reader on sight.</p>
+<p>So Q3 is not a formality. Reading the code and changing the code are different
+instruments, and where they disagree is the finding. A design that hid three
+functions from you until you tried to compile is a design that will hide them
+from the next person too.</p>
+<hr />
+<h4 id="part-e-submission"><strong>Part E – Submission</strong></h4>
+<p>In the shared Google Sheet, find your group's row (<code>A01</code>–<code>A42</code>) and fill in all
+four columns:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>What to put</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PR Link</strong></td>
+<td>the URL of your open pull request</td>
+</tr>
+<tr>
+<td><strong>Could you build it? (y/n)</strong></td>
+<td>honest answer; <code>n</code> costs no marks</td>
+</tr>
+<tr>
+<td><strong>LLM prompts to working code</strong></td>
+<td>a number, or <code>0</code> if you used none</td>
+</tr>
+<tr>
+<td><strong>LLM context</strong></td>
+<td>whole file / selected functions / whole repo / none</td>
+</tr>
+</tbody>
+</table>
+<p>The PR must be <strong>open</strong>, not merged, by <strong>Wednesday 12:00 PM</strong>. The sheet is what
+gets marked — a PR that exists but is not linked there is not submitted.</p>
+<blockquote>
+<p><strong>If someone opens a PR against your repository:</strong> review it, and leave at least
+two comments naming a file and a line. <strong>Do not merge it. Do not close it.</strong> The
+open PR is the artefact being assessed.</p>
+<p>Confirm in your review whether their second snake actually works.</p>
+</blockquote>
+<hr />
+<h4 id="if-it-will-not-build"><strong>If it will not build</strong></h4>
+<p>Build and run it before you claim it works. If it genuinely will not compile —
+missing file, broken code as submitted — say so in the PR description and in the
+sheet, make the change by reasoning from the code, and ask the owning group to
+verify it in their review. That costs no marks.</p>
+<p>Do <strong>not</strong> port the game to another platform, swap out its input library, or fix
+unrelated build errors. Those are far bigger changes than the one being measured,
+and they destroy your diff.</p>
+<hr />
+<h4 id="if-you-do-not-finish"><strong>If you do not finish</strong></h4>
+<p><strong>Say so, and you lose no marks.</strong> Push what you have, open the PR anyway, and in
+Part D describe exactly where you got stuck and what was in the way.</p>
+<p>Some of these codebases will make this a twenty-minute change. Others will resist
+it all afternoon. That difference is the entire point of the exercise. It is a
+property of a design decision someone made last year — not a measure of you today.</p>
+<p>An honest <em>"we could not finish because the snake's position is held in four
+global arrays read by eleven different functions, and we could not find them all"</em>
+is a <strong>better</strong> answer than a rushed implementation with no analysis.</p>
+<hr />
+<h4 id="deliverables"><strong>Deliverables</strong></h4>
+<ol>
+<li>An <strong>open Pull Request</strong> to the reviewed repository, from your fork.</li>
+<li><code>LLM-LOG.md</code> in the PR, if you used an assistant.</li>
+<li>The <strong>measurement table</strong> (Part D) in the PR description.</li>
+<li>The <strong>analysis</strong> (Part D) in the PR description.</li>
+<li>All <strong>four sheet columns</strong> filled in your group's row.</li>
+<li><strong>Two review comments</strong> on the PR opened against your own repository.</li>
+</ol>
+<hr />
+<h4 id="evaluation-criteria"><strong>Evaluation Criteria</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PR opened correctly; scope respected; diff free of noise</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Measurement table complete and accurate</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Analysis Q1–Q2 — which functions were reached, and why</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Analysis Q3 — prediction vs reality</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Analysis Q4 — the one design change that would have helped</td>
+<td>5</td>
+</tr>
+<tr>
+<td>LLM log complete, if an assistant was used</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Review comments on the PR against your own repo(ping instructor if your repo not in the sheet)</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>40</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Marks are for the <strong>measurement and the analysis</strong>. A working second snake with
+no analysis scores below an unfinished attempt that explains itself well.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../lectures/Lecture3-demo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3b.Complexity: measured on your own code">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3b.Complexity: measured on your own code
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
