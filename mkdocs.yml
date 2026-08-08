@@ -14,7 +14,10 @@ nav:
       - 0:Course Overview: 'lectures/Lecture0.md'
       - 1:Requirements Discovery: 'lectures/Lecture1.md'
       - "2:Elicitation & Stakeholder Interactions": 'lectures/Lecture2.md'
-      # - "3.Code Complexity ": 'lectures/Lecture3.md'
+      - "3.Code Complexity ": 'lectures/Lecture3.md'
+      - "3b.Complexity: measured on your own code": 'lectures/Lecture3-demo.md'
+  - Labs:
+      - "1:Make it multiplayer": 'labs/assignment-1.md'
 
 ## Configuration
 theme:
@@ -100,6 +103,11 @@ plugins:
 #      module_name: docs/macros
   - exclude:
      glob:
+       # Instructor-only material. These carry student contact details and
+       # facilitation notes; the site is public. Excluded by pattern so that
+       # moving a file into docs/ cannot silently publish it.
+       - "*runbook*"
+       - "*sealed*"
        - "lectures/lecture1_slides/*"
        - "*config*.json"
        - "*cfg*.json"
