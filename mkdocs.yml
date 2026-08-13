@@ -16,6 +16,7 @@ nav:
       - "2:Elicitation & Stakeholder Interactions": 'lectures/Lecture2.md'
       - "3.Code Complexity ": 'lectures/Lecture3.md'
       - "3b.Complexity: measured on your own code": 'lectures/Lecture3-demo.md'
+      - "4:Refactoring": 'lectures/Lecture4.md'
   - Labs:
       - "1:Make it multiplayer": 'labs/assignment-1.md'
 

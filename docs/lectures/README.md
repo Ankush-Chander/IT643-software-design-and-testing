@@ -19,7 +19,8 @@ This course covers the foundations of software engineering in the post-LLM era â
 - [2: Elicitation & Stakeholder Interactions](Lecture2.md)
 ### Module 2: Taming Complexity
 - [3: Deep modules vs Shallow modules](lectures/Lecture3.md)
-
+- [3b. Complexity: measured on your own code](lectures/Lecture3-demo.md)
+- [4: Refactoring](lectures/Lecture4.md)
 ---
 
 ## Prerequisites

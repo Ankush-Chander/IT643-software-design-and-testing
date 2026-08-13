@@ -54,9 +54,10 @@ Modular design is a crucial technique to manage complexity by allowing developer
 * **Interface:** "Everything that a developer working in a different module must know in order to use the given module." It describes _what_ the module does, not _how_. 
 - **Implementation:** The code that fulfills the interface's promises. *(The how part)*
 ---
-**Interface Components:** 
--  **Formal:** Explicitly specified in code (e.g., method signatures, public variables) and check-able by the language. 
-- **Informal:** High-level behavior, usage constraints, not enforceable by the language, typically described in comments. These are often "larger and more complex than the formal aspects."
+**Interface Components:**   
+-  **Formal:** Explicitly specified in code (e.g., method signatures, public variables) and check-able by the language.  
+- **Informal:** High-level behavior, usage constraints, not enforceable by the language, typically described in comments. These are often "larger and more complex than the formal aspects."  
+
 ---
 ## Deep vs Shallow modules
 ![](../images/red_flags/deep_shallow_modules.png)
