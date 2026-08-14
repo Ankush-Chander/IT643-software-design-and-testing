@@ -26,8 +26,8 @@ instrument.:
 | Install notes, per tool | [`skills/README.md`](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/main/skills/README.md) |
 | The glossary skill | [`skills/ubiquitous-language/`](https://github.com/Ankush-Chander/IT643-software-design-and-testing/tree/main/skills/ubiquitous-language) |
 | The code-smell pack | [`skills/refactoring/`](https://github.com/Ankush-Chander/IT643-software-design-and-testing/tree/main/skills/refactoring) |
-| Report template | [`lab2_3/REPORT-template.md`](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/main/lab2_3/REPORT-template.md) |
-| Submission checker | [`lab2_3/check-lab2_3.sh`](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/main/lab2_3/check-lab2_3.sh) |
+| Report template | [`lab2_3/REPORT-template.md`](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/main/docs/labs/lab2_3/REPORT-template.md) |
+| Submission checker | [`lab2_3/check-lab2_3.sh`](https://github.com/Ankush-Chander/IT643-software-design-and-testing/blob/main/docs/labs/lab2_3/check-lab2_3.sh) |
 
 ```bash
 git clone https://github.com/Ankush-Chander/IT643-software-design-and-testing it643-content
@@ -289,19 +289,6 @@ same way Lab 1's numbers did. Nothing else belongs in the sheet — no prose, no
 The PR must be **open** by the deadline and **linked in the sheet**. As in Lab 1: a PR that
 exists but is not in the sheet has not been submitted.
 
----
-
-#### **If you do not finish**
-
-**Say so, and you lose no marks.** Push what you have, open the PR anyway, and describe in
-the last section of `lab2_3/REPORT.md` exactly where you got stuck. Put a dash in the table
-cells you could not fill so the checker stops complaining about them. An honest *"the refactor in commit 3 broke the game and
-we could not work out why, and here is what we tried"* is worth more than a polished run 2
-with no analysis. That was true in Lab 1 and it produced the most useful submissions in the
-class.
-
-If a skill will not install on your machine, use the paste fallback and say so. That is a
-documented route, not a failure.
 
 ---
 
