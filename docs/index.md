@@ -21,6 +21,8 @@ This course argues that the scarce skill is shifting from *producing code* to **
 ### Module 2: Taming Complexity
 - [3: Deep modules vs Shallow modules](lectures/Lecture3.md)
 - [3_b: Code review - exercise](lectures/Lecture3-demo.md)
+- [4: Refactoring](lectures/Lecture4.md)
+- [5-6: Smells in the data](lectures/Lecture5_6.md)
 
 ---
 
@@ -29,6 +31,7 @@ This course argues that the scarce skill is shifting from *producing code* to **
 | Lab | What you do | Marks | Due date|
 |---|---|---|---|
 | [1: Make it multiplayer](labs/assignment-1.md) | Add a second player to another group's snake game, then measure what the change cost | 40 | Wednesday, 12:00 PM |
+| [2_3: Detect code smell](labs/assignment-2_3.md) | Detect code smells in the snake game codebase | 40 | Monday(24/Aug/2026), 11:59 PM |
 
 ---
 

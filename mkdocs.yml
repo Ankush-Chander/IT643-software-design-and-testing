@@ -16,8 +16,11 @@ nav:
       - "2:Elicitation & Stakeholder Interactions": 'lectures/Lecture2.md'
       - "3.Code Complexity ": 'lectures/Lecture3.md'
       - "3b.Complexity: measured on your own code": 'lectures/Lecture3-demo.md'
+      - "4:Refactoring": 'lectures/Lecture4.md'
+      - "5-6:Smells in the data": 'lectures/Lecture5_6.md'
   - Labs:
       - "1:Make it multiplayer": 'labs/assignment-1.md'
+      - "2_3:Detect code smell": 'labs/assignment-2_3.md'
 
 ## Configuration
 theme:

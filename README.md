@@ -24,6 +24,8 @@ This course argues that the scarce skill is shifting from *producing code* to **
  ### Module 2: Taming Complexity
 - [3: Deep modules vs Shallow modules](docs/lectures/Lecture3.md) 
 - [3_b: Code review - exercise ](docs/lectures/Lecture3-demo.md)
+- [4: Refactoring](docs/lectures/Lecture4.md)
+- [5-6: Smells in the data](docs/lectures/Lecture5_6.md)
 
 ---
 
