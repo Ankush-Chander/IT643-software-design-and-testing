@@ -18,9 +18,10 @@ This course covers the foundations of software engineering in the post-LLM era â
 - [1: Requirement Engineering](Lecture1.md)
 - [2: Elicitation & Stakeholder Interactions](Lecture2.md)
 ### Module 2: Taming Complexity
-- [3: Deep modules vs Shallow modules](lectures/Lecture3.md)
-- [3b. Complexity: measured on your own code](lectures/Lecture3-demo.md)
-- [4: Refactoring](lectures/Lecture4.md)
+- [3: Deep modules vs Shallow modules](Lecture3.md)
+- [3b. Complexity: measured on your own code](Lecture3-demo.md)
+- [4: Refactoring](Lecture4.md)
+- [5-6: Smells in the data](Lecture5_6.md)
 ---
 
 ## Prerequisites
