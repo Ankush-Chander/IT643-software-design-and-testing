@@ -1,0 +1,2661 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture5_6/">
+      
+      
+        <link rel="prev" href="../Lecture4/">
+      
+      
+        <link rel="next" href="../../labs/assignment-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>5-6:Smells in the data - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quick-recap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5-6:Smells in the data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agenda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysterious-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mysterious Name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysterious-name-the-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mysterious Name — the exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysterious-name-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mysterious Name — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-data-the-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Data — the exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-data-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Data — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutable-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mutable Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutable-data-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mutable Data — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-clumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Clumps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-clumps-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Clumps — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primitive-obsession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primitive Obsession
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primitive-obsession-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primitive Obsession — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-parameter-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long Parameter List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-parameter-list-the-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long Parameter List — the exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-parameter-list-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long Parameter List — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-envy-data-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Envy &amp; Data Class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-envy-data-class-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Envy &amp; Data Class — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-refactoring-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common refactoring techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common refactoring techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rename-variable-change-function-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rename Variable / Change Function Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulate-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encapsulate Variable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduce-parameter-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduce Parameter Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-primitive-with-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replace Primitive with Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-functions-into-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combine Functions into Class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#move-function-move-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Move Function / Move Field
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-leaves-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this leaves us
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Where this leaves us">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-order-to-do-them-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The order to do them in
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#still-on-the-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Still on the list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agenda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysterious-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mysterious Name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysterious-name-the-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mysterious Name — the exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysterious-name-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mysterious Name — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-data-the-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Data — the exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-data-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Data — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutable-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mutable Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutable-data-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mutable Data — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-clumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Clumps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-clumps-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Clumps — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primitive-obsession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primitive Obsession
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primitive-obsession-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primitive Obsession — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-parameter-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long Parameter List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-parameter-list-the-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long Parameter List — the exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-parameter-list-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long Parameter List — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-envy-data-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Envy &amp; Data Class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-envy-data-class-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Envy &amp; Data Class — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-refactoring-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common refactoring techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common refactoring techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rename-variable-change-function-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rename Variable / Change Function Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulate-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encapsulate Variable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduce-parameter-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduce Parameter Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-primitive-with-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replace Primitive with Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-functions-into-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combine Functions into Class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#move-function-move-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Move Function / Move Field
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-leaves-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this leaves us
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Where this leaves us">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-order-to-do-them-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The order to do them in
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#still-on-the-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Still on the list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>5-6:Smells in the data</h1>
+
+<h4 id="quick-recap">Quick recap</h4>
+<ol>
+<li>Refactoring = change structure, preserve behaviour</li>
+<li>Five smells of <strong>scattered behaviour</strong>: Long Function, Duplicate Code,
+   Divergent Change, Shotgun Surgery, Comments</li>
+<li>Six techniques: Extract/Inline Function, Slide Statements, Replace Temp with
+   Query, Split Loop, Split Phase</li>
+</ol>
+<hr />
+<h4 id="agenda">Agenda</h4>
+<ol>
+<li>Smells in the data (eight)</li>
+<li>The refactorings that dissolve them (six)</li>
+<li>What's still on the list — a look ahead to conditionals and inheritance</li>
+</ol>
+<hr />
+<h5 id="mysterious-name">Mysterious Name</h5>
+<ul>
+<li>The cheapest refactoring in the book, and the most skipped: <strong>if you cannot
+  name it, you do not understand it yet.</strong></li>
+<li>Two directions, both must hold:<ul>
+<li>could a reader guess the <strong>body</strong> from the name?</li>
+<li>could a reader guess the <strong>name</strong> from the body?</li>
+</ul>
+</li>
+<li>A name you have to explain in a comment is a rename you have not done.</li>
+<li><strong>Cure:</strong> Rename Variable · Rename Field · Change Function Declaration.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Why it leads the list</p>
+<p>Every other smell today is found by <em>reading names</em>. You cannot spot a Data
+Clump called <code>m1, m2</code> — the clump is invisible until the names tell the
+truth. Rename first; the other five smells then announce themselves.</p>
+</div>
+<hr />
+<h5 id="mysterious-name-the-exercise">Mysterious Name — the exercise</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 What does this class hold? Name every field.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mi</span><span class="p">,</span><span class="w"> </span><span class="n">mj</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="n">dy</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">hch</span><span class="p">,</span><span class="w"> </span><span class="n">bch</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cs</span><span class="p">,</span><span class="w"> </span><span class="n">hs</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">changeIndex</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">onSnake</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">hitSnake</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">20</span><span class="p">][</span><span class="mi">50</span><span class="p">]);</span>
+<span class="p">};</span>
+</code></pre></div>
+<details class="hint">
+<summary>The answers (read off the call sites, not the declarations)</summary>
+<p><div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Segment</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">;</span><span class="w">          </span><span class="c1">// was mi, mj</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">glyph</span><span class="p">;</span><span class="w">            </span><span class="c1">// was data</span>
+<span class="w">    </span><span class="n">Segment</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Segment</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">headRow</span><span class="p">,</span><span class="w"> </span><span class="n">headCol</span><span class="p">;</span><span class="w">  </span><span class="c1">// was m1, m2</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rowStep</span><span class="p">,</span><span class="w"> </span><span class="n">colStep</span><span class="p">;</span><span class="w">  </span><span class="c1">// was dx, dy   ← note: NOT x/y deltas</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">headGlyph</span><span class="p">,</span><span class="w"> </span><span class="n">bodyGlyph</span><span class="p">;</span><span class="w">   </span><span class="c1">// was hch, bch</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">highScore</span><span class="p">;</span><span class="w">        </span><span class="c1">// was cs, hs</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">advanceBody</span><span class="p">();</span><span class="w">                          </span><span class="c1">// was changeIndex</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">occupiesCell</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="p">);</span><span class="w">         </span><span class="c1">// was onSnake</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isFatalCell</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">Board</span><span class="o">&amp;</span><span class="p">);</span><span class="w">  </span><span class="c1">// was hitSnake</span>
+<span class="p">};</span>
+</code></pre></div>
+- <code>hitSnake</code> <strong>also checks obstacles</strong> — the name is not merely vague, it
+  is false. Renaming it forces you to notice it does two things.
+- <code>changeIndex</code> does not change an index. It shifts every body segment
+  one step along the path.
+- Count the names for <em>one cell on the board</em>: <code>m1/m2</code>, <code>mi/mj</code>,
+  <code>fi/fj</code> (in <code>Food</code>), and <code>x/y</code> in the parameter lists. <strong>Four.</strong></p>
+</details>
+</div>
+<hr />
+<h5 id="mysterious-name-in-your-code">Mysterious Name — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li><a href="https://github.com/Neel1585/Snake_Game/blob/ac5dff594149f378b91a1b5a87d8d669ace3c13a/obstacle.cpp#L28-L46"><code>Neel1585/Snake_Game</code> — <code>obstacle.cpp:28-46</code></a><ul>
+<li>The exercise above is this file, unedited. Four names for one concept,
+  and a <strong>parameter list that inverts the axes</strong>:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">hitSnake</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">20</span><span class="p">][</span><span class="mi">50</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// line 77</span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">tn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">tn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tn</span><span class="o">-&gt;</span><span class="n">mi</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">tn</span><span class="o">-&gt;</span><span class="n">mj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">tn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tn</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It is called as
+  <a href="https://github.com/Neel1585/Snake_Game/blob/ac5dff594149f378b91a1b5a87d8d669ace3c13a/obstacle.cpp#L202"><code>snake.hitSnake(snake.m1, snake.m2, arr)</code></a> —
+  so the parameter named <code>x</code> receives a <strong>row</strong> and <code>y</code> receives a <strong>column</strong>,
+  and the body indexes <code>arr[x][y]</code>, i.e. <code>arr[row][col]</code>. The code is correct.
+  The <em>names</em> are the trap: the next person to call this — reasonably passing
+  <code>(column, row)</code> — gets a silent wrong answer, not a compile error.</p>
+<ul>
+<li><a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp#L9-L28"><code>DeepSoni04/SnakeGame_Project</code> — <code>snake.cpp:9-28</code></a><ul>
+<li><code>int x, y</code> is not the snake — it is the <strong>head</strong>. <code>dir</code> is an <code>int</code>
+  holding one of five <code>#define</code>s. <code>nObs = 5</code> is the <em>live</em> obstacle count;
+  the array bound is <code>20</code>; the name distinguishes neither.</li>
+<li>The functions are <code>setup()</code>, <code>Draw()</code>, <code>Input()</code>, <code>logic()</code>. Two
+  conventions in four names, in one file — Ousterhout's <em>pick conventions</em>
+  (Lecture 3) failing at the smallest possible scale.</li>
+</ul>
+</li>
+</ul>
+<p><strong>The contrasting good case</strong>, from
+<a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L145-L179"><code>GarvModi18/SnakeGameProject</code> — <code>snake.cpp:145-179</code></a>:
+the <em>same</em> program shape, named properly — <code>headX, headY</code>,
+<code>isSpecialFruitOnScreen</code>, <code>SLOW_TIME_FRAMES</code>, and <code>enum eDirection</code> instead of
+<code>int dir</code>.
+<strong>Naming and scoping are independent axes, and this repo got exactly one of
+them right.</strong></p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Rename first, always.</strong> It is the one refactoring with no behavioural
+  risk, and it is diagnostic: <code>m1, m2</code> → <code>headRow, headCol</code> and the Data
+  Clump becomes visible without you looking for it.</li>
+<li><strong>When a rename is hard, that is the finding.</strong> <code>hitSnake</code> resisted a
+  name because it does two things. Split it, then name both.</li>
+<li><strong>Fix the axes before anything else.</strong> <code>(x, y)</code> meaning <code>(row, col)</code> is
+  the kind of defect that survives every later refactoring, because each
+  step preserves behaviour — including the wrong behaviour a future caller
+  will trigger.</li>
+<li><strong>Stop when</strong> you can read a call site aloud and it is a true sentence.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="global-data">Global Data</h5>
+<ul>
+<li>Any code, anywhere, can read it. Any code, anywhere, can write it.</li>
+<li>The bug it produces has <strong>no locality</strong>: the write that broke you is nowhere
+  near the read that failed. There is no interface to inspect, so there is no
+  list of suspects.</li>
+<li>Same danger, decreasing radius: globals → class statics → class fields.</li>
+<li><strong>Cure:</strong> Encapsulate Variable — get it behind functions, <em>then</em> narrow scope.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Why this is the load-bearing smell today</p>
+<p>Global data is what makes Extract Function <em>look</em> like it worked. The
+functions come apart; the coupling does not. Lecture 4 ended three write-ups
+on exactly this note — <em>"otherwise the split is cosmetic."</em></p>
+</div>
+<hr />
+<h5 id="global-data-the-exercise">Global Data — the exercise</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Two rules, one variable. Which one wins?</p>
+<p>Both of these are inside the <strong>same 120-line function</strong>, 69 lines apart. The
+snake speeds up as you score: <code>gameSpeed</code> is the per-frame <code>Sleep()</code> in
+milliseconds, so <em>smaller is faster</em>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// line 869 — runs every frame</span>
+<span class="n">originalGameSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mi">120</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isSlowTimeActive</span><span class="p">)</span><span class="w"> </span><span class="n">gameSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">originalGameSpeed</span><span class="p">;</span>
+
+<span class="c1">// line 938 — runs when a fruit is eaten (score += 10, so every 5 fruits)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fruitsEaten</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">originalGameSpeed</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">originalGameSpeed</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isSlowTimeActive</span><span class="p">)</span><span class="w"> </span><span class="n">gameSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">originalGameSpeed</span><span class="p">;</span>
+<span class="w">    </span><span class="n">speedLevel</span><span class="o">++</span><span class="p">;</span><span class="w">                      </span><span class="c1">// ← displayed in the HUD</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>Trace it: what does the player see after 45 fruits?</summary>
+<ul>
+<li>Line 869 runs <strong>first, every frame</strong>, and recomputes <code>originalGameSpeed</code>
+  from <code>score</code> alone. Whatever line 938 wrote is discarded one frame later.</li>
+<li>Below score 400 the two rules happen to agree — both step 10 ms per 5
+  fruits from 120 — so nothing looks wrong.</li>
+<li>At score 400, <code>originalGameSpeed</code> reaches 40. Line 938's guard
+  <code>originalGameSpeed &gt; 40</code> now fails forever, so <strong><code>speedLevel</code> freezes</strong>.</li>
+<li>Line 869 has no such guard. It keeps going: 20 ms at score 500, and its
+  floor of 10 ms at score 600.</li>
+<li><strong>Result:</strong> past ~45 fruits the HUD reads <code>Speed Level: 9</code> permanently
+  while the game accelerates to <strong>four times</strong> that speed. Two authors of
+  the same rule, 69 lines apart, neither aware of the other.</li>
+<li>Nothing about either snippet is wrong <em>locally</em>. That is the point.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="global-data-in-your-code">Global Data — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Repo</th>
+<th style="text-align: right;">mutable variables at file scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L43-L180"><code>GarvModi18/SnakeGameProject</code></a></td>
+<td style="text-align: right;"><strong>31</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp#L15-L28"><code>DeepSoni04/SnakeGame_Project</code></a></td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/Hardikk69/snake-game/blob/c4cda77becad9d4b77512a7be1d254287ffc9d47/Snake-game.cpp#L9-L17"><code>Hardikk69/snake-game</code></a></td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Shiroilt/solo-leveling-chapter-snake-monster</code></td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong><code>GarvModi18/SnakeGameProject</code> — 31 globals, and the speed bug above.</strong>
+  This is the Lecture 4 poster child for Divergent Change <em>and</em> Shotgun
+  Surgery. The globals are <strong>why</strong>. <code>gameSpeed</code> and <code>originalGameSpeed</code> are
+  written at <strong>seven sites in three functions</strong> —
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L159">159</a> ·
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L677-L678">677-678</a> ·
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L852-L854">852-854</a> ·
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L866">866</a> ·
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L869-L870">869-870</a> ·
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L938-L939">938-939</a> —
+  and the guard <code>if (!isSlowTimeActive)</code> is copy-pasted at three of them. The
+  initial value <code>= 110</code> at line 159 is dead: line 869 overwrites it with 120
+  on the first frame of every game.</p>
+</li>
+<li>
+<p><strong><code>DeepSoni04/SnakeGame_Project</code> — the whole program has no parameters.</strong>
+  Apart from <code>main</code>, every function in
+  <a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp"><code>snake.cpp</code></a>
+  is declared <code>void f()</code> — <code>loadHighScore</code>, <code>saveHighScore</code>, <code>setup</code>, <code>Draw</code>,
+  <code>Input</code>, <code>logic</code> — and not one of them takes an argument. <strong>The globals
+  <em>are</em> the parameter list</strong>; they are just never written down, so no
+  signature tells you what
+  <a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp#L155-L199"><code>logic()</code></a>
+  touches. It reads or writes <strong>thirteen of the fourteen</strong> (everything except
+  <code>highscore</code>), in 45 lines.</p>
+</li>
+</ul>
+<p>And because the interface is invisible, the only way the author could make a
+  variant was to copy the file. The same block is declared four times over:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"><code>snake.cpp</code></th>
+<th style="text-align: left;"><code>deepsnake.cpp</code></th>
+<th style="text-align: left;"><code>SnakeBite.cpp</code></th>
+<th style="text-align: left;"><code>SNAKE_Main1.cpp</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>gameOver</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;"><strong><code>int</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>height</code></td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;"><strong>17</strong></td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nObs</code></td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><strong>4</strong></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<p>Global data plus versioning-by-file-copy (Lecture 4) — and the copies have
+  already drifted in the value <em>and the type</em>.</p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Encapsulate Variable first.</strong> <code>int gameSpeed;</code> → <code>getGameSpeed()</code> /
+  <code>setGameSpeed(int)</code>. You get nothing but a greppable list of writers and
+  one place to breakpoint — which is precisely what the speed bug needed.</li>
+<li><strong>Then let the accessors carry the variable home.</strong> <code>gameSpeed</code>,
+  <code>originalGameSpeed</code>, <code>slowTimeDuration</code>, <code>isSlowTimeActive</code> and
+  <code>speedLevel</code> are all touched by the same three functions: that is a
+  <code>SpeedController</code>, and the two contradictory rules end up in one body
+  where they cannot avoid each other.</li>
+<li><strong>Do not wrap all 31 in one <code>struct Globals</code> and pass it everywhere.</strong>
+  That is a rename, not a refactoring — same reach, longer signatures.
+  Split by <em>who reads it</em>.</li>
+<li><strong>Stop when</strong> you can answer "who can change the speed?" by reading one
+  class.</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Smaller radius, same smell</p>
+<p><a href="https://github.com/Dazzling-Darshan/SnakeByte/blob/17bc256926a95aa647314649331fe78d4b52c41b/game.h#L51-L138"><code>Dazzling-Darshan/SnakeByte</code></a>
+has <strong>no file-scope variables at all</strong> — its fourteen live as fields of
+<code>class Game</code>. That is genuinely better: the blast radius is one class
+instead of one program. But Lecture 4 already showed the bill for it under
+Divergent Change — <em>five reasons to change, one class</em>. Shrinking the
+radius is progress; it is not the finish line.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">The order matters</p>
+<p>This is why Global Data comes before Data Clumps and Long Parameter List
+rather than after. You cannot introduce a parameter object for data that
+is never passed as a parameter.</p>
+</div>
+</div>
+<hr />
+<h5 id="mutable-data">Mutable Data</h5>
+<ul>
+<li>Updating one field for one purpose silently changes what another reader sees.</li>
+<li>Sibling smells: variables reused for two things, values recomputed vs. stored.</li>
+<li><strong>Cures:</strong> Split Variable (one variable, one job) · Replace Derived Variable
+  with Query (don't store what you can compute) · Remove Setting Method ·
+  Combine Functions into Transform.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">💬 Beat the high score. What gets written to the file?</p>
+<p>Every line below is the complete lifetime of <code>highScore</code> in this program —
+all five references, in one 146-line file.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">fruitX</span><span class="p">,</span><span class="n">fruitY</span><span class="p">,</span><span class="n">score</span><span class="p">,</span><span class="n">highScore</span><span class="p">;</span><span class="w">          </span><span class="c1">// line 11</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loadHighScore</span><span class="p">(){</span>
+<span class="w">    </span><span class="n">ifstream</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="s">&quot;highscore.txt&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">good</span><span class="p">())</span><span class="w"> </span><span class="n">f</span><span class="o">&gt;&gt;</span><span class="n">highScore</span><span class="p">;</span><span class="w">                  </span><span class="c1">// line 21</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">highScore</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">saveHighScore</span><span class="p">(){</span>
+<span class="w">    </span><span class="n">ofstream</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="s">&quot;highscore.txt&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">f</span><span class="o">&lt;&lt;</span><span class="n">highScore</span><span class="p">;</span><span class="w">                               </span><span class="c1">// line 27</span>
+<span class="p">}</span>
+
+<span class="c1">// ...in the game loop:</span>
+<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Score: &quot;</span><span class="o">&lt;&lt;</span><span class="n">score</span><span class="o">&lt;&lt;</span><span class="s">&quot;   HighScore: &quot;</span><span class="o">&lt;&lt;</span><span class="n">highScore</span><span class="p">;</span><span class="w">   </span><span class="c1">// line 78</span>
+<span class="k">if</span><span class="p">(</span><span class="n">score</span><span class="o">&gt;</span><span class="n">highScore</span><span class="p">)</span><span class="w"> </span><span class="n">saveHighScore</span><span class="p">();</span><span class="w">                   </span><span class="c1">// line 110</span>
+</code></pre></div>
+<details class="hint">
+<summary>The answer: the old high score, unchanged, forever</summary>
+<ul>
+<li><code>highScore</code> is <strong>assigned in exactly one place</strong> — line 21/22, reading
+  the file at startup.</li>
+<li>Line 110 correctly detects that you beat it, and calls <code>saveHighScore()</code>.</li>
+<li><code>saveHighScore()</code> writes <code>highScore</code>. Nobody ever wrote <code>score</code> into it.</li>
+<li><strong>The file is rewritten with the value it already had.</strong> The high score
+  in this game can never go up.</li>
+<li>The missing line is <code>highScore = score;</code>. But notice <em>why</em> it went
+  missing: <code>highScore</code> is <strong>derived</strong> state — it is <code>max(everything you
+  ever scored)</code> — stored as a free-floating mutable variable that any code
+  path is free to forget. Fowler's cure is named for exactly this:
+  <strong>Replace Derived Variable with Query.</strong></li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="mutable-data-in-your-code">Mutable Data — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li>
+<p><a href="https://github.com/Hardikk69/snake-game/blob/c4cda77becad9d4b77512a7be1d254287ffc9d47/Snake-game.cpp#L11-L110"><code>Hardikk69/snake-game</code> — <code>Snake-game.cpp:11-110</code></a></p>
+<ul>
+<li>The high-score bug above, in full. It is not a typo — it is what
+  happens when a value that should be computed is stored instead.</li>
+</ul>
+</li>
+<li>
+<p><strong>The same fact stored twice.</strong> The same file keeps the snake's head in
+  <strong>two representations at once</strong>
+  (<a href="https://github.com/Hardikk69/snake-game/blob/c4cda77becad9d4b77512a7be1d254287ffc9d47/Snake-game.cpp#L117-L126"><code>:117-126</code></a>):</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">snake</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="n">snake</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">snake</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">];</span>
+<span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">};</span><span class="w">                              </span><span class="c1">// globals x,y copied into the body</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">snake</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">             </span><span class="c1">// ...so this loop must start at 1</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">snake</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="o">==</span><span class="n">x</span><span class="o">&amp;&amp;</span><span class="n">snake</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="o">==</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">gameOver</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>x, y</code> <strong>is</strong> the head; <code>snake[0]</code> is a copy of it, refreshed by hand every
+  tick. The self-collision loop starts at <code>i=1</code> <em>only</em> because of that
+  duplication — the bound encodes a fact about a different line. Change how
+  <code>snake[0]</code> is maintained and the loop is silently wrong.
+  <a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp#L156-L169"><code>DeepSoni04/SnakeGame_Project</code></a>
+  has the identical arrangement with <code>tailX[0], tailY[0]</code>.</p>
+<ul>
+<li><strong>Recomputed <em>and</em> stored.</strong> <code>GarvModi18/SnakeGameProject</code>'s
+  <code>originalGameSpeed</code> is the third variety: derived from
+  <code>score</code> on line 869, then separately decremented on line 938. Two writers,
+  one variable, no coordination — which is the definition of the smell.</li>
+</ul>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Ask of every variable: is this a fact, or a conclusion?</strong> Conclusions
+  should be functions. <code>int highScore()</code> reading <code>max(stored, score)</code>
+  cannot be forgotten, because there is nothing to forget to write.</li>
+<li><strong>snake-game</strong> → delete <code>x, y</code>. The head <em>is</em> <code>snake.front()</code>. One
+  representation, no sync step, and the <code>i=1</code> loop bound becomes
+  <code>snake.begin()+1</code> for an honest reason.</li>
+<li><strong>Split Variable</strong> where one name serves two jobs; <strong>Remove Setting
+  Method</strong> where a field should be set once at construction and never
+  again.</li>
+<li><strong>Order:</strong> do this <em>after</em> Encapsulate Variable. You cannot replace a
+  variable with a query until all reads go through one place.</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Why these bugs survive testing</p>
+<p>All three programs run. The high score displays, the snake collides, the
+speed increases. Each defect needs a <em>second</em> interaction — beat the
+score twice, change the body representation, score past 400 — before it
+shows. That is what "makes the next change expensive" means in practice.</p>
+</div>
+</div>
+<hr />
+<h5 id="data-clumps">Data Clumps</h5>
+<ul>
+<li>The same three or four items travelling together — as fields, as parameters,
+  in that order, again and again.</li>
+<li><strong>The test:</strong> delete one of them. Do the others still mean anything? If not,
+  they are one concept wearing three names.</li>
+<li><strong>Cure:</strong> Extract Class (if they're fields) → Introduce Parameter Object /
+  Preserve Whole Object (once they are).</li>
+<li>The payoff is not shorter signatures. It's that behaviour now has somewhere to
+  live — <code>Position</code> gets <code>isInsideBoard()</code>, and Feature Envy dissolves with it.</li>
+</ul>
+<hr />
+<h5 id="data-clumps-in-your-code">Data Clumps — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li><a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp"><code>Nevil-Nandasana/Snake-Game</code> — <code>snake_game.cpp</code></a> —
+  <strong><code>originRow, originCol</code> appear 63 times</strong>, threaded as a pair through nine
+  signatures:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">drawCell</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">,</span><span class="w"> </span><span class="n">Vec</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">glyph</span><span class="p">);</span><span class="w">              </span><span class="c1">// 381</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">drawBorder</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">);</span><span class="w">                                        </span><span class="c1">// 385</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">drawEnhancedUI</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">GameState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">LayoutInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">);</span><span class="w">  </span><span class="c1">// 398</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">showPauseDialog</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">);</span><span class="w">                                   </span><span class="c1">// 450</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">showLevelUpNotification</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newLevel</span><span class="p">);</span><span class="w">             </span><span class="c1">// 459</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">replayGame</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">GameState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">LayoutInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">);</span><span class="w">      </span><span class="c1">// 471</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">drawBoardInitial</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">GameState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">);</span><span class="w">             </span><span class="c1">// 697</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">showGameOverScreen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">,</span><span class="w"> </span><span class="n">GameState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">LayoutInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">);</span><span class="w">    </span><span class="c1">// 750</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">checkLevelUp</span><span class="p">(</span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="n">GameState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">LayoutInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">);</span><span class="w">   </span><span class="c1">// 821</span>
+</code></pre></div>
+<p><strong>Now the twist.</strong> The parameter object already exists — and it already
+  holds the clump
+  (<a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp#L188-L195"><code>:188-195</code></a>):</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">LayoutInfo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">panelCol</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">termRows</span><span class="p">,</span><span class="w"> </span><span class="n">termCols</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">compactMode</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>So in four of those nine signatures, <code>originRow</code> and <code>originCol</code> are passed
+  <strong>twice</strong> — once loose, once inside <code>layout</code>. <code>runGame</code>
+  (<a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp#L837-L841"><code>:837-841</code></a>)
+  unpacks them on entry purely to thread them onward:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">runGame</span><span class="p">(</span><span class="n">GameConfig</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="n">GameState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="n">LayoutInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="p">.</span><span class="n">originRow</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="p">.</span><span class="n">originCol</span><span class="p">;</span>
+</code></pre></div>
+<p>and at
+  <a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp#L1048"><code>:1048</code></a>
+  the caller does it inline, passing the object and its own fields side by
+  side in one call:</p>
+<div class="highlight"><pre><span></span><code><span class="n">playAgain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">showGameOverScreen</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="n">layout</span><span class="p">.</span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="n">layout</span><span class="p">.</span><span class="n">originCol</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="n">layout</span><span class="p">);</span>
+</code></pre></div>
+<p>This is <strong>Preserve Whole Object</strong>'s motivating example, verbatim, in your
+  code. The refactoring here is not "invent an abstraction" — it is <em>stop
+  taking the existing one apart</em>.</p>
+<ul>
+<li><strong>Parallel arrays are the same smell, differently spelled.</strong>
+  <a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp#L19-L25"><code>DeepSoni04/SnakeGame_Project</code> — <code>snake.cpp:19-25</code></a>:
+  <code>tailX[100], tailY[100]</code> and <code>obsX[20], obsY[20]</code>. Two arrays that must be
+  indexed together, resized together and copied together are <strong>one array of
+  pairs</strong> — plus <code>nTail</code> and <code>nObs</code>, two counters that exist only because the
+  arrays cannot report their own length.</li>
+</ul>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Snake-Game</strong> → delete the two parameters from all nine signatures and
+  read <code>layout.originRow</code> inside. Zero new types; eighteen parameters
+  gone. Then <code>drawCell</code> can take <code>layout</code> and lose <code>cfg</code> too.</li>
+<li><strong>SnakeGame_Project</strong> → <code>struct Cell { int row, col; };</code> then
+  <code>vector&lt;Cell&gt; tail</code>. <code>nTail</code> disappears into <code>.size()</code> — one fewer
+  variable that can disagree with reality.</li>
+<li><strong>Watch what happens next.</strong> Once <code>Cell</code> exists, <code>wrapAround()</code> and
+  <code>collidesWith()</code> have an obvious owner. The clump was hiding a class,
+  and the class was hiding the behaviour.</li>
+<li><strong>Stop when</strong> the group no longer appears in any signature — not when
+  you have merely named it.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="primitive-obsession">Primitive Obsession</h5>
+<ul>
+<li>Money as <code>float</code>, a phone number as <code>string</code>, a direction as <code>int</code>, a
+  coordinate as two <code>int</code>s.</li>
+<li>Primitives carry no rules. <code>dir = 7</code> compiles. <code>row + col</code> compiles.</li>
+<li><strong>Cure:</strong> Replace Primitive with Object · Replace Type Code with Subclasses
+  (Lecture 7).</li>
+<li>Connection to Lecture 3: a primitive is the <strong>shallowest possible module</strong> —
+  zero behaviour hidden behind the interface. Wrapping it is where depth comes
+  from.</li>
+</ul>
+<hr />
+<h5 id="primitive-obsession-in-your-code">Primitive Obsession — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li><strong><code>int dir</code> as a type code.</strong>
+  <a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp#L9-L21"><code>DeepSoni04/SnakeGame_Project</code> — <code>snake.cpp:9-21</code></a>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">#define STOP 0</span>
+<span class="cp">#define LEFT 1</span>
+<span class="cp">#define RIGHT 2</span>
+<span class="cp">#define UP 3</span>
+<span class="cp">#define DOWN 4</span>
+<span class="c1">// ...</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">dir</span><span class="p">;</span>
+</code></pre></div>
+<p>Five legal values out of four billion, and the compiler will not stop you
+  writing <code>dir = 7</code>, <code>dir + 1</code>, or <code>dir = score</code>. The type says "integer"; the
+  truth is "one of five", and the <code>switch (dir)</code> at
+  <a href="https://github.com/DeepSoni04/SnakeGame_Project/blob/2807e4c6bf25e6b723d3a7a8ca4d828a3587541c/snake.cpp#L171-L176"><code>:171</code></a>
+  exists purely to translate the integer back into meaning. Because this file
+  was copied four times, so was the switch: <strong>eight sites
+  across the repo encode the same five constants.</strong></p>
+<ul>
+<li><strong><code>pair&lt;int,int&gt;</code> is a better primitive, not an abstraction.</strong>
+  <a href="https://github.com/maitry4/code_crafters/blob/8a9aa60ccbbffc70f77456fc796cc8d347fde96d/gameLogic.h#L181-L187"><code>maitry4/code_crafters</code> — <code>gameLogic.h:181-187</code></a>
+  gives the cleanest proof — the author wraps the coordinate, then
+  <strong>immediately unwraps it because the wrapper is unreadable</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">startPos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">Direction</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="n">Board</span><span class="o">&amp;</span><span class="w"> </span><span class="n">board</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">body</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="w">    </span><span class="n">growthPending</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">startRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startPos</span><span class="p">.</span><span class="n">first</span><span class="p">;</span><span class="w">      </span><span class="c1">// ← the rename the type should have done</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">startCol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startPos</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+</code></pre></div>
+<p><code>.first</code> and <code>.second</code> carry no meaning, so every reader pays a translation
+  tax at every use. <code>pair</code> bought type-safety and spent it all on naming.
+  Nine repos in the corpus use <code>pair&lt;int,int&gt;</code> as a board coordinate.</p>
+<p><strong>The contrasting good case</strong>, from
+<a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp#L60-L63"><code>Nevil-Nandasana/Snake-Game</code> — <code>snake_game.cpp:60-63</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Vec</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Dir</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">UP</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">RIGHT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">DOWN</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">LEFT</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">FoodType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">NORMAL</span><span class="p">,</span><span class="w"> </span><span class="n">GOLDEN</span><span class="p">,</span><span class="w"> </span><span class="n">POISON</span><span class="w"> </span><span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">PowerUpType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">SLOW_MOTION</span><span class="p">,</span><span class="w"> </span><span class="n">INVINCIBILITY</span><span class="p">,</span><span class="w"> </span><span class="n">MAGNET</span><span class="p">,</span><span class="w"> </span><span class="n">NONE</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+<p>Named fields, named values — and behaviour has somewhere to go:
+<a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp#L226-L232"><code>step(Vec v, Dir d)</code></a>
+and <code>isOpposite(Dir a, Dir b)</code> read like the rules they implement. Note
+though that <code>Vec</code> is still a <em>data</em> struct — <code>step</code> is a free function, not a
+method.</p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><code>int dir</code> → <code>enum class Direction</code> → then a <code>Direction</code> that knows its
+  own <code>delta()</code>. Each step deletes a <code>switch</code>; count them before you
+  decide it isn't worth it.</li>
+<li><code>pair&lt;int,int&gt;</code> → <code>struct Cell { int row, col; };</code>. The rename alone
+  pays: <code>food.first</code> versus <code>food.row</code>. Then move <code>isInsideBoard()</code>,
+  <code>wrapAround()</code> and <code>operator==</code> onto it.</li>
+<li><strong>Where it connects to Lecture 3:</strong> a bare primitive is the <em>shallowest
+  possible module</em> — nothing hidden, no behaviour, all interface. Wrapping
+  it is where depth comes from, which is why this refactoring pays back far
+  more than the typing it costs.</li>
+<li><strong>The honest objection</strong> — "this is over-engineering for a snake game."
+  Sometimes true. The test is not the size of the program, it is <em>how many
+  places already know the rules of this primitive</em>. Eight sites decoding
+  <code>dir</code> means eight places that must be edited together the day you add a
+  diagonal move.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="long-parameter-list">Long Parameter List</h5>
+<ul>
+<li>Historically the price of avoiding global data. Both extremes are bad; the
+  middle is objects with clear ownership.</li>
+<li>Four families, four cures:<ul>
+<li>one param derivable from another → <strong>Replace Parameter with Query</strong></li>
+<li>several params from one object → <strong>Preserve Whole Object</strong></li>
+<li>params that always travel together → <strong>Introduce Parameter Object</strong></li>
+<li>a <code>bool</code> that switches behaviour → <strong>Remove Flag Argument</strong></li>
+</ul>
+</li>
+<li><strong>Boolean parameters deserve their own grudge:</strong> <code>render(board, true)</code> — true
+  <em>what</em>? The flag means the function is two functions.</li>
+</ul>
+<hr />
+<h5 id="long-parameter-list-the-exercise">Long Parameter List — the exercise</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Read this call. What does it ask for?</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generateBlocks</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="w"> </span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+</code></pre></div>
+<p>Four bare integers in a row. Without scrolling to the declaration, say what
+each <code>6</code> means — and whether swapping the last two would change anything.</p>
+<details class="hint">
+<summary>You cannot, and that is the finding</summary>
+<p><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">generateBlocks</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">clusterCount</span><span class="p">,</span>
+<span class="w">                             </span><span class="kt">int</span><span class="w"> </span><span class="n">blockMin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">blockMax</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">spacingMin</span><span class="p">)</span>
+</code></pre></div>
+<code>6</code> clusters, of <code>3</code>–<code>6</code> blocks each, <code>6</code> apart. Swapping the last two
+gives <code>blockMax = 6, spacingMin = 6</code> → unchanged here <strong>by coincidence</strong>,
+because three of the four arguments happen to be <code>6</code>. The next reader gets
+no warning from the compiler and no warning from the call site.</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// After Introduce Parameter Object</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ObstacleSpec</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">clusters</span><span class="p">,</span><span class="w"> </span><span class="n">minBlocks</span><span class="p">,</span><span class="w"> </span><span class="n">maxBlocks</span><span class="p">,</span><span class="w"> </span><span class="n">minSpacing</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generateBlocks</span><span class="p">(</span><span class="n">board</span><span class="p">,</span><span class="w"> </span><span class="n">ObstacleSpec</span><span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">});</span>
+</code></pre></div>
+Still four sixes — but now each one is <em>named at the point it is written</em>,
+and the struct is a place to put <code>validate()</code>.</p>
+</details>
+</div>
+<hr />
+<h5 id="long-parameter-list-in-your-code">Long Parameter List — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<p>All three from
+<a href="https://github.com/divyesh-dandwani/Snake-Game-CPP/blob/205fd2aea17acea256a39ee3edfbd822bf0b6440/snake_gamebox.cpp"><code>divyesh-dandwani/Snake-Game-CPP</code> — <code>snake_gamebox.cpp</code></a>,
+one file, three different families of the smell:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Line</th>
+<th style="text-align: left;">Signature</th>
+<th style="text-align: left;">Family</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/divyesh-dandwani/Snake-Game-CPP/blob/205fd2aea17acea256a39ee3edfbd822bf0b6440/snake_gamebox.cpp#L145">145</a></td>
+<td style="text-align: left;"><code>generateBlocks(int w, int h, int clusterCount, int blockMin, int blockMax, int spacingMin)</code></td>
+<td style="text-align: left;">Introduce Parameter Object</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/divyesh-dandwani/Snake-Game-CPP/blob/205fd2aea17acea256a39ee3edfbd822bf0b6440/snake_gamebox.cpp#L240">240</a></td>
+<td style="text-align: left;"><code>drawBox(int w, int h, int ox, int oy, int color)</code></td>
+<td style="text-align: left;">Data Clump — <strong><code>Point</code> already exists</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/divyesh-dandwani/Snake-Game-CPP/blob/205fd2aea17acea256a39ee3edfbd822bf0b6440/snake_gamebox.cpp#L342">342</a></td>
+<td style="text-align: left;"><code>showScoreboard(int score, int speed, int highScore, const Theme &amp;t, bool rainbow)</code></td>
+<td style="text-align: left;">Preserve Whole Object <strong>+ flag argument</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong><code>drawBox</code></strong> takes <code>ox, oy</code> as loose ints while
+  <a href="https://github.com/divyesh-dandwani/Snake-Game-CPP/blob/205fd2aea17acea256a39ee3edfbd822bf0b6440/snake_gamebox.cpp#L22"><code>struct Point { int x, y; };</code></a>
+  sits at line 22 of the same file and is the return type of <code>generateBlocks</code>.
+  Same pattern as Nevil's <code>LayoutInfo</code>: <strong>the abstraction exists and is walked
+  past.</strong></p>
+</li>
+<li>
+<p><strong><code>showScoreboard</code></strong> is the flag-argument case. <code>score, speed, highScore</code>
+  are three quarters of the game's state passed individually, and the trailing
+  <code>bool rainbow</code> selects between two rendering behaviours. Read the call:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">showScoreboard</span><span class="p">(</span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="n">highScore</span><span class="p">,</span><span class="w"> </span><span class="n">cur</span><span class="p">,</span><span class="w"> </span><span class="n">rainbowMode</span><span class="p">);</span><span class="w">   </span><span class="c1">// line 428</span>
+</code></pre></div>
+<p>Nothing at that call site tells you what the last argument does. A reader
+  must open the function to discover there is an <code>if (rainbow)</code> branch inside
+  — which is to say, <strong>two functions sharing one name.</strong></p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong><code>generateBlocks</code></strong> → <code>generateBlocks(board, ObstacleSpec{...})</code>. Six
+  parameters → two, and the spec becomes a thing you can name, default,
+  serialise and validate.</li>
+<li><strong><code>drawBox</code></strong> → <code>drawBox(Point origin, int w, int h, int color)</code>. Use the
+  type you already wrote.</li>
+<li><strong><code>showScoreboard</code></strong> → <code>showScoreboard(state, theme)</code> plus
+  <code>showRainbowScoreboard(state, theme)</code>. Remove Flag Argument turns an
+  unreadable <code>true</code> at the call site into a readable verb.</li>
+<li><strong>Do not</strong> invent a parameter object for parameters that are genuinely
+  independent — that manufactures a clump instead of finding one. The test
+  is whether they always travel <em>together</em>.</li>
+<li><strong>The trade-off is real.</strong> Fowler's own framing: long parameter lists
+  were the historical price of avoiding global data. You have now seen both
+  failure modes in this lecture — 31 globals on one side, six positional
+  ints on the other. The answer is neither; it is objects with clear
+  ownership.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="feature-envy-data-class">Feature Envy &amp; Data Class</h5>
+<ul>
+<li><strong>Feature Envy:</strong> a function in module A spends its time calling getters on
+  module B. The function is in the wrong place.</li>
+<li><strong>Data Class:</strong> a class that is nothing but fields and accessors — data that
+  other people operate on.</li>
+<li>They are the same defect seen from either end: <strong>behaviour and the data it
+  needs are in different modules.</strong></li>
+<li>Heuristic: <em>put together the things that change together</em> — and the strongest
+  signal of "changes together" is "reads the same data".</li>
+<li><strong>Cure:</strong> Move Function (whole) · Extract Function then Move Function (part) ·
+  Encapsulate Record / Encapsulate Collection to stop the leak at source.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">💬 Where does this function belong?</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">checkLevelUp</span><span class="p">(</span><span class="n">GameConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="n">GameState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">originCol</span><span class="p">,</span>
+<span class="w">                  </span><span class="k">const</span><span class="w"> </span><span class="n">LayoutInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">scoreForNextLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="n">currentLevel</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">scoreForNextLevel</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">lastLevelUpScore</span>
+<span class="w">                                      </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="n">currentLevel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="n">maxLevel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">currentLevel</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">st</span><span class="p">.</span><span class="n">lastLevelUpScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">score</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// ...then eight lines of redrawing</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>It belongs to the data it cannot stop touching</summary>
+<ul>
+<li>Every value in the decision comes from <code>cfg</code> or <code>st</code>. The function owns
+  <strong>nothing</strong> — it is a rule about <code>GameState</code> that happens to be stored
+  outside <code>GameState</code>.  </li>
+<li>It also does two jobs: <em>decide whether to level up</em> and <em>redraw the
+  board</em>. Extract Function first, then move only the decision.  </li>
+<li>After: <code>if (st.readyForNextLevel(cfg)) { st.advanceLevel(cfg); redraw(...); }</code><br />
+  — and the <code>lastLevelUpScore</code> field can finally become private, because
+  only one place still reads it.  </li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="feature-envy-data-class-in-your-code">Feature Envy &amp; Data Class — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li><a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp#L118-L135"><code>Nevil-Nandasana/Snake-Game</code> — <code>snake_game.cpp:118-135</code></a><ul>
+<li><strong>21 fields, 0 methods, 14 free functions that take it by reference</strong> —
+  <code>initGameState</code>, <code>placeFood</code>, <code>spawnPowerUp</code>, <code>spawnDynamicObstacle</code>,
+  <code>updateDynamicObstacles</code>, <code>updateGameSpeed</code>, <code>loadLevelObstacles</code>,
+  <code>checkLevelUp</code>, <code>drawBoardInitial</code>, <code>drawEnhancedUI</code>, <code>showMenu</code>,
+  <code>showGameOverScreen</code>, <code>replayGame</code>, <code>runGame</code>.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">GameState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Vec</span><span class="o">&gt;</span><span class="w"> </span><span class="n">snake</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Dir</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RIGHT</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Vec</span><span class="w"> </span><span class="n">food</span><span class="p">{</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">};</span>
+<span class="w">    </span><span class="n">FoodType</span><span class="w"> </span><span class="n">foodType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NORMAL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">set</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">obstacles</span><span class="p">;</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DynamicObstacle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dynamicObstacles</span><span class="p">;</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PowerUp</span><span class="o">&gt;</span><span class="w"> </span><span class="n">powerUps</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PowerUpType</span><span class="w"> </span><span class="n">activePowerUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NONE</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">powerUpTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">gameOver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">quit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">paused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">moves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">goldenApplesEaten</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">poisonApplesEaten</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">segmentsToGrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">segmentsToShrink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lastLevelUpScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">startTime</span><span class="p">;</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Dir</span><span class="p">,</span><span class="w"> </span><span class="n">Vec</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">moveHistory</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Every rule in the game — growth, collision, scoring, power-up expiry,
+  level-up — lives in a free function that takes <code>GameState&amp; st</code> and reaches
+  in. Nothing can be private, because everything is somebody else's business.
+  This is the <strong>same repo</strong> that got Primitive Obsession right:
+  it has <code>Vec</code>, <code>Dir</code>, <code>FoodType</code>. <strong>It built the vocabulary and then wrote all
+  the sentences somewhere else.</strong></p>
+<ul>
+<li>
+<p><strong><code>Vec</code> is the miniature of the same thing.</strong> <code>struct Vec { int r, c; };</code>
+  with <code>step(Vec, Dir)</code> and <code>isOpposite(Dir, Dir)</code> as free functions
+  (<a href="https://github.com/Nevil-Nandasana/Snake-Game/blob/d82a114b76f75d447774a95577ff8eed226648a0/snake_game.cpp#L226-L232"><code>:226-232</code></a>).
+  Those two functions are the <em>only</em> things that know what a <code>Vec</code> means, and
+  neither is on it.</p>
+</li>
+<li>
+<p><strong>The other end of the same defect.</strong> In
+  <code>DeepSoni04/SnakeGame_Project</code> there are no classes at all, so there is no
+  envy to detect — the data and the behaviour are equally global. Feature Envy
+  is a smell you can only <em>have</em> once you have started separating things. It
+  shows up in the repos that are trying.</p>
+</li>
+</ul>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Ask: which data does this function touch most?</strong> Move it there. If the
+  answer is "two modules equally", Extract Function first and move only the
+  envious half.  </li>
+<li><strong>Combine Functions into Class</strong> is the bulk operation: take the 14 free
+  functions on <code>GameState</code>, move them in, and the struct becomes a class.  </li>
+<li><strong>A Data Class is not automatically wrong.</strong> DTOs at a boundary, config
+  records, <code>Vec</code> as a pure value — all fine. It is a smell when the <em>rules
+  about that data</em> live elsewhere.  </li>
+<li><strong>Test you did it right:</strong> fields you moved past can now be <code>private</code>.
+  <code>lastLevelUpScore</code>, <code>segmentsToGrow</code>, <code>powerUpTimer</code> are pure bookkeeping<br />
+  — no outsider should ever see them. <strong>If nothing became private, nothing
+  moved.</strong>  </li>
+</ul>
+</details>
+</div>
+<hr />
+<h4 id="common-refactoring-techniques">Common refactoring techniques</h4>
+<p>Six techniques, in the order you would actually apply them to the code above.
+Every one is a <strong>behaviour-preserving</strong> step: compile and test after each.</p>
+<hr />
+<h5 id="rename-variable-change-function-declaration">Rename Variable / Change Function Declaration</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Same code, different names. Which bug is now visible?</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// before</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">circum</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">r</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Rename</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">circumference</span><span class="p">(</span><span class="nx">radius</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">radius</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+- <code>circum</code> could have been circumference <em>or</em> circumscribe. <code>r</code> could have
+  been radius <em>or</em> rate. Nothing changed except that the reader stopped
+  guessing.<br />
+- In <code>hitSnake(int x, int y)</code> earlier, the rename to <code>(int row, int col)</code>
+  is what makes the axis inversion visible at every call site.  </p>
+</details>
+</div>
+<ul>
+<li><strong>Mechanics</strong><ol>
+<li>If the name is used outside your codebase, treat it as a published API and
+   do it in two steps: add the new declaration, make the old one delegate,
+   deprecate, remove later.</li>
+<li>Otherwise: rename → compile → test. Let the compiler find the references.</li>
+<li>For a function, Change Function Declaration also covers adding, removing
+   and reordering parameters — same mechanics.</li>
+</ol>
+</li>
+<li><strong>Principle:</strong> <em>the cheapest refactoring in the book; do it the moment the name
+  stops being true.</em></li>
+</ul>
+<hr />
+<h5 id="encapsulate-variable">Encapsulate Variable</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 If the snake speeds up unexpectedly, who can change this?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">gameSpeedMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">120</span><span class="p">;</span><span class="w">   </span><span class="c1">// per-frame delay; smaller is faster</span>
+<span class="c1">// ...referenced from anywhere, written from anywhere</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Encapsulate Variable</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">gameSpeedMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">120</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">gameSpeed</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">gameSpeedMs</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">setGameSpeed</span><span class="p">(</span><span class="nx">delayMs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">gameSpeedMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">delayMs</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+- Every writer is now explicit: grep <code>setGameSpeed(</code> and you have the
+  suspect list.<br />
+- Logging, breakpoints, validation or locking now live in one place.<br />
+- Once all access goes through these functions, <code>gameSpeedMs</code> can move
+  into the class or module that actually owns speed control.<br />
+- If the variable were a record rather than a number, return a copy or
+  expose narrower update operations so callers cannot mutate shared
+  state behind your back.  </p>
+</details>
+</div>
+<ul>
+<li><strong>Mechanics:</strong> add the accessors → route every reference through them →
+  restrict direct access → <em>then</em> consider copying on read.</li>
+<li><strong>Why it comes first:</strong> you cannot move, split or delete data until you control
+  who touches it. This is the step that turns the 31 globals from an unbounded
+  problem into a finite list.</li>
+<li><strong>Principle:</strong> <em>encapsulate to make the next refactoring possible.</em></li>
+</ul>
+<hr />
+<h5 id="introduce-parameter-object">Introduce Parameter Object</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 These two always travel together. What are they?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">amountInvoiced</span><span class="p">(</span><span class="nx">startDate</span><span class="p">,</span><span class="w"> </span><span class="nx">endDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">amountReceived</span><span class="p">(</span><span class="nx">startDate</span><span class="p">,</span><span class="w"> </span><span class="nx">endDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">amountOverdue</span><span class="p">(</span><span class="nx">startDate</span><span class="p">,</span><span class="w"> </span><span class="nx">endDate</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Introduce Parameter Object</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">DateRange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span><span class="w"> </span><span class="nx">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">start</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">end</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_start</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">end</span><span class="p">()</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_end</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">includes</span><span class="p">(</span><span class="nx">aDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">aDate</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_start</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">aDate</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_end</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">amountInvoiced</span><span class="p">(</span><span class="nx">aDateRange</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+- The parameters shrink — but the point is <code>includes()</code>. Every function
+  that used to hand-write <code>date &gt;= start &amp;&amp; date &lt;= end</code> now calls one
+  method that cannot be written backwards.</p>
+</details>
+</div>
+<ul>
+<li><strong>Mechanics:</strong> create the class → add it as a parameter → move callers over one
+  at a time → remove the old parameters → <strong>then hunt for behaviour to move in.</strong></li>
+<li><strong>Step 5 is the whole point.</strong> Stopping at "fewer parameters" collects the cost
+  and skips the payoff.</li>
+<li><strong>Principle:</strong> <em>a recurring group of parameters is a class nobody has written
+  yet.</em></li>
+</ul>
+<hr />
+<h5 id="replace-primitive-with-object">Replace Primitive with Object</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 <code>"high"</code> is a string. What stops <code>"HIGH"</code>, or <code>"hgih"</code>?</p>
+<div class="highlight"><pre><span></span><code><span class="nx">highPriorityCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">orders</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">o</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">o</span><span class="p">.</span><span class="nx">priority</span>
+<span class="w">                                    </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;rush&quot;</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">o</span><span class="p">.</span><span class="nx">priority</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Replace Primitive with Object</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Priority</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">Priority</span><span class="p">.</span><span class="nx">legalValues</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`&lt;</span><span class="si">${</span><span class="nx">value</span><span class="si">}</span><span class="sb">&gt; is invalid for Priority`</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">toString</span><span class="p">()</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_value</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">_index</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">Priority</span><span class="p">.</span><span class="nx">legalValues</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_value</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">legalValues</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;normal&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;rush&#39;</span><span class="p">];</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">higherThan</span><span class="p">(</span><span class="nx">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_index</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">other</span><span class="p">.</span><span class="nx">_index</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">highPriorityCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">orders</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">o</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">o</span><span class="p">.</span><span class="nx">priority</span><span class="p">.</span><span class="nx">higherThan</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Priority</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">))).</span><span class="nx">length</span><span class="p">;</span>
+</code></pre></div>
+- Validation now happens <strong>once, at construction</strong>, instead of never.
+- Ordering (<code>higherThan</code>) had nowhere to live before. It does now.</p>
+</details>
+</div>
+<ul>
+<li><strong>Mechanics:</strong> encapsulate the field → create the wrapper class → make the
+  getter return the object → move validation and comparison in.</li>
+<li><strong>Lecture 3 connection:</strong> this is precisely how a <em>shallow</em> module gets deeper.
+  <code>Priority</code> hides four legal values, an ordering and a validation rule behind a
+  two-method interface.</li>
+</ul>
+<hr />
+<h5 id="combine-functions-into-class">Combine Functions into Class</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Three functions, one argument. What is missing?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">base</span><span class="p">(</span><span class="nx">aReading</span><span class="p">)</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">taxableCharge</span><span class="p">(</span><span class="nx">aReading</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">calculateBaseCharge</span><span class="p">(</span><span class="nx">aReading</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Combine Functions into Class</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Reading</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">baseCharge</span><span class="p">()</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">taxableCharge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+- Every function that takes the same record as its first argument is a
+  method wearing a disguise.
+- The shared intermediate results (<code>baseCharge</code> used by <code>taxableCharge</code>)
+  stop being recomputed or passed around.</p>
+</details>
+</div>
+<ul>
+<li><strong>Mechanics:</strong> Encapsulate Record first → move each function in one at a time →
+  extract any leftover shared body into its own method.</li>
+<li><strong>This is the bulk cure for Data Class + Feature Envy</strong> — the two smells from
+  the Feature Envy &amp; Data Class pair dissolve together, because they were always
+  one smell.</li>
+<li><strong>Alternative:</strong> <em>Combine Functions into Transform</em> does the same job when the
+  source data must stay immutable — it returns an enriched copy rather than
+  owning the original. Prefer the class when the data is updated; prefer the
+  transform in a read-only pipeline.</li>
+</ul>
+<hr />
+<h5 id="move-function-move-field">Move Function / Move Field</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Which class does this belong to?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Account</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">bankCharge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">overdraftCharge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">isPremium</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">baseCharge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">daysOverdrawn</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">baseCharge</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">baseCharge</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">daysOverdrawn</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.85</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">daysOverdrawn</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.75</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Move Function</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">AccountType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">overdraftCharge</span><span class="p">(</span><span class="nx">daysOverdrawn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isPremium</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">baseCharge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">daysOverdrawn</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">baseCharge</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">baseCharge</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">daysOverdrawn</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.85</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">daysOverdrawn</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.75</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">Account</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">overdraftCharge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">overdraftCharge</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">daysOverdrawn</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+- Every branch asked <code>this.type</code> a question. The rule was about the
+  <em>account type</em>, not the account.
+- Adding a new account type is now one class, not one more <code>if</code>.</p>
+</details>
+</div>
+<ul>
+<li><strong>Mechanics:</strong> examine everything else the function uses → decide whether those
+  should move too → copy it to the target → turn the original into a delegator →
+  test → inline the delegator once no caller needs it.</li>
+<li><strong>Move Field</strong> is the same dance for data: create the field on the target,
+  update the accessors to point at it, then remove the old field.</li>
+<li><strong>Principle:</strong> <em>put the function where its data is. If you cannot tell where
+  that is, the data is the problem — go back to Encapsulate Variable.</em></li>
+<li><strong>Principle:</strong> <em>put the function where its data is; if you can't tell where
+  that is, the data is the problem.</em></li>
+</ul>
+<hr />
+<h4 id="where-this-leaves-us">Where this leaves us</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Lecture 4 said</th>
+<th style="text-align: left;">Lectures 5-6 say</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Extract Function</td>
+<td style="text-align: left;">…but you can't extract past shared globals</td>
+</tr>
+<tr>
+<td style="text-align: left;">Split Phase</td>
+<td style="text-align: left;">…the intermediate structure <em>is</em> the parameter object</td>
+</tr>
+<tr>
+<td style="text-align: left;">Shotgun Surgery</td>
+<td style="text-align: left;">…scattered edits usually track scattered data</td>
+</tr>
+<tr>
+<td style="text-align: left;">Comments as deodorant</td>
+<td style="text-align: left;">…<code>// x is actually the head row</code> is a Rename</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The five smells of Lecture 4 and the eight here are one dependency
+  graph. <strong>Encapsulate Variable is usually the first move, not Extract Function.</strong></li>
+</ul>
+<hr />
+<h5 id="the-order-to-do-them-in">The order to do them in</h5>
+<p>Refactorings unlock each other. Doing them out of order is why the first attempt
+usually stalls.</p>
+<div class="highlight"><pre><span></span><code>1. Rename                    ← free, no risk, and it reveals everything below
+2. Encapsulate Variable      ← turns &quot;anyone can touch it&quot; into a finite list
+3. Split Variable /
+   Replace Derived Variable  ← one variable, one job; stop storing conclusions
+4. Extract Class /
+   Introduce Parameter Object ← the clump becomes a type
+5. Replace Primitive with Object
+6. Move Function / Combine Functions into Class
+                             ← behaviour finally joins its data
+7. Extract Function          ← Lecture 4&#39;s step — it works *now*
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Why Extract Function is last, not first</p>
+<p>It is the refactoring everyone reaches for on day one, and it is the one that
+silently fails on this code. Extracting a function out of <code>logic()</code> in
+<code>DeepSoni04/SnakeGame_Project</code> produces a function with no parameters that
+still reads thirteen globals. You have moved lines, not dependencies. Steps
+1–6 are what make step 7 mean something.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">One caveat: you need tests first</p>
+<p>Every step above is <em>behaviour-preserving in principle</em>. Without a test you
+cannot know you preserved it — and several of these repos contain latent bugs
+(the high score that never saves, the speed level that freezes) that a
+refactoring will faithfully carry forward. <strong>Fowler's Chapter 4 comes before
+Chapter 6 for a reason</strong>, and it is where Module 3 of this course picks up.</p>
+</div>
+<hr />
+<h4 id="still-on-the-list">Still on the list</h4>
+<p>Fowler's Chapter 3 has 24 smells. Lecture 4 covered 5, today 8 — <strong>13 down, 11
+to go</strong>. Coming in <strong>Lecture 7</strong>:</p>
+<ul>
+<li><strong>Conditional logic</strong> — Repeated Switches → Replace Conditional with
+  Polymorphism; Introduce Special Case; Guard Clauses.</li>
+<li><strong>Inheritance</strong> — Refused Bequest, Alternative Classes with Different
+  Interfaces.</li>
+<li><strong>Too much / too little indirection</strong> — Message Chains, Middle Man, Insider
+  Trading, Lazy Element, Speculative Generality, Temporary Field.</li>
+<li><strong>Size</strong> — Large Class (the Lecture 4 repos qualify twice over).</li>
+<li><strong>Loops</strong> — Replace Loop with Pipeline.</li>
+</ul>
+<hr />
+<h4 id="references">References</h4>
+<ol>
+<li>Chapter 3, <a href="https://martinfowler.com/books/refactoring.html">Refactoring, Second edition</a> — Bad Smells in Code (Mysterious Name p.72, Long Parameter List p.74, Global Data p.74, Mutable Data p.75, Feature Envy p.77, Data Clumps p.78, Primitive Obsession p.78, Data Class p.83)</li>
+<li>Chapter 6 — Introduce Parameter Object (140), Combine Functions into Class (144)</li>
+<li>Chapter 7 — Encapsulate Record (162), Encapsulate Collection (170), Replace Primitive with Object (174), Extract Class (182)</li>
+<li>Chapter 8 — Move Function (198), Move Field (207)</li>
+<li>Chapter 9 — Split Variable (240), Rename Field (244), Replace Derived Variable with Query (248)</li>
+<li>Chapter 11 — Preserve Whole Object (319), Replace Parameter with Query (324), Remove Flag Argument (314)</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4:Refactoring">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4:Refactoring
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../labs/assignment-1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1:Make it multiplayer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                1:Make it multiplayer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

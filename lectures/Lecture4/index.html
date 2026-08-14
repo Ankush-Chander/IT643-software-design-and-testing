@@ -1,0 +1,1972 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture4/">
+      
+      
+        <link rel="prev" href="../Lecture3-demo/">
+      
+      
+        <link rel="next" href="../Lecture5_6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>4:Refactoring - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quick-recap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4:Refactoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-deep-vs-shallow-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Deep vs shallow modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Deep vs shallow modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refactoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-refactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why refactor?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-smells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code smells
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code smells">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#long-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-function-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long function — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicate code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-code-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicate code — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergent-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divergent Change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergent-change-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divergent Change — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shotgun-surgery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shotgun Surgery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shotgun-surgery-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shotgun Surgery — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-refactoring-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common refactoring techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common refactoring techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extract-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extract function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inline function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slide-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slide statements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-temp-with-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replace temp with query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Split Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Split phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-deep-vs-shallow-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Deep vs shallow modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Deep vs shallow modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refactoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-refactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why refactor?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-smells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code smells
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code smells">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#long-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-function-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long function — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicate code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-code-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicate code — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergent-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divergent Change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergent-change-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divergent Change — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shotgun-surgery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shotgun Surgery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shotgun-surgery-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shotgun Surgery — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments-in-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments — in your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-refactoring-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common refactoring techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common refactoring techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extract-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extract function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inline function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slide-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slide statements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-temp-with-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replace temp with query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Split Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Split phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>4:Refactoring</h1>
+
+<h4 id="quick-recap">Quick recap</h4>
+<h2 id="1-deep-vs-shallow-modules">1. Deep vs shallow modules</h2>
+<h4 id="agenda">Agenda</h4>
+<ol>
+<li>Refactoring</li>
+<li>Code smells</li>
+<li>Common refactoring techniques</li>
+</ol>
+<hr />
+<h4 id="refactoring">Refactoring</h4>
+<blockquote>
+<p>Refactoring (noun): a change made to the <strong>internal structure of software</strong> to make it easier to understand and cheaper to  modify <strong>without changing its observable behavior</strong>.</p>
+<p>Refactoring (verb): to restructure software by applying a series of refactorings without changing its observable behavior.</p>
+</blockquote>
+<hr />
+<h4 id="why-refactor">Why refactor?</h4>
+<ul>
+<li>improves the design of software</li>
+<li>makes software easier to understand</li>
+<li>helps find bugs</li>
+<li>helps program faster</li>
+</ul>
+<hr />
+<h4 id="code-smells">Code smells</h4>
+<blockquote>
+<p>“If it stinks, change it.”<br />
+— Grandma Beck, discussing child-rearing philosophy  </p>
+</blockquote>
+<ul>
+<li>It"s easier to explain how to do refactoring than when.  </li>
+<li>No hard and fast rules  </li>
+<li>Comes with practice and intuition  </li>
+</ul>
+<hr />
+<h5 id="long-function">Long function</h5>
+<ul>
+<li><strong>Small functions live longer</strong> → easier to read, maintain, and reuse.  </li>
+<li><strong>Modern languages remove call overhead</strong> → no excuse for long functions.  </li>
+<li><strong>Good naming reduces need to read body</strong>.  </li>
+<li><strong>Rule of thumb</strong>: When you feel like adding a comment → Extract a Function.  </li>
+<li><strong>Not about length</strong> → about semantic distance between intent and implementation(what vs. how).</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">💬 Refactor for lower semantic distance</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// says *how* — high semantic distance:</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">users</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span><span class="w"> </span><span class="n">eligible</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">users</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
+<details class="hint">
+<summary>Refactored — says <em>what</em></summary>
+<p><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filter_adults</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">users</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">eligible</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">users</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span><span class="w"> </span><span class="n">eligible</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">eligible</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">eligible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filter_adults</span><span class="p">(</span><span class="n">users</span><span class="p">);</span>
+</code></pre></div>
+- Give the intent a name (<code>filter_adults</code>) so the call site reads like English.
+- The reader no longer needs to understand the loop body to know <em>why</em> it exists.</p>
+</details>
+</div>
+<ul>
+<li>Long functions = Bad smell → aggressively decompose into meaningful, named functions.</li>
+</ul>
+<hr />
+<h5 id="long-function-in-your-code">Long function — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li>
+<p><a href="https://github.com/krishadoshi16/Reptile-rush/blob/021cd1d1bd271b6c5fd2e353d235026891fdc48d/Snake_game_final_code.cpp#L13-L310"><code>krishadoshi16/Reptile-rush</code> — <code>Snake_game_final_code.cpp:13-310</code></a></p>
+<ul>
+<li><strong><code>main()</code>, 298 lines</strong> — window creation, snake construction, food
+  spawning, bonus-food timing, obstacle placement, font loading, button
+  layout, direction state, the event loop, collision detection, scoring, the
+  render pass <em>and</em> the game-over screen, all in one un-named scope. The
+  author has already marked <strong>nine</strong> extraction boundaries with
+  <code>// ---------- Section ----------</code> banners. That is the rule of thumb
+  above — <em>"when you feel like adding a comment → Extract a Function"</em> —
+  firing nine times in one function.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/sagar-dot-bera/ByteHebi/blob/b1702f0bc6a5f827dc5872bdd8c076de754478c9/source/game.cpp#L315-L738"><code>sagar-dot-bera/ByteHebi</code> — <code>source/game.cpp:315-738</code></a></p>
+<ul>
+<li><strong><code>Game::render()</code>, 424 lines</strong> — the longest function in the corpus.
+  Board borders, gradient snake colouring, the HUD and three separate dialog
+  modes in one body. Its mirror image, <code>processInput</code>, is another 205 lines.</li>
+</ul>
+</li>
+</ul>
+<p>Neither is a smell <em>because</em> it is long. Both are a smell because the semantic
+distance between "draw one frame" and 424 lines of terminal calls is more than a
+reader can hold in their head.</p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Reptile-rush</strong> → <strong>Extract Function</strong> at each banner. The nine comments
+  become nine names: <code>createWindow()</code>, <code>initSnake()</code>, <code>spawnFood()</code>,
+  <code>placeObstacles()</code>, <code>layoutButtons()</code>, <code>drawFrame()</code>. <code>main()</code> shrinks to
+  ~15 lines that read like a table of contents.</li>
+<li><strong>ByteHebi</strong> → <strong>Split Phase</strong> first: compute <em>what</em> the frame should show,
+  then emit the terminal calls. Only then Extract Function per region
+  (border, snake, HUD, each dialog).</li>
+<li><strong>Order matters</strong>: slide related statements together <em>before</em> extracting —
+  you can only extract what is already adjacent.</li>
+<li><strong>Stop when</strong> each function fits one screen and its name says <em>what</em>, not <em>how</em>.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="duplicate-code">Duplicate code</h5>
+<ul>
+<li>Duplication = more reading, harder changes, higher bug risk.</li>
+<li>Every copy must be checked → wasted effort.</li>
+<li><strong>Guiding principle:</strong> Short, meaningful, unified functions = healthier codebase.</li>
+</ul>
+<hr />
+<h5 id="duplicate-code-in-your-code">Duplicate code — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li><a href="https://github.com/JagratJani/snake-game-cpp/blob/54d6b921a8abe16b4e12391ae539f26ea4ddbede/src/Food.cpp#L18-L82"><code>JagratJani/snake-game-cpp</code> — <code>src/Food.cpp:18-82</code></a><ul>
+<li><strong>The copy that already drifted.</strong> The rejection-sampling loop that finds
+  a free cell was copied from <code>GenerateWithObstacles</code> into
+  <code>GenerateSpecialFood</code> — and the author <em>documented the copy in a comment</em>
+  instead of removing it:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Food::GenerateSpecialFood</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Snake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">snake</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Generate position first (same logic as regular food)</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">invalidPosition</span><span class="p">;</span>
+<span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">invalidPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">maxX</span><span class="p">;</span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">maxY</span><span class="p">;</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">invalidPosition</span><span class="p">);</span>
+</code></pre></div>
+<p>The copy dropped the obstacle check, so <strong>special food can spawn inside an
+  obstacle and regular food cannot</strong>. Nobody decided that; the duplicate
+  drifted.</p>
+<ul>
+<li><a href="https://github.com/Piyushtanwani/Snake-game/blob/6068bd819da1eb985a262b1d979e30ff64be8497/main.cpp#L357-L543"><code>Piyushtanwani/Snake-game</code> — <code>main.cpp:357-543</code></a><ul>
+<li><strong>The same four lines, seven times.</strong> The head/body/food/empty glyph chain
+  is written out seven times inside one <code>render()</code>, once per row that needed
+  a different right-hand margin. Rendering logic was duplicated to
+  accommodate a <em>layout</em> difference.</li>
+</ul>
+</li>
+</ul>
+<p>Both dissolve the same way: <strong>Extract Function</strong> (<code>findFreeCell</code>, <code>cellGlyph</code>),
+then call it from every site.</p>
+<p><strong>A third kind — versioning by file copy.</strong>
+<a href="https://github.com/202512057Meetsheth/Debug-Thugs/tree/4b2b3fa8197a8a0cfc1a5e30136540940d83cb9e"><code>202512057Meetsheth/Debug-Thugs</code></a>
+ships <code>part1.cpp</code> … <code>part5.cpp</code> plus <code>part52.cpp</code>: six standalone programs, each
+an evolved copy of the last (122 → 223 → 290 → 322 → 436 lines, and <code>part5.cpp</code>
+is headed <code>//Part 5 (final)</code>), with ~84 duplicated blocks between them. Three
+other repos do the same. <strong>Branches and tags are how you keep versions — copying
+the file is how you lose track of which one is real.</strong></p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>snake-game-cpp</strong> → Extract Function
+  <code>findFreeCell(snake, obstacles)</code>; both generators call it. Pass obstacles
+  as a <strong>parameter</strong>, so "special food ignores obstacles" has to be a
+  decision someone types, not an accident of copying.</li>
+<li><strong>Snake-game</strong> → Extract <code>cellGlyph(x, y)</code>, then <strong>one</strong> loop over all
+  rows, with the margin text pulled from a lookup table (<code>rowMargin[y]</code>).
+  The layout difference stops duplicating the rendering logic.</li>
+<li><strong>Do this first</strong>: make the copies <em>identical</em> before extracting. If you
+  extract over a drifted copy, you silently ship a behaviour change — here,
+  special food would suddenly start respecting obstacles.</li>
+<li><strong>Then decide</strong> which behaviour was correct. Duplication hid the question;
+  removing it forces the answer.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="divergent-change">Divergent Change</h5>
+<ul>
+<li><strong>Goal of structure</strong>: Make change easy → one clear place to modify.</li>
+<li><strong>Smell</strong>: When one module changes for <em>different reasons</em> (e.g., database vs. financial logic).</li>
+<li><strong>Problem</strong>: Mixed contexts → every change touches unrelated code → harder to understand &amp; maintain.</li>
+<li><strong>Better design</strong>: Separate contexts into distinct modules/classes.</li>
+</ul>
+<hr />
+<h5 id="divergent-change-in-your-code">Divergent Change — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li><a href="https://github.com/Dazzling-Darshan/SnakeByte/blob/17bc256926a95aa647314649331fe78d4b52c41b/game.h#L51-L138"><code>Dazzling-Darshan/SnakeByte</code> — <code>game.h:51-138</code></a><ul>
+<li><strong>One class, five reasons to change</strong> — and the history is annotated in
+  the source. Every wave of requirements left a <code>// New:</code> marker behind:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">poisonFood</span><span class="p">;</span><span class="w">              </span><span class="c1">// New: Poison food</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shield</span><span class="p">;</span><span class="w">                  </span><span class="c1">// New: Shield power-up</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">paused</span><span class="p">;</span><span class="w">                           </span><span class="c1">// New: Pause state</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">SHIELD_SPAWN_INTERVAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">45</span><span class="p">;</span><span class="w">  </span><span class="c1">// Changed: ...to 60 seconds</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>`class Game` changes for   
+    - new collectibles,   
+    - for rendering,   
+    - for high-score,  
+    - for file I/O,  
+    - for pause semantics, and for difficulty tuning.   
+Adding one collectible means touching the member list, three declarations, spawn,
+update, the draw chain **and** the pause-timer compensation. The
+`// Changed: ...to 60 seconds` comment sitting above a literal `45` is
+itself evidence of how hard the class is to keep coherent.
+</code></pre></div>
+<ul>
+<li><a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L1-L1028"><code>GarvModi18/SnakeGameProject</code> — <code>snake.cpp:1-1028</code></a><ul>
+<li><strong>One file, six concerns, 1028 lines</strong> — ANSI console plumbing, Windows
+  audio, high-score persistence, six UI screens, rendering and the game
+  rules, all over shared mutable globals. Changing the audio backend, the
+  save-file format or the collision rules all land in the same file.</li>
+</ul>
+</li>
+</ul>
+<p>Ask of any module: <em>what kinds of change bring me here?</em> More than one answer is
+the smell.</p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Split by <em>reason to change</em>, not by size.</strong> A 1000-line file with one
+  reason is fine; a 100-line class with five is not.</li>
+<li><strong>SnakeByte</strong> → a <code>Collectible</code> interface with one implementation per
+  pickup (food, poison, shield, special) + a <code>HighScoreStore</code> for the file
+  I/O + a <code>Clock</code> that owns pause compensation. Adding a pickup becomes
+  <em>one new class</em>, not seven edits.</li>
+<li><strong>SnakeGameProject</strong> → split <code>snake.cpp</code> into <code>console</code>, <code>audio</code>,
+  <code>highscore</code>, <code>ui</code>, <code>render</code>, <code>rules</code>. Replace the shared mutable globals
+  with a <code>GameState</code> passed explicitly — otherwise the split is cosmetic
+  and every module still reaches into everything.</li>
+<li><strong>Test you did it right</strong>: adding a new power-up should touch one file.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="shotgun-surgery">Shotgun Surgery</h5>
+<ul>
+<li><strong>Smell</strong>: Opposite of <em>Divergent Change</em>.</li>
+<li>Every change → many small edits across multiple classes/modules.</li>
+<li>Hard to track, easy to miss updates.</li>
+</ul>
+<hr />
+<h5 id="shotgun-surgery-in-your-code">Shotgun Surgery — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li>
+<p><code>GarvModi18/SnakeGameProject</code> — <code>snake.cpp</code>
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L431-L440"><code>431-440</code></a> ·
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L527-L536"><code>527-536</code></a> ·
+  <a href="https://github.com/GarvModi18/SnakeGameProject/blob/6770cf0f123401c1ae5fa4bdaca204455acdf52f/snake.cpp#L596-L604"><code>596-604</code></a></p>
+<ul>
+<li><strong>One new menu key, three edits.</strong> The arrow-key block — <code>kbhit()</code>,
+  <code>getch()</code>, the <code>72</code>/<code>80</code> scancode <code>switch</code> — is repeated verbatim in
+  <code>ShowSettingsPage()</code> (388), <code>ShowMenu()</code> (469) and <code>ShowPauseOverlay()</code>
+  (554). All three are live in the same running program, so binding one new
+  key means finding and correctly editing all three.</li>
+</ul>
+</li>
+<li>
+<p><code>Neel1585/Snake_Game</code> —
+  <a href="https://github.com/Neel1585/Snake_Game/blob/ac5dff594149f378b91a1b5a87d8d669ace3c13a/level.cpp#L10-L31"><code>level.cpp:10-31</code></a> ·
+  <a href="https://github.com/Neel1585/Snake_Game/blob/ac5dff594149f378b91a1b5a87d8d669ace3c13a/obstacle.cpp#L9-L29"><code>obstacle.cpp:9-29</code></a></p>
+<ul>
+<li><strong>Non-blocking input, copied per level.</strong> <code>getchNonBlocking()</code> — 20 lines
+  of <code>termios</code> plus a <code>select()</code> — is defined identically in both levels the
+  README ships (<code>g++ level.cpp -o level</code>, <code>g++ obstacle.cpp -o obstacle</code>).
+  Fixing terminal restore on Ctrl-C is two edits, and the copies have already
+  diverged cosmetically, which defeats diffing.</li>
+</ul>
+</li>
+</ul>
+<p><code>snake.cpp</code> appeared under <strong>Divergent Change</strong> as well: it changes for six
+unrelated reasons <em>and</em> one menu change takes three edits inside it. The two
+smells are opposite ends of one defect — <strong>the duplication is why the change is
+scattered.</strong></p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>SnakeGameProject</strong> → Extract Function <code>readMenuKey()</code> returning an enum
+  (<code>Up</code>, <code>Down</code>, <code>Select</code>, <code>Back</code>); all three screens call it. A new binding
+  becomes one edit in one place.</li>
+<li><strong>Snake_Game</strong> → move <code>getchNonBlocking()</code> into <code>input.h</code> and include it
+  from both levels. Better still: the two levels are ~90% the same file —
+  make them one program with a level parameter.</li>
+<li><strong>General recipe</strong>: Move Function / Move Field to pull the scattered
+  pieces into one module, then <strong>Inline</strong> whatever is left over.</li>
+<li><strong>Don't over-correct.</strong> Sweeping everything into one "utils" module just
+  trades this smell for <strong>Divergent Change</strong>. Group by <em>what changes
+  together</em>, not by <em>what is left over</em>.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h5 id="comments">Comments</h5>
+<ul>
+<li><strong>Comments are good</strong> → but often used as <em>deodorant</em> to hide bad code.</li>
+<li>Heavy comments usually signal underlying <em>bad smells</em>.</li>
+<li><strong>First step</strong>: Refactor → often eliminates the need for comments.
+<strong>When comments help</strong></li>
+<li>To explain <em>why</em> something is done (not what).</li>
+<li>To flag uncertainty or future concerns.
+<strong>Principle:</strong> <em>Write clean code that explains itself — use comments for intent, not explanation.</em></li>
+</ul>
+<hr />
+<h5 id="comments-in-your-code">Comments — in your code</h5>
+<div class="admonition example">
+<p class="admonition-title">🔍 From your snake games</p>
+<ul>
+<li>
+<p><a href="https://github.com/mshaikh19/Snake-Game-Project/blob/b3ecddd6c5668bb0c876fb6d364b3cf47a1e7d33/GameGrid.cpp#L314-L349"><code>mshaikh19/Snake-Game-Project</code> — <code>GameGrid.cpp:314-349</code></a></p>
+<ul>
+<li><strong>Commented-out code used as version control.</strong> An entire previous version
+  of the HUD banner — 36 lines, same box-drawing art, one column wider —
+  sits commented out directly below the live version. Four more dead blocks
+  live in the same file. <code>drawGameGrid</code> is 166 lines, <strong>45 of them
+  comments</strong>, most of that a commented-out duplicate of the code above it.
+  The repo is under git; the history already holds the old version.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/krishadoshi16/Reptile-rush/blob/021cd1d1bd271b6c5fd2e353d235026891fdc48d/Snake_game_final_code.cpp#L24-L234"><code>krishadoshi16/Reptile-rush</code> — <code>Snake_game_final_code.cpp:24-234</code></a></p>
+<ul>
+<li><strong>Comments standing in for function names.</strong> Nine
+  <code>// ---------- Section ----------</code> banners inside a single 298-line
+  <code>main</code> — each one a function name that was never written:
+  <code>createWindow()</code>, <code>initSnake()</code>, <code>spawnFood()</code>, <code>placeObstacles()</code>,
+  <code>layoutButtons()</code>, <code>drawFrame()</code>. Refactor first, and the comments delete
+  themselves.</li>
+</ul>
+</li>
+</ul>
+<p><strong>The contrasting good case</strong>, from <code>Dazzling-Darshan/SnakeByte</code>
+<a href="https://github.com/Dazzling-Darshan/SnakeByte/blob/17bc256926a95aa647314649331fe78d4b52c41b/game.h#L10"><code>game.h:10</code></a> —
+<code>#include &lt;fstream&gt; // Required for file I/O (High Score)</code>. That one explains
+<strong>why</strong>. Compare with <code>// New: Poison food</code> a few lines below it: six months on,
+everything is "new".</p>
+<details class="tip">
+<summary>🔧 How would you fix these?</summary>
+<ul>
+<li><strong>Delete commented-out code.</strong> <code>git log</code> <em>is</em> your version control. Dead
+  code costs you a re-read every time and is never the version you want back.</li>
+<li><strong>Banner comments → function names</strong> (Extract Function). The comment
+  becomes the signature and stops being able to go stale.</li>
+<li><strong><code>// New: X</code> → nothing.</strong> <code>git blame</code> already answers "when". If the
+  comment tracks a diff rather than an intent, it expires.</li>
+<li><strong>Keep</strong> comments that answer <em>why</em>: a non-obvious constraint, a workaround
+  and its cause, a warning about what looks safe but isn't.</li>
+<li><strong>Rule of thumb</strong>: a comment describing <em>what</em> the next lines do is a
+  function waiting to be extracted.</li>
+</ul>
+</details>
+</div>
+<hr />
+<h4 id="common-refactoring-techniques">Common refactoring techniques</h4>
+<hr />
+<h5 id="extract-function">Extract function</h5>
+<p><img alt="" src="../images/refactoring/extract_function.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">💬 Can you extract a function from this cluttered body?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">printOwing</span><span class="p">(</span><span class="nx">invoice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printBanner</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">outstanding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calculateOutstanding</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">//print details</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`name: </span><span class="si">${</span><span class="nx">invoice</span><span class="p">.</span><span class="nx">customer</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`amount: </span><span class="si">${</span><span class="nx">outstanding</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Extract Function</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">printOwing</span><span class="p">(</span><span class="nx">invoice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">printDetails</span><span class="p">(</span><span class="nx">outstanding</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`name: </span><span class="si">${</span><span class="nx">invoice</span><span class="p">.</span><span class="nx">customer</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`amount: </span><span class="si">${</span><span class="nx">outstanding</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">printBanner</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">outstanding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calculateOutstanding</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">printDetails</span><span class="p">(</span><span class="nx">outstanding</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+- The "print details" block got its own named function → the comment is no longer needed.</p>
+</details>
+</div>
+<hr />
+<h5 id="inline-function">Inline function</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Is this helper function adding clarity — or indirection?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">moreThanFiveLateDeliveries</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">driver</span><span class="p">.</span><span class="nx">numberOfLateDeliveries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">getRating</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">moreThanFiveLateDeliveries</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Inline Function</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">getRating</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">driver</span><span class="p">.</span><span class="nx">numberOfLateDeliveries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+- The body was just as clear as the name → inlining removes an unnecessary layer of indirection.</p>
+</details>
+</div>
+<hr />
+<ul>
+<li>
+<p>Inverse of <code>Extract Function</code></p>
+</li>
+<li>
+<p><strong>When to Use</strong></p>
+<ul>
+<li>Function’s body = just as clear as its name.</li>
+<li>Too much delegation → hard to trace logic.</li>
+<li>Want to regroup/refactor functions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mechanics</strong></p>
+<ol>
+<li>Ensure it’s <strong>not polymorphic</strong> (no subclass overrides).</li>
+<li>Find all callers.</li>
+<li>Replace call with body → test after each.</li>
+<li>Remove function definition.</li>
+<li>Inline gradually if tricky (multiple returns, recursion).</li>
+</ol>
+</li>
+<li><strong>Principle:</strong> <em>Indirection is good only when it adds clarity — inline when it doesn’t.</em></li>
+</ul>
+<hr />
+<h5 id="slide-statements">Slide statements</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Are related statements grouped together?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pricingPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">retrievePricingPlan</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">retreiveOrder</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">charge</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">chargePerUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pricingPlan</span><span class="p">.</span><span class="nx">unit</span><span class="p">;</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Slide Statements</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pricingPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">retrievePricingPlan</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">chargePerUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pricingPlan</span><span class="p">.</span><span class="nx">unit</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">retreiveOrder</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">charge</span><span class="p">;</span>
+</code></pre></div>
+- <code>pricingPlan</code> and its consumer (<code>chargePerUnit</code>) are now adjacent → easier to extract into a function later.</p>
+</details>
+</div>
+<hr />
+<ul>
+<li><strong>Problem</strong><ul>
+<li>Related code is <strong>scattered</strong>, mixed with unrelated logic.</li>
+<li>Harder to understand, modify, or extract into functions.</li>
+</ul>
+</li>
+<li><strong>Solution</strong><ul>
+<li><strong>Move related statements together</strong> so intent is clearer.</li>
+<li>Often a preparatory step for <strong>Extract Function</strong>.
+ <strong>Principle:</strong> <em>Group related logic together → clarity first, then refactor further.</em></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h5 id="replace-temp-with-query">Replace temp with query</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 Can you eliminate the temp variable?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">basePrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_itemPrice</span><span class="p">;</span>
+<span class="k">return</span><span class="w"> </span><span class="nx">basePrice</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">basePrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.95</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">basePrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.98</span><span class="p">;</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Replace Temp with Query</summary>
+<p><div class="highlight"><pre><span></span><code><span class="nx">getBasePrice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_itemPrice</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// call function instead of temp variable</span>
+<span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getBasePrice</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getBasePrice</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.95</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">basePrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.98</span><span class="p">;</span>
+</code></pre></div>
+- The temp becomes a reusable query → easier to extract other functions without passing the temp around.</p>
+</details>
+</div>
+<hr />
+<p><strong>Motivation</strong>
+- Easier function extraction (no temps to pass around).
+- Stronger boundaries → fewer dependencies &amp; side effects.
+- Eliminates duplicate calculation logic.
+- Best inside a class (shared context for queries).</p>
+<hr />
+<h5 id="split-loop">Split Loop</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 This loop does too many things at once — how do you split it?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">averageAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">totalSalary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">people</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">averageAge</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">totalSalary</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">averageAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">averageAge</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">people</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Split Loop</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">totalSalary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">people</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">totalSalary</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">averageAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">people</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">averageAge</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">averageAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">averageAge</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">people</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</code></pre></div>
+- Each loop now has a single responsibility → ready for <strong>Extract Function</strong> next.</p>
+</details>
+</div>
+<hr />
+<p><strong>Problem</strong><br />
+- One loop doing <strong>multiple things at once</strong>.<br />
+- Makes modifications harder → must understand <em>all</em> behaviors.<br />
+- Leads to cluttered code with multiple outputs/side effects.  </p>
+<p><strong>Solution</strong><br />
+- <strong>Split loop into separate loops</strong>, each doing one task.<br />
+- Improves clarity and maintainability. <br />
+- Often followed by <strong>Extract Function</strong> on each loop.  </p>
+<hr />
+<h5 id="split-phase">Split phase</h5>
+<div class="admonition question">
+<p class="admonition-title">💬 This code mixes parsing and pricing — can you separate the concerns?</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">orderData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">orderString</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">productPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">priceList</span><span class="p">[</span><span class="nx">orderData</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">]];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">orderPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">orderData</span><span class="p">[</span><span class="mf">1</span><span class="p">])</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">productPrice</span><span class="p">;</span>
+</code></pre></div>
+<details class="hint">
+<summary>After Split Phase</summary>
+<p><div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">parseOrder</span><span class="p">(</span><span class="nx">aString</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">aString</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">({</span><span class="nx">productID</span><span class="o">:</span><span class="w"> </span><span class="nx">values</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">quantity</span><span class="o">:</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mf">1</span><span class="p">])});</span>
+<span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">price</span><span class="p">(</span><span class="nx">order</span><span class="p">,</span><span class="w"> </span><span class="nx">priceList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">order</span><span class="p">.</span><span class="nx">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">priceList</span><span class="p">[</span><span class="nx">order</span><span class="p">.</span><span class="nx">productID</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">orderRecord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parseOrder</span><span class="p">(</span><span class="nx">order</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">orderPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">price</span><span class="p">(</span><span class="nx">orderRecord</span><span class="p">,</span><span class="w"> </span><span class="nx">priceList</span><span class="p">);</span>
+</code></pre></div>
+- Parsing and pricing are now separate phases → each is independently testable.</p>
+</details>
+</div>
+<hr />
+<p><strong>Clues</strong><br />
+- Different parts use different data/functions.<br />
+- Sequential steps doing <em>significantly different</em> work.  </p>
+<p><strong>Mechanics</strong><br />
+1. Extract second phase into its own function.<br />
+2. Add intermediate data structure (passed between phases).<br />
+3. Move relevant parameters/fields into the structure.<br />
+4. Extract first phase separately.  </p>
+<p><strong>Principle:</strong> <em>Separate concerns into phases → easier to reason about, test, and extend.</em></p>
+<hr />
+<h4 id="references">References</h4>
+<ol>
+<li>Chapter 1, <a href="https://martinfowler.com/books/refactoring.html">Refactoring, Second edition</a> by Martin Fowler and Kent Beck</li>
+<li><a href="https://github.com/vitorfranca/Refactoring-Martin_Fowler/tree/main/Chapter-1">Refactoring example in Javascript</a></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">About the examples</p>
+<p>Every "in your code" link above is pinned to a <strong>commit SHA</strong>, not a branch, so
+it keeps pointing at the code as it was when this lecture was written — your
+later commits will not shift the line numbers out from under it. All examples
+were read and verified against the source, not inferred from metrics.</p>
+<p>Nothing here is a mark against the author. Every one of these appears in code
+that <em>works</em>; they are the shapes that make the <strong>next</strong> change expensive, which
+is exactly what refactoring is for.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture3-demo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3b.Complexity: measured on your own code">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3b.Complexity: measured on your own code
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture5_6/" class="md-footer__link md-footer__link--next" aria-label="Next: 5-6:Smells in the data">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                5-6:Smells in the data
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
