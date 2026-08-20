@@ -22,6 +22,12 @@ This course covers the foundations of software engineering in the post-LLM era â
 - [3b. Complexity: measured on your own code](Lecture3-demo.md)
 - [4: Refactoring](Lecture4.md)
 - [5-6: Smells in the data](Lecture5_6.md)
+
+### Module 3: Testing
+- [7_8: Unit testing fundamentals & the AAA framework](Lecture7_8.md)
+<!-- Uncomment when delivered:
+- [9_10: Choosing what to test, and what makes a test good](Lecture9_10.md)
+-->
 ---
 
 ## Prerequisites

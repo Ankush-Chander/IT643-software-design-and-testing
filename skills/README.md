@@ -16,11 +16,17 @@ work. Ours does.
 
 ## `ubiquitous-language`
 
-Extracts a domain glossary from the current session and writes `UBIQUITOUS_LANGUAGE.md` —
-a term / definition / **aliases-to-avoid** table, plus a "flagged ambiguities" section
-naming every place one word was used for two concepts, or two words for one.
+Extracts a domain glossary from the current session **and from the repository** and writes
+`UBIQUITOUS_LANGUAGE.md` — a term / definition / **aliases-to-avoid** table, plus a "flagged
+ambiguities" section naming every place one word was used for two concepts, or two words for
+one, plus a "code drift" section naming every place the code calls a concept something the
+domain does not.
 
-### Two things that will otherwise waste your afternoon  
+Our copy reads both sources by default. Narrow it with `/ubiquitous-language <path>`,
+`--conversation` (session only, the upstream behaviour) or `--code` (repository only).
+
+### The one thing that will otherwise waste your afternoon
+
 -  **It never fires on its own.** The skill sets `disable-model-invocation: true`
    (`allow_implicit_invocation: false` for Codex). You have to ask for it by name. Most
    skills load automatically when their description matches what you are doing; this one is
@@ -50,8 +56,8 @@ there. `agents/openai.yaml` carries the equivalent metadata for Codex.
 
 **Fallback, and it is a real one:** if your tool has no skill mechanism at all — a web chat,
 or an IDE assistant that does not support them — paste the contents of `SKILL.md` as your
-first message in the session. A skill is a file. You lose the `/name` shortcut and nothing
-else.
+first message in the session. A skill is a file. You lose the `/name` shortcut, and — in a
+tool with no filesystem access — the codebase half, which degrades to a `--conversation` run.
 
 ### Provenance
 
@@ -61,8 +67,21 @@ else.
 | Path | `skills/deprecated/ubiquitous-language/` |
 | Recovered from | commit `c66bdee` (parent) — the commit that removed it, 2026-08-05 |
 | Last upstream change | `697d4ce`, 2026-07-13 |
-| Files | `SKILL.md`, `agents/openai.yaml` — byte-identical to upstream |
+| Files | `agents/openai.yaml` — byte-identical to upstream. `SKILL.md` — **modified locally**, see below |
 | Licence | MIT, © 2026 Matt Pocock — see `LICENSE` |
+
+**Local modification to `SKILL.md`.** Upstream reads the conversation only and never opens a
+file. Ours adds the repository as a second source: a `Scope` section with the flags above, a
+`Reading a codebase` section ordering where to look (domain prose → types and schemas → enums
+and state machines → API surface → test names → comments → identifiers, skipping vendored and
+generated code), an `In code` column carrying a `file:line` for each term, and a `Code drift`
+table listing concepts whose code name is not the canonical one — including concepts nobody
+has implemented at all. Upstream's structure, rules and example dialogues are otherwise
+intact, and the divergence is marked in a comment at the foot of the file.
+
+The governing rule there is *code is evidence, not vocabulary*: `OrderRepository` tells you
+**Order** is a domain term; it does not make `OrderRepository` one. The skill reports drift,
+it never renames.
 
 Upstream removed it rather than deprecating it; its job moved into a larger `domain-modeling`
 skill that also maintains architecture decision records. We use the smaller original because

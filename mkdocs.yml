@@ -18,6 +18,9 @@ nav:
       - "3b.Complexity: measured on your own code": 'lectures/Lecture3-demo.md'
       - "4:Refactoring": 'lectures/Lecture4.md'
       - "5-6:Smells in the data": 'lectures/Lecture5_6.md'
+      - "7-8:Unit testing fundamentals & the AAA framework": 'lectures/Lecture7_8.md'
+      # Uncomment when 9-10 is delivered:
+      # - "9-10:Choosing what to test, and what makes a test good": 'lectures/Lecture9_10.md'
   - Labs:
       - "1:Make it multiplayer": 'labs/assignment-1.md'
       - "2_3:Detect code smell": 'labs/assignment-2_3.md'
@@ -143,6 +146,11 @@ plugins:
 #extra_css:
 #        - stylesheets/extra.css
 #
+### MathJax (renders pymdownx.arithmatex output)
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 ### Extensions
 markdown_extensions:
   - attr_list
@@ -158,7 +166,8 @@ markdown_extensions:
 #  - markdown.extensions.toc:
 #      baselevel: 1
 #      permalink: true
-  - pymdownx.arithmatex
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret

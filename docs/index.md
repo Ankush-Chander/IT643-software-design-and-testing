@@ -24,6 +24,10 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [4: Refactoring](lectures/Lecture4.md)
 - [5-6: Smells in the data](lectures/Lecture5_6.md)
 
+### Module 3: Testing
+- [7_8: Unit testing fundamentals & the AAA framework](lectures/Lecture7_8.md)
+
+
 ---
 
 ## Labs
