@@ -1,0 +1,2247 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture7_8/">
+      
+      
+        <link rel="prev" href="../Lecture5_6/">
+      
+      
+        <link rel="next" href="../../labs/assignment-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>7-8:Unit testing fundamentals & the AAA framework - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-testing-fundamentals-the-aaa-framework" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7-8:Unit testing fundamentals & the AAA framework
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-value-of-self-testing-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The value of self-testing code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The value of self-testing code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-does-the-time-actually-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where does the time actually go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-ways-to-know-your-code-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three ways to know your code works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-automation-buys-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What automation buys you
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-hard-to-sell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is hard to sell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refactoring-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refactoring and testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a unit test?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-vs-benifit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost vs Benifit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#good-tests-vs-bad-tests-vs-no-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good tests vs bad tests vs no tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-code-vs-test-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production code vs test code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test coverage metric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counter-example-same-behaviour-better-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Counter-example: same behaviour, better number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-refactor-dont-touch-the-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now refactor. Don't touch the test.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-number-you-cannot-argue-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The number you cannot argue with
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-a-coverage-target-backfires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a coverage target backfires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-it-c-with-googletest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring it: C++ with GoogleTest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-the-c-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading the C++ report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-it-python-with-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring it: Python with pytest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-a-successful-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What makes a successful test suite?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomy of a unit test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomy of a unit test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrange-act-assert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arrange-Act-Assert
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aaa-in-the-wild" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AAA in the wild
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-patterns-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-Patterns to Avoid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anti-Patterns to Avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-aaa-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple AAA Sections:**
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if statements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-of-them-in-one-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three of them in one code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-the-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing the branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-large-each-section-should-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How large each section should be?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-assertions-in-a-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How many assertions in a test?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming a unit test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-a-name-into-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working a name into shape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-value-of-self-testing-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The value of self-testing code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The value of self-testing code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-does-the-time-actually-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where does the time actually go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-ways-to-know-your-code-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three ways to know your code works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-automation-buys-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What automation buys you
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-hard-to-sell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is hard to sell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refactoring-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refactoring and testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a unit test?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-vs-benifit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost vs Benifit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#good-tests-vs-bad-tests-vs-no-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good tests vs bad tests vs no tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-code-vs-test-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production code vs test code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test coverage metric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counter-example-same-behaviour-better-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Counter-example: same behaviour, better number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-refactor-dont-touch-the-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now refactor. Don't touch the test.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-number-you-cannot-argue-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The number you cannot argue with
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-a-coverage-target-backfires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a coverage target backfires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-it-c-with-googletest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring it: C++ with GoogleTest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-the-c-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading the C++ report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-it-python-with-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring it: Python with pytest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-a-successful-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What makes a successful test suite?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomy of a unit test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomy of a unit test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrange-act-assert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arrange-Act-Assert
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aaa-in-the-wild" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AAA in the wild
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-patterns-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-Patterns to Avoid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anti-Patterns to Avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-aaa-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple AAA Sections:**
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if statements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-of-them-in-one-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three of them in one code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-the-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing the branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-large-each-section-should-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How large each section should be?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-assertions-in-a-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How many assertions in a test?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-a-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming a unit test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-a-name-into-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working a name into shape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="unit-testing-fundamentals-the-aaa-framework">Unit testing fundamentals &amp; the AAA framework</h1>
+<h2 id="the-value-of-self-testing-code">The value of self-testing code</h2>
+<h3 id="where-does-the-time-actually-go">Where does the time actually go?</h3>
+<p>If you look at how most programmers spend their time, writing code is a small fraction of it. Some time goes into figuring out what ought to happen, some into designing — but <strong>most time goes into debugging</strong>.</p>
+<ul>
+<li>Every programmer has a story about a bug that took a whole day to find.</li>
+<li><strong>Fixing</strong> the bug is usually quick. <strong>Finding</strong> it is the nightmare.</li>
+<li>And a fix can quietly introduce another bug you won't notice until much later.</li>
+</ul>
+<hr />
+<h3 id="three-ways-to-know-your-code-works">Three ways to know your code works</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>No testing</strong></th>
+<th><strong>Manual eyeballing</strong></th>
+<th><strong>Automated self-testing</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How you check</td>
+<td>Run the app, click around</td>
+<td>Test prints to console, you read it</td>
+<td>Test compares against expected, prints <code>OK</code></td>
+</tr>
+<tr>
+<td>Cost per run</td>
+<td>Low effort, low coverage</td>
+<td>Boring, slow, error-prone</td>
+<td>Nearly free</td>
+</tr>
+<tr>
+<td>How often you run it</td>
+<td>Rarely</td>
+<td>Occasionally — it's tedious</td>
+<td>Every compile</td>
+</tr>
+<tr>
+<td>Regression caught</td>
+<td>Weeks later, by a user</td>
+<td>Whenever you remember to look</td>
+<td>Within minutes of writing the bug</td>
+</tr>
+<tr>
+<td>Where's the bug?</td>
+<td>Anywhere in the code base</td>
+<td>Somewhere since the last check</td>
+<td>In the code you just wrote</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><mark>Make sure all tests are fully automatic and that they check their own results.</mark></p>
+</blockquote>
+<p>A test that prints output for a human to inspect is not automated. If a human has to decide pass or fail, it will get skipped.</p>
+<hr />
+<h3 id="what-automation-buys-you">What automation buys you</h3>
+<p>Once running tests is as cheap as compiling, you run them on <strong>every</strong> compile:</p>
+<ul>
+<li>A regression shows up <strong>as soon as</strong> you run the test.</li>
+<li>The test passed before → the bug is in the last few minutes of work.</li>
+<li>Small amount of code, still fresh in your mind → easy to find.</li>
+</ul>
+<p><strong>Bugs that would have taken an hour to find now take a couple of minutes.</strong></p>
+<hr />
+<blockquote>
+<p><mark>A suite of tests is a powerful bug detector that decapitates the time it takes to find bugs.</mark></p>
+</blockquote>
+<hr />
+<h3 id="tests-first">Tests first</h3>
+<p>The most useful time to write a test is often <strong>before</strong> writing the code.</p>
+<ul>
+<li>Writing the test asks: <em>what needs to be done to add this feature?</em></li>
+<li>It focuses you on the <strong>interface</strong>, not the implementation.</li>
+<li>It gives you a clear "I'm done" signal — when the test passes.</li>
+</ul>
+<p>Kent Beck baked this into <strong>Test-Driven Development (TDD)</strong>: short cycles of <em>write a failing test → write code to pass it → refactor</em>. Many cycles per hour.</p>
+<hr />
+<h3 id="why-this-is-hard-to-sell">Why this is hard to sell</h3>
+<ul>
+<li>Writing tests means writing a lot of extra code.</li>
+<li>Unless you have <em>experienced</em> how it speeds you up, it doesn't seem to make sense.</li>
+<li>Many people were never taught to write tests, or to think about tests at all.</li>
+<li>Manual tests are gut-wrenchingly boring. <strong>Automatic tests can be fun to write.</strong></li>
+</ul>
+<hr />
+<h3 id="refactoring-and-testing">Refactoring and testing</h3>
+<blockquote>
+<p><strong>Refactoring requires tests. If you want to refactor, you have to write tests.</strong></p>
+</blockquote>
+<p>We spent the last block on complexity, refactoring and code smells. This block builds the safety net that makes all of it possible.</p>
+<p>A remarkably small amount of testing work buys surprisingly large benefits.</p>
+<hr />
+<h2 id="unit-testing">Unit testing</h2>
+<h3 id="what-is-a-unit-test">What is a unit test?</h3>
+<p>A unit test is an automated test that  </p>
+<ul>
+<li>Verifies a single unit of behaviour,  </li>
+<li>Does it quickly,  </li>
+<li>and  does it in isolation from other tests.  </li>
+</ul>
+<hr />
+<h3 id="cost-vs-benifit">Cost vs Benifit</h3>
+<p>The cost component is determined by the amount of time spent on various activities:</p>
+<ul>
+<li>Refactoring the test when you refactor the underlying code</li>
+<li>Running the test on each code change</li>
+<li>Dealing with false alarms raised by the test</li>
+<li>Spending time reading the test when you’re trying to understand how the
+underlying code behaves</li>
+</ul>
+<hr />
+<h3 id="good-tests-vs-bad-tests-vs-no-tests">Good tests vs bad tests vs no tests</h3>
+<p><img alt="" src="../../images/testing/good_test_vs_bad_test.png" /></p>
+<hr />
+<h3 id="production-code-vs-test-code">Production code vs test code</h3>
+<blockquote>
+<p><mark>Code is a liability, not an asset.</mark> The more code you introduce, the more you extend the surface area for potential bugs in your software, and the higher the project’s upkeep cost. It’s always better to solve problems with as little code as possible. <mark>Tests are code, too. You should view them as the part of your code base that aims at solving a particular problem: ensuring the application’s correctness.</mark> Unit tests, just like any other code, are also vulnerable to bugs and require maintenance.</p>
+</blockquote>
+<hr />
+<h3 id="test-coverage-metric">Test coverage metric</h3>
+<p>This metric shows the ratio of the number of code lines executed by at least
+one test and the total number of lines in the production code base.</p>
+<div class="arithmatex">\[\text{code coverage} = \frac{\text{lines executed}}{\text{total lines}}\]</div>
+<ul>
+<li>Coverage metrics are a good negative indicator, but a bad positive one. </li>
+<li><mark>Low coverage numbers—say, below 60%—are a certain sign of trouble.</mark> They mean there's a lot of untested code in your code base. </li>
+<li>But <mark>high numbers don't mean anything.</mark></li>
+</ul>
+<hr />
+<h3 id="counter-example-same-behaviour-better-number">Counter-example: same behaviour, better number</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">IsStringLong</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">                     </span><span class="c1">// 2</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">                            </span><span class="c1">// 3</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">                               </span><span class="c1">// 4</span>
+<span class="p">}</span><span class="w">                                               </span><span class="c1">// 5</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">StringUtils</span><span class="p">,</span><span class="w"> </span><span class="n">ShortStringIsNotLong</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IsStringLong</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">EXPECT_FALSE</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The test never reaches <code>return true</code>. <strong>4 of 5 lines → 80%.</strong></p>
+<hr />
+<h3 id="now-refactor-dont-touch-the-test">Now refactor. Don't touch the test.</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">IsStringLong</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">                  </span><span class="c1">// 2</span>
+<span class="p">}</span><span class="w">                                               </span><span class="c1">// 3</span>
+</code></pre></div>
+<p><strong>3 of 3 lines → 100%.</strong></p>
+<ul>
+<li>Same production behaviour.</li>
+<li>Same test, verifying the same single outcome.</li>
+<li>Coverage rose 80% → 100%.</li>
+</ul>
+<blockquote>
+<p><mark>The number moved. The test suite did not improve.</mark></p>
+</blockquote>
+<hr />
+<h3 id="branch-coverage">Branch coverage</h3>
+<p>Counts branches traversed instead of lines.</p>
+<div class="arithmatex">\[\text{branch coverage} = \frac{\text{branches traversed}}{\text{total branches}}\]</div>
+<ul>
+<li><code>IsStringLong</code> has two outcomes: long, not long.</li>
+<li>The test exercises one. <strong>50%</strong> — before <em>and</em> after the refactoring.</li>
+<li>Immune to formatting. Still not a measure of quality.</li>
+</ul>
+<hr />
+<h3 id="the-number-you-cannot-argue-with">The number you cannot argue with</h3>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">StringUtils</span><span class="p">,</span><span class="w"> </span><span class="n">CoversEverything</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">IsStringLong</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IsStringLong</span><span class="p">(</span><span class="s">&quot;abcdef&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>100% line coverage.</li>
+<li>100% branch coverage.</li>
+<li><strong>Zero assertions.</strong> Nothing is verified.</li>
+</ul>
+<p>Coverage records which production code <em>ran</em>. It says nothing about which outcomes were <em>checked</em>.</p>
+<p>A real guard against exactly this: <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_prompt_tool_catalogue.py#L32-L34"><code>test_the_catalogue_is_actually_being_parsed</code></a> exists only to prove the <em>other</em> test in its file is not quietly asserting over an empty set.</p>
+<hr />
+<h3 id="why-a-coverage-target-backfires">Why a coverage target backfires</h3>
+<ul>
+<li>Coverage rises when you delete lines, not only when you test them.</li>
+<li>It ignores paths inside the libraries you call.</li>
+<li><mark>Mandate a number and people write tests that hit lines without asserting anything.</mark></li>
+</ul>
+<p>Use coverage to find untested areas. Never as a pass/fail gate.</p>
+<hr />
+<h3 id="measuring-it-c-with-googletest">Measuring it: C++ with GoogleTest</h3>
+<p>Instrument the build. In <code>CMakeLists.txt</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_FLAGS</span><span class="w"> </span><span class="s2">&quot;${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -O0 -g&quot;</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">runTests</span><span class="w"> </span><span class="o">${</span><span class="nv">GTEST_LIBRARIES</span><span class="o">}</span><span class="w"> </span><span class="s">gtest_main</span><span class="w"> </span><span class="s">pthread</span><span class="w"> </span><span class="s">gcov</span><span class="p">)</span>
+</code></pre></div>
+<p>Install the report generator, once:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gcovr<span class="w">      </span><span class="c1"># or: pip install gcovr</span>
+</code></pre></div>
+<p>Build, run, report:</p>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S.<span class="w"> </span>-B<span class="w"> </span>build
+cmake<span class="w"> </span>--build<span class="w"> </span>build
+./build/runTests<span class="w">            </span><span class="c1"># running the tests writes the .gcda data</span>
+gcovr<span class="w"> </span>-r<span class="w"> </span>.<span class="w"> </span>--exclude<span class="w"> </span><span class="s1">&#39;.*tests/.*&#39;</span>
+</code></pre></div>
+<hr />
+<h3 id="reading-the-c-report">Reading the C++ report</h3>
+<div class="highlight"><pre><span></span><code>File              Lines    Exec  Cover   Missing
+src/game.cpp          6       6   100%
+TOTAL                 6       6   100%
+</code></pre></div>
+<p>Branch coverage instead of lines:</p>
+<div class="highlight"><pre><span></span><code>gcovr<span class="w"> </span>-r<span class="w"> </span>.<span class="w"> </span>--exclude<span class="w"> </span><span class="s1">&#39;.*tests/.*&#39;</span><span class="w"> </span>--txt-metric<span class="w"> </span>branch
+</code></pre></div>
+<p>Line-by-line HTML, red for missed:</p>
+<div class="highlight"><pre><span></span><code>gcovr<span class="w"> </span>-r<span class="w"> </span>.<span class="w"> </span>--exclude<span class="w"> </span><span class="s1">&#39;.*tests/.*&#39;</span><span class="w"> </span>--html-details<span class="w"> </span>-o<span class="w"> </span>coverage.html
+</code></pre></div>
+<blockquote>
+<p><mark>Always exclude your test directory.</mark> Otherwise your test code is counted as covered production code and inflates the number.</p>
+</blockquote>
+<hr />
+<h3 id="measuring-it-python-with-pytest">Measuring it: Python with pytest</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pytest-cov
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>--cov<span class="o">=</span>api<span class="w"> </span>--cov-report<span class="o">=</span>term-missing<span class="w">   </span><span class="c1"># which lines are missed</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>api<span class="w"> </span>--cov-branch<span class="w">                </span><span class="c1"># branch coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>api<span class="w"> </span>--cov-report<span class="o">=</span>html<span class="w">           </span><span class="c1"># htmlcov/index.html</span>
+</code></pre></div>
+<p><code>--cov</code> takes the package to measure, not the test directory.</p>
+<hr />
+<h3 id="a-real-code-base">A real code base</h3>
+<p><code>dau-mcp-server</code>: 173 tests, 3.9 s, 3848 statements.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Line coverage</td>
+<td><strong>37%</strong></td>
+</tr>
+<tr>
+<td>Branch coverage</td>
+<td><strong>33%</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Cover</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name_matching.py</code></td>
+<td>96%</td>
+<td>someone tested this behaviour</td>
+</tr>
+<tr>
+<td><code>library_service.py</code></td>
+<td>88%</td>
+<td></td>
+</tr>
+<tr>
+<td><code>timetable_service.py</code></td>
+<td>35%</td>
+<td>only faculty resolution is tested</td>
+</tr>
+<tr>
+<td><code>fallback.py</code></td>
+<td>4%</td>
+<td>232 statements, 222 untested</td>
+</tr>
+<tr>
+<td><code>context_builder.py</code></td>
+<td>0%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>37% is below Khorikov's 60% line. The suite is honestly incomplete.</li>
+<li>Adding <code>--cov-branch</code> <em>lowers</em> the number. Stricter question, same tests.</li>
+<li><code>name_matching.py</code> is not good because it scores 96%. It scores 96% because it was tested.</li>
+<li><mark>The 4% and the 0% are the useful output. That is the negative indicator doing its job.</mark></li>
+</ul>
+<p>And a covered line is not a checked one: <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_retrieval.py#L39-L43"><code>test_retrieve_respects_limit</code></a> carries the comment <code># Assuming there are at least 3 faculties in DB</code>, then asserts <code>len(results) &lt;= 2</code>. It passes on an empty database.</p>
+<hr />
+<h3 id="what-makes-a-successful-test-suite">What makes a successful test suite?</h3>
+<p>A successful test suite has the following properties:  </p>
+<ul>
+<li>It's integrated into the development cycle.    </li>
+<li>It targets only the most important parts of your code base.  </li>
+<li>It provides maximum value with minimum maintenance costs.  </li>
+</ul>
+<hr />
+<h2 id="anatomy-of-a-unit-test">Anatomy of a unit test</h2>
+<hr />
+<h3 id="arrange-act-assert">Arrange-Act-Assert</h3>
+<p>Each test is divided into three distinct sections:</p>
+<p>• <strong>Arrange:</strong> This section is responsible for bringing the System Under Test (SUT) and all its dependencies into the desired state required for the test.<br />
+• <strong>Act:</strong> In this section, a method is called on the SUT to trigger the specific behavior being tested. The output or result of this action is captured. <br />
+• <strong>Assert:</strong> This final section verifies that the outcome of the <code>Act</code> section matches expectations. This can involve checking a return value, the final state of the SUT or its collaborators, or methods called on those collaborators.  </p>
+<hr />
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">SnakeBehaviour</span><span class="p">,</span><span class="w"> </span><span class="n">NextHeadLeft</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">// arrange</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_pair</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// act</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">next_head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_next_head</span><span class="p">(</span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">);</span>
+<span class="c1">// assert</span>
+<span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">next_head</span><span class="p">,</span><span class="n">make_pair</span><span class="p">(</span><span class="n">current</span><span class="p">.</span><span class="n">first</span><span class="p">,</span><span class="n">current</span><span class="p">.</span><span class="n">second</span><span class="mi">-1</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="aaa-in-the-wild">AAA in the wild</h3>
+<p>Python, but the shape is the point.</p>
+<p><strong><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_prompt_tool_catalogue.py#L37-L44"><code>test_every_advertised_tool_is_callable</code></a></strong></p>
+<ul>
+<li><strong>Arrange:</strong> nothing to set up.</li>
+<li><strong>Act:</strong> one line — the set of tools the prompt advertises, minus the set actually registered.</li>
+<li><strong>Assert:</strong> <code>assert not unreachable</code>, carrying a message that names the offenders <em>and</em> the two files to fix.</li>
+</ul>
+<p>No <code># arrange</code> / <code># act</code> comments. The structure is visible without them.</p>
+<p>The <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_prompt_tool_catalogue.py#L1-L13">module docstring</a> records why the test exists: <code>check_room_availability</code> was advertised to the model for months without existing, because two surfaces had no test tying them together.</p>
+<blockquote>
+<p><mark>A test is an executable bug report.</mark></p>
+</blockquote>
+<hr />
+<h3 id="anti-patterns-to-avoid">Anti-Patterns to Avoid</h3>
+<h4 id="multiple-aaa-sections">Multiple AAA Sections:**</h4>
+<p><img alt="" src="../../images/testing/multi_aaa_sections.png" />  </p>
+<ul>
+<li>Such a test is no longer a unit test but an integration test. It should be refactored by extracting each <code>Act</code> into its own distinct test.</li>
+<li><strong>Exception:</strong> This structure is sometimes acceptable as an optimization for slow integration tests where system states naturally flow from one to the next. It is not appropriate for unit tests.</li>
+</ul>
+<p>Looks like it, but isn't: <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_chat_guardrails.py#L208-L215"><code>test_ip_backstop_limit</code></a> — a loop of 60 requests, each asserted, then a 61<sup>st</sup> expecting <code>429</code>.</p>
+<ul>
+<li>The loop is <strong>Arrange</strong>. Sixty requests to reach the boundary. The Act is the 61<sup>st</sup>.</li>
+<li>One behaviour under test, one assert on it. The in-loop assert guards the setup: if the endpoint stopped returning <code>401</code>, the <code>429</code> would mean nothing.</li>
+<li><mark>Ask which section a statement belongs to, not how many asserts you can count.</mark></li>
+</ul>
+<hr />
+<h4 id="if-statements">if statements</h4>
+<p>Tests should be a simple, linear sequence of steps with no branching. <mark>An <code>if</code> statement indicates the test is verifying too many things at once and must be split into multiple, more focused tests.</mark> This rule applies to both unit and integration tests, <mark>as branching provides no benefits and only increases maintenance costs.</mark></p>
+<hr />
+<h4 id="three-of-them-in-one-code-base">Three of them in one code base</h4>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What goes wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_retrieval.py#L14-L21"><code>test_retrieve_faculty_basic</code></a></td>
+<td><code>if results:</code> — an empty database makes it assert only <code>isinstance(results, list)</code>. Passes while verifying nothing.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_availability.py#L110-L119"><code>test_venue_overlap_logic</code></a></td>
+<td>Branches on the <em>expected value</em>. Right instinct, wrong shape.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_library.py#L362-L375"><code>test_get_book_details_live</code></a></td>
+<td><code>pytest.skip()</code> on a data condition, halfway through. Green without testing the behaviour.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="removing-the-branch">Removing the branch</h4>
+<p>The parametrized cases are worth keeping. Only the <code>if</code> has to go.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># antipattern</span>
+<span class="k">if</span> <span class="n">expected_available</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="s2">&quot;CEP-102&quot;</span> <span class="ow">in</span> <span class="n">available_venues</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="s2">&quot;CEP-102&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available_venues</span>
+
+<span class="c1"># linear</span>
+<span class="k">assert</span> <span class="p">(</span><span class="s2">&quot;CEP-102&quot;</span> <span class="ow">in</span> <span class="n">available_venues</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected_available</span>
+</code></pre></div>
+<hr />
+<h3 id="how-large-each-section-should-be">How large each section should be?</h3>
+<ul>
+<li>ARRANGE section is usually the largest.</li>
+<li>ACT section is usually single line<ul>
+<li>More than single line is a smell. Shows lack of encapsulation</li>
+<li>When a single business operation requires multiple method calls from the client, it creates the risk of <strong>invariant violations</strong> (e.g., a customer acquires a product, but the inventory is not reduced).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Bad example: 
+<div class="highlight"><pre><span></span><code><span class="na">[Fact]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase_succeeds_when_enough_inventory</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="c1">// Arrange</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Store</span><span class="p">();</span>
+<span class="n">store</span><span class="p">.</span><span class="n">AddInventory</span><span class="p">(</span><span class="n">Product</span><span class="p">.</span><span class="n">Shampoo</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Customer</span><span class="p">();</span>
+<span class="c1">// Act</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customer</span><span class="p">.</span><span class="n">Purchase</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">Product</span><span class="p">.</span><span class="n">Shampoo</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="n">store</span><span class="p">.</span><span class="n">RemoveInventory</span><span class="p">(</span><span class="n">success</span><span class="p">,</span><span class="w"> </span><span class="n">Product</span><span class="p">.</span><span class="n">Shampoo</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="c1">// Assert</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">True</span><span class="p">(</span><span class="n">success</span><span class="p">);</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">GetInventory</span><span class="p">(</span><span class="n">Product</span><span class="p">.</span><span class="n">Shampoo</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Good example:</p>
+<div class="highlight"><pre><span></span><code><span class="na">[Fact]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase_succeeds_when_enough_inventory</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="c1">// Arrange</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Store</span><span class="p">();</span>
+<span class="n">store</span><span class="p">.</span><span class="n">AddInventory</span><span class="p">(</span><span class="n">Product</span><span class="p">.</span><span class="n">Shampoo</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Customer</span><span class="p">();</span>
+<span class="c1">// Act</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customer</span><span class="p">.</span><span class="n">Purchase</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">Product</span><span class="p">.</span><span class="n">Shampoo</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="c1">// Assert</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">True</span><span class="p">(</span><span class="n">success</span><span class="p">);</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">GetInventory</span><span class="p">(</span><span class="n">Product</span><span class="p">.</span><span class="n">Shampoo</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="how-many-assertions-in-a-test">How many assertions in a test?</h3>
+<p>A unit in unit testing is a unit of behavior, not a unit of code. A single unit of behavior can exhibit multiple outcomes, and <mark>it’s fine to evaluate them all in one test</mark>.</p>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_retrieval.py#L32-L37"><code>test_retrieve_empty_query</code></a> — four asserts, one behaviour: a blank query returns an empty list, for faculty and staff alike.</p>
+<hr />
+<h3 id="naming-a-unit-test">Naming a unit test</h3>
+<p>A name is read far more often than the test body. On failure, the name <em>is</em> the report.</p>
+<p>Bad — a rigid template:</p>
+<div class="highlight"><pre><span></span><code>Sum_TwoNumbers_ReturnsSum
+IsDeliveryValid_InvalidDate_ReturnsFalse
+</code></pre></div>
+<ul>
+<li>Legible only to someone who already knows the code.</li>
+<li>Binds the test name to a <em>method</em> name. Rename the method and the name lies.</li>
+<li>You test <strong>behaviour</strong>, not methods.</li>
+</ul>
+<hr />
+<h3 id="the-rule">The rule</h3>
+<blockquote>
+<p><mark>Name the test as if describing the scenario to a non-programmer who knows the problem domain.</mark></p>
+</blockquote>
+<ol>
+<li>No rigid naming policy. Complex behaviour needs a complex description.</li>
+<li>Separate words with underscores.</li>
+<li>Keep the SUT's method name out of the test name.</li>
+</ol>
+<hr />
+<h3 id="working-a-name-into-shape">Working a name into shape</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Template</td>
+<td><code>IsDeliveryValid_InvalidDate_ReturnsFalse</code></td>
+</tr>
+<tr>
+<td>Plain English</td>
+<td><code>Delivery_with_invalid_date_should_be_considered_invalid</code></td>
+</tr>
+<tr>
+<td>Drop "should be"</td>
+<td><code>Delivery_with_invalid_date_is_considered_invalid</code></td>
+</tr>
+<tr>
+<td>Name the real rule, not "invalid"</td>
+<td><code>Delivery_with_past_date_is_invalid</code></td>
+</tr>
+</tbody>
+</table>
+<p>"Should be" hedges. A test states a fact about the system.</p>
+<hr />
+<h3 id="from-a-real-code-base">From a real code base</h3>
+<div class="highlight"><pre><span></span><code>test_exact_match_wins_over_longer_substring_match
+test_venue_with_no_sessions_still_reports_the_substitution
+test_an_explicit_day_needs_no_calendar_at_all
+</code></pre></div>
+<p>Each name asserts a fact. When one turns red, the report names the broken behaviour before you open the file.</p>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_prompt_tool_catalogue.py#L32-L44">Two more, in full</a>. Neither contains the name of the function under test, <code>list_tools</code>.</p>
+<p>Compare: <code>test_resolve_faculty_2</code>.</p>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.manning.com/books/unit-testing">Chapters 1 &amp; 3, Unit Testing, Principles Practices and Patterns by Vladimir Khorikov</a></li>
+<li><a href="https://martinfowler.com/books/refactoring.html">Chapter 4, Building Tests, Refactoring (2<sup>nd</sup> ed.) by Martin Fowler</a></li>
+<li>Worked examples from <a href="https://github.com/Piyushtanwani/DAU-buddy">DAU-buddy</a>, pinned at commit <a href="https://github.com/Piyushtanwani/DAU-buddy/tree/b909c221fcccb069f3ff9eb40e8292b435145d8a"><code>b909c22</code></a>.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture5_6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5-6:Smells in the data">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                5-6:Smells in the data
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../labs/assignment-1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1:Make it multiplayer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                1:Make it multiplayer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

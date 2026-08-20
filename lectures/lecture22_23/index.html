@@ -1,0 +1,1233 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/lecture22_23/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Specification based testing - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#specification-based-testing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Specification based testing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-how-to-derive-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - How to derive test cases?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="- How to derive test cases?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Unit Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-based-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specification based tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specification based tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-specification-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steps for Specification-Based Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-based-testing-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specification-Based Testing in Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boundary-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boundary Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structural Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-coverage-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code coverage criteria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code coverage criteria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-line-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Line Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-branch-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Branch Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-condition-branch-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Condition + Branch Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-path-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Path Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="specification-based-testing">Specification based testing</h1>
+<h3 id="quick-recap">Quick recap</h3>
+<ul>
+<li>Testing with external dependencies</li>
+<li>Test Doubles<ul>
+<li>mock, stub, spy, dummies, fake</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<h2 id="-how-to-derive-test-cases">- How to derive test cases?</h2>
+<h3 id="types-of-unit-test">Types of Unit Test</h3>
+<ol>
+<li><strong>Specification tests</strong>: Derive tests directly from the <em>specification</em> of a function or class - that is, what it <em>should</em> do, not how it’s implemented.   You don’t look at the code - you look at the <strong>requirements</strong>.</li>
+<li><strong>Boundary tests</strong>:  Boundaries are where most bugs hide — just below, at, and just above the limits of input ranges.</li>
+<li><strong>Property-Based Testing</strong>: In property-based testing, instead of coming up with concrete examples, we express the property that should hold for that method. The framework then randomly generates hundreds of different inputs.</li>
+<li><strong>Structural Testing</strong>: Design tests to ensure <strong>every path</strong>, <strong>branch</strong>, or <strong>statement</strong> in the code executes at least once.</li>
+</ol>
+<hr />
+<h3 id="specification-based-tests">Specification based tests</h3>
+<p><img alt="Specification based Testing" src="../../images/testing/specification_nutshell.png" /></p>
+<hr />
+<h4 id="example">Example:</h4>
+<p><strong>Method</strong>: substringsBetween()
+Searches a string for substrings delimited by a start and end tag, returning all
+matching substrings in an array.
+-  str - The string containing the substrings. Null returns null; an empty
+string returns another empty string.
+-  open - The string identifying the start of the substring. An empty string
+returns null.
+-  close- The string identifying the end of the substring. An empty string
+returns null.
+The program returns a string array of substrings, or null if there is no match.</p>
+<hr />
+<h4 id="code-structure">Code structure</h4>
+<p>Refer code: <a href="../code/specification_testing">here</a>
+<div class="highlight"><pre><span></span><code>.
+├── src
+│   ├── main.cpp
+│   └── substrings_between.h
+└── tests
+    └── substring_between_test.cpp
+
+3 directories, 3 files
+</code></pre></div></p>
+<hr />
+<h4 id="steps-for-specification-based-testing"><strong>Steps for Specification-Based Testing</strong></h4>
+<ol>
+<li><strong>Understand the Requirements</strong><ul>
+<li>Grasp what the program should and shouldn’t do.</li>
+<li>Identify input/output variables, their types, domains, and corner cases.</li>
+</ul>
+</li>
+<li><strong>Explore the Program</strong><ul>
+<li>Experiment with different inputs to understand its behavior.</li>
+<li>Build a mental model of how the program works.</li>
+</ul>
+</li>
+<li><strong>Identify Input and Output Partitions</strong><ul>
+<li>Analyze each input’s type and valid range.</li>
+<li>Study dependencies between variables.</li>
+<li>Consider all possible output types and implicit business rules.</li>
+</ul>
+</li>
+<li><strong>Find Boundaries</strong><ul>
+<li>Focus on edge cases, as bugs often occur at partition boundaries.</li>
+</ul>
+</li>
+<li><strong>Design Test Cases</strong><ul>
+<li>Combine partitions and boundary conditions strategically.</li>
+<li>Avoid unnecessary combinations by testing exceptional cases only once.</li>
+</ul>
+</li>
+<li><strong>Automate the Tests</strong><ul>
+<li>Write automated tests with clear inputs and expected outputs.</li>
+<li>Keep test code clean, maintainable, and easy to debug.</li>
+</ul>
+</li>
+<li><strong>Refine with Creativity and Experience</strong><ul>
+<li>Review the test suite for gaps.</li>
+<li>Add additional cases based on intuition or domain knowledge.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h4 id="specification-based-testing-in-practice">Specification-Based Testing in Practice</h4>
+<ol>
+<li><strong>Iterative, not sequential:</strong><br />
+    The process of deriving test cases is <strong>cyclic</strong> — you often go back to refine partitions or boundaries while writing tests.</li>
+<li><strong>Depth of testing depends on risk:</strong><br />
+    Test <strong>critical or high-risk areas</strong> more thoroughly; be pragmatic where the cost of failure is low.</li>
+<li><strong>Partition vs. boundary — don’t overthink it:</strong><br />
+    It doesn’t matter whether a case is seen as a partition or a boundary — what matters is that it’s <strong>tested</strong>.</li>
+<li><strong>On/off points are usually enough:</strong><br />
+    Testing <strong>boundary values</strong> (“on” and “off” points) covers most cases, though adding extra “in/out” points can improve understanding.</li>
+<li><strong>Use variations of a base input:</strong><br />
+    Use a <strong>common input seed</strong> (like <code>"abc"</code>) and make small tweaks to derive multiple test cases — this simplifies analysis and debugging.</li>
+<li><strong>Control combinatorial explosion:</strong><ul>
+<li>Reduce combinations by isolating exceptional cases.</li>
+<li>Split large methods into smaller, testable units when combinations grow too large.</li>
+</ul>
+</li>
+<li><strong>Keep test inputs simple:</strong><br />
+    Use the <strong>simplest possible values</strong> (small integers, short strings) unless complexity is necessary for coverage.</li>
+<li><strong>Use realistic placeholders for irrelevant inputs:</strong><br />
+    When certain inputs don’t affect behavior, use <strong>reasonable, realistic defaults</strong>.</li>
+<li><strong>Test nulls and exceptions contextually:</strong><br />
+    Only test null or edge cases <strong>when they can realistically occur</strong> in that component’s context (e.g., UI vs. internal logic).</li>
+<li><strong>Use parameterized tests for repetitive cases:</strong><br />
+    Avoid duplication by grouping similar tests using <strong>parameterized frameworks</strong>.</li>
+<li><strong>Applies at all levels of granularity:</strong><br />
+    The same partitioning and boundary reasoning applies to <strong>methods, classes, and larger systems</strong> (unit or integration tests).</li>
+<li><strong>Include class state in OOP testing:</strong><br />
+    When testing <strong>stateful classes</strong>, consider both <strong>input parameters</strong> and <strong>object state</strong> before invoking methods.</li>
+<li><strong>Experience and creativity still matter:</strong><br />
+    Systematic steps help, but experienced testers will design <strong>better, more focused tests</strong> based on intuition and domain insight.</li>
+</ol>
+<hr />
+<h4 id="exercise">Exercise</h4>
+<ol>
+<li>Implement adder : <a href="https://leetcode.com/problems/add-strings">https://leetcode.com/problems/add-strings</a></li>
+<li>Write specification based test cases for the same</li>
+</ol>
+<hr />
+<h2 id="boundary-testing">Boundary Testing</h2>
+<p>Boundaries are where most bugs hide — just below, at, and just above the limits of input ranges.</p>
+<h3 id="example_1">Example</h3>
+<p>For a function:</p>
+<blockquote>
+<p>“<code>gradeFromMarks(int marks)</code> returns grade A/B/C/F based on:
+- 90–100 → A
+- 75–89 → B
+- 50–74 → C
+- &lt;50 → F”</p>
+</blockquote>
+<p>Test code:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">gradeFromMarks</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">75</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test_grade_boundaries</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Boundary values around grade cutoffs</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">gradeFromMarks</span><span class="p">(</span><span class="mi">89</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// just below A</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">gradeFromMarks</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// at A boundary</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">gradeFromMarks</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// just above</span>
+
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">gradeFromMarks</span><span class="p">(</span><span class="mi">49</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// below pass</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">gradeFromMarks</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// at pass boundary</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="structural-testing">Structural Testing</h2>
+<p>Design tests to ensure <strong>every path</strong>, <strong>branch</strong>, or <strong>statement</strong> in the code executes at least once.</p>
+<h3 id="example_2">Example</h3>
+<p>Code to be testing
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="nf">discount</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isMember</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">isMember</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">isMember</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.05</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Test code:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test_discount_structure</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Path 1: Negative amount</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">discount</span><span class="p">(</span><span class="mi">-10</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Path 2: amount &gt; 1000 and member = true</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">discount</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.2</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Path 3: amount &gt; 1000 and member = false</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">discount</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Path 4: amount &lt;= 1000 and member = true</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">discount</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.05</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Path 5: amount &lt;= 1000 and member = false</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">discount</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="code-coverage-criteria">Code coverage criteria</h3>
+<h4 id="1-line-coverage">1. Line Coverage</h4>
+<ul>
+<li><strong>Goal:</strong> Every line of code is executed at least once.</li>
+<li><strong>Example:</strong> A single test that passes through an <code>if</code> statement counts as covered, even if only one branch is taken.</li>
+<li><strong>Limitation:</strong> Doesn’t ensure all conditions or outcomes are tested.</li>
+</ul>
+<hr />
+<h4 id="2-branch-coverage">2. Branch Coverage</h4>
+<ul>
+<li><strong>Goal:</strong> Each branch of decision points (<code>if</code>, <code>for</code>, <code>while</code>, etc.) is executed at least once.</li>
+<li><strong>Example:</strong> For <code>if (a &amp;&amp; b)</code>, one test makes it true, another makes it false.</li>
+<li><strong>Measure:</strong> 100% branch coverage means every <em>true/false edge</em> in the control-flow graph (CFG) is covered. </li>
+</ul>
+<hr />
+<h4 id="3-condition-branch-coverage">3. Condition + Branch Coverage</h4>
+<ul>
+<li><strong>Goal:</strong> Each individual condition in a branch is evaluated both <code>true</code> and <code>false</code>, <strong>and</strong> each branch outcome (<code>true</code>/<code>false</code>) is covered.</li>
+<li><strong>Example:</strong> For <code>if (A || B)</code>, testing A and B both true/false isn’t enough unless the whole <code>if</code> can also evaluate to false.</li>
+<li><strong>Benefit:</strong> Prevents missing cases where the overall branch is always true or false.</li>
+</ul>
+<hr />
+<h4 id="4-path-coverage">4. Path Coverage</h4>
+<ul>
+<li><strong>Goal:</strong> Every possible <em>execution path</em> through the program is tested.</li>
+<li><strong>Strength:</strong> Most rigorous and complete form of structural testing.</li>
+<li><strong>Limitation:</strong> Exponential growth in paths (e.g., 3 conditions → 8 paths; 10 → 1024).<br />
+    Loops make it practically impossible due to infinite or very large combinations.</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li>Chapter 2, Effective Software testing by MAURÍCIO ANICHE</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

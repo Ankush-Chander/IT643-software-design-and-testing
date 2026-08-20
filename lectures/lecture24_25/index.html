@@ -1,0 +1,1497 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/lecture24_25/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Testability and design - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#testability-and-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Testability and design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testability-and-design_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testability and design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testability and design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fix-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fix 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Root cause
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-pains-and-their-corresponding-design-flaws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Pains and Their Corresponding Design Flaws
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Pains and Their Corresponding Design Flaws">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-difficult-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Difficult Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-state-leaks-and-incomplete-shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. State Leaks and Incomplete Shutdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-framework-frustration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Framework Frustration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-difficult-mocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Difficult Mocking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-hidden-inputs-and-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Hidden Inputs and Effects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-unwieldy-parameter-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Unwieldy Parameter Lists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-test-thrash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Test Thrash
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-for-testability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Designing for Testability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Designing for Testability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-separate-infrastructure-code-from-domain-code-at-architectural-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Separate infrastructure code from domain code (at architectural level)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Separate infrastructure code from domain code (at architectural level)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bad-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bad design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-iostream-include-string-include-vector-include-stdexcept-struct-invoice-stdstring-name-int-value-simulated-database-api-placeholder-for-actual-db-calls-class-databaseconnection-public-databaseconnectionconst-stdstring-db-const-stdstring-user-stdcout-connecting-to-db-db-as-user-stdendl-void-close-stdcout-closing-db-connection-stdendl-stdvectorinvoice-executequeryconst-stdstring-query-stdcout-executing-query-query-stdendl-pretend-these-come-from-the-db-return-customera-50-customerb-120-customerc-90-class-invoicefilter-private-infrastructure-logic-embedded-in-domain-class-stdvectorinvoice-all-try-databaseconnection-conninvoices_db-root-stdstring-query-select-from-invoices-stdvectorinvoice-allinvoices-connexecutequeryquery-connclose-return-allinvoices-catch-const-stdexception-e-stdcerr-db-error-ewhat-stdendl-return-public-domain-logic-mixed-with-infrastructure-stdvectorinvoice-lowvalueinvoices-stdvectorinvoice-issuedinvoices-all-stdvectorinvoice-result-for-const-auto-inv-issuedinvoices-if-invvalue-100-resultpush_backinv-return-result-int-main-invoicefilter-filter-auto-lowvalue-filterlowvalueinvoices-stdcout-low-value-invoicesn-for-const-auto-inv-lowvalue-stdcout-invname-invvalue-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;stdexcept&gt; struct Invoice { std::string name; int value; }; // Simulated database API (placeholder for actual DB calls) class DatabaseConnection { public: DatabaseConnection(const std::string&amp; db, const std::string&amp; user) { std::cout &lt;&lt; &quot;Connecting to DB: &quot; &lt;&lt; db &lt;&lt; &quot; as &quot; &lt;&lt; user &lt;&lt; std::endl; } void close() { std::cout &lt;&lt; &quot;Closing DB connection&quot; &lt;&lt; std::endl; } std::vector&lt;Invoice&gt; executeQuery(const std::string&amp; query) { std::cout &lt;&lt; &quot;Executing query: &quot; &lt;&lt; query &lt;&lt; std::endl; // Pretend these come from the DB: return { {&quot;CustomerA&quot;, 50}, {&quot;CustomerB&quot;, 120}, {&quot;CustomerC&quot;, 90} }; } }; class InvoiceFilter { private: // Infrastructure logic embedded in domain class std::vector&lt;Invoice&gt; all() { try { DatabaseConnection conn(&quot;invoices_db&quot;, &quot;root&quot;); std::string query = &quot;SELECT * FROM invoices&quot;; std::vector&lt;Invoice&gt; allInvoices = conn.executeQuery(query); conn.close(); return allInvoices; } catch (const std::exception&amp; e) { std::cerr &lt;&lt; &quot;DB Error: &quot; &lt;&lt; e.what() &lt;&lt; std::endl; return {}; } } public: // ❌ Domain logic mixed with infrastructure std::vector&lt;Invoice&gt; lowValueInvoices() { std::vector&lt;Invoice&gt; issuedInvoices = all(); std::vector&lt;Invoice&gt; result; for (const auto&amp; inv : issuedInvoices) { if (inv.value &lt; 100) result.push_back(inv); } return result; } }; int main() { InvoiceFilter filter; auto lowValue = filter.lowValueInvoices(); std::cout &lt;&lt; &quot;Low-value invoices:\n&quot;; for (const auto&amp; inv : lowValue) std::cout &lt;&lt; &quot; - &quot; &lt;&lt; inv.name &lt;&lt; &quot; ($&quot; &lt;&lt; inv.value &lt;&lt; &quot;)\n&quot;; }
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="#include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;stdexcept&gt; struct Invoice { std::string name; int value; }; // Simulated database API (placeholder for actual DB calls) class DatabaseConnection { public: DatabaseConnection(const std::string&amp; db, const std::string&amp; user) { std::cout &lt;&lt; &#34;Connecting to DB: &#34; &lt;&lt; db &lt;&lt; &#34; as &#34; &lt;&lt; user &lt;&lt; std::endl; } void close() { std::cout &lt;&lt; &#34;Closing DB connection&#34; &lt;&lt; std::endl; } std::vector&lt;Invoice&gt; executeQuery(const std::string&amp; query) { std::cout &lt;&lt; &#34;Executing query: &#34; &lt;&lt; query &lt;&lt; std::endl; // Pretend these come from the DB: return { {&#34;CustomerA&#34;, 50}, {&#34;CustomerB&#34;, 120}, {&#34;CustomerC&#34;, 90} }; } }; class InvoiceFilter { private: // Infrastructure logic embedded in domain class std::vector&lt;Invoice&gt; all() { try { DatabaseConnection conn(&#34;invoices_db&#34;, &#34;root&#34;); std::string query = &#34;SELECT * FROM invoices&#34;; std::vector&lt;Invoice&gt; allInvoices = conn.executeQuery(query); conn.close(); return allInvoices; } catch (const std::exception&amp; e) { std::cerr &lt;&lt; &#34;DB Error: &#34; &lt;&lt; e.what() &lt;&lt; std::endl; return {}; } } public: // ❌ Domain logic mixed with infrastructure std::vector&lt;Invoice&gt; lowValueInvoices() { std::vector&lt;Invoice&gt; issuedInvoices = all(); std::vector&lt;Invoice&gt; result; for (const auto&amp; inv : issuedInvoices) { if (inv.value &lt; 100) result.push_back(inv); } return result; } }; int main() { InvoiceFilter filter; auto lowValue = filter.lowValueInvoices(); std::cout &lt;&lt; &#34;Low-value invoices:\n&#34;; for (const auto&amp; inv : lowValue) std::cout &lt;&lt; &#34; - &#34; &lt;&lt; inv.name &lt;&lt; &#34; ($&#34; &lt;&lt; inv.value &lt;&lt; &#34;)\n&#34;; }">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known issues:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#good-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-iostream-include-string-include-vector-include-chrono-include-memory-domain-model-class-shoppingcart-stdstring-customername_-bool-paid_-bool-readyfordelivery_-stdchronosystem_clocktime_point-estimateddelivery_-public-shoppingcartstdstring-customername-bool-paid-customername_stdmovecustomername-paid_paid-readyfordelivery_false-const-stdstring-customername-const-return-customername_-bool-ispaid-const-return-paid_-void-markasreadyfordeliverystdchronosystem_clocktime_point-day-readyfordelivery_-true-estimateddelivery_-day-void-printstatus-const-stdcout-cart-for-customername_-readyfordelivery_-is-ready-for-deliveryn-is-not-readyn-interfaces-for-collaborators-injected-deps-struct-ishoppingcartrepository-virtual-ishoppingcartrepository-default-virtual-stdvectorshoppingcart-cartspaidtoday-0-virtual-void-persistconst-shoppingcart-cart-0-struct-ideliverycenter-virtual-ideliverycenter-default-virtual-stdchronosystem_clocktime_point-deliverconst-shoppingcart-cart-0-struct-icustomernotifier-virtual-icustomernotifier-default-virtual-void-sendestimateddeliverynotificationconst-shoppingcart-cart-0-struct-isap-virtual-isap-default-virtual-void-cartreadyfordeliveryconst-shoppingcart-cart-0-main-class-paidshoppingcartsbatch-class-paidshoppingcartsbatch-ishoppingcartrepository-db_-ideliverycenter-deliverycenter_-icustomernotifier-notifier_-isap-sap_-public-paidshoppingcartsbatchishoppingcartrepository-db-ideliverycenter-deliverycenter-icustomernotifier-notifier-isap-sap-db_db-deliverycenter_deliverycenter-notifier_notifier-sap_sap-void-processall-auto-paidcarts-db_cartspaidtoday-for-auto-cart-paidcarts-auto-estimatedday-deliverycenter_delivercart-cartmarkasreadyfordeliveryestimatedday-db_persistcart-notifier_sendestimateddeliverynotificationcart-sap_cartreadyfordeliverycart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;chrono&gt; #include &lt;memory&gt; //------------------------------------------- // Domain Model //------------------------------------------- class ShoppingCart { std::string customerName_; bool paid_; bool readyForDelivery_; std::chrono::system_clock::time_point estimatedDelivery_; public: ShoppingCart(std::string customerName, bool paid) : customerName_(std::move(customerName)), paid_(paid), readyForDelivery_(false) {} const std::string&amp; customerName() const { return customerName_; } bool isPaid() const { return paid_; } void markAsReadyForDelivery(std::chrono::system_clock::time_point day) { readyForDelivery_ = true; estimatedDelivery_ = day; } void printStatus() const { std::cout &lt;&lt; &quot;Cart for &quot; &lt;&lt; customerName_ &lt;&lt; (readyForDelivery_ ? &quot; is ready for delivery.\n&quot; : &quot; is not ready.\n&quot;); } }; //------------------------------------------- // Interfaces for collaborators (injected deps) //------------------------------------------- struct IShoppingCartRepository { virtual ~IShoppingCartRepository() = default; virtual std::vector&lt;ShoppingCart&gt; cartsPaidToday() = 0; virtual void persist(const ShoppingCart&amp; cart) = 0; }; struct IDeliveryCenter { virtual ~IDeliveryCenter() = default; virtual std::chrono::system_clock::time_point deliver(const ShoppingCart&amp; cart) = 0; }; struct ICustomerNotifier { virtual ~ICustomerNotifier() = default; virtual void sendEstimatedDeliveryNotification(const ShoppingCart&amp; cart) = 0; }; struct ISAP { virtual ~ISAP() = default; virtual void cartReadyForDelivery(const ShoppingCart&amp; cart) = 0; }; //------------------------------------------- // Main class — PaidShoppingCartsBatch //------------------------------------------- class PaidShoppingCartsBatch { IShoppingCartRepository&amp; db_; IDeliveryCenter&amp; deliveryCenter_; ICustomerNotifier&amp; notifier_; ISAP&amp; sap_; public: PaidShoppingCartsBatch(IShoppingCartRepository&amp; db, IDeliveryCenter&amp; deliveryCenter, ICustomerNotifier&amp; notifier, ISAP&amp; sap) : db_(db), deliveryCenter_(deliveryCenter), notifier_(notifier), sap_(sap) {} void processAll() { auto paidCarts = db_.cartsPaidToday(); for (auto&amp; cart : paidCarts) { auto estimatedDay = deliveryCenter_.deliver(cart); cart.markAsReadyForDelivery(estimatedDay); db_.persist(cart); notifier_.sendEstimatedDeliveryNotification(cart); sap_.cartReadyForDelivery(cart); } } };
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="#include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;chrono&gt; #include &lt;memory&gt; //------------------------------------------- // Domain Model //------------------------------------------- class ShoppingCart { std::string customerName_; bool paid_; bool readyForDelivery_; std::chrono::system_clock::time_point estimatedDelivery_; public: ShoppingCart(std::string customerName, bool paid) : customerName_(std::move(customerName)), paid_(paid), readyForDelivery_(false) {} const std::string&amp; customerName() const { return customerName_; } bool isPaid() const { return paid_; } void markAsReadyForDelivery(std::chrono::system_clock::time_point day) { readyForDelivery_ = true; estimatedDelivery_ = day; } void printStatus() const { std::cout &lt;&lt; &#34;Cart for &#34; &lt;&lt; customerName_ &lt;&lt; (readyForDelivery_ ? &#34; is ready for delivery.\n&#34; : &#34; is not ready.\n&#34;); } }; //------------------------------------------- // Interfaces for collaborators (injected deps) //------------------------------------------- struct IShoppingCartRepository { virtual ~IShoppingCartRepository() = default; virtual std::vector&lt;ShoppingCart&gt; cartsPaidToday() = 0; virtual void persist(const ShoppingCart&amp; cart) = 0; }; struct IDeliveryCenter { virtual ~IDeliveryCenter() = default; virtual std::chrono::system_clock::time_point deliver(const ShoppingCart&amp; cart) = 0; }; struct ICustomerNotifier { virtual ~ICustomerNotifier() = default; virtual void sendEstimatedDeliveryNotification(const ShoppingCart&amp; cart) = 0; }; struct ISAP { virtual ~ISAP() = default; virtual void cartReadyForDelivery(const ShoppingCart&amp; cart) = 0; }; //------------------------------------------- // Main class — PaidShoppingCartsBatch //------------------------------------------- class PaidShoppingCartsBatch { IShoppingCartRepository&amp; db_; IDeliveryCenter&amp; deliveryCenter_; ICustomerNotifier&amp; notifier_; ISAP&amp; sap_; public: PaidShoppingCartsBatch(IShoppingCartRepository&amp; db, IDeliveryCenter&amp; deliveryCenter, ICustomerNotifier&amp; notifier, ISAP&amp; sap) : db_(db), deliveryCenter_(deliveryCenter), notifier_(notifier), sap_(sap) {} void processAll() { auto paidCarts = db_.cartsPaidToday(); for (auto&amp; cart : paidCarts) { auto estimatedDay = deliveryCenter_.deliver(cart); cart.markAsReadyForDelivery(estimatedDay); db_.persist(cart); notifier_.sendEstimatedDeliveryNotification(cart); sap_.cartReadyForDelivery(cart); } } };">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-dependency-injection-and-controllability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dependency injection and Controllability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-make-classes-and-methods-observable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Make classes and methods observable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dependency-via-class-constructor-or-value-via-method-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dependency via class constructor or value via method parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="testability-and-design">Testability and design</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>How to derive test cases?<ul>
+<li>Specification testing</li>
+<li>Boundary testing</li>
+<li>Structural testing</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="testability-and-design_1">Testability and design</h2>
+<ul>
+<li><strong>Iceberg class</strong></li>
+</ul>
+<p>| <strong>RuleEvaluator</strong>    |
+| -------------------- |
+| + Evaluate(String)   |
+| - ParseAdjunctTerm() |
+| - ParseFactorTerm()  |
+| - ParseAdjunct()     |
+| - HasMoreTokens()    |
+| - GetNextToken()     |
+Testability: Not good</p>
+<hr />
+<h3 id="fix-1">Fix 1</h3>
+<p>Make private function public.
+Testable? Yes. Good design?</p>
+<table>
+<thead>
+<tr>
+<th><strong>RuleEvaluator</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+ Evaluate(String)</td>
+</tr>
+<tr>
+<td>- ParseAdjunctTerm()</td>
+</tr>
+<tr>
+<td>- ParseFactorTerm()</td>
+</tr>
+<tr>
+<td>- ParseAdjunct()</td>
+</tr>
+<tr>
+<td>+ HasMoreTokens()</td>
+</tr>
+<tr>
+<td>- GetNextToken()</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="root-cause">Root cause</h3>
+<ol>
+<li>Code violates Single Responsibility Principle</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>RuleEvaluator</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><mark>+ Evaluate(String)</mark></td>
+</tr>
+<tr>
+<td><strong>- ParseAdjunctTerm()</strong></td>
+</tr>
+<tr>
+<td><strong>- ParseFactorTerm()</strong></td>
+</tr>
+<tr>
+<td><strong>- ParseAdjunct()</strong></td>
+</tr>
+<tr>
+<td><em>+ HasMoreTokens()</em></td>
+</tr>
+<tr>
+<td><em>- GetNextToken()</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<table>
+<thead>
+<tr>
+<th><strong>RuleEvaluator</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+ Evaluate(String)</td>
+</tr>
+<tr>
+<td>- ParseAdjunctTerm()</td>
+</tr>
+<tr>
+<td>- ParseFactorTerm()</td>
+</tr>
+<tr>
+<td>- ParseAdjunct()</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>RuleTokenizer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+ HasMoreTokens()</td>
+</tr>
+<tr>
+<td>+ GetNextToken()</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The <code>RuleTokenizer</code> class now has a clean, public interface (<code>hasMoreTokens</code>, <code>getNextToken</code>), making it independently testable.<ul>
+<li>The original <code>RuleEvaluator</code> holds a private instance of the <code>RuleTokenizer</code>, maintaining its external encapsulation.</li>
+<li>This new structure adheres to SRP, resulting in smaller, more focused, and more maintainable classes. The testability problem disappears as a side effect of improving the design.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<ol>
+<li>Non testability is a code smell that points us to bad design.</li>
+<li>Forcing testability does not necessarily means improved design </li>
+</ol>
+<hr />
+<h2 id="testing-pains-and-their-corresponding-design-flaws">Testing Pains and Their Corresponding Design Flaws</h2>
+<h3 id="1-difficult-setup">1. Difficult Setup</h3>
+<ul>
+<li><strong>Testing Pain:</strong> The process of instantiating a single class for a test becomes a complex detective-work job, requiring the creation of a cascade of dependent objects ("you find yourself kind of bringing half the application in just to instantiate one object").</li>
+<li><strong>Underlying Design Flaw:</strong> <strong>Excessive Coupling.</strong> The class under test has too many dependencies and is not properly factored. Good design would break this gargantuan class into smaller, <mark>more cohesive units with fewer dependencies.</mark></li>
+</ul>
+<hr />
+<h3 id="2-state-leaks-and-incomplete-shutdown">2. State Leaks and Incomplete Shutdown</h3>
+<ul>
+<li><strong>Testing Pain:</strong> Tests fail intermittently or cause side effects in subsequent tests. This is often because a class does not release resources (e.g., file handles, network connections) or clean up static mutable data.</li>
+<li><strong>Underlying Design Flaw:</strong> <strong>Poor Resource Management and Use of Global State.</strong> The class is not self-contained and fails to manage its own lifecycle. This often points to the <mark>use of Singletons or other forms of global mutable state, which testing makes "very real" and painful.</mark></li>
+</ul>
+<hr />
+<h3 id="3-framework-frustration">3. Framework Frustration</h3>
+<ul>
+<li><strong>Testing Pain:</strong> Code is difficult to test because it is tightly interwoven with a framework (e.g., GUI, web, or persistence frameworks).</li>
+<li><strong>Underlying Design Flaw:</strong> <strong>Insufficient Separation of Concerns.</strong> The core domain logic is not separated from the framework infrastructure. A better design separates these concerns, <mark>allowing the domain logic to be tested independently as a plain object, with the framework delegating calls to it.</mark></li>
+</ul>
+<hr />
+<h3 id="4-difficult-mocking">4. Difficult Mocking</h3>
+<ul>
+<li><strong>Testing Pain:</strong> The process of creating mock objects for dependencies is convoluted and painful.</li>
+<li><strong>Underlying Design Flaw:</strong> This pain points to two distinct design violations:<ul>
+<li><strong>Violation of the Law of Demeter:</strong> When tests require creating chains of mocks (a fake A returns a fake B, which returns a fake C), it signals that the production code has long dependency chains (<code>object.getA().getB().getC()</code>). This creates pervasive dependencies throughout the system.</li>
+<li><strong>Violation of the Dependency Inversion Principle:</strong> When it's hard to substitute a dependency (e.g., a component that talks to a third-party API), <mark>it's because the code depends on a concrete class rather than an abstraction (interface).</mark> Introducing an interface makes substitution for testing straightforward and improves the design's flexibility.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="5-hidden-inputs-and-effects">5. Hidden Inputs and Effects</h3>
+<ul>
+<li><strong>Testing Pain:</strong> A class is untestable because its inputs or outputs are not exposed through its public interface. It may read from a hidden source (e.g., a global configuration) or write to an external system (e.g., a database) without any way to observe or control this behavior in a test.</li>
+<li><strong>Underlying Design Flaw:</strong> <strong>Encapsulation Violation and Insufficient Separation of Concerns.</strong> <mark>A well-designed object should make its inputs and outputs clear. When side effects are hidden, the class is doing more than it claims.</mark> The solution is to separate the computational logic from the external I/O logic into distinct classes.</li>
+</ul>
+<hr />
+<h3 id="6-unwieldy-parameter-lists">6. Unwieldy Parameter Lists</h3>
+<ul>
+<li><strong>Testing Pain:</strong> Instantiating a class or calling a method is painful due to an excessive number of parameters.</li>
+<li><strong>Underlying Design Flaw:</strong> <strong>Too Many Responsibilities.</strong> A long parameter list is a strong indicator that a class or method is trying to do too much. By writing tests, the developer becomes the "first client user of our code" and feels this pain concretely, motivating them to refactor the code into smaller, more focused units.</li>
+</ul>
+<hr />
+<h3 id="7-test-thrash">7. Test Thrash</h3>
+<ul>
+<li><strong>Testing Pain:</strong> A minor change in the production code causes a large number of tests to break.</li>
+<li><strong>Underlying Design Flaw:</strong> <strong>Violation of the Open/Closed Principle.</strong> The design lacks good "locality of concerns," causing changes to ripple across the system. A well-designed system, often composed of small classes with single responsibilities, is more open to extension but closed to modification. ==Changes can be introduced by adding or substituting classes rather than modifying existing ones, minimising test breakage. ==</li>
+</ul>
+<hr />
+<h2 id="designing-for-testability">Designing for Testability</h2>
+<h3 id="1-separate-infrastructure-code-from-domain-code-at-architectural-level">1. Separate infrastructure code from domain code (at architectural level)</h3>
+<h4 id="bad-design">Bad design</h4>
+<h2 id="include-iostream-include-string-include-vector-include-stdexcept-struct-invoice-stdstring-name-int-value-simulated-database-api-placeholder-for-actual-db-calls-class-databaseconnection-public-databaseconnectionconst-stdstring-db-const-stdstring-user-stdcout-connecting-to-db-db-as-user-stdendl-void-close-stdcout-closing-db-connection-stdendl-stdvectorinvoice-executequeryconst-stdstring-query-stdcout-executing-query-query-stdendl-pretend-these-come-from-the-db-return-customera-50-customerb-120-customerc-90-class-invoicefilter-private-infrastructure-logic-embedded-in-domain-class-stdvectorinvoice-all-try-databaseconnection-conninvoices_db-root-stdstring-query-select-from-invoices-stdvectorinvoice-allinvoices-connexecutequeryquery-connclose-return-allinvoices-catch-const-stdexception-e-stdcerr-db-error-ewhat-stdendl-return-public-domain-logic-mixed-with-infrastructure-stdvectorinvoice-lowvalueinvoices-stdvectorinvoice-issuedinvoices-all-stdvectorinvoice-result-for-const-auto-inv-issuedinvoices-if-invvalue-100-resultpush_backinv-return-result-int-main-invoicefilter-filter-auto-lowvalue-filterlowvalueinvoices-stdcout-low-value-invoicesn-for-const-auto-inv-lowvalue-stdcout-invname-invvalue-n"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Invoice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Simulated database API (placeholder for actual DB calls)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConnection</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">DatabaseConnection</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Connecting to DB: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; as &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Closing DB connection&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">executeQuery</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Executing query: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Pretend these come from the DB:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">{</span><span class="s">&quot;CustomerA&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="s">&quot;CustomerB&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="s">&quot;CustomerC&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InvoiceFilter</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Infrastructure logic embedded in domain class</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">all</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">DatabaseConnection</span><span class="w"> </span><span class="n">conn</span><span class="p">(</span><span class="s">&quot;invoices_db&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM invoices&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">allInvoices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">);</span>
+<span class="w">            </span><span class="n">conn</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">allInvoices</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DB Error: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+<span class="w">    </span><span class="c1">// ❌ Domain logic mixed with infrastructure</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lowValueInvoices</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">issuedInvoices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">all</span><span class="p">();</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">issuedInvoices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inv</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="w">                </span><span class="n">result</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">inv</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">InvoiceFilter</span><span class="w"> </span><span class="n">filter</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">lowValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filter</span><span class="p">.</span><span class="n">lowValueInvoices</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Low-value invoices:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">lowValue</span><span class="p">)</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ($&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></h2>
+<h4 id="known-issues">Known issues:</h4>
+<ul>
+<li>Domain code and infrastructure code are mixed. This means we will not be able to avoid database access when testing the low-value invoices rule.</li>
+<li>The more responsibilities, the more complexity, and the more chances for bugs. Classes that are less cohesive contain more code.</li>
+</ul>
+<hr />
+<h4 id="example">Example</h4>
+<p>Suppose an online web shop has the following requirements:
+For all the shopping carts that were paid today, the system should
+-  Set the status of the shopping cart as ready for delivery, and persist its new
+state in the database.
+- Notify the delivery center, and let them know they should send the goods
+to the customer.
+-  Notify the SAP system.
+-  Send an e-mail to the customer confirming that the payment was success-
+ful. The e-mail should contain an estimate of when delivery will happen.
+The information is available via the delivery center API.</p>
+<hr />
+<h4 id="good-design">Good Design</h4>
+<h2 id="include-iostream-include-string-include-vector-include-chrono-include-memory-domain-model-class-shoppingcart-stdstring-customername_-bool-paid_-bool-readyfordelivery_-stdchronosystem_clocktime_point-estimateddelivery_-public-shoppingcartstdstring-customername-bool-paid-customername_stdmovecustomername-paid_paid-readyfordelivery_false-const-stdstring-customername-const-return-customername_-bool-ispaid-const-return-paid_-void-markasreadyfordeliverystdchronosystem_clocktime_point-day-readyfordelivery_-true-estimateddelivery_-day-void-printstatus-const-stdcout-cart-for-customername_-readyfordelivery_-is-ready-for-deliveryn-is-not-readyn-interfaces-for-collaborators-injected-deps-struct-ishoppingcartrepository-virtual-ishoppingcartrepository-default-virtual-stdvectorshoppingcart-cartspaidtoday-0-virtual-void-persistconst-shoppingcart-cart-0-struct-ideliverycenter-virtual-ideliverycenter-default-virtual-stdchronosystem_clocktime_point-deliverconst-shoppingcart-cart-0-struct-icustomernotifier-virtual-icustomernotifier-default-virtual-void-sendestimateddeliverynotificationconst-shoppingcart-cart-0-struct-isap-virtual-isap-default-virtual-void-cartreadyfordeliveryconst-shoppingcart-cart-0-main-class-paidshoppingcartsbatch-class-paidshoppingcartsbatch-ishoppingcartrepository-db_-ideliverycenter-deliverycenter_-icustomernotifier-notifier_-isap-sap_-public-paidshoppingcartsbatchishoppingcartrepository-db-ideliverycenter-deliverycenter-icustomernotifier-notifier-isap-sap-db_db-deliverycenter_deliverycenter-notifier_notifier-sap_sap-void-processall-auto-paidcarts-db_cartspaidtoday-for-auto-cart-paidcarts-auto-estimatedday-deliverycenter_delivercart-cartmarkasreadyfordeliveryestimatedday-db_persistcart-notifier_sendestimateddeliverynotificationcart-sap_cartreadyfordeliverycart"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+
+<span class="c1">//-------------------------------------------</span>
+<span class="c1">// Domain Model</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ShoppingCart</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">customerName_</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">paid_</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">readyForDelivery_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">estimatedDelivery_</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ShoppingCart</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">customerName</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">paid</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">customerName_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">customerName</span><span class="p">)),</span><span class="w"> </span><span class="n">paid_</span><span class="p">(</span><span class="n">paid</span><span class="p">),</span><span class="w"> </span><span class="n">readyForDelivery_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">customerName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">customerName_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isPaid</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">paid_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">markAsReadyForDelivery</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">day</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">readyForDelivery_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">estimatedDelivery_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">printStatus</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Cart for &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">customerName_</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">readyForDelivery_</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; is ready for delivery.</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                                        </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; is not ready.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">//-------------------------------------------</span>
+<span class="c1">// Interfaces for collaborators (injected deps)</span>
+<span class="c1">//-------------------------------------------</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">IShoppingCartRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IShoppingCartRepository</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ShoppingCart</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cartsPaidToday</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">persist</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">IDeliveryCenter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IDeliveryCenter</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="nf">deliver</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">ICustomerNotifier</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ICustomerNotifier</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sendEstimatedDeliveryNotification</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">ISAP</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ISAP</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">cartReadyForDelivery</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">//-------------------------------------------</span>
+<span class="c1">// Main class — PaidShoppingCartsBatch</span>
+<span class="c1">//-------------------------------------------</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PaidShoppingCartsBatch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">IShoppingCartRepository</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">IDeliveryCenter</span><span class="o">&amp;</span><span class="w"> </span><span class="n">deliveryCenter_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICustomerNotifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">notifier_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ISAP</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sap_</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">PaidShoppingCartsBatch</span><span class="p">(</span><span class="n">IShoppingCartRepository</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">IDeliveryCenter</span><span class="o">&amp;</span><span class="w"> </span><span class="n">deliveryCenter</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">ICustomerNotifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">notifier</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">ISAP</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sap</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">db_</span><span class="p">(</span><span class="n">db</span><span class="p">),</span><span class="w"> </span><span class="n">deliveryCenter_</span><span class="p">(</span><span class="n">deliveryCenter</span><span class="p">),</span><span class="w"> </span><span class="n">notifier_</span><span class="p">(</span><span class="n">notifier</span><span class="p">),</span><span class="w"> </span><span class="n">sap_</span><span class="p">(</span><span class="n">sap</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">processAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">paidCarts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db_</span><span class="p">.</span><span class="n">cartsPaidToday</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">paidCarts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">estimatedDay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deliveryCenter_</span><span class="p">.</span><span class="n">deliver</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
+<span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="n">markAsReadyForDelivery</span><span class="p">(</span><span class="n">estimatedDay</span><span class="p">);</span>
+<span class="w">            </span><span class="n">db_</span><span class="p">.</span><span class="n">persist</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
+<span class="w">            </span><span class="n">notifier_</span><span class="p">.</span><span class="n">sendEstimatedDeliveryNotification</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
+<span class="w">            </span><span class="n">sap_</span><span class="p">.</span><span class="n">cartReadyForDelivery</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></h2>
+<p><img alt="" src="../../images/testing/adaptors_ports.png" /></p>
+<hr />
+<h3 id="2-dependency-injection-and-controllability">2.  Dependency injection and Controllability</h3>
+<ul>
+<li>Controllability<ul>
+<li>We should be able to control what a class under test does?</li>
+</ul>
+</li>
+<li>Dependency Injection<ul>
+<li>All external dependencies should be passed into a class (e.g. via its constructor or setter methods) rather than hard-coded inside it.</li>
+<li>By coding to abstractions (abstract classes, interfaces, or even C++ templates), unit tests can “plug in” stub or mock implementations.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="3-make-classes-and-methods-observable">3. Make classes and methods observable</h3>
+<p>Observability, at the class level, is about how easy it is to assert that the behavior of the functionality went as expected. 
+Ensure that your classes provide developers with simple and easy ways to assert their state.
+Common way:
+- Introducing methods to facilitate assertions
+- void methods are hard to test and can be improved by making them return some assertable value instead</p>
+<p>Example:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Not-so-good design</th>
+<th>Good design</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diagram</td>
+<td><img alt="" src="../../images/testing/not_so_observable_class.png" /></td>
+<td><img alt="" src="../../images/testing/observable_class.png" /></td>
+</tr>
+<tr>
+<td><strong>Testability</strong></td>
+<td>- The only way to verify behavior is to <strong>spy</strong> on <code>scheduleDelivery()</code>.<br>    <br>- If someone refactors the internals (e.g., calls a helper method), test breaks even though externally behavior is same → brittle.  <br>- No direct observable state.</td>
+<td>- Test checks behavior through <strong>observable program state</strong>, not implementation details.<br>    <br>- No mocking or spying needed for verification.<br>    <br>- Easier to read, maintain, and refactor safely.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="4-dependency-via-class-constructor-or-value-via-method-parameter">4. Dependency via class constructor or value via method parameter</h3>
+<ul>
+<li>Receiving a dependency via constructor adds a little complexity to the overall class and its tests but simplifies its client classes. </li>
+<li>Receiving the data via method parameter simplifies the class and its tests but adds a little complexity to the clients. </li>
+</ul>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li><a href="https://youtu.be/4cVZvoFGJTU?list=TLGG0KwbRmmxQHswMzExMjAyNQ">Michael Feathers - the deep synergy between testability and good design - YouTube</a></li>
+<li>Chapter 7, Designing for Testability "Effective Software testing by MAURÍCIO ANICHE"</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

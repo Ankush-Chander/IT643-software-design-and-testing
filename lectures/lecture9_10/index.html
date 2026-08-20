@@ -1,0 +1,1635 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/lecture9_10/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Choosing what to test, and what makes a test good - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#choosing-what-to-test-and-what-makes-a-test-good" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Choosing what to test, and what makes a test good
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9-choosing-what-to-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 9: Choosing what to test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 9: Choosing what to test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-do-test-cases-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where do test cases come from?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#four-ways-to-derive-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four ways to derive test cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specification-based testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-partition-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: partition the input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-the-partitions-the-spec-forgot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: the partitions the spec forgot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-the-seven-step-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: the seven-step loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-matters-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What matters in practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitions-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partitions in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boundary-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boundary testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#every-boundary-in-gradefrommarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Every boundary in gradeFromMarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundaries-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundaries in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-them-without-duplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing them without duplication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing them without duplication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-whole-thing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The whole thing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-the-table-beats-seven-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the table beats seven functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-10-what-makes-a-good-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 10: What makes a good test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 10: What makes a good test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#four-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protection-against-regressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protection against regressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resistance-to-refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resistance to refactoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-two-ways-a-test-can-lie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The two ways a test can lie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-causes-a-false-positive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What causes a false positive?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-false-alarms-are-the-worse-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why false alarms are the worse failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fast feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maintainability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The trade-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-this-is-worth-when-a-machine-writes-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this is worth when a machine writes the code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoring-a-test-you-have-already-seen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoring a test you have already seen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="choosing-what-to-test-and-what-makes-a-test-good">Choosing what to test, and what makes a test good</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<p>Last block you learned to write <em>one</em> good test: Arrange-Act-Assert, one Act, no
+branching, a name that states a fact. Coverage tells you what you missed, never
+what you proved.</p>
+<p>Two questions remain:</p>
+<ol>
+<li><strong>Which</strong> tests should exist? → Lecture 9</li>
+<li>How do you tell a <strong>good</strong> suite from a bad one? → Lecture 10</li>
+</ol>
+<hr />
+<h2 id="lecture-9-choosing-what-to-test">Lecture 9: Choosing what to test</h2>
+<hr />
+<h3 id="where-do-test-cases-come-from">Where do test cases come from?</h3>
+<p>Only two places.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Called</th>
+<th>You look at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What the code <strong>should</strong> do</td>
+<td>Specification testing</td>
+<td>the requirements</td>
+</tr>
+<tr>
+<td>What the code <strong>does</strong> do</td>
+<td>Structural testing</td>
+<td>the implementation</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Derive from the code and you inherit its bugs. A test written from a buggy
+  implementation asserts the bug.</li>
+<li>Derive from the spec and you can catch code that is confidently wrong.</li>
+</ul>
+<blockquote>
+<p><mark>An LLM writes tests from your code. You are the only one who has the specification.</mark></p>
+</blockquote>
+<hr />
+<h3 id="four-ways-to-derive-test-cases">Four ways to derive test cases</h3>
+<ol>
+<li><strong>Specification tests</strong> — from what it <em>should</em> do, not how it is written.</li>
+<li><strong>Boundary tests</strong> — just below, at, and just above every limit.</li>
+<li><strong>Property-based tests</strong> — state a property, let the framework generate hundreds of inputs.</li>
+<li><strong>Structural tests</strong> — from the code's own paths and branches.</li>
+</ol>
+<p>Today: 1 and 2. They need no tooling beyond what you already have, and they are
+the two an LLM cannot do for you.</p>
+<hr />
+<h3 id="specification-based-testing">Specification-based testing</h3>
+<p><img alt="Specification based Testing" src="../../images/testing/specification_nutshell.png" /></p>
+<hr />
+<h3 id="the-specification">The specification</h3>
+<blockquote>
+<p><code>gradeFromMarks(int marks)</code> returns a grade based on:</p>
+<ul>
+<li>90–100 → <code>"A"</code></li>
+<li>75–89 → <code>"B"</code></li>
+<li>50–74 → <code>"C"</code></li>
+<li>below 50 → <code>"F"</code></li>
+</ul>
+</blockquote>
+<p>Read it before you read any code. Write down what it promises.</p>
+<hr />
+<h3 id="step-1-partition-the-input">Step 1: partition the input</h3>
+<p>Every input value falls into exactly one class where behaviour is uniform.</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>marks &lt; 50</code></td>
+<td><code>"F"</code></td>
+</tr>
+<tr>
+<td><code>50 ≤ marks ≤ 74</code></td>
+<td><code>"C"</code></td>
+</tr>
+<tr>
+<td><code>75 ≤ marks ≤ 89</code></td>
+<td><code>"B"</code></td>
+</tr>
+<tr>
+<td><code>90 ≤ marks ≤ 100</code></td>
+<td><code>"A"</code></td>
+</tr>
+<tr>
+<td><code>marks &lt; 0</code></td>
+<td><strong>the spec does not say</strong></td>
+</tr>
+<tr>
+<td><code>marks &gt; 100</code></td>
+<td><strong>the spec does not say</strong></td>
+</tr>
+</tbody>
+</table>
+<p>One test per partition. Pick the simplest value in each — <code>60</code>, not <code>61.5</code>.</p>
+<hr />
+<h3 id="step-2-the-partitions-the-spec-forgot">Step 2: the partitions the spec forgot</h3>
+<p>The last two rows are the point of the exercise.</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">gradeFromMarks</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">75</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">GradeSpec</span><span class="p">,</span><span class="w"> </span><span class="n">MarksAboveHundredAreNotSpecified</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">gradeFromMarks</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// passes</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>The spec says A means 90–100. The code awards A for 150, and for 10000.</li>
+<li>Nothing in the code is <em>wrong</em>. The <strong>specification is incomplete</strong>.</li>
+</ul>
+<blockquote>
+<p><mark>Specification testing finds holes in the specification. Structural testing never can — the code has no hole, only a behaviour.</mark></p>
+</blockquote>
+<p>Generate this function from that spec with any model and you get this exact code.
+Ask the model to write tests for the code and every one of them passes.</p>
+<hr />
+<h3 id="step-3-the-seven-step-loop">Step 3: the seven-step loop</h3>
+<ol>
+<li><strong>Understand the requirements</strong> — inputs, outputs, types, domains.</li>
+<li><strong>Explore the program</strong> — try inputs, build a mental model.</li>
+<li><strong>Identify partitions</strong> — of every input, and of the output.</li>
+<li><strong>Find boundaries</strong> — where partitions meet.</li>
+<li><strong>Design cases</strong> — combine partitions; test exceptional cases once.</li>
+<li><strong>Automate</strong> — clear inputs, explicit expected values.</li>
+<li><strong>Refine</strong> — reread for gaps.</li>
+</ol>
+<p>It is a <strong>loop, not a checklist</strong>. Writing step 6 sends you back to step 3.</p>
+<hr />
+<h3 id="what-matters-in-practice">What matters in practice</h3>
+<ul>
+<li><strong>Depth follows risk.</strong> Test the fee calculation harder than the tooltip.</li>
+<li><strong>Partition or boundary — don't argue.</strong> What matters is that the case exists.</li>
+<li><strong>Vary one seed input.</strong> Start from <code>"abc"</code> and tweak it; debugging stays easy.</li>
+<li><strong>Keep inputs boring.</strong> Small integers, short strings, unless complexity is the point.</li>
+<li><strong>Test null only where null can occur.</strong> A UI boundary, not an internal helper.</li>
+<li><strong>Split the method</strong> when the combinations explode. Untestable usually means too big.</li>
+</ul>
+<hr />
+<h3 id="partitions-in-a-real-code-base">Partitions in a real code base</h3>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_calendar.py#L118-L127"><code>test_parse_day_substitution</code></a></p>
+<p>The academic calendar reassigns dates — <em>"07-08-2026 to be treated as Tuesday"</em>.
+The parser must recognise those and ignore everything else.</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Partition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"To be treated as Tuesday"</code></td>
+<td>canonical form</td>
+</tr>
+<tr>
+<td><code>"To be Treated as Friday"</code></td>
+<td>capitalisation varies in the real data</td>
+</tr>
+<tr>
+<td><code>"to be treated as    wednesday"</code></td>
+<td>whitespace varies too</td>
+</tr>
+<tr>
+<td><code>"Orientation of Fresh BTech Students"</code></td>
+<td>a real event, not a substitution</td>
+</tr>
+<tr>
+<td><code>"Instruction begins"</code></td>
+<td>ditto</td>
+</tr>
+<tr>
+<td><code>""</code></td>
+<td>empty</td>
+</tr>
+</tbody>
+</table>
+<p>Six cases, three partitions: parses, does not parse, degenerate. The three
+formatting variants are one partition — they exist because the <em>data</em> is
+inconsistent, and that is a domain fact no amount of reading the code reveals.</p>
+<hr />
+<h2 id="boundary-testing">Boundary testing</h2>
+<p><mark>Bugs cluster where partitions meet.</mark> <code>&gt;=</code> written as <code>&gt;</code>, a loop that stops one
+short, a cutoff that belongs to the wrong side.</p>
+<p>For a condition like <code>marks &gt;= 90</code>:</p>
+<ul>
+<li><strong>on-point</strong> — the value in the condition: <code>90</code></li>
+<li><strong>off-point</strong> — the nearest value that flips it: <code>89</code></li>
+</ul>
+<p>Test both. One of them is where the bug lives.</p>
+<hr />
+<h3 id="every-boundary-in-gradefrommarks">Every boundary in <code>gradeFromMarks</code></h3>
+<table>
+<thead>
+<tr>
+<th>Boundary</th>
+<th>off</th>
+<th>on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F / C</td>
+<td><code>49</code></td>
+<td><code>50</code></td>
+</tr>
+<tr>
+<td>C / B</td>
+<td><code>74</code></td>
+<td><code>75</code></td>
+</tr>
+<tr>
+<td>B / A</td>
+<td><code>89</code></td>
+<td><code>90</code></td>
+</tr>
+<tr>
+<td>top of range</td>
+<td><code>100</code></td>
+<td><code>101</code> — unspecified</td>
+</tr>
+</tbody>
+</table>
+<p>Seven values pin every cutoff. You do not need <code>63</code>, <code>81</code>, and <code>95</code> as well.</p>
+<hr />
+<h3 id="boundaries-in-a-real-code-base">Boundaries in a real code base</h3>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_availability.py#L77-L88"><code>test_venue_overlap_logic</code></a></p>
+<p>"Is this room free from 14:00 to 16:00?" is an interval-overlap question, and
+interval overlap is <em>all</em> boundary:</p>
+<table>
+<thead>
+<tr>
+<th>Requested</th>
+<th>Occupied</th>
+<th>Free?</th>
+<th>Why it is on the list</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14–16</td>
+<td>15–16</td>
+<td>no</td>
+<td>partial overlap</td>
+</tr>
+<tr>
+<td>14–16</td>
+<td>12–14</td>
+<td><strong>yes</strong></td>
+<td>touches at the start — off-point</td>
+</tr>
+<tr>
+<td>14–16</td>
+<td>16–18</td>
+<td><strong>yes</strong></td>
+<td>touches at the end — off-point</td>
+</tr>
+<tr>
+<td>14–18</td>
+<td>15–16</td>
+<td>no</td>
+<td>occupied sits inside</td>
+</tr>
+<tr>
+<td>15–16</td>
+<td>14–18</td>
+<td>no</td>
+<td>occupied surrounds</td>
+</tr>
+</tbody>
+</table>
+<p>The two <code>yes</code> rows are the whole test. Get <code>&lt;</code> and <code>&lt;=</code> backwards and a room
+booked 12:00–14:00 blocks the 14:00 lecture.</p>
+<hr />
+<h2 id="writing-them-without-duplication">Writing them without duplication</h2>
+<p>Seven near-identical <code>TEST()</code> blocks is copy-paste. GoogleTest has parameterized
+tests for exactly this shape.</p>
+<p>Three pieces:</p>
+<ol>
+<li>A class inheriting <code>::testing::TestWithParam&lt;T&gt;</code> — <code>T</code> is your row type.</li>
+<li><code>TEST_P(...)</code>, reading the row with <code>GetParam()</code>.</li>
+<li><code>INSTANTIATE_TEST_SUITE_P(...)</code> supplying the rows.</li>
+</ol>
+<hr />
+<h3 id="the-whole-thing">The whole thing</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tuple&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GradeCutoff</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">TestWithParam</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="n">TEST_P</span><span class="p">(</span><span class="n">GradeCutoff</span><span class="p">,</span><span class="w"> </span><span class="n">ReturnsTheGradeTheSpecPromises</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="n">expected</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetParam</span><span class="p">();</span><span class="w">       </span><span class="c1">// C++17 structured binding</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">gradeFromMarks</span><span class="p">(</span><span class="n">marks</span><span class="p">),</span><span class="w"> </span><span class="n">expected</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">INSTANTIATE_TEST_SUITE_P</span><span class="p">(</span><span class="n">OnAndOffPoints</span><span class="p">,</span><span class="w"> </span><span class="n">GradeCutoff</span><span class="p">,</span><span class="w"> </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">Values</span><span class="p">(</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;F&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;C&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">74</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;C&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;B&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">89</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;B&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;A&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">)</span>
+<span class="p">));</span>
+</code></pre></div>
+<p>Seven tests from one body. Adding a boundary is adding a line.</p>
+<div class="highlight"><pre><span></span><code>[  PASSED  ] 7 tests.
+</code></pre></div>
+<hr />
+<h3 id="why-the-table-beats-seven-functions">Why the table beats seven functions</h3>
+<ul>
+<li>A failure reports <code>OnAndOffPoints/GradeCutoff.ReturnsTheGradeTheSpecPromises/4</code> —
+  row 4, and the row is right there.</li>
+<li>The table <strong>is</strong> the partition analysis. Reviewers read your reasoning, not your loops.</li>
+<li>Recall the antipattern: a parameterized test must stay linear. Never branch on
+  the expected value — put the expectation in the table.</li>
+</ul>
+<hr />
+<h3 id="exercise">Exercise</h3>
+<ol>
+<li>Implement <a href="https://leetcode.com/problems/add-strings">add-strings</a> — add two
+   non-negative integers given as strings, without converting them to integers.</li>
+<li>Before writing any code, write the partition table. Include what the spec
+   does not say.</li>
+<li>Turn the boundaries into one <code>INSTANTIATE_TEST_SUITE_P</code>.</li>
+</ol>
+<p>Bring the table. That is what gets marked, not the implementation.</p>
+<hr />
+<h2 id="lecture-10-what-makes-a-good-test">Lecture 10: What makes a good test</h2>
+<hr />
+<h3 id="four-attributes">Four attributes</h3>
+<p>Every automated test — unit, integration or end-to-end — can be scored on four:</p>
+<ul>
+<li><strong>Protection against regressions</strong></li>
+<li><strong>Resistance to refactoring</strong></li>
+<li><strong>Fast feedback</strong></li>
+<li><strong>Maintainability</strong></li>
+</ul>
+<p>They are not independent. That is the whole problem.</p>
+<hr />
+<h3 id="protection-against-regressions">Protection against regressions</h3>
+<p>A regression is a feature that stops working after a change.</p>
+<p>This attribute measures how likely the test is to <strong>notice</strong>. It grows with:</p>
+<ul>
+<li>the <em>amount</em> of code the test executes,</li>
+<li>the <em>complexity</em> of that code,</li>
+<li>the code's <em>domain significance</em>.</li>
+</ul>
+<p>A test over your payment logic protects more than a test over a getter — even
+though both are one test.</p>
+<hr />
+<h3 id="resistance-to-refactoring">Resistance to refactoring</h3>
+<p>Refactoring changes code <strong>without changing observable behaviour</strong>.</p>
+<p>Resistance to refactoring is how much restructuring a test survives <strong>without
+raising a false alarm</strong>.</p>
+<ul>
+<li>A test that fails when you rename a private method is not protecting you.</li>
+<li>It is reporting that the code changed. You knew that.</li>
+</ul>
+<hr />
+<h3 id="the-two-ways-a-test-can-lie">The two ways a test can lie</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Functionality correct</th>
+<th>Functionality broken</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Test passes</strong></td>
+<td>✅</td>
+<td>❌ <strong>false negative</strong> — missed bug</td>
+</tr>
+<tr>
+<td><strong>Test fails</strong></td>
+<td>❌ <strong>false positive</strong> — false alarm</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Protection against regressions attacks the <strong>top-right</strong>.</li>
+<li>Resistance to refactoring attacks the <strong>bottom-left</strong>.</li>
+</ul>
+<p>Everyone worries about missed bugs. False alarms are what actually kill a suite.</p>
+<hr />
+<h3 id="what-causes-a-false-positive">What causes a false positive?</h3>
+<blockquote>
+<p><mark>The more a test is coupled to implementation details of the system under
+test, the more false alarms it raises.</mark></p>
+</blockquote>
+<p>The only fix is to decouple: assert on <strong>observable behaviour</strong>, not on how the
+result was reached.</p>
+<p>Test what the function returns. Not which private helper it called on the way.</p>
+<hr />
+<h3 id="why-false-alarms-are-the-worse-failure">Why false alarms are the worse failure</h3>
+<ul>
+<li>They dilute your willingness to react. You get used to red and stop reading it.</li>
+<li>They destroy trust in the suite as a safety net.</li>
+</ul>
+<p>A suite nobody trusts is deleted, or — worse — ignored while still running.</p>
+<hr />
+<h3 id="fast-feedback">Fast feedback</h3>
+<p>How quickly the test runs.</p>
+<ul>
+<li>Slow tests get run less often.</li>
+<li>Tests run less often catch regressions later.</li>
+<li>Later means a bigger diff to search.</li>
+</ul>
+<p>This is Fowler's argument from the opening of this block, restated as a measurable
+property. Your 173-test suite in 1.7 seconds is run every save. A 20-minute suite
+is run at 5pm.</p>
+<hr />
+<h3 id="maintainability">Maintainability</h3>
+<p>Two components:</p>
+<ul>
+<li><strong>How hard the test is to understand.</strong> Smaller is more readable.</li>
+<li><strong>How hard the test is to run.</strong> Fewer out-of-process dependencies — no
+  database, no network, no clock — means fewer things to keep alive.</li>
+</ul>
+<p>The recap example: <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_calendar.py#L118-L127"><code>test_parse_day_substitution</code></a>
+is a table and a one-line assert. Nothing to keep running.</p>
+<hr />
+<h3 id="the-trade-off">The trade-off</h3>
+<p><img alt="" src="../../images/testing/good_test_dichotomy.png" /></p>
+<p>You cannot maximise all four.</p>
+<ul>
+<li>An end-to-end test scores high on regression protection and refactoring
+  resistance, and terribly on speed.</li>
+<li>A trivial unit test is fast and maintainable and protects nothing.</li>
+</ul>
+<p><mark>Resistance to refactoring is the one attribute you cannot trade away.</mark> A test
+is either coupled to implementation details or it isn't; there is no useful
+middle. Pick your position on the other three.</p>
+<hr />
+<h3 id="what-this-is-worth-when-a-machine-writes-the-code">What this is worth when a machine writes the code</h3>
+<ul>
+<li>An agent refactors freely. A suite full of false positives goes red on every
+  run, you learn to ignore it, and you merge a diff nobody read.</li>
+<li>An agent cannot tell a false alarm from a real regression. It will "fix" your
+  production code to satisfy a test asserting an implementation detail.</li>
+<li>Regression protection is what lets you accept a change you did not write.</li>
+</ul>
+<blockquote>
+<p><mark>A codebase with good tests is an agent's superpower. A codebase without them
+is a liability.</mark></p>
+</blockquote>
+<hr />
+<h3 id="scoring-a-test-you-have-already-seen">Scoring a test you have already seen</h3>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_availability.py#L77-L88"><code>test_venue_overlap_logic</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Score</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protection</td>
+<td>high</td>
+<td>interval logic, real domain significance</td>
+</tr>
+<tr>
+<td>Refactoring resistance</td>
+<td>high</td>
+<td>asserts the answer, not how it was computed</td>
+</tr>
+<tr>
+<td>Fast feedback</td>
+<td>medium</td>
+<td>writes to a real SQLite database</td>
+</tr>
+<tr>
+<td>Maintainability</td>
+<td>medium</td>
+<td>needs rows inserted before it can ask anything</td>
+</tr>
+</tbody>
+</table>
+<p>Fixing the middle two is the subject of the next block: <strong>test doubles</strong>.</p>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.manning.com/books/unit-testing">Chapter 4, Unit Testing, Principles Practices and Patterns by Vladimir Khorikov</a></li>
+<li>Chapters 2–3, <em>Effective Software Testing</em> by Maurício Aniche — specification and boundary testing</li>
+<li><a href="http://google.github.io/googletest/advanced.html#value-parameterized-tests">Parameterized tests, GoogleTest documentation</a></li>
+<li>Worked examples from <a href="https://github.com/Piyushtanwani/DAU-buddy">DAU-buddy</a>, pinned at commit <a href="https://github.com/Piyushtanwani/DAU-buddy/tree/b909c221fcccb069f3ff9eb40e8292b435145d8a"><code>b909c22</code></a>.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
