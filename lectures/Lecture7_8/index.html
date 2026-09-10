@@ -16,7 +16,7 @@
         <link rel="prev" href="../Lecture5_6/">
       
       
-        <link rel="next" href="../../labs/assignment-1/">
+        <link rel="next" href="../Lecture9_10/">
       
       
         
@@ -761,6 +761,50 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#condition-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-ladder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ladder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#the-number-you-cannot-argue-with" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1023,6 +1067,62 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1353,6 +1453,50 @@
     <span class="md-ellipsis">
       
         Branch coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-ladder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ladder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural testing
       
     </span>
   </a>
@@ -1806,6 +1950,122 @@ one test and the total number of lines in the production code base.</p>
 <li>Immune to formatting. Still not a measure of quality.</li>
 </ul>
 <hr />
+<h3 id="condition-coverage">Condition coverage</h3>
+<p>Branch coverage counts the edges out of a decision. It does not look inside one.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">eligible</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">member</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">EXPECT_TRUE</span><span class="w"> </span><span class="p">(</span><span class="n">eligible</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w">  </span><span class="mi">500</span><span class="p">));</span>
+<span class="n">EXPECT_FALSE</span><span class="p">(</span><span class="n">eligible</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">));</span>
+</code></pre></div>
+<p>Both outcomes of the decision are reached. <strong>Decision coverage: 100%.</strong></p>
+<p>Now delete the second operand and change nothing else:</p>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">member</span><span class="p">;</span><span class="w">                     </span><span class="c1">// `|| amount &gt; 1000` removed</span>
+</code></pre></div>
+<p><mark>Both tests still pass.</mark> Half the condition was never tested, and no branch number said so.</p>
+<ul>
+<li><strong>Condition coverage</strong> — each operand evaluates both <code>true</code> and <code>false</code>.</li>
+<li><strong>Condition + branch coverage</strong> — that, <em>and</em> both decision outcomes.</li>
+</ul>
+<p>The test that catches it is <code>eligible(false, 1500)</code>. <code>gcov -b</code> reports at operand level rather than decision level, so it does show the gap — see <em>Reading the C++ report</em>.</p>
+<hr />
+<h3 id="path-coverage">Path coverage</h3>
+<p>Every route through the function, not every edge.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="nf">discount</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isMember</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">isMember</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.2</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w">               </span><span class="k">return</span><span class="w"> </span><span class="n">isMember</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.05</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th><code>amount</code></th>
+<th><code>isMember</code></th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rejected</td>
+<td><code>-10</code></td>
+<td>—</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>large, member</td>
+<td><code>1500</code></td>
+<td><code>true</code></td>
+<td><code>0.2</code></td>
+</tr>
+<tr>
+<td>large, non-member</td>
+<td><code>1500</code></td>
+<td><code>false</code></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td>small, member</td>
+<td><code>800</code></td>
+<td><code>true</code></td>
+<td><code>0.05</code></td>
+</tr>
+<tr>
+<td>small, non-member</td>
+<td><code>800</code></td>
+<td><code>false</code></td>
+<td><code>0.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Five paths, five tests. The strongest structural criterion, and the one that stops scaling:</p>
+<div class="arithmatex">\[\text{paths} = 2^n \quad \text{for } n \text{ independent conditions}\]</div>
+<p>Three conditions give 8 paths, ten give 1024, and one loop makes the count unbounded. <mark>Path coverage is a yardstick, not a target.</mark></p>
+<hr />
+<h3 id="the-ladder">The ladder</h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Requires</th>
+<th>Still blind to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Line</strong></td>
+<td>every line executes</td>
+<td>which branch was taken</td>
+</tr>
+<tr>
+<td><strong>Branch</strong></td>
+<td>every edge out of every decision</td>
+<td>operands inside a compound condition</td>
+</tr>
+<tr>
+<td><strong>Condition + branch</strong></td>
+<td>every operand both ways, every edge both ways</td>
+<td>how the conditions interact</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td>every route through the function</td>
+<td>anything the code never says</td>
+</tr>
+</tbody>
+</table>
+<p>Strength increases down the table. Cost increases faster. Branch is the level worth holding a code base to.</p>
+<hr />
+<h3 id="structural-testing">Structural testing</h3>
+<p>Read a criterion backwards and it stops being a score — it becomes a test list. The five rows above were not measured after the fact. They were derived from the control flow before a single test existed.</p>
+<p>That is <strong>structural testing</strong>: test cases taken from the code's own branches and paths.</p>
+<blockquote>
+<p><mark>It can only confirm that the code does what it does.</mark> A branch the author forgot has no edge to cover, so no criterion asks for it.</p>
+</blockquote>
+<p><code>discount</code> at 100% path coverage still says nothing about what should happen at exactly <code>1000</code>, or whether a negative amount deserves an error instead of a silent <code>0</code>. Those questions come from the specification — Lecture 9-10.</p>
+<hr />
 <h3 id="the-number-you-cannot-argue-with">The number you cannot argue with</h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">StringUtils</span><span class="p">,</span><span class="w"> </span><span class="n">CoversEverything</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">IsStringLong</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span>
@@ -2184,13 +2444,13 @@ test_an_explicit_day_needs_no_calendar_at_all
         
         
           
-          <a href="../../labs/assignment-1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1:Make it multiplayer">
+          <a href="../Lecture9_10/" class="md-footer__link md-footer__link--next" aria-label="Next: 9-10:Choosing what to test, and what makes a test good">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                1:Make it multiplayer
+                9-10:Choosing what to test, and what makes a test good
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -1,0 +1,2116 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture11_12/">
+      
+      
+        <link rel="prev" href="../Lecture9_10/">
+      
+      
+        <link rel="next" href="../../labs/assignment-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>11-12:Testing with external dependencies: test doubles - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#testing-with-external-dependencies-test-doubles-mocks-vs-stubs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              11-12:Testing with external dependencies: test doubles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-with-external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges with external dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-for-testing-code-with-external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategies for Testing Code with External Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strategies for Testing Code with External Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-via-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction via Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-doubles-for-third-party-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Doubles for Third-Party APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mocks-and-stubs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mocks and Stubs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gmock-in-one-slide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gMock in one slide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands-vs-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands vs queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands vs queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-is-easy-to-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule is easy to break
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands-and-queries-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands and queries in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-same-repo-breaks-the-rule-twice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same repo breaks the rule twice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and-once-harmlessly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        And once harmlessly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code separation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code separation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-vs-private-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public vs private API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observable-behaviour-vs-implementation-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observable behaviour vs implementation detail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#well-designed-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Well designed API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaky-api-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaky API design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-leaky-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        example leaky design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-test-double" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of test double
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-doubles-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test doubles in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-over-mocking-bites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where over-mocking bites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-three-doubles-one-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise: three doubles, one behaviour
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-with-external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges with external dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-for-testing-code-with-external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategies for Testing Code with External Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strategies for Testing Code with External Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-via-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction via Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-doubles-for-third-party-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Doubles for Third-Party APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mocks-and-stubs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mocks and Stubs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gmock-in-one-slide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gMock in one slide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands-vs-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands vs queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands vs queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-is-easy-to-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule is easy to break
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands-and-queries-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands and queries in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-same-repo-breaks-the-rule-twice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same repo breaks the rule twice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and-once-harmlessly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        And once harmlessly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code separation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code separation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-vs-private-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public vs private API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observable-behaviour-vs-implementation-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observable behaviour vs implementation detail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#well-designed-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Well designed API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaky-api-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaky API design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-leaky-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        example leaky design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-test-double" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of test double
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-doubles-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test doubles in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-over-mocking-bites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where over-mocking bites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-three-doubles-one-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise: three doubles, one behaviour
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="testing-with-external-dependencies-test-doubles-mocks-vs-stubs">Testing with external dependencies: test doubles, mocks vs stubs</h1>
+<h3 id="quick-recap">Quick recap</h3>
+<ul>
+<li>Attributes of a good unit test<ul>
+<li>Protection against regressions</li>
+<li>Resistance to refactoring</li>
+<li>Fast feedback</li>
+<li>Maintainability</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>Testing with external dependencies</li>
+</ul>
+<hr />
+<h3 id="challenges-with-external-dependencies">Challenges with external dependencies</h3>
+<p>When your code depends on <em>external systems</em> (databases, third-party APIs, file systems, message queues, etc.), you face a few challenges:  </p>
+<ul>
+<li>External systems can be <strong>slow</strong>.  </li>
+<li>They can be <strong>unreliable</strong> or rate-limited.  </li>
+<li>They can make tests <strong>hard to reproduce</strong>.  </li>
+<li>They can add <strong>setup/teardown complexity</strong>.  </li>
+</ul>
+<hr />
+<h3 id="strategies-for-testing-code-with-external-dependencies">Strategies for Testing Code with External Dependencies</h3>
+<ol>
+<li>Abstraction via Interfaces</li>
+<li>Test Doubles for Third-Party APIs</li>
+<li>Using  Mocks and Stubs</li>
+</ol>
+<hr />
+<h4 id="abstraction-via-interfaces">Abstraction via Interfaces</h4>
+<ul>
+<li>Wrap external services behind an interface or adapter.</li>
+<li>Your main code talks only to the interface, not directly to the external system.</li>
+<li>During testing, you substitute the real dependency with a <strong>fake</strong>, <strong>stub</strong>, or <strong>mock</strong>.</li>
+</ul>
+<p>Refer example <a href="../../code/mock_stubs/tests/order_test_real_objects.cpp#L14">here</a></p>
+<p>Key idea: Order doesn't need to know which concrete warehouse or mail system it is talking to. It only depends on an interface. Tests can then provide tiny, purpose-built implementations of those interfaces.  </p>
+<div class="highlight"><pre><span></span><code>┌──────────────┐
+│    Order     │
+└──────┬───────┘
+       │
+depends on interfaces
+ ┌─────┴─────----┐
+ │               │
+Warehouse    MailService
+        │           │
+┌───────┴───┐   ┌───┴────────┐
+│           │   │            │
+RealWarehouse  ... RealMail    ...
+</code></pre></div>
+<hr />
+<h4 id="test-doubles-for-third-party-apis">Test Doubles for Third-Party APIs</h4>
+<ul>
+<li>Use libraries like <strong>WireMock</strong> (Java), <strong>httpretty</strong> (Python), or <strong>responses</strong> (Python) to simulate API servers.</li>
+<li>You predefine responses for certain requests, so tests don’t hit the real API.</li>
+</ul>
+<hr />
+<h4 id="mocks-and-stubs">Mocks and Stubs</h4>
+<ul>
+<li>Mocks help to <strong>emulate and examine outcoming interactions</strong>. These interactions are calls the SUT makes to its dependencies <strong>to change their state</strong>.</li>
+<li>Stubs help to <strong>emulate</strong> incoming interactions. These interactions are calls the SUT makes to its dependencies <strong>to get input data.</strong> </li>
+</ul>
+<hr />
+<p><img alt="" src="../../images/testing/mock_stub.png" /> </p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Which one is the mock?</p>
+<p>The whole arrange block of <code>order_test.cpp</code>. Three dependencies, one macro, three
+times:</p>
+<div class="highlight"><pre><span></span><code><span class="n">MockWarehouse</span><span class="w"> </span><span class="n">warehouse</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">mailService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MockMailService</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Talisker&quot;</span><span class="p">);</span>
+<span class="n">order</span><span class="p">.</span><span class="n">setMailService</span><span class="p">(</span><span class="n">mailService</span><span class="p">);</span>
+
+<span class="n">EXPECT_CALL</span><span class="p">(</span><span class="n">warehouse</span><span class="p">,</span><span class="w"> </span><span class="n">hasInventory</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Talisker&quot;</span><span class="p">))</span><span class="w">   </span><span class="c1">// (a)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Times</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">WillOnce</span><span class="p">(</span><span class="n">Return</span><span class="p">(</span><span class="nb">true</span><span class="p">));</span>
+
+<span class="n">EXPECT_CALL</span><span class="p">(</span><span class="n">warehouse</span><span class="p">,</span><span class="w"> </span><span class="n">remove</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Talisker&quot;</span><span class="p">))</span><span class="w">         </span><span class="c1">// (b)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Times</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">EXPECT_CALL</span><span class="p">(</span><span class="o">*</span><span class="n">mailService</span><span class="p">,</span><span class="w"> </span><span class="n">send</span><span class="p">(</span><span class="n">_</span><span class="p">))</span><span class="w">                     </span><span class="c1">// (c)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Times</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">order</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="n">warehouse</span><span class="p">);</span>
+
+<span class="n">ASSERT_TRUE</span><span class="p">(</span><span class="n">order</span><span class="p">.</span><span class="n">isFilled</span><span class="p">());</span>
+</code></pre></div>
+<p>Which of (a), (b), &copy; are stubs, and which are mocks?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>(a) is a stub.</strong> <code>WillOnce(Return(true))</code> hands the SUT a value it needs in
+order to proceed at all. Incoming interaction. Nothing about the warehouse is
+being verified here — the test would say the same thing written as
+<code>ON_CALL(...).WillByDefault(Return(true))</code> on a <code>NiceMock</code>, which is gMock's
+actual stubbing form. Written as <code>EXPECT_CALL</code>, it quietly adds a verification
+nobody asked for.</p>
+<p><strong>(b) and &copy; are mocks.</strong> Neither returns anything. Both exist so the test can
+assert the call happened: stock left the warehouse, mail went out. Outgoing
+interactions — and the <code>EXPECT_CALL</code> <em>is</em> the assertion, which is why nothing
+after <code>// ACT</code> mentions them.</p>
+<p><mark>The direction of the interaction decides the name, not the macro you typed.</mark>
+One library, one syntax, two different jobs. "We use gMock" therefore tells you
+nothing about whether a test is over-mocked.</p>
+</details>
+</div>
+<hr />
+<h4 id="gmock-in-one-slide">gMock in one slide</h4>
+<p>Declare the double once. Each <code>MOCK_METHOD</code> generates an override that records and
+answers:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MockWarehouse</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Warehouse</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">MOCK_METHOD</span><span class="p">(</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">hasInventory</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="k">override</span><span class="p">));</span>
+<span class="w">    </span><span class="n">MOCK_METHOD</span><span class="p">(</span><span class="kt">void</span><span class="p">,</span><span class="w"> </span><span class="n">remove</span><span class="p">,</span><span class="w">       </span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="k">override</span><span class="p">));</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Then arrange it. Which macro you reach for is the whole decision:</p>
+<table>
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Means</th>
+<th>Verifies anything?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ON_CALL(w, hasInventory(50, "T")).WillByDefault(Return(true))</code></td>
+<td>when asked, answer <code>true</code></td>
+<td><strong>no</strong> — stubbing only</td>
+</tr>
+<tr>
+<td><code>EXPECT_CALL(w, remove(50, "T")).Times(1)</code></td>
+<td>this call must happen, exactly once</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td><code>EXPECT_CALL(w, remove(_, _)).Times(0)</code></td>
+<td>this call must never happen</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td><code>EXPECT_CALL(*mail, send(HasSubstr("cannot")))</code></td>
+<td>must be called with a matching argument</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td><code>NiceMock&lt;MockWarehouse&gt; w;</code></td>
+<td>stop warning about calls you did not arrange</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>_</code> matches any argument; <code>Eq</code>, <code>Ge</code>, <code>HasSubstr</code> match part of one.</li>
+<li><code>WillOnce(Return(x))</code> answers once, <code>WillRepeatedly(Return(x))</code> answers every time.</li>
+</ul>
+<blockquote>
+<p><mark><code>ON_CALL</code> supplies input. <code>EXPECT_CALL</code> makes an assertion.</mark> Using <code>EXPECT_CALL</code>
+when you only needed an answer is the most common way a test ends up pinned to the
+implementation rather than the behaviour.</p>
+</blockquote>
+<hr />
+<h3 id="commands-vs-queries">Commands vs queries</h3>
+<ul>
+<li><strong>Commands</strong> are methods that <strong>produce side effects</strong> and don’t return any value (return void).</li>
+<li>
+<p>Examples of side effects include
+mutating an object’s state, changing a file in the file system, and so on. </p>
+</li>
+<li>
+<p><strong>Queries</strong> are side-effect free and <strong>return a value</strong>.</p>
+</li>
+</ul>
+<hr />
+<p><img alt="" src="../../images/testing/command_queries.png" /></p>
+<hr />
+<h4 id="the-rule-is-easy-to-break">The rule is easy to break</h4>
+<p>An earlier version of <code>Order::fill</code>, in this course's own example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">fill</span><span class="p">(</span><span class="n">Warehouse</span><span class="o">&amp;</span><span class="p">);</span><span class="w">      </span><span class="c1">// removes stock, sends mail — and returns a value</span>
+</code></pre></div>
+<p>It changes state <em>and</em> answers a question, so it belongs to both columns at once. The
+return value was redundant as well: <code>isFilled()</code> already exposed the same fact, and every
+test asserted it twice.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">fill</span><span class="p">(</span><span class="n">Warehouse</span><span class="o">&amp;</span><span class="p">);</span><span class="w">      </span><span class="c1">// command</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">isFilled</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">      </span><span class="c1">// query</span>
+</code></pre></div>
+<p><mark>A method that is both is a method you cannot decide how to double.</mark></p>
+<hr />
+<h4 id="commands-and-queries-in-a-real-code-base">Commands and queries in a real code base</h4>
+<p>Same repo as the test-double examples later in this lecture.</p>
+<p><strong>Command</strong> — <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/gemini.py#L41-L46"><code>record_gemini_failure</code></a>. Returns
+<code>None</code>, writes two module globals. Nothing to read back:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">record_gemini_failure</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">global</span> <span class="n">_gemini_healthy</span><span class="p">,</span> <span class="n">_gemini_last_check</span>
+    <span class="n">_gemini_healthy</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">_gemini_last_check</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Query</strong> — <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/timetable_service.py#L59-L75"><code>compute_free_slots</code></a>. Busy
+rows in, free <code>"HH:MM-HH:MM"</code> gaps out. No database, no globals, inputs untouched. Call it
+a thousand times and nothing in the system moves.</p>
+<hr />
+<h4 id="the-same-repo-breaks-the-rule-twice">The same repo breaks the rule twice</h4>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/gemini.py#L26-L38"><code>is_gemini_available</code></a> is named like a query, typed
+<code>-&gt; bool</code>, and documented as <em>"Returns True if Gemini is currently considered reachable"</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_gemini_available</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">global</span> <span class="n">_gemini_healthy</span><span class="p">,</span> <span class="n">_gemini_last_check</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_gemini_healthy</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">_gemini_last_check</span> <span class="o">&lt;</span> <span class="n">_GEMINI_COOLDOWN</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">_gemini_healthy</span> <span class="o">=</span> <span class="kc">True</span>        <span class="c1"># the query writes</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<p><mark>Asking the question changes the answer.</mark> Once the cooldown expires, the first call
+flips the flag back to healthy. <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/routes/chat.py#L426-L445"><code>chat.py</code></a> calls it
+three times in one request path, so calls two and three see a system the first call
+altered.</p>
+<hr />
+<h4 id="and-once-harmlessly">And once harmlessly</h4>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/faculty_service.py#L27-L66"><code>fetch_all_faculty_context</code></a> also assigns a
+global from inside a query — it memoises the formatted block it just built.
+<a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/faculty_service.py#L20-L24"><code>clear_faculty_cache</code></a> is the command that
+resets it.</p>
+<table>
+<thead>
+<tr>
+<th>Query</th>
+<th>Writes global</th>
+<th>Can a caller tell?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compute_free_slots</code></td>
+<td>no</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>fetch_all_faculty_context</code></td>
+<td>yes, a cache</td>
+<td>no — same answer either way</td>
+</tr>
+<tr>
+<td><code>is_gemini_available</code></td>
+<td>yes, the flag it reports on</td>
+<td><strong>yes</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><mark>The rule is not "a query must not write". It is "a query must not change the answer
+anyone gets next."</mark> A cache is invisible. A state machine is not.</p>
+</blockquote>
+<p>The middle row is why <code>Order::fill</code> returning <code>bool</code> mattered: not because returning a
+value is forbidden, but because it made one method answerable in two ways that could
+drift apart.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Stub it or mock it?</p>
+<p>Six methods from the warehouse example. For each one: command or query — and in a
+test, would you stub it or mock it?</p>
+<p><code>hasInventory</code> · <code>getInventory</code> · <code>remove</code> · <code>send</code> · <code>fill</code> · <code>isFilled</code></p>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Kind</th>
+<th>In a test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Warehouse::hasInventory</code></td>
+<td>query</td>
+<td><strong>stub</strong> — hand it the answer the test needs</td>
+</tr>
+<tr>
+<td><code>Warehouse::getInventory</code></td>
+<td>query</td>
+<td><strong>stub</strong>, or assert on it for state</td>
+</tr>
+<tr>
+<td><code>Warehouse::remove</code></td>
+<td>command</td>
+<td><strong>mock</strong> — assert the call happened</td>
+</tr>
+<tr>
+<td><code>MailService::send</code></td>
+<td>command</td>
+<td><strong>mock / spy</strong></td>
+</tr>
+<tr>
+<td><code>Order::fill</code></td>
+<td>command</td>
+<td>the operation under test</td>
+</tr>
+<tr>
+<td><code>Order::isFilled</code></td>
+<td>query</td>
+<td>what you assert on</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Query → stub. Command → mock.</mark> One rule, nothing to memorise — and it only
+works while every method is one or the other.</p>
+</details>
+</div>
+<hr />
+<h3 id="code-separation">Code separation</h3>
+<ul>
+<li>All production code can be categorized along two dimensions:</li>
+<li><strong>Public API vs. private API</strong> (where API means application programming interface)</li>
+<li><strong>Observable behavior vs. implementation details</strong></li>
+</ul>
+<hr />
+<h4 id="public-vs-private-api">Public vs private API</h4>
+<p>Usually differentiated by public methods of a class vs private, protected members</p>
+<hr />
+<h4 id="observable-behaviour-vs-implementation-detail">Observable behaviour vs implementation detail</h4>
+<ul>
+<li>For a piece of code to be part of the system’s observable behavior, it has to do one of the following things:<ul>
+<li><strong>Expose an operation that helps the client achieve one of its goals.</strong> An operation is a method that performs a calculation or incurs a side effect or both.</li>
+<li><strong>Expose a state that helps the client achieve one of its goals.</strong> State is the current condition of the system.  </li>
+</ul>
+</li>
+<li>Any code that does neither of these two things is an implementation detail.</li>
+</ul>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Public, but is it observable?</p>
+<p>A <code>User</code> class exposes two public members: a <code>Name</code> property, and a
+<code>NormalizeName(string)</code> method. The client's goal is to rename a user.</p>
+<p>Which of the two is observable behaviour?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Only <code>Name</code>. Renaming is the goal; normalising is a <em>step inside</em> it.
+<code>NormalizeName</code> neither completes an operation the client wants nor exposes state
+the client needs, so by the rule above it is an implementation detail.</p>
+<p>Public <strong>and</strong> an implementation detail is exactly what a leak is. The client is
+now obliged to call it, in the right order, before every write — and any test
+written against it breaks the moment normalisation moves elsewhere.</p>
+</details>
+</div>
+<hr />
+<h4 id="well-designed-api">Well designed API</h4>
+<p><img alt="" src="../../images/testing/neat_design.png" /></p>
+<hr />
+<h4 id="leaky-api-design">Leaky API design</h4>
+<p><img alt="" src="../../images/testing/leaky_design.png" /></p>
+<hr />
+<h4 id="example-leaky-design">example leaky design</h4>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">User</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">NormalizeName</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">){</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">).</span><span class="n">Trim</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50</span><span class="p">){</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UserController</span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">RenameUser</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">newName</span><span class="p">){</span>
+<span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetUserFromDatabase</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">//string normalizedName = user.NormalizeName(newName);</span>
+<span class="w">        </span><span class="n">user</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">normalizedName</span><span class="p">;</span>
+<span class="w">        </span><span class="n">SaveUserToDatabase</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="types-of-test-double">Types of test double</h3>
+<ul>
+<li><strong>Dummy</strong> objects are passed around but never actually used. Usually they are just used to fill parameter lists.</li>
+<li><strong>Fake</strong> objects actually have working implementations, but usually take some shortcut which makes them not suitable for production (an <a href="https://martinfowler.com/bliki/InMemoryTestDatabase.html">in memory database</a> is a good example).</li>
+<li><strong>Stubs</strong> provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test.</li>
+<li><strong>Spies</strong> are mocks that also record some information based on how they were called. One form of this might be an email service that records how many messages it was sent.</li>
+<li><strong>Mocks</strong> are the objects pre-programmed with expectations which form a specification of the calls they are expected to receive.</li>
+</ul>
+<hr />
+<p><img alt="" src="../../images/testing/mock_stub_classification.png" /></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 The comments in that file are wrong</p>
+<p><code>order_test_real_objects.cpp</code> labels both of its replacement classes <code>SPY</code>.
+<code>WarehouseImpl</code> keeps inventory in an <code>unordered_map</code>. <code>ConsoleMailService</code> appends to
+a <code>sentMessages</code> vector.</p>
+<p>Are both of them spies?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>One is.</p>
+<ul>
+<li><code>ConsoleMailService</code> is a <strong>spy</strong>. It records how it was called, and the
+  recording <em>is</em> the assertion:
+  <code>EXPECT_EQ("Order filled for Talisker", mailService-&gt;sentMessages[0])</code>.</li>
+<li><code>WarehouseImpl</code> is a <strong>fake</strong>. It is a working in-memory implementation, not a
+  recorder. The test asserts on final state —
+  <code>EXPECT_EQ(0, warehouse.getInventory(TALISKER))</code> — never on which calls arrived.</li>
+</ul>
+<p><mark>A fake has an implementation. A spy has a notebook.</mark> Classify by what the test
+asserts on, not by what the comment claims.</p>
+</details>
+</div>
+<hr />
+<h3 id="test-doubles-in-a-real-code-base">Test doubles in a real code base</h3>
+<p>Python rather than gMock, but each double is the one named above.</p>
+<p><strong>Spy</strong> — <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_day_resolution.py#L22-L32"><code>calendar_calls</code></a> replaces <code>effective_day</code> with a function that appends to a list before returning a canned answer. The tests then assert on <em>how many times it was called</em>:</p>
+<ul>
+<li><code>test_defaulting_to_today_resolves_the_day_once</code> → exactly one lookup.</li>
+<li><code>test_an_explicit_day_needs_no_calendar_at_all</code> → zero lookups.</li>
+</ul>
+<p>Every <code>effective_day</code> is a database round trip, and these tools once made three of them per answer. <mark>The output was correct all three times — only the count was wrong.</mark> No assertion on the <em>result</em> could have caught that.</p>
+<p>That is a spy in Fowler's sense: a stub that also records how it was called, and the recording <em>is</em> the assertion.</p>
+<hr />
+<p>Two classes further down, the identical fixture is a plain <strong>stub</strong>.
+<a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_day_resolution.py#L62-L68"><code>test_venue_with_no_sessions_still_reports_the_substitution</code></a> requests
+<code>calendar_calls</code>, never looks at the list, and asserts on the returned message instead:</p>
+<div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tt</span><span class="o">.</span><span class="n">get_venue_schedule</span><span class="p">(</span><span class="s2">&quot;CEP-209&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s2">&quot;2026-08-07&quot;</span><span class="p">))</span>
+
+<span class="k">assert</span> <span class="s2">&quot;Tuesday&quot;</span> <span class="ow">in</span> <span class="n">msg</span>
+<span class="k">assert</span> <span class="s2">&quot;treated as&quot;</span> <span class="ow">in</span> <span class="n">msg</span>
+</code></pre></div>
+<p>Here the canned <code>("Tuesday", "Friday")</code> only exists to push the code down its
+substituted-day path. Same object, two roles.</p>
+<blockquote>
+<p><mark>The double does not decide whether it is a spy. The assertion does.</mark></p>
+</blockquote>
+<hr />
+<p><strong>Stub</strong> — <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_day_resolution.py#L35-L40"><code>no_sessions</code></a> returns canned empty lists so the code under test takes its empty-result path. Nothing is asserted about the stub itself.</p>
+<p><strong>Stub of an external dependency</strong> — <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_service.py#L17-L27"><code>mock_db</code></a> hands back a fake cursor whose <code>fetchall()</code> returns whatever rows the test names. It lets <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_service.py#L42-L58"><code>test_exact_match_wins_over_longer_substring_match</code></a> pin a real regression with no database anywhere.</p>
+<hr />
+<h3 id="where-over-mocking-bites">Where over-mocking bites</h3>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_fuzzy_directory_search.py#L133-L144"><code>test_threshold_is_never_set_session_wide</code></a></p>
+<ul>
+<li>Loop inside loop inside <code>if</code>, over <code>MagicMock</code> call records.</li>
+<li>If no recorded call matches <code>set_config</code>, <strong>zero assertions run and the test still passes</strong>.</li>
+<li>Asserting on interactions rather than state is what makes this possible.</li>
+</ul>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 It is green. What has it proved?</p>
+<p>That test walks a <code>MagicMock</code>'s recorded calls looking for <code>set_config</code>, and asserts
+inside the loop. It passes.</p>
+<p>What does the pass tell you?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Nothing. If no recorded call matches <code>set_config</code>, the loop body never runs, no
+assertion executes, and the test reports success.</p>
+<p>This is <code>CoversEverything</code> from Lecture 7-8 wearing a disguise — production code
+runs, nothing is checked. There the assertions were plainly missing. Here they
+exist; they are simply unreachable.</p>
+<p><mark>A test that can pass without asserting is not a test.</mark> Loops and <code>if</code>s over
+mock call records are how that stays hidden.</p>
+</details>
+</div>
+<hr />
+<p>Worked examples from <a href="https://github.com/Piyushtanwani/DAU-buddy">DAU-buddy</a>, pinned at commit <a href="https://github.com/Piyushtanwani/DAU-buddy/tree/b909c221fcccb069f3ff9eb40e8292b435145d8a"><code>b909c22</code></a>.</p>
+<hr />
+<h3 id="exercise-three-doubles-one-behaviour">Exercise: three doubles, one behaviour</h3>
+<p><code>docs/code/mock_stubs/tests/</code> holds three files. All three run the same two tests against
+the same <code>Order</code>, and all three pass.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>How the warehouse is replaced</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order_test_real_objects.cpp</code></td>
+<td>hand-written classes, used directly</td>
+</tr>
+<tr>
+<td><code>order_test_manual.cpp</code></td>
+<td>hand-written double that records calls</td>
+</tr>
+<tr>
+<td><code>order_test.cpp</code></td>
+<td>gMock, <code>EXPECT_CALL</code></td>
+</tr>
+</tbody>
+</table>
+<p>Now refactor <code>Order::fill</code> without changing what it does:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">warehouse</span><span class="p">.</span><span class="n">getInventory</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// was: hasInventory(quantity, item)</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">💬 Name the double in each file. Which suites still pass?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>One passes, two fail.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Doubles</th>
+<th>After the refactor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order_test_real_objects.cpp</code></td>
+<td>fake + spy</td>
+<td><strong>passes</strong></td>
+</tr>
+<tr>
+<td><code>order_test_manual.cpp</code></td>
+<td>hand-rolled mock</td>
+<td>fails — <code>Actual: false / Expected: true</code></td>
+</tr>
+<tr>
+<td><code>order_test.cpp</code></td>
+<td>gMock mock</td>
+<td>fails — <code>remove(50, "Talisker")</code> <strong>never called</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The fake implements the whole interface, so it does not care which method the SUT
+chose. The other two were built around <code>hasInventory</code> specifically: the manual
+double hard-codes <code>getInventory</code> to return <code>0</code>, so the SUT now receives wrong
+input, and gMock's <code>EXPECT_CALL</code> pins a call that no longer happens.</p>
+<p><mark>Behaviour unchanged, two suites red.</mark> That is the second attribute from the
+recap slide — resistance to refactoring — measured on one page. The gMock suite is
+not wrong; it is paying for interaction detail this test did not need.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Now your own snake game. What would you test?</p>
+<p>Take your Lab 1 implementation. Name three things worth a unit test and three that
+are not. Then, for each one you would test, decide whether it needs a test double at
+all.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>No single right list, but there is a shape.</p>
+<p><strong>No double needed — pure logic, and the easiest tests you will ever write.</strong></p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Why it is testable as it stands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>checkSelfCollision()</code></td>
+<td>body positions in, <code>bool</code> out — a query</td>
+</tr>
+<tr>
+<td><code>grow()</code>, then length</td>
+<td>command, then query: arrange a body, act, assert the length</td>
+</tr>
+<tr>
+<td>rejecting a reversal</td>
+<td>turning back into yourself is a rule, not a drawing</td>
+</tr>
+<tr>
+<td>score after eating</td>
+<td>arithmetic over state the test controls</td>
+</tr>
+</tbody>
+</table>
+<p>22 of your 36 repos have a <code>checkSelfCollision</code> or <code>checkCollision</code>. Almost none
+of them are tested, because the rule is tangled into the render loop where a test
+cannot reach it.</p>
+<p><strong>Double needed — the world outside the rules.</strong> Counted across the 36 repos:</p>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Repos</th>
+<th>Double</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getch</code> / <code>kbhit</code> — keyboard</td>
+<td>31 / 28</td>
+<td><strong>stub</strong> — feed a scripted key sequence</td>
+</tr>
+<tr>
+<td><code>Sleep</code> / <code>sleep_for</code> — clock</td>
+<td>28</td>
+<td><strong>stub</strong>, or your suite takes real seconds</td>
+</tr>
+<tr>
+<td><code>rand</code> / <code>srand</code> — food placement</td>
+<td>22 / 20</td>
+<td><strong>stub</strong> — pin where the next fruit lands</td>
+</tr>
+<tr>
+<td><code>system("cls")</code> — screen</td>
+<td>18</td>
+<td><strong>spy</strong>, if you assert on drawing at all</td>
+</tr>
+<tr>
+<td>high-score file</td>
+<td>17</td>
+<td><strong>fake</strong> — an in-memory store</td>
+</tr>
+</tbody>
+</table>
+<p><mark>If you cannot replace these, you cannot test the game — and that is a design
+finding, not a testing problem.</mark> A <code>rand()</code> called from the middle of <code>Logic()</code>
+has no seam to replace. That is the subject of Lecture 13-14.</p>
+<p><strong>Not worth testing.</strong></p>
+<ul>
+<li>The exact characters drawn. Change a border glyph, break a test.</li>
+<li>A getter that exists only so the renderer can diff the last frame against this
+  one. That is the optimisation, not the behaviour.</li>
+<li>That <code>Setup()</code> ran before <code>Logic()</code>. Assert the outcome, not the call order.</li>
+</ul>
+<blockquote>
+<p><mark>Test the rules of the game. Stub the world it runs in. Ignore how it looks.</mark></p>
+</blockquote>
+</details>
+</div>
+<hr />
+<h3 id="references">References</h3>
+<ol>
+<li><a href="https://www.manning.com/books/unit-testing">Chapter 5, Unit Testing, Principles Practices and Patterns by Vladimir Khorikov</a> </li>
+<li><a href="https://martinfowler.com/articles/mocksArentStubs.html">Mocks Aren't Stubs</a></li>
+<li><a href="https://google.github.io/googletest/gmock_for_dummies.html">gMock for Dummies | GoogleTest</a></li>
+<li><a href="https://google.github.io/googletest/gmock_cook_book.html">gMock Cookbook | GoogleTest</a></li>
+<li><a href="https://android.googlesource.com/platform/external/googletest/+/refs/heads/main-cg-testing-release/docs/gmock_cheat_sheet.md">gMock Cheat Sheet</a></li>
+</ol>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture9_10/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 9-10:Choosing what to test, and what makes a test good">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                9-10:Choosing what to test, and what makes a test good
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../labs/assignment-1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1:Make it multiplayer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                1:Make it multiplayer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

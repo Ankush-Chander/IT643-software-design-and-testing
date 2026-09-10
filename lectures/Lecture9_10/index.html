@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/lecture9_10/">
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture9_10/">
       
       
+        <link rel="prev" href="../Lecture7_8/">
+      
+      
+        <link rel="next" href="../Lecture11_12/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Choosing what to test, and what makes a test good - IT643 - Software Design and Testing | DAU</title>
+        <title>9-10:Choosing what to test, and what makes a test good - IT643 - Software Design and Testing | DAU</title>
       
     
     
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Choosing what to test, and what makes a test good
+              9-10:Choosing what to test, and what makes a test good
             
           </span>
         </div>
@@ -158,10 +162,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../Lecture0/" class="md-tabs__link">
           
   
@@ -258,26 +264,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -295,7 +304,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -530,6 +539,507 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 9-10
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 9-10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-do-test-cases-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where do test cases come from?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#four-ways-to-derive-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four ways to derive test cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specification-based testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specification-based testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-partition-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: partition the input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-the-partitions-the-spec-forgot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: the partitions the spec forgot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-the-seven-step-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: the seven-step loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-matters-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What matters in practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitions-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partitions in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundary-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boundary testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#every-boundary-in-gradefrommarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Every boundary in gradeFromMarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or-the-on-point-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &gt; or &gt;=? The on-point moves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-bug-this-catches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The bug this catches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundaries-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundaries in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-them-without-duplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing them without duplication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-whole-thing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The whole thing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-the-table-beats-seven-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the table beats seven functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-the-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise: the answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#four-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four attributes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Four attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protection-against-regressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protection against regressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resistance-to-refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resistance to refactoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-two-ways-a-test-can-lie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The two ways a test can lie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-causes-a-false-positive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What causes a false positive?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-false-alarms-are-the-worse-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why false alarms are the worse failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fast feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maintainability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The trade-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-this-is-worth-when-a-machine-writes-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this is worth when a machine writes the code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoring-a-test-you-have-already-seen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoring a test you have already seen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -690,16 +1200,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lecture-9-choosing-what-to-test" class="md-nav__link">
+  <a href="#lecture-9-10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lecture 9: Choosing what to test
+        Lecture 9-10
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lecture 9: Choosing what to test">
+    <nav class="md-nav" aria-label="Lecture 9-10">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#where-do-test-cases-come-from" class="md-nav__link">
@@ -732,7 +1253,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Specification-based testing">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#the-specification" class="md-nav__link">
@@ -804,8 +1326,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#boundary-testing" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -829,6 +1351,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#or-the-on-point-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &gt; or &gt;=? The on-point moves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-bug-this-catches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The bug this catches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#boundaries-in-a-real-code-base" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -839,12 +1383,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#writing-them-without-duplication" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -853,8 +1392,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Writing them without duplication">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#the-whole-thing" class="md-nav__link">
@@ -889,22 +1427,21 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lecture-10-what-makes-a-good-test" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#exercise-the-answer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lecture 10: What makes a good test
+        Exercise: the answer
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lecture 10: What makes a good test">
-      <ul class="md-nav__list">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#four-attributes" class="md-nav__link">
@@ -915,7 +1452,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Four attributes">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#protection-against-regressions" class="md-nav__link">
@@ -1031,6 +1569,11 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
@@ -1062,16 +1605,21 @@
 
 <h1 id="choosing-what-to-test-and-what-makes-a-test-good">Choosing what to test, and what makes a test good</h1>
 <h2 id="quick-recap">Quick recap</h2>
-<p>Last block you learned to write <em>one</em> good test: Arrange-Act-Assert, one Act, no
-branching, a name that states a fact. Coverage tells you what you missed, never
-what you proved.</p>
+<p>Last block you learned to write <em>one</em> good test:   </p>
+<ul>
+<li>Arrange-Act-Assert,   </li>
+<li>one Act,   </li>
+<li>no branching,  </li>
+<li>a name that states a fact.   </li>
+<li>Coverage tells you what you missed, never what you proved.  </li>
+</ul>
+<h2 id="lecture-9-10">Lecture 9-10</h2>
+<h3 id="agenda">Agenda</h3>
 <p>Two questions remain:</p>
 <ol>
-<li><strong>Which</strong> tests should exist? → Lecture 9</li>
-<li>How do you tell a <strong>good</strong> suite from a bad one? → Lecture 10</li>
+<li><strong>Which</strong> tests should exist? </li>
+<li>How do you tell a <strong>good</strong> suite from a bad one? </li>
 </ol>
-<hr />
-<h2 id="lecture-9-choosing-what-to-test">Lecture 9: Choosing what to test</h2>
 <hr />
 <h3 id="where-do-test-cases-come-from">Where do test cases come from?</h3>
 <p>Only two places.</p>
@@ -1112,13 +1660,11 @@ what you proved.</p>
 <li><strong>Property-based tests</strong> — state a property, let the framework generate hundreds of inputs.</li>
 <li><strong>Structural tests</strong> — from the code's own paths and branches.</li>
 </ol>
-<p>Today: 1 and 2. They need no tooling beyond what you already have, and they are
-the two an LLM cannot do for you.</p>
 <hr />
 <h3 id="specification-based-testing">Specification-based testing</h3>
 <p><img alt="Specification based Testing" src="../../images/testing/specification_nutshell.png" /></p>
 <hr />
-<h3 id="the-specification">The specification</h3>
+<h4 id="the-specification">The specification</h4>
 <blockquote>
 <p><code>gradeFromMarks(int marks)</code> returns a grade based on:</p>
 <ul>
@@ -1130,7 +1676,7 @@ the two an LLM cannot do for you.</p>
 </blockquote>
 <p>Read it before you read any code. Write down what it promises.</p>
 <hr />
-<h3 id="step-1-partition-the-input">Step 1: partition the input</h3>
+<h4 id="step-1-partition-the-input">Step 1: partition the input</h4>
 <p>Every input value falls into exactly one class where behaviour is uniform.</p>
 <table>
 <thead>
@@ -1168,7 +1714,7 @@ the two an LLM cannot do for you.</p>
 </table>
 <p>One test per partition. Pick the simplest value in each — <code>60</code>, not <code>61.5</code>.</p>
 <hr />
-<h3 id="step-2-the-partitions-the-spec-forgot">Step 2: the partitions the spec forgot</h3>
+<h4 id="step-2-the-partitions-the-spec-forgot">Step 2: the partitions the spec forgot</h4>
 <p>The last two rows are the point of the exercise.</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">gradeFromMarks</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">;</span>
@@ -1191,7 +1737,7 @@ the two an LLM cannot do for you.</p>
 <p>Generate this function from that spec with any model and you get this exact code.
 Ask the model to write tests for the code and every one of them passes.</p>
 <hr />
-<h3 id="step-3-the-seven-step-loop">Step 3: the seven-step loop</h3>
+<h4 id="step-3-the-seven-step-loop">Step 3: the seven-step loop</h4>
 <ol>
 <li><strong>Understand the requirements</strong> — inputs, outputs, types, domains.</li>
 <li><strong>Explore the program</strong> — try inputs, build a mental model.</li>
@@ -1203,7 +1749,7 @@ Ask the model to write tests for the code and every one of them passes.</p>
 </ol>
 <p>It is a <strong>loop, not a checklist</strong>. Writing step 6 sends you back to step 3.</p>
 <hr />
-<h3 id="what-matters-in-practice">What matters in practice</h3>
+<h4 id="what-matters-in-practice">What matters in practice</h4>
 <ul>
 <li><strong>Depth follows risk.</strong> Test the fee calculation harder than the tooltip.</li>
 <li><strong>Partition or boundary — don't argue.</strong> What matters is that the case exists.</li>
@@ -1213,7 +1759,7 @@ Ask the model to write tests for the code and every one of them passes.</p>
 <li><strong>Split the method</strong> when the combinations explode. Untestable usually means too big.</li>
 </ul>
 <hr />
-<h3 id="partitions-in-a-real-code-base">Partitions in a real code base</h3>
+<h4 id="partitions-in-a-real-code-base">Partitions in a real code base</h4>
 <p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_calendar.py#L118-L127"><code>test_parse_day_substitution</code></a></p>
 <p>The academic calendar reassigns dates — <em>"07-08-2026 to be treated as Tuesday"</em>.
 The parser must recognise those and ignore everything else.</p>
@@ -1255,7 +1801,7 @@ The parser must recognise those and ignore everything else.</p>
 formatting variants are one partition — they exist because the <em>data</em> is
 inconsistent, and that is a domain fact no amount of reading the code reveals.</p>
 <hr />
-<h2 id="boundary-testing">Boundary testing</h2>
+<h3 id="boundary-testing">Boundary testing</h3>
 <p><mark>Bugs cluster where partitions meet.</mark> <code>&gt;=</code> written as <code>&gt;</code>, a loop that stops one
 short, a cutoff that belongs to the wrong side.</p>
 <p>For a condition like <code>marks &gt;= 90</code>:</p>
@@ -1263,9 +1809,16 @@ short, a cutoff that belongs to the wrong side.</p>
 <li><strong>on-point</strong> — the value in the condition: <code>90</code></li>
 <li><strong>off-point</strong> — the nearest value that flips it: <code>89</code></li>
 </ul>
+<blockquote>
+<p><mark>On-point: the number you can point to in the condition. Off-point: its
+neighbour on the other side.</mark></p>
+</blockquote>
+<p>The boundary lies <em>between</em> them — "on" means on the condition, not on the
+number line. The on-point need not satisfy the condition: <code>marks &gt; 89</code> has
+on-point <code>89</code>, which fails it.</p>
 <p>Test both. One of them is where the bug lives.</p>
 <hr />
-<h3 id="every-boundary-in-gradefrommarks">Every boundary in <code>gradeFromMarks</code></h3>
+<h4 id="every-boundary-in-gradefrommarks">Every boundary in <code>gradeFromMarks</code></h4>
 <table>
 <thead>
 <tr>
@@ -1299,7 +1852,69 @@ short, a cutoff that belongs to the wrong side.</p>
 </table>
 <p>Seven values pin every cutoff. You do not need <code>63</code>, <code>81</code>, and <code>95</code> as well.</p>
 <hr />
-<h3 id="boundaries-in-a-real-code-base">Boundaries in a real code base</h3>
+<h4 id="or-the-on-point-moves"><code>&gt;</code> or <code>&gt;=</code>? The on-point moves</h4>
+<p>Two spellings of one cutoff, identical for every <code>int</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">;</span><span class="w">     </span><span class="c1">// on-point 90, off-point 89</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="w"> </span><span class="o">&gt;</span><span class="w">  </span><span class="mi">89</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">;</span><span class="w">     </span><span class="c1">// on-point 89, off-point 90</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>on-point</th>
+<th>satisfies it?</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>marks &gt;= 90</code></td>
+<td><code>90</code></td>
+<td>yes</td>
+<td><code>"A"</code></td>
+</tr>
+<tr>
+<td><code>marks &gt; 89</code></td>
+<td><code>89</code></td>
+<td><strong>no</strong></td>
+<td><code>"B"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Same function, same two values tested — only the label moves.</p>
+<p><mark>The on-point is the number the author typed.</mark> Testing it asks whether the
+cutoff they wrote is the cutoff they meant.</p>
+<hr />
+<h4 id="the-bug-this-catches">The bug this catches</h4>
+<p>The spec says 90–100 → A. The author types <code>marks &gt; 90</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Test value</th>
+<th>expected</th>
+<th>typo returns</th>
+<th>verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>90</code> — on-point</td>
+<td><code>"A"</code></td>
+<td><code>"B"</code></td>
+<td><strong>caught</strong></td>
+</tr>
+<tr>
+<td><code>89</code> — off-point</td>
+<td><code>"B"</code></td>
+<td><code>"B"</code></td>
+<td>agrees</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Read the on-point off the source. Here it is the only value that catches the
+typo.</mark></p>
+<hr />
+<h4 id="boundaries-in-a-real-code-base">Boundaries in a real code base</h4>
 <p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_availability.py#L77-L88"><code>test_venue_overlap_logic</code></a></p>
 <p>"Is this room free from 14:00 to 16:00?" is an interval-overlap question, and
 interval overlap is <em>all</em> boundary:</p>
@@ -1348,7 +1963,7 @@ interval overlap is <em>all</em> boundary:</p>
 <p>The two <code>yes</code> rows are the whole test. Get <code>&lt;</code> and <code>&lt;=</code> backwards and a room
 booked 12:00–14:00 blocks the 14:00 lecture.</p>
 <hr />
-<h2 id="writing-them-without-duplication">Writing them without duplication</h2>
+<h4 id="writing-them-without-duplication">Writing them without duplication</h4>
 <p>Seven near-identical <code>TEST()</code> blocks is copy-paste. GoogleTest has parameterized
 tests for exactly this shape.</p>
 <p>Three pieces:</p>
@@ -1358,7 +1973,7 @@ tests for exactly this shape.</p>
 <li><code>INSTANTIATE_TEST_SUITE_P(...)</code> supplying the rows.</li>
 </ol>
 <hr />
-<h3 id="the-whole-thing">The whole thing</h3>
+<h4 id="the-whole-thing">The whole thing</h4>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tuple&gt;</span>
@@ -1381,7 +1996,7 @@ tests for exactly this shape.</p>
 <div class="highlight"><pre><span></span><code>[  PASSED  ] 7 tests.
 </code></pre></div>
 <hr />
-<h3 id="why-the-table-beats-seven-functions">Why the table beats seven functions</h3>
+<h4 id="why-the-table-beats-seven-functions">Why the table beats seven functions</h4>
 <ul>
 <li>A failure reports <code>OnAndOffPoints/GradeCutoff.ReturnsTheGradeTheSpecPromises/4</code> —
   row 4, and the row is right there.</li>
@@ -1390,7 +2005,7 @@ tests for exactly this shape.</p>
   the expected value — put the expectation in the table.</li>
 </ul>
 <hr />
-<h3 id="exercise">Exercise</h3>
+<h4 id="exercise">Exercise</h4>
 <ol>
 <li>Implement <a href="https://leetcode.com/problems/add-strings">add-strings</a> — add two
    non-negative integers given as strings, without converting them to integers.</li>
@@ -1400,7 +2015,179 @@ tests for exactly this shape.</p>
 </ol>
 <p>Bring the table. That is what gets marked, not the implementation.</p>
 <hr />
-<h2 id="lecture-10-what-makes-a-good-test">Lecture 10: What makes a good test</h2>
+<h4 id="exercise-the-answer">Exercise: the answer</h4>
+<p>Work each question before you open the hint. The reasoning is the deliverable.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Q1. What are the partitions?</p>
+<p>Two strings in. There is no numeric range to slice. So what actually varies?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Behaviour is uniform inside each of these. One test per row:</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Example</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No carry anywhere</td>
+<td><code>"12" + "34"</code></td>
+<td><code>"46"</code></td>
+</tr>
+<tr>
+<td>Carry inside the number</td>
+<td><code>"18" + "14"</code></td>
+<td><code>"32"</code></td>
+</tr>
+<tr>
+<td>Carry out of the leading digit</td>
+<td><code>"45" + "55"</code></td>
+<td><code>"100"</code></td>
+</tr>
+<tr>
+<td>Carry propagates the whole way</td>
+<td><code>"999" + "1"</code></td>
+<td><code>"1000"</code></td>
+</tr>
+<tr>
+<td><code>num1</code> longer</td>
+<td><code>"1000" + "1"</code></td>
+<td><code>"1001"</code></td>
+</tr>
+<tr>
+<td><code>num2</code> longer</td>
+<td><code>"1" + "1000"</code></td>
+<td><code>"1001"</code></td>
+</tr>
+<tr>
+<td>One operand <code>"0"</code></td>
+<td><code>"0" + "5"</code></td>
+<td><code>"5"</code></td>
+</tr>
+<tr>
+<td>Both operands <code>"0"</code></td>
+<td><code>"0" + "0"</code></td>
+<td><code>"0"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Now partition the <strong>output</strong>, as step 3 asks. The sum of two <code>n</code>-digit
+numbers has exactly <code>n</code> or <code>n+1</code> digits — two classes, and the second is
+where implementations break.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Q2. Which partitions does the spec forget?</p>
+<p>The constraints promise: digits only, no leading zeros, length 1 to 10⁴,
+non-negative. Every one of those is a promise about the <strong>input</strong>. What has
+nobody promised?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>The output format.</strong> The problem forbids leading zeros in <code>num1</code> and
+<code>num2</code>, and says nothing at all about the string you return.</p>
+<p>This implementation writes one column per digit, then appends the carry:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ...one column... */</span><span class="w"> </span><span class="p">}</span>
+<span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="kt">char</span><span class="p">(</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">carry</span><span class="p">);</span><span class="w">          </span><span class="c1">// always, even when carry == 0</span>
+<span class="n">std</span><span class="o">::</span><span class="n">reverse</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">out</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</code></pre></div>
+<p><code>addStrings("1", "1")</code> returns <code>"02"</code>. <code>addStrings("0", "0")</code> returns
+<code>"00"</code>. Read the statement line by line: nothing is violated.</p>
+<blockquote>
+<p><mark>Same shape as <code>gradeFromMarks(150)</code>. The code is not wrong. The
+specification is incomplete.</mark></p>
+</blockquote>
+<p>The constraints also <strong>exclude</strong> inputs instead of defining them —
+<code>"007" + "1"</code>, <code>"" + "5"</code>, <code>"12a" + "1"</code>, <code>"-5" + "1"</code>. Your function
+still accepts all four. <code>"007" + "1"</code> returns <code>"008"</code>; is that right?
+Deciding is the missing half of the spec.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Q3. Where are the boundaries?</p>
+<p>On and off points are defined against a <strong>condition</strong>. This specification
+states none. So where are they?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Not in the input range — in the <strong>carry</strong>. The condition is absent from
+the spec but present in every correct implementation:</p>
+<div class="highlight"><pre><span></span><code><span class="n">carry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">columnSum</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div>
+<p>Write it down and the rule from earlier applies:</p>
+<table>
+<thead>
+<tr>
+<th>Boundary</th>
+<th>off</th>
+<th>on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>column carries</td>
+<td><code>"4" + "5"</code> → <code>"9"</code>, sum is <code>9</code></td>
+<td><code>"5" + "5"</code> → <code>"10"</code>, sum is <code>10</code></td>
+</tr>
+<tr>
+<td>leading column carries out</td>
+<td><code>"45" + "54"</code> → <code>"99"</code>, 2 digits</td>
+<td><code>"45" + "55"</code> → <code>"100"</code>, 3 digits</td>
+</tr>
+</tbody>
+</table>
+<p>Length has boundaries too: <code>1</code> and <code>10⁴</code>. The lower one is a real test.
+The upper one tells you 10⁴ digits fit in no integer type — which is the
+whole reason the problem exists.</p>
+<blockquote>
+<p><mark>The spec never mentions carrying. This boundary came from knowing
+decimal addition — step 1, "understand the requirements", includes the
+domain.</mark></p>
+</blockquote>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Q4. What does the table look like?</p>
+<p>Ten rows, one <code>INSTANTIATE_TEST_SUITE_P</code>, no branching.</p>
+<details class="hint">
+<summary>Answer</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AddStrings</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">TestWithParam</span><span class="o">&lt;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="n">TEST_P</span><span class="p">(</span><span class="n">AddStrings</span><span class="p">,</span><span class="w"> </span><span class="n">ReturnsTheSumTheSpecPromises</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">,</span><span class="w"> </span><span class="n">expected</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetParam</span><span class="p">();</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">addStrings</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">),</span><span class="w"> </span><span class="n">expected</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">INSTANTIATE_TEST_SUITE_P</span><span class="p">(</span><span class="n">PartitionsAndBoundaries</span><span class="p">,</span><span class="w"> </span><span class="n">AddStrings</span><span class="p">,</span><span class="w"> </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">Values</span><span class="p">(</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;12&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;34&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;46&quot;</span><span class="p">),</span><span class="w">     </span><span class="c1">// no carry</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;5&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;9&quot;</span><span class="p">),</span><span class="w">      </span><span class="c1">// sum 9  — off point of `&gt;= 10`</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;5&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;10&quot;</span><span class="p">),</span><span class="w">     </span><span class="c1">// sum 10 — on point of `&gt;= 10`</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;45&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;54&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;99&quot;</span><span class="p">),</span><span class="w">     </span><span class="c1">// leading column — off point</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;45&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;55&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;100&quot;</span><span class="p">),</span><span class="w">    </span><span class="c1">// leading column — on point, result grows</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;999&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;1000&quot;</span><span class="p">),</span><span class="w">   </span><span class="c1">// carry all the way</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;1000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;1001&quot;</span><span class="p">),</span><span class="w">   </span><span class="c1">// num1 longer</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;1000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1001&quot;</span><span class="p">),</span><span class="w">   </span><span class="c1">// num2 longer</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;5&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;5&quot;</span><span class="p">),</span><span class="w">      </span><span class="c1">// identity</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;0&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;0&quot;</span><span class="p">)</span><span class="w">       </span><span class="c1">// both zero</span>
+<span class="p">));</span>
+</code></pre></div>
+<ul>
+<li>Against the padded implementation from Q2, <strong>seven rows fail and three
+  pass</strong>. Rows 3, 5 and 6 are the ones that carry out, so the extra digit
+  is the real one and the bug hides. A suite can hold both the case that
+  catches a bug and the case that conceals it.</li>
+<li>Rows 7 and 8 are one partition seen from each side. Keep both —
+  handling only the longer operand is the next most common bug here.</li>
+<li>Row 10 is the only test that pins <code>"0" + "0" == "0"</code> rather than <code>"00"</code>.</li>
+</ul>
+</details>
+</div>
 <hr />
 <h3 id="four-attributes">Four attributes</h3>
 <p>Every automated test — unit, integration or end-to-end — can be scored on four:</p>
@@ -1412,7 +2199,7 @@ tests for exactly this shape.</p>
 </ul>
 <p>They are not independent. That is the whole problem.</p>
 <hr />
-<h3 id="protection-against-regressions">Protection against regressions</h3>
+<h4 id="protection-against-regressions">Protection against regressions</h4>
 <p>A regression is a feature that stops working after a change.</p>
 <p>This attribute measures how likely the test is to <strong>notice</strong>. It grows with:</p>
 <ul>
@@ -1423,7 +2210,7 @@ tests for exactly this shape.</p>
 <p>A test over your payment logic protects more than a test over a getter — even
 though both are one test.</p>
 <hr />
-<h3 id="resistance-to-refactoring">Resistance to refactoring</h3>
+<h4 id="resistance-to-refactoring">Resistance to refactoring</h4>
 <p>Refactoring changes code <strong>without changing observable behaviour</strong>.</p>
 <p>Resistance to refactoring is how much restructuring a test survives <strong>without
 raising a false alarm</strong>.</p>
@@ -1432,7 +2219,7 @@ raising a false alarm</strong>.</p>
 <li>It is reporting that the code changed. You knew that.</li>
 </ul>
 <hr />
-<h3 id="the-two-ways-a-test-can-lie">The two ways a test can lie</h3>
+<h4 id="the-two-ways-a-test-can-lie">The two ways a test can lie</h4>
 <table>
 <thead>
 <tr>
@@ -1460,7 +2247,7 @@ raising a false alarm</strong>.</p>
 </ul>
 <p>Everyone worries about missed bugs. False alarms are what actually kill a suite.</p>
 <hr />
-<h3 id="what-causes-a-false-positive">What causes a false positive?</h3>
+<h4 id="what-causes-a-false-positive">What causes a false positive?</h4>
 <blockquote>
 <p><mark>The more a test is coupled to implementation details of the system under
 test, the more false alarms it raises.</mark></p>
@@ -1469,14 +2256,14 @@ test, the more false alarms it raises.</mark></p>
 result was reached.</p>
 <p>Test what the function returns. Not which private helper it called on the way.</p>
 <hr />
-<h3 id="why-false-alarms-are-the-worse-failure">Why false alarms are the worse failure</h3>
+<h4 id="why-false-alarms-are-the-worse-failure">Why false alarms are the worse failure</h4>
 <ul>
 <li>They dilute your willingness to react. You get used to red and stop reading it.</li>
 <li>They destroy trust in the suite as a safety net.</li>
 </ul>
 <p>A suite nobody trusts is deleted, or — worse — ignored while still running.</p>
 <hr />
-<h3 id="fast-feedback">Fast feedback</h3>
+<h4 id="fast-feedback">Fast feedback</h4>
 <p>How quickly the test runs.</p>
 <ul>
 <li>Slow tests get run less often.</li>
@@ -1487,7 +2274,7 @@ result was reached.</p>
 property. Your 173-test suite in 1.7 seconds is run every save. A 20-minute suite
 is run at 5pm.</p>
 <hr />
-<h3 id="maintainability">Maintainability</h3>
+<h4 id="maintainability">Maintainability</h4>
 <p>Two components:</p>
 <ul>
 <li><strong>How hard the test is to understand.</strong> Smaller is more readable.</li>
@@ -1497,7 +2284,7 @@ is run at 5pm.</p>
 <p>The recap example: <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_calendar.py#L118-L127"><code>test_parse_day_substitution</code></a>
 is a table and a one-line assert. Nothing to keep running.</p>
 <hr />
-<h3 id="the-trade-off">The trade-off</h3>
+<h4 id="the-trade-off">The trade-off</h4>
 <p><img alt="" src="../../images/testing/good_test_dichotomy.png" /></p>
 <p>You cannot maximise all four.</p>
 <ul>
@@ -1509,7 +2296,7 @@ is a table and a one-line assert. Nothing to keep running.</p>
 is either coupled to implementation details or it isn't; there is no useful
 middle. Pick your position on the other three.</p>
 <hr />
-<h3 id="what-this-is-worth-when-a-machine-writes-the-code">What this is worth when a machine writes the code</h3>
+<h4 id="what-this-is-worth-when-a-machine-writes-the-code">What this is worth when a machine writes the code</h4>
 <ul>
 <li>An agent refactors freely. A suite full of false positives goes red on every
   run, you learn to ignore it, and you merge a diff nobody read.</li>
@@ -1522,7 +2309,7 @@ middle. Pick your position on the other three.</p>
 is a liability.</mark></p>
 </blockquote>
 <hr />
-<h3 id="scoring-a-test-you-have-already-seen">Scoring a test you have already seen</h3>
+<h4 id="scoring-a-test-you-have-already-seen">Scoring a test you have already seen</h4>
 <p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_availability.py#L77-L88"><code>test_venue_overlap_logic</code></a></p>
 <table>
 <thead>
@@ -1588,6 +2375,44 @@ is a liability.</mark></p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture7_8/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 7-8:Unit testing fundamentals &amp; the AAA framework">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                7-8:Unit testing fundamentals & the AAA framework
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture11_12/" class="md-footer__link md-footer__link--next" aria-label="Next: 11-12:Testing with external dependencies: test doubles">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                11-12:Testing with external dependencies: test doubles
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

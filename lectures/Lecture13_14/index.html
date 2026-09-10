@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/lecture24_25/">
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture13_14/">
       
       
       
@@ -530,6 +530,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -868,28 +924,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#include-iostream-include-string-include-vector-include-stdexcept-struct-invoice-stdstring-name-int-value-simulated-database-api-placeholder-for-actual-db-calls-class-databaseconnection-public-databaseconnectionconst-stdstring-db-const-stdstring-user-stdcout-connecting-to-db-db-as-user-stdendl-void-close-stdcout-closing-db-connection-stdendl-stdvectorinvoice-executequeryconst-stdstring-query-stdcout-executing-query-query-stdendl-pretend-these-come-from-the-db-return-customera-50-customerb-120-customerc-90-class-invoicefilter-private-infrastructure-logic-embedded-in-domain-class-stdvectorinvoice-all-try-databaseconnection-conninvoices_db-root-stdstring-query-select-from-invoices-stdvectorinvoice-allinvoices-connexecutequeryquery-connclose-return-allinvoices-catch-const-stdexception-e-stdcerr-db-error-ewhat-stdendl-return-public-domain-logic-mixed-with-infrastructure-stdvectorinvoice-lowvalueinvoices-stdvectorinvoice-issuedinvoices-all-stdvectorinvoice-result-for-const-auto-inv-issuedinvoices-if-invvalue-100-resultpush_backinv-return-result-int-main-invoicefilter-filter-auto-lowvalue-filterlowvalueinvoices-stdcout-low-value-invoicesn-for-const-auto-inv-lowvalue-stdcout-invname-invvalue-n" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        #include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;stdexcept&gt; struct Invoice { std::string name; int value; }; // Simulated database API (placeholder for actual DB calls) class DatabaseConnection { public: DatabaseConnection(const std::string&amp; db, const std::string&amp; user) { std::cout &lt;&lt; &quot;Connecting to DB: &quot; &lt;&lt; db &lt;&lt; &quot; as &quot; &lt;&lt; user &lt;&lt; std::endl; } void close() { std::cout &lt;&lt; &quot;Closing DB connection&quot; &lt;&lt; std::endl; } std::vector&lt;Invoice&gt; executeQuery(const std::string&amp; query) { std::cout &lt;&lt; &quot;Executing query: &quot; &lt;&lt; query &lt;&lt; std::endl; // Pretend these come from the DB: return { {&quot;CustomerA&quot;, 50}, {&quot;CustomerB&quot;, 120}, {&quot;CustomerC&quot;, 90} }; } }; class InvoiceFilter { private: // Infrastructure logic embedded in domain class std::vector&lt;Invoice&gt; all() { try { DatabaseConnection conn(&quot;invoices_db&quot;, &quot;root&quot;); std::string query = &quot;SELECT * FROM invoices&quot;; std::vector&lt;Invoice&gt; allInvoices = conn.executeQuery(query); conn.close(); return allInvoices; } catch (const std::exception&amp; e) { std::cerr &lt;&lt; &quot;DB Error: &quot; &lt;&lt; e.what() &lt;&lt; std::endl; return {}; } } public: // ❌ Domain logic mixed with infrastructure std::vector&lt;Invoice&gt; lowValueInvoices() { std::vector&lt;Invoice&gt; issuedInvoices = all(); std::vector&lt;Invoice&gt; result; for (const auto&amp; inv : issuedInvoices) { if (inv.value &lt; 100) result.push_back(inv); } return result; } }; int main() { InvoiceFilter filter; auto lowValue = filter.lowValueInvoices(); std::cout &lt;&lt; &quot;Low-value invoices:\n&quot;; for (const auto&amp; inv : lowValue) std::cout &lt;&lt; &quot; - &quot; &lt;&lt; inv.name &lt;&lt; &quot; ($&quot; &lt;&lt; inv.value &lt;&lt; &quot;)\n&quot;; }
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="#include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;stdexcept&gt; struct Invoice { std::string name; int value; }; // Simulated database API (placeholder for actual DB calls) class DatabaseConnection { public: DatabaseConnection(const std::string&amp; db, const std::string&amp; user) { std::cout &lt;&lt; &#34;Connecting to DB: &#34; &lt;&lt; db &lt;&lt; &#34; as &#34; &lt;&lt; user &lt;&lt; std::endl; } void close() { std::cout &lt;&lt; &#34;Closing DB connection&#34; &lt;&lt; std::endl; } std::vector&lt;Invoice&gt; executeQuery(const std::string&amp; query) { std::cout &lt;&lt; &#34;Executing query: &#34; &lt;&lt; query &lt;&lt; std::endl; // Pretend these come from the DB: return { {&#34;CustomerA&#34;, 50}, {&#34;CustomerB&#34;, 120}, {&#34;CustomerC&#34;, 90} }; } }; class InvoiceFilter { private: // Infrastructure logic embedded in domain class std::vector&lt;Invoice&gt; all() { try { DatabaseConnection conn(&#34;invoices_db&#34;, &#34;root&#34;); std::string query = &#34;SELECT * FROM invoices&#34;; std::vector&lt;Invoice&gt; allInvoices = conn.executeQuery(query); conn.close(); return allInvoices; } catch (const std::exception&amp; e) { std::cerr &lt;&lt; &#34;DB Error: &#34; &lt;&lt; e.what() &lt;&lt; std::endl; return {}; } } public: // ❌ Domain logic mixed with infrastructure std::vector&lt;Invoice&gt; lowValueInvoices() { std::vector&lt;Invoice&gt; issuedInvoices = all(); std::vector&lt;Invoice&gt; result; for (const auto&amp; inv : issuedInvoices) { if (inv.value &lt; 100) result.push_back(inv); } return result; } }; int main() { InvoiceFilter filter; auto lowValue = filter.lowValueInvoices(); std::cout &lt;&lt; &#34;Low-value invoices:\n&#34;; for (const auto&amp; inv : lowValue) std::cout &lt;&lt; &#34; - &#34; &lt;&lt; inv.name &lt;&lt; &#34; ($&#34; &lt;&lt; inv.value &lt;&lt; &#34;)\n&#34;; }">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#known-issues" class="md-nav__link">
     <span class="md-ellipsis">
@@ -927,18 +961,6 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#include-iostream-include-string-include-vector-include-chrono-include-memory-domain-model-class-shoppingcart-stdstring-customername_-bool-paid_-bool-readyfordelivery_-stdchronosystem_clocktime_point-estimateddelivery_-public-shoppingcartstdstring-customername-bool-paid-customername_stdmovecustomername-paid_paid-readyfordelivery_false-const-stdstring-customername-const-return-customername_-bool-ispaid-const-return-paid_-void-markasreadyfordeliverystdchronosystem_clocktime_point-day-readyfordelivery_-true-estimateddelivery_-day-void-printstatus-const-stdcout-cart-for-customername_-readyfordelivery_-is-ready-for-deliveryn-is-not-readyn-interfaces-for-collaborators-injected-deps-struct-ishoppingcartrepository-virtual-ishoppingcartrepository-default-virtual-stdvectorshoppingcart-cartspaidtoday-0-virtual-void-persistconst-shoppingcart-cart-0-struct-ideliverycenter-virtual-ideliverycenter-default-virtual-stdchronosystem_clocktime_point-deliverconst-shoppingcart-cart-0-struct-icustomernotifier-virtual-icustomernotifier-default-virtual-void-sendestimateddeliverynotificationconst-shoppingcart-cart-0-struct-isap-virtual-isap-default-virtual-void-cartreadyfordeliveryconst-shoppingcart-cart-0-main-class-paidshoppingcartsbatch-class-paidshoppingcartsbatch-ishoppingcartrepository-db_-ideliverycenter-deliverycenter_-icustomernotifier-notifier_-isap-sap_-public-paidshoppingcartsbatchishoppingcartrepository-db-ideliverycenter-deliverycenter-icustomernotifier-notifier-isap-sap-db_db-deliverycenter_deliverycenter-notifier_notifier-sap_sap-void-processall-auto-paidcarts-db_cartspaidtoday-for-auto-cart-paidcarts-auto-estimatedday-deliverycenter_delivercart-cartmarkasreadyfordeliveryestimatedday-db_persistcart-notifier_sendestimateddeliverynotificationcart-sap_cartreadyfordeliverycart" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        #include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;chrono&gt; #include &lt;memory&gt; //------------------------------------------- // Domain Model //------------------------------------------- class ShoppingCart { std::string customerName_; bool paid_; bool readyForDelivery_; std::chrono::system_clock::time_point estimatedDelivery_; public: ShoppingCart(std::string customerName, bool paid) : customerName_(std::move(customerName)), paid_(paid), readyForDelivery_(false) {} const std::string&amp; customerName() const { return customerName_; } bool isPaid() const { return paid_; } void markAsReadyForDelivery(std::chrono::system_clock::time_point day) { readyForDelivery_ = true; estimatedDelivery_ = day; } void printStatus() const { std::cout &lt;&lt; &quot;Cart for &quot; &lt;&lt; customerName_ &lt;&lt; (readyForDelivery_ ? &quot; is ready for delivery.\n&quot; : &quot; is not ready.\n&quot;); } }; //------------------------------------------- // Interfaces for collaborators (injected deps) //------------------------------------------- struct IShoppingCartRepository { virtual ~IShoppingCartRepository() = default; virtual std::vector&lt;ShoppingCart&gt; cartsPaidToday() = 0; virtual void persist(const ShoppingCart&amp; cart) = 0; }; struct IDeliveryCenter { virtual ~IDeliveryCenter() = default; virtual std::chrono::system_clock::time_point deliver(const ShoppingCart&amp; cart) = 0; }; struct ICustomerNotifier { virtual ~ICustomerNotifier() = default; virtual void sendEstimatedDeliveryNotification(const ShoppingCart&amp; cart) = 0; }; struct ISAP { virtual ~ISAP() = default; virtual void cartReadyForDelivery(const ShoppingCart&amp; cart) = 0; }; //------------------------------------------- // Main class — PaidShoppingCartsBatch //------------------------------------------- class PaidShoppingCartsBatch { IShoppingCartRepository&amp; db_; IDeliveryCenter&amp; deliveryCenter_; ICustomerNotifier&amp; notifier_; ISAP&amp; sap_; public: PaidShoppingCartsBatch(IShoppingCartRepository&amp; db, IDeliveryCenter&amp; deliveryCenter, ICustomerNotifier&amp; notifier, ISAP&amp; sap) : db_(db), deliveryCenter_(deliveryCenter), notifier_(notifier), sap_(sap) {} void processAll() { auto paidCarts = db_.cartsPaidToday(); for (auto&amp; cart : paidCarts) { auto estimatedDay = deliveryCenter_.deliver(cart); cart.markAsReadyForDelivery(estimatedDay); db_.persist(cart); notifier_.sendEstimatedDeliveryNotification(cart); sap_.cartReadyForDelivery(cart); } } };
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="#include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &lt;chrono&gt; #include &lt;memory&gt; //------------------------------------------- // Domain Model //------------------------------------------- class ShoppingCart { std::string customerName_; bool paid_; bool readyForDelivery_; std::chrono::system_clock::time_point estimatedDelivery_; public: ShoppingCart(std::string customerName, bool paid) : customerName_(std::move(customerName)), paid_(paid), readyForDelivery_(false) {} const std::string&amp; customerName() const { return customerName_; } bool isPaid() const { return paid_; } void markAsReadyForDelivery(std::chrono::system_clock::time_point day) { readyForDelivery_ = true; estimatedDelivery_ = day; } void printStatus() const { std::cout &lt;&lt; &#34;Cart for &#34; &lt;&lt; customerName_ &lt;&lt; (readyForDelivery_ ? &#34; is ready for delivery.\n&#34; : &#34; is not ready.\n&#34;); } }; //------------------------------------------- // Interfaces for collaborators (injected deps) //------------------------------------------- struct IShoppingCartRepository { virtual ~IShoppingCartRepository() = default; virtual std::vector&lt;ShoppingCart&gt; cartsPaidToday() = 0; virtual void persist(const ShoppingCart&amp; cart) = 0; }; struct IDeliveryCenter { virtual ~IDeliveryCenter() = default; virtual std::chrono::system_clock::time_point deliver(const ShoppingCart&amp; cart) = 0; }; struct ICustomerNotifier { virtual ~ICustomerNotifier() = default; virtual void sendEstimatedDeliveryNotification(const ShoppingCart&amp; cart) = 0; }; struct ISAP { virtual ~ISAP() = default; virtual void cartReadyForDelivery(const ShoppingCart&amp; cart) = 0; }; //------------------------------------------- // Main class — PaidShoppingCartsBatch //------------------------------------------- class PaidShoppingCartsBatch { IShoppingCartRepository&amp; db_; IDeliveryCenter&amp; deliveryCenter_; ICustomerNotifier&amp; notifier_; ISAP&amp; sap_; public: PaidShoppingCartsBatch(IShoppingCartRepository&amp; db, IDeliveryCenter&amp; deliveryCenter, ICustomerNotifier&amp; notifier, ISAP&amp; sap) : db_(db), deliveryCenter_(deliveryCenter), notifier_(notifier), sap_(sap) {} void processAll() { auto paidCarts = db_.cartsPaidToday(); for (auto&amp; cart : paidCarts) { auto estimatedDay = deliveryCenter_.deliver(cart); cart.markAsReadyForDelivery(estimatedDay); db_.persist(cart); notifier_.sendEstimatedDeliveryNotification(cart); sap_.cartReadyForDelivery(cart); } } };">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#2-dependency-injection-and-controllability" class="md-nav__link">
@@ -1021,15 +1043,34 @@
 <ul>
 <li><strong>Iceberg class</strong></li>
 </ul>
-<p>| <strong>RuleEvaluator</strong>    |
-| -------------------- |
-| + Evaluate(String)   |
-| - ParseAdjunctTerm() |
-| - ParseFactorTerm()  |
-| - ParseAdjunct()     |
-| - HasMoreTokens()    |
-| - GetNextToken()     |
-Testability: Not good</p>
+<table>
+<thead>
+<tr>
+<th><strong>RuleEvaluator</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+ Evaluate(String)</td>
+</tr>
+<tr>
+<td>- ParseAdjunctTerm()</td>
+</tr>
+<tr>
+<td>- ParseFactorTerm()</td>
+</tr>
+<tr>
+<td>- ParseAdjunct()</td>
+</tr>
+<tr>
+<td>- HasMoreTokens()</td>
+</tr>
+<tr>
+<td>- GetNextToken()</td>
+</tr>
+</tbody>
+</table>
+<p>Testability: Not good</p>
 <hr />
 <h3 id="fix-1">Fix 1</h3>
 <p>Make private function public.
@@ -1194,7 +1235,7 @@ Testable? Yes. Good design?</p>
 <h2 id="designing-for-testability">Designing for Testability</h2>
 <h3 id="1-separate-infrastructure-code-from-domain-code-at-architectural-level">1. Separate infrastructure code from domain code (at architectural level)</h3>
 <h4 id="bad-design">Bad design</h4>
-<h2 id="include-iostream-include-string-include-vector-include-stdexcept-struct-invoice-stdstring-name-int-value-simulated-database-api-placeholder-for-actual-db-calls-class-databaseconnection-public-databaseconnectionconst-stdstring-db-const-stdstring-user-stdcout-connecting-to-db-db-as-user-stdendl-void-close-stdcout-closing-db-connection-stdendl-stdvectorinvoice-executequeryconst-stdstring-query-stdcout-executing-query-query-stdendl-pretend-these-come-from-the-db-return-customera-50-customerb-120-customerc-90-class-invoicefilter-private-infrastructure-logic-embedded-in-domain-class-stdvectorinvoice-all-try-databaseconnection-conninvoices_db-root-stdstring-query-select-from-invoices-stdvectorinvoice-allinvoices-connexecutequeryquery-connclose-return-allinvoices-catch-const-stdexception-e-stdcerr-db-error-ewhat-stdendl-return-public-domain-logic-mixed-with-infrastructure-stdvectorinvoice-lowvalueinvoices-stdvectorinvoice-issuedinvoices-all-stdvectorinvoice-result-for-const-auto-inv-issuedinvoices-if-invvalue-100-resultpush_backinv-return-result-int-main-invoicefilter-filter-auto-lowvalue-filterlowvalueinvoices-stdcout-low-value-invoicesn-for-const-auto-inv-lowvalue-stdcout-invname-invvalue-n"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
@@ -1264,7 +1305,8 @@ Testable? Yes. Good design?</p>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">lowValue</span><span class="p">)</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ($&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></h2>
+</code></pre></div>
+<hr />
 <h4 id="known-issues">Known issues:</h4>
 <ul>
 <li>Domain code and infrastructure code are mixed. This means we will not be able to avoid database access when testing the low-value invoices rule.</li>
@@ -1284,7 +1326,7 @@ ful. The e-mail should contain an estimate of when delivery will happen.
 The information is available via the delivery center API.</p>
 <hr />
 <h4 id="good-design">Good Design</h4>
-<h2 id="include-iostream-include-string-include-vector-include-chrono-include-memory-domain-model-class-shoppingcart-stdstring-customername_-bool-paid_-bool-readyfordelivery_-stdchronosystem_clocktime_point-estimateddelivery_-public-shoppingcartstdstring-customername-bool-paid-customername_stdmovecustomername-paid_paid-readyfordelivery_false-const-stdstring-customername-const-return-customername_-bool-ispaid-const-return-paid_-void-markasreadyfordeliverystdchronosystem_clocktime_point-day-readyfordelivery_-true-estimateddelivery_-day-void-printstatus-const-stdcout-cart-for-customername_-readyfordelivery_-is-ready-for-deliveryn-is-not-readyn-interfaces-for-collaborators-injected-deps-struct-ishoppingcartrepository-virtual-ishoppingcartrepository-default-virtual-stdvectorshoppingcart-cartspaidtoday-0-virtual-void-persistconst-shoppingcart-cart-0-struct-ideliverycenter-virtual-ideliverycenter-default-virtual-stdchronosystem_clocktime_point-deliverconst-shoppingcart-cart-0-struct-icustomernotifier-virtual-icustomernotifier-default-virtual-void-sendestimateddeliverynotificationconst-shoppingcart-cart-0-struct-isap-virtual-isap-default-virtual-void-cartreadyfordeliveryconst-shoppingcart-cart-0-main-class-paidshoppingcartsbatch-class-paidshoppingcartsbatch-ishoppingcartrepository-db_-ideliverycenter-deliverycenter_-icustomernotifier-notifier_-isap-sap_-public-paidshoppingcartsbatchishoppingcartrepository-db-ideliverycenter-deliverycenter-icustomernotifier-notifier-isap-sap-db_db-deliverycenter_deliverycenter-notifier_notifier-sap_sap-void-processall-auto-paidcarts-db_cartspaidtoday-for-auto-cart-paidcarts-auto-estimatedday-deliverycenter_delivercart-cartmarkasreadyfordeliveryestimatedday-db_persistcart-notifier_sendestimateddeliverynotificationcart-sap_cartreadyfordeliverycart"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
@@ -1370,7 +1412,8 @@ The information is available via the delivery center API.</p>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
-</code></pre></div></h2>
+</code></pre></div>
+<hr />
 <p><img alt="" src="../../images/testing/adaptors_ports.png" /></p>
 <hr />
 <h3 id="2-dependency-injection-and-controllability">2.  Dependency injection and Controllability</h3>
