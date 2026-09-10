@@ -25,9 +25,10 @@ This course covers the foundations of software engineering in the post-LLM era â
 
 ### Module 3: Testing
 - [7_8: Unit testing fundamentals & the AAA framework](Lecture7_8.md)
-<!-- Uncomment when delivered:
 - [9_10: Choosing what to test, and what makes a test good](Lecture9_10.md)
--->
+- [11_12: Testing with external dependencies: test doubles](Lecture11_12.md)
+<!-- [13_14: Testability and design](Lecture13_14.md) -->
+
 ---
 
 ## Prerequisites

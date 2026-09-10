@@ -155,6 +155,87 @@ $$\text{branch coverage} = \frac{\text{branches traversed}}{\text{total branches
 - Immune to formatting. Still not a measure of quality.
 
 ---
+### Condition coverage
+
+Branch coverage counts the edges out of a decision. It does not look inside one.
+
+```cpp
+bool eligible(bool member, int amount) {
+    return member || amount > 1000;
+}
+```
+
+```cpp
+EXPECT_TRUE (eligible(true,  500));
+EXPECT_FALSE(eligible(false, 500));
+```
+
+Both outcomes of the decision are reached. **Decision coverage: 100%.**
+
+Now delete the second operand and change nothing else:
+
+```cpp
+return member;                     // `|| amount > 1000` removed
+```
+
+==Both tests still pass.== Half the condition was never tested, and no branch number said so.
+
+- **Condition coverage** — each operand evaluates both `true` and `false`.
+- **Condition + branch coverage** — that, *and* both decision outcomes.
+
+The test that catches it is `eligible(false, 1500)`. `gcov -b` reports at operand level rather than decision level, so it does show the gap — see *Reading the C++ report*.
+
+---
+### Path coverage
+
+Every route through the function, not every edge.
+
+```cpp
+double discount(double amount, bool isMember) {
+    if (amount < 0)    return 0;
+    if (amount > 1000) return isMember ? 0.2  : 0.1;
+    else               return isMember ? 0.05 : 0.0;
+}
+```
+
+| Path | `amount` | `isMember` | returns |
+|---|---|---|---|
+| rejected | `-10` | — | `0` |
+| large, member | `1500` | `true` | `0.2` |
+| large, non-member | `1500` | `false` | `0.1` |
+| small, member | `800` | `true` | `0.05` |
+| small, non-member | `800` | `false` | `0.0` |
+
+Five paths, five tests. The strongest structural criterion, and the one that stops scaling:
+
+$$\text{paths} = 2^n \quad \text{for } n \text{ independent conditions}$$
+
+Three conditions give 8 paths, ten give 1024, and one loop makes the count unbounded. ==Path coverage is a yardstick, not a target.==
+
+---
+### The ladder
+
+| Criterion | Requires | Still blind to |
+|---|---|---|
+| **Line** | every line executes | which branch was taken |
+| **Branch** | every edge out of every decision | operands inside a compound condition |
+| **Condition + branch** | every operand both ways, every edge both ways | how the conditions interact |
+| **Path** | every route through the function | anything the code never says |
+
+Strength increases down the table. Cost increases faster. Branch is the level worth holding a code base to.
+
+---
+### Structural testing
+
+Read a criterion backwards and it stops being a score — it becomes a test list. The five rows above were not measured after the fact. They were derived from the control flow before a single test existed.
+
+That is **structural testing**: test cases taken from the code's own branches and paths.
+
+> ==It can only confirm that the code does what it does.== A branch the author forgot has no edge to cover, so no criterion asks for it.
+
+`discount` at 100% path coverage still says nothing about what should happen at exactly `1000`, or whether a negative amount deserves an error instead of a silent `0`. Those questions come from the specification — Lecture 9-10.
+
+---
 ### The number you cannot argue with
 
 ```cpp
