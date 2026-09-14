@@ -21,7 +21,8 @@ nav:
       - "7-8:Unit testing fundamentals & the AAA framework": 'lectures/Lecture7_8.md'
       - "9-10:Choosing what to test, and what makes a test good": 'lectures/Lecture9_10.md'
       - "11-12:Testing with external dependencies: test doubles": 'lectures/Lecture11_12.md'
-      # - "13-14:Testability and design": 'lectures/Lecture13_14.md'
+      - "13-14:Testability and design": 'lectures/Lecture13_14.md'
+      - "15-16:Test code quality": 'lectures/Lecture15_16.md'
   - Labs:
       - "1:Make it multiplayer": 'labs/assignment-1.md'
       - "2_3:Detect code smell": 'labs/assignment-2_3.md'

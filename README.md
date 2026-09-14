@@ -31,7 +31,8 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [7_8: Unit testing fundamentals & the AAA framework](docs/lectures/Lecture7_8.md)
 - [9_10: Choosing what to test, and what makes a test good](docs/lectures/Lecture9_10.md)
 - [11_12: Testing with external dependencies: test doubles](docs/lectures/Lecture11_12.md)
-<!--- [13_14: Testability and design](docs/lectures/Lecture13_14.md)-->
+- [13_14: Testability and design](docs/lectures/Lecture13_14.md)
+- [15_16: Test code quality](docs/lectures/Lecture15_16.md)
 
 ---
 
