@@ -318,6 +318,98 @@ Two halves, and the second is the one people miss:
 to edit `_all()`, the test cannot do it.
 
 ---
+#### Not every call is a seam
+
+This is the test, and it is why the enabling point is in the definition.
+
+```python
+class Checkout:
+    def confirm(self, order):
+        gateway = StripeGateway(api_key=LIVE_KEY)   # the class is decided here
+        gateway.charge(order.total)                 # ...so this is not a seam
+```
+
+You have a very good reason to want that last line replaced: ==running this test charges
+a real card.== And you cannot. `charge` is a method call on an object, it looks
+substitutable, and it is not — the concrete class was fixed one line above, inside the
+method. Nothing outside can reach it.
+
+The only ways out are to edit `confirm`, or to ship a test-mode flag into production
+code. Both change the program to suit the test.
+
+```python
+class Checkout:
+    def __init__(self, gateway):                    # <- enabling point
+        self._gateway = gateway
+
+    def confirm(self, order):
+        self._gateway.charge(order.total)           # ...and now it is a seam
+```
+
+The call did not change. ==What changed is that somewhere else can now decide.== A
+parameter on `confirm` would work just as well; what matters is only that the decision
+moved outside the method.
+
+---
+#### The test that was impossible one slide ago
+
+```python
+from unittest.mock import Mock
+
+def test_confirm_charges_the_order_total():
+    gateway = Mock() # charges nothing, records everything
+
+    checkout = Checkout(gateway) # modify behavior via mock
+    checkout.confirm(Order(total=250))
+
+    gateway.charge.assert_called_once_with(250) # the test asserts the call, not the return value
+```
+
+Four lines, and every one of them was unavailable before the seam existed:
+
+- **no card, no API key, no network.** The test runs in microseconds
+- it asserts the **amount**. The real gateway would only ever have told you it succeeded
+- it asserts **once**. Charge twice and the test fails:
+  `Expected 'charge' to be called once. Called 2 times.`
+- nothing in `Checkout` changed to make this possible — ==the production path still
+  constructs a real `StripeGateway` and still charges real cards==
+
+`charge` is a command: it changes the world and returns nothing worth reading. ==You
+cannot check a command by its return value. You check it by watching the call.==
+
+---
+
+!!! question "💬 Seam or not? And if it is, where is the enabling point?"
+
+    Five lines. For each one: can behaviour there be replaced without editing there —
+    and if so, where does the decision live?
+
+    | | Code | Seam? | Enabling point |
+    |---|---|---|---|
+    | a | `conn = psycopg2.connect(...)` then `conn.execute(sql)` | | |
+    | b | `def run(self, conn): conn.execute(sql)` | | |
+    | c | `datetime.now()`, called inside the method | | |
+    | d | `self._clock.now()`, clock set in `__init__` | | |
+    | e | `requests.get(url)`, module imported at the top | | |
+
+    ??? hint "Answer"
+        | | Seam? | Enabling point |
+        |---|---|---|
+        | a | **no** | none — the connection was built one line up, in the same scope |
+        | b | yes | the argument list |
+        | c | **no** | none — the call reaches straight out to the clock |
+        | d | yes | the constructor call |
+        | e | yes, technically | the module attribute — somebody else reassigns `requests.get` |
+
+        **(e) is the one that should bother you.** It is a seam, and a bad one. The
+        enabling point is *"some other module reached in and reassigned an attribute"* —
+        nothing at the call site says so. That is the same objection as the link seam,
+        in a language with no linker.
+
+        Note that **c and d are the same call**. The only difference is whether anybody
+        else was given a chance to decide.
+
+---
 #### Three kinds, in descending order of dignity
 
 Feathers classifies them by *what* does the swapping:
@@ -333,7 +425,265 @@ Feathers classifies them by *what* does the swapping:
 Watch for the third one when you read somebody's tests. It is a confession.
 
 ---
-#### Same class, one seam
+#### One call, three seams
+
+One line is the whole problem. `send_email` talks to a mail server; a test must not.
+
+```c
+void confirm_order(const char *customer) {
+    save(customer);
+    send_email(customer, "Your order is confirmed");   /* <- this */
+}
+```
+
+Three ways to stop it, ==and none of the three edits this function.==
+
+---
+#### Seam 1: preprocessing
+
+Replace the text before the compiler ever sees it.
+
+```c
+/* testdefs.h */
+#ifdef TESTING
+extern const char *last_to;
+#define send_email(to, body)  (last_to = (to))
+#endif
+```
+
+```c
+void send_email(const char *to, const char *body);
+
+#include "testdefs.h"      /* after the declaration, never before */
+```
+
+| | |
+|---|---|
+| **Seam** | the `send_email` call |
+| **Enabling point** | `-DTESTING`, a compiler flag |
+
+Put the include above the declaration and the macro rewrites the declaration too, and
+nothing compiles. ==A seam you can install backwards is a seam you will install
+backwards.==
+
+---
+#### Seam 2: link
+
+Leave the call alone. Give the linker a different function to resolve it to.
+
+```c
+/* stub_mailer.c — compiled into the test build in place of mailer.c */
+void send_email(const char *to, const char *body) { }
+```
+
+```bash
+cc order.c mailer.c       -o app      # production
+cc order.c stub_mailer.c  -o tests    # test
+```
+
+| | |
+|---|---|
+| **Seam** | the unresolved `send_email` reference |
+| **Enabling point** | the build script |
+
+Nothing in the source says any of this is happening. ==Read `order.c` all day and you
+will not learn that the mail is fake.==
+
+---
+#### Seam 3: object
+
+Stop calling a free function. Take the mailer as an argument.
+
+```cpp
+void confirm_order(const string &customer, Mailer &mailer) {
+    save(customer);
+    mailer.send(customer, "Your order is confirmed");
+}
+```
+
+| | |
+|---|---|
+| **Seam** | `mailer.send(...)` |
+| **Enabling point** | the argument list |
+
+---
+#### The same three, side by side
+
+| | Enabling point | Granularity | Visible in the source? |
+|---|---|---|---|
+| Preprocessing | `-DTESTING` | whole build | no |
+| Link | the build script | whole binary | no |
+| **Object** | the argument list | **per test** | **yes** |
+
+Only the third lets one test binary hold two different mailers. The first two are decided
+once, for everything, somewhere the reader is not looking.
+
+==The question is never whether a seam exists. It is which one you can afford to live
+with.==
+
+Note what Python, Java and C# do **not** have: a preprocessor, and a linker you can point
+elsewhere. Two of these three rows are a C and C++ inheritance. ==The one language family
+that gives you extra seams is the one that most needs them.==
+
+---
+
+!!! question "💬 Make this one testable. Change behaviour by nothing."
+
+    ```cpp
+    class OrderService {
+    public:
+        void confirm(const string &customer) {
+            save(customer);
+            send_email(customer, "Your order is confirmed");   // free function
+        }
+    };
+    ```
+
+    You may not rewrite `confirm`. You may not change what the program does. Add as
+    little as you can get away with, and say where the enabling point ends up.
+
+    ??? hint "Answer"
+        Add a method to the class with the same signature as the free function, and have
+        it forward:
+
+        ```cpp
+        class OrderService {
+        public:
+            void confirm(const string &customer) {
+                save(customer);
+                send_email(customer, "Your order is confirmed");   // now resolves to the member
+            }
+        protected:
+            virtual void send_email(const string &to, const string &body) {
+                ::send_email(to, body);                            // the real one
+            }
+        };
+        ```
+
+        `confirm` is untouched. The call now resolves to the member rather than the free
+        function, and the member does exactly what the free function did. **Behaviour is
+        identical.** Then subclass it in the test and override `send_email` to do nothing.
+
+        - **Seam** — the `send_email` call, unchanged.
+        - **Enabling point** — which class the test instantiates.
+
+        The same trick has a second form: a private static method becomes overridable by
+        dropping `static` and widening it to `protected`. Both are one-line changes that
+        create an enabling point where there was none.
+
+        ==You do not need the design to be right. You need one place where the decision
+        can move.==
+
+---
+
+!!! question "💬 One of you wrote this. Where is the seam?"
+
+    From [`dudhatmonar/snake-game-cpp`](https://github.com/dudhatmonar/snake-game-cpp/blob/f9428f408be81893f22de5f4a737e1f4f2286b9a/snake_game.cpp#L192-L201):
+
+    ```cpp
+    void saveHighScore() {
+        if (score > highScore) {
+            ofstream outFile(HIGH_SCORE_FILE);
+            if (outFile.is_open()) {
+                outFile << score;
+                outFile.close();
+                highScore = score;
+            }
+        }
+    }
+    ```
+
+    Three questions, in order:
+
+    1. What rule does this function implement?
+    2. Where is the enabling point today?
+    3. One branch here cannot be reached by any test. Which, and why?
+
+    ??? hint "Answer"
+        **1. The rule.** *A high score is recorded only when it is beaten.* An equal score
+        must not overwrite. Whether that should be `>` or `>=` is a real boundary
+        question — and nobody can settle it with a test today.
+
+        **2. There is none.** `ofstream outFile(HIGH_SCORE_FILE)` builds the collaborator
+        inside the method, and `HIGH_SCORE_FILE` is a file-scope `const string`.
+        Construction in the same scope, so nothing outside gets to decide — the same
+        shape as `StripeGateway(api_key=LIVE_KEY)`.
+
+        The cost is immediate: the test writes `score.txt` into the working directory, and
+        the second test reads whatever the first one left there.
+
+        **3. `if (outFile.is_open())` has no `else`.** When the file will not open,
+        `highScore = score` never runs. The object keeps the old value while the caller
+        believes the save succeeded. To reach that branch you must make a write fail on
+        demand, and ==you cannot make a real `ofstream` fail on demand.==
+
+        One way to install the seam:
+
+        ```cpp
+        void saveHighScore(ScoreStore &store) {          // <- enabling point
+            if (score > highScore) {
+                if (store.write(score)) {
+                    highScore = score;
+                }
+            }
+        }
+        ```
+
+        A fake `ScoreStore` can now refuse the write. ==The argument for the seam was
+        never convenience. That branch is already in the code, already wrong, and
+        currently unreachable.==
+
+---
+
+!!! question "💬 This author injected four things. Name the fifth."
+
+    From [`divyesh-dandwani/Snake-Game-CPP`](https://github.com/divyesh-dandwani/Snake-Game-CPP/blob/205fd2aea17acea256a39ee3edfbd822bf0b6440/snake_gamebox.cpp#L193-L237):
+
+    ```cpp
+    Point generateFood(int w, int h, const vector<Point> &snake, const vector<Point> &blocks) {
+        ...
+        while (!ok && attempts < 1000) {
+            f.x = rand() % (w - 4) + 2;
+            f.y = rand() % (h - 4) + 2;
+            if (!inside(f))                 { attempts++; continue; }
+            if (occupied(f))                { attempts++; continue; }
+            if (freeNeighborCount(f) < 2)   { attempts++; continue; }
+            ok = true;
+        }
+    ```
+
+    Board size, snake and obstacles all arrive as parameters. What does not — and what
+    does that cost?
+
+    ??? hint "Answer"
+        **`rand()`.** Everything the function needs was handed to it except the one thing
+        that decides the answer.
+
+        ==Partial injection is not a beginner's mistake. It is what happens when you pass
+        in the things you were already passing around, and stop at the one that feels like
+        part of the language.==
+
+        There is a real rule on that third condition: *food never spawns anywhere with
+        fewer than two free neighbours*, so it never appears in a dead end. That is a
+        deliberate design decision, and no test can check it — not because it is hard, but
+        because nobody can choose what `rand()` returns.
+
+        One parameter fixes it:
+
+        ```cpp
+        Point generateFood(int w, int h, const vector<Point> &snake,
+                           const vector<Point> &blocks, function<int()> next_random);
+        ```
+
+        Then a test scripts the sequence, aims the first draw straight at a dead end, and
+        asserts the function rejected it.
+
+---
+#### The object seam, at full size
+
+`confirm_order` took a mailer and the slide fit in four lines. Here is the same move on a
+real domain class — and this time the seam is not rescuing a call, it is ==the thing that
+separates the rule from the infrastructure.==
 
 ```python
 class InvoiceRepository(Protocol):
@@ -423,6 +773,84 @@ the entire domain rule, and a test can now watch it happen with four fakes.
 ![](../images/testing/adaptors_ports.png)
 
 ---
+#### What you use a seam for
+
+Two jobs, and they need different substitutes.
+
+| | Goal | What the substitute must do |
+|---|---|---|
+| **Separation** | stop unwanted behaviour running | nothing. An empty function is enough |
+| **Sensing** | see what the code did, when the effect is otherwise invisible | record the calls and their arguments |
+
+==A stub separates. A spy senses.== The seam is what lets either one be installed.
+
+Start sensing with the simplest recording you can, and let it grow only as far as the
+assertions force it.
+
+---
+
+!!! question "💬 Three tests. What does each one tell you about the code it tests?"
+
+    No commentary, just the opening lines. Read them as evidence.
+
+    ```python
+    # A
+    @patch("billing.stripe.Charge.create")
+    def test_refund_is_capped(mock_create):
+    ```
+
+    ```cpp
+    // B
+    #define main snake_main
+    #include "../test.cpp"
+    ```
+
+    ```python
+    # C
+    svc = OrderService(mailer=FakeMailer())
+    ```
+
+    ??? hint "Answer"
+        | | What the test had to do | What the design offered |
+        |---|---|---|
+        | **A** | reach past the code and patch a name inside a third-party module | no seam of its own — it borrowed Python's |
+        | **B** | rename the entry point and swallow the whole file | nothing, at any of the three stages |
+        | **C** | pass an argument | a seam, deliberately |
+
+        A is the interesting one. It works, it is common, and it is still a report: the
+        code under test named `stripe` directly, so the test had to know that too. Rename
+        the dependency and the test breaks without a single behaviour changing.
+
+        B is what happens when the answer is *none of the three* — covered on the next
+        slide.
+
+        > ==A test is a receipt for what the design would not give it.==
+
+        Read your own tests this way and you never need to ask whether a design is
+        testable. The tests already said.
+
+---
+
+!!! question "💬 Which seam did your snake game leave you?"
+
+    Open your own repository. Find where you read the clock, the keyboard, or the random
+    number generator. Ask what you would have to change to substitute it — and *where*
+    that change would live.
+
+    ??? hint "Answer"
+        For almost all of you the honest answer is **none of the three**.
+
+        A link seam needs the dependency to be behind a function you link against. A
+        preprocessing seam needs the call to come through a header you can shadow. An
+        object seam needs something to pass in. A direct `getch()` in the middle of a
+        loop, in a single translation unit, offers no substitution point at any of the
+        three stages.
+
+        That is why the harness for this course had to rename `main` and swallow the
+        whole file. ==When a design offers no seam, the test does not get to stop
+        needing one — it just has to buy a worse one.==
+
+---
 ### 2.  Dependency injection and Controllability
 - Controllability
 	- We should be able to control what a class under test does?
@@ -433,7 +861,7 @@ the entire domain rule, and a test can now watch it happen with four fakes.
 ---
 #### In the snake game
 
-`getch()` appears in 31 of your 36 repos, called from inside the loop it drives:
+`getch()` appears in 32 of your 36 repos, called from inside the loop it drives:
 
 ```python
 class Game:
