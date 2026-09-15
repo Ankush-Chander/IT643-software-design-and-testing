@@ -1,0 +1,2154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture15_16/">
+      
+      
+        <link rel="prev" href="../Lecture13_14/">
+      
+      
+        <link rel="next" href="../../labs/assignment-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>15-16:Test code quality - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#test-code-quality" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              15-16:Test code quality
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-13-14-left-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where 13-14 left off
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-test-code-is-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Test code is code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Test code is code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forty-three-lines-four-tests-five-smells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forty-three lines, four tests, five smells
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each line costs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-same-repository-done-well" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same repository, done well
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-five-smells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Five smells
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Five smells">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mystery-guest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mystery guest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-optimism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource optimism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-fixture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General fixture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eager test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertion-roulette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assertion roulette
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Determinism
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Determinism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-same-picture-twice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same picture, twice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-harness-did-about-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the harness did about it
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tests-that-pass-without-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tests that pass without testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tests that pass without testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-this-one-carefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read this one carefully
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaking-the-implementation-into-the-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaking the implementation into the test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-assertion-that-was-weakened-to-make-it-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The assertion that was weakened to make it pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-private-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing private methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fixtures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Fixtures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-13-14-left-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where 13-14 left off
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-test-code-is-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Test code is code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Test code is code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forty-three-lines-four-tests-five-smells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forty-three lines, four tests, five smells
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each line costs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-same-repository-done-well" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same repository, done well
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-five-smells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Five smells
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Five smells">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mystery-guest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mystery guest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-optimism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource optimism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-fixture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General fixture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eager test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertion-roulette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assertion roulette
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Determinism
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Determinism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-same-picture-twice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same picture, twice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-harness-did-about-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the harness did about it
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tests-that-pass-without-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tests that pass without testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tests that pass without testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-this-one-carefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read this one carefully
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaking-the-implementation-into-the-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaking the implementation into the test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-assertion-that-was-weakened-to-make-it-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The assertion that was weakened to make it pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-private-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing private methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fixtures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Fixtures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="test-code-quality">Test code quality</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Untestable code is a design smell</li>
+<li>Seams: where a test can substitute behaviour, and the enabling point that lets it</li>
+<li>Controllability and observability</li>
+</ul>
+<hr />
+<h2 id="the-claim">The claim</h2>
+<p>Everything that follows argues for two sentences:</p>
+<blockquote>
+<ol>
+<li><mark>Test code is code.</mark> It rots the same way production code rots, and for the same
+   reasons.</li>
+<li><mark>A suite you have stopped trusting is worse than no suite.</mark> No suite is an absence.
+   An untrusted suite is a cost you keep paying for a guarantee you no longer believe.</li>
+</ol>
+</blockquote>
+<p>The first is easy to accept and easy to forget. The second is what makes the first
+matter.</p>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>Test code is code</li>
+<li>Five smells, with instances</li>
+<li>Determinism: the clock, the dice, the keyboard</li>
+<li>Tests that pass without testing anything</li>
+<li>Fixtures, and what they reveal about the design</li>
+</ul>
+<hr />
+<h2 id="where-13-14-left-off">Where 13-14 left off</h2>
+<p><mark>Not one of the 36 snake repositories contains a single test.</mark> Not one.</p>
+<p>So for this lecture a suite was written for you, over one of them — the game is the
+student's (<a href="https://github.com/Shiroilt/solo-leveling-chapter-snake-monster/blob/93f9af1844e1b11ae37a984f5dfc8208da3ae017/snake/test.cpp"><code>snake/test.cpp</code></a>),
+the tests are ours (<a href="../../code/snake_seam/"><code>docs/code/snake_seam/</code></a>). It opens
+like this:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
+<span class="cp">#define main snake_main       </span><span class="c1">// rename the entry point</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../test.cpp&quot;</span><span class="c1">        // swallow the whole translation unit</span>
+<span class="cp">#undef main</span>
+</code></pre></div>
+<p>No object seam existed, so the harness had to manufacture a <strong>preprocessing seam</strong> — the
+last resort on 13-14's list. Rename <code>main</code>, pull the entire translation unit into the
+test binary, put it back.</p>
+<p>It works. It is also this whole lecture in three lines: <mark>the test suite paid for a
+design decision the production code refused to make.</mark></p>
+<p>Everything in the catalogue below starts here. The smells are not carelessness. They are
+what a test has to do when the design gives it nothing to hold on to.</p>
+<hr />
+<h2 id="1-test-code-is-code">1. Test code is code</h2>
+<p>You wrote a test once. You will read it every time it fails, and every time you are not
+sure whether it failed for a real reason.</p>
+<ul>
+<li>Production code is read to find out <strong>what the system does</strong>.</li>
+<li>Test code is read under pressure, at the worst moment, to find out <strong>whether you are
+  in trouble</strong>.</li>
+</ul>
+<p>A test that cannot answer that question quickly has failed at its job even when it is
+green.</p>
+<blockquote>
+<p><mark>Write the test for the person who will read it at 6pm on a Friday.</mark></p>
+</blockquote>
+<hr />
+<h4 id="forty-three-lines-four-tests-five-smells">Forty-three lines, four tests, five smells</h4>
+<p>The whole file — <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_retrieval.py"><code>tests/test_retrieval.py</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">retriever</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">PostgresFullTextRetriever</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_retrieve_faculty_basic</span><span class="p">(</span><span class="n">retriever</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test retrieving faculty returns a list of dictionaries with correct keys.&quot;&quot;&quot;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">retrieve_faculty</span><span class="p">(</span><span class="s2">&quot;machine learning&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="s2">&quot;name&quot;</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="s2">&quot;specialization&quot;</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="s2">&quot;relevance_score&quot;</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_retrieve_respects_limit</span><span class="p">(</span><span class="n">retriever</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that the retrieval limits are respected.&quot;&quot;&quot;</span>
+    <span class="c1"># Assuming there are at least 3 faculties in DB</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">retrieve_faculty</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span>
+</code></pre></div>
+<p>Nothing here is stupid. Every line was written by someone trying to be useful.</p>
+<hr />
+<h4 id="what-each-line-costs">What each line costs</h4>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Smell</th>
+<th>Why it hurts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PostgresFullTextRetriever()</code></td>
+<td><strong>Mystery guest</strong></td>
+<td>The data it depends on is not in the file. It is in a database, on a machine, seeded by someone.</td>
+</tr>
+<tr>
+<td><code># Assuming there are at least 3 faculties in DB</code></td>
+<td><strong>Resource optimism</strong></td>
+<td>The assumption is written down and unenforced. A comment is not a fixture.</td>
+</tr>
+<tr>
+<td><code>assert isinstance(results, list)</code></td>
+<td><strong>Vague assertion</strong></td>
+<td>Passes on an empty list. Passes if retrieval is deleted and replaced with <code>return []</code>.</td>
+</tr>
+<tr>
+<td><code>if results:</code></td>
+<td><strong>Conditional assert</strong></td>
+<td>Covered in 7-8. An empty database turns three assertions into zero.</td>
+</tr>
+<tr>
+<td><code>len(results) &lt;= 2</code></td>
+<td><strong>Assertion that cannot fail usefully</strong></td>
+<td>Zero is <code>&lt;= 2</code>. The limit is never actually tested.</td>
+</tr>
+</tbody>
+</table>
+<p>Run this against an empty database. Four tests pass. <mark>Nothing has been verified.</mark></p>
+<hr />
+<h4 id="the-same-repository-done-well">The same repository, done well</h4>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_library.py"><code>tests/test_library.py</code></a> — 19 tests, four classes, one behaviour each:</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_limit_and_offset_reach_the_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocker</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Paging is done in SQL, so limit/offset must be passed through.&quot;&quot;&quot;</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">mock_db</span><span class="p">(</span><span class="n">mocker</span><span class="p">,</span> <span class="n">fetchall</span><span class="o">=</span><span class="p">[])</span>
+    <span class="k">await</span> <span class="n">LibraryService</span><span class="p">()</span><span class="o">.</span><span class="n">search_books</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">_sql</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="o">.</span><span class="n">call_args</span><span class="o">.</span><span class="n">args</span>
+    <span class="k">assert</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>The dependency is <strong>supplied</strong>, not hoped for.</li>
+<li>The docstring says <em>why the test exists</em>, not what the code does.</li>
+<li><code>fetchall=[]</code> — the empty case is deliberate here, and the assertion still bites.</li>
+</ul>
+<p>Same code base. Same team. The difference is not skill.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Two suites, one repository. What is actually different?</p>
+<p><code>test_retrieval.py</code> and <code>test_library.py</code> were written against the same kind of
+thing: a service that runs SQL and returns rows. One is worthless, one is good.</p>
+<p>Name the single decision that separates them.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>One of them controls its dependency. The other hopes for it.</strong></p>
+<p>Every smell in the table follows from that. Once the database is real and
+unseeded, you <em>cannot</em> write a sharp assertion — you do not know what is in
+there. So you soften: <code>isinstance</code>, <code>if results:</code>, <code>&lt;= 2</code>. Each softening is
+locally reasonable and the sum is a suite that verifies nothing.</p>
+<p><mark>The vague assertions are not the disease. They are the symptom of an
+uncontrolled dependency.</mark> This is 13-14 again, arriving from the other side:
+the missing seam shows up first as a bad test, not as bad code.</p>
+<p><img alt="Integration by hope versus isolation by control" src="../../images/test_smells/controlled_testing.png" /></p>
+</details>
+</div>
+<hr />
+<h2 id="2-five-smells">2. Five smells</h2>
+<hr />
+<h4 id="mystery-guest">Mystery guest</h4>
+<p>The test depends on something it does not show you.</p>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_seed_timetable.py#L371"><code>test_seed_timetable.py</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pytest</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="s2">&quot;data/Lab Data.xlsx not present&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Honest about it, which is better than most. But the behaviour is still: on your machine
+the test runs, on mine it vanishes, and the suite reports success either way.</p>
+<p><strong>Fix:</strong> build the input in the test, or commit a small fixture file next to it.</p>
+<hr />
+<h4 id="resource-optimism">Resource optimism</h4>
+<p>The test assumes an environment it did not create.</p>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_fuzzy_directory_search.py#L714-L717"><code>test_fuzzy_directory_search.py</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">patched_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">_DB_KWARGS</span><span class="p">)</span>   <span class="c1"># a real server, right here</span>
+</code></pre></div>
+<p>This is a legitimate integration test. The problem is that it sits in the same suite,
+behind the same command, as the unit tests — so one unavailable server makes the whole
+run red and people learn to ignore red.</p>
+<p><strong>Fix:</strong> separate the run. Not the technique — the <em>button</em>.</p>
+<hr />
+<h4 id="general-fixture">General fixture</h4>
+<p>One <code>SetUp</code> serving every test, most of it unused by any single one.</p>
+<p><code>snake_test.cpp</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SnakeTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">Test</span><span class="w"> </span><span class="p">{</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetUp</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stub</span><span class="o">::</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="n">lup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><code>lup</code>, <code>sc</code>, <code>run</code> are file-scope globals in the game. The fixture is not organising the
+test — it is <strong>undoing the previous test</strong>.</p>
+<blockquote>
+<p><mark>A fixture that resets globals is a design report, not a test utility.</mark></p>
+</blockquote>
+<p>Compare the DAU-buddy version, where <code>mock_db(mocker, fetchall=...)</code> takes an argument
+because each test wants different rows. One is a helper. The other is a cleanup crew.</p>
+<hr />
+<h4 id="eager-test">Eager test</h4>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_mcp_availability.py"><code>test_timetable_mcp_availability.py</code></a> — 198 lines. <strong>One</strong> test function.</p>
+<p>It builds an in-memory SQLite database, inserts a timetable, patches a service, runs the
+overlap query, and asserts. When it goes red you have 198 lines and no idea which of
+them is the reason.</p>
+<p><strong>Fix:</strong> the arrangement is fine. Split the <em>acts</em>.</p>
+<hr />
+<h4 id="assertion-roulette">Assertion roulette</h4>
+<p>A test with many bare assertions and no messages. It fails at line 42 and the report
+says: line 42.</p>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;total_matches&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span>       <span class="c1"># which one broke?</span>
+<span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;showing&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1-1&quot;</span>
+<span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;more_available&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span>
+</code></pre></div>
+<p>Here the names are self-describing, so it is survivable. It stops being survivable when
+the values are positional, or the same assertion runs in a loop.</p>
+<p><strong>Fix:</strong> name the thing, or assert on a whole structure at once so the diff shows you
+everything that moved.</p>
+<hr />
+<h2 id="3-determinism">3. Determinism</h2>
+<p>A test that can fail without the code changing is not a test. It is a rumour.</p>
+<p>Across the 36 snake repositories:</p>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Repos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sleep</code> / <code>Sleep()</code> / <code>sleep_for</code></td>
+<td>36</td>
+</tr>
+<tr>
+<td><code>getch()</code></td>
+<td>32</td>
+</tr>
+<tr>
+<td><code>kbhit()</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>rand()</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>srand()</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>system("cls")</code> / <code>system("clear")</code></td>
+<td>25</td>
+</tr>
+<tr>
+<td><code>fstream</code></td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<p>Every one of these is a hard-coded dependency on something the test cannot control:
+the clock, the dice, the keyboard, the terminal, the disk.</p>
+<p><mark>This is why none of these repositories have tests.</mark> Not because nobody tried. Because
+there was nothing to hold.</p>
+<hr />
+<h4 id="the-same-picture-twice">The same picture, twice</h4>
+<p><img alt="Hard-wired dependencies versus injected ports" src="../../images/test_smells/test_flakiness.png" /></p>
+<p>The left panel is every repository in the table above. The right panel is what the
+harness in this lecture had to build before it could test one.</p>
+<p>Nothing on the right is cleverer. The arrows point the other way, and that is the
+whole difference.</p>
+<hr />
+<h4 id="what-the-harness-did-about-it">What the harness did about it</h4>
+<div class="highlight"><pre><span></span><code><span class="n">stub</span><span class="o">::</span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<span class="n">EXPECT_TRUE</span><span class="p">(</span><span class="n">eventTrigger</span><span class="p">(</span><span class="mf">0.3</span><span class="p">));</span>
+<span class="n">EXPECT_DOUBLE_EQ</span><span class="p">(</span><span class="n">lup</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">stub</span><span class="o">::</span><span class="n">randomValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">};</span><span class="w">   </span><span class="c1">// first (0,0) is on snake -&gt; retry</span>
+<span class="n">Food</span><span class="w"> </span><span class="nf">f</span><span class="p">({{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">}});</span>
+<span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">stub</span><span class="o">::</span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="n">KEY_UP</span><span class="p">,</span><span class="nb">true</span><span class="p">},{</span><span class="n">KEY_DOWN</span><span class="p">,</span><span class="nb">true</span><span class="p">},{</span><span class="n">KEY_LEFT</span><span class="p">,</span><span class="nb">true</span><span class="p">},{</span><span class="n">KEY_RIGHT</span><span class="p">,</span><span class="nb">true</span><span class="p">}};</span>
+</code></pre></div>
+<p>A scripted clock, scripted dice, a scripted player. The second one is the good test in
+the file: it proves the <em>retry</em> branch — that a fruit landing on the snake is rejected —
+and it can only prove it because the dice are scripted.</p>
+<p>That is 13-14 §2 arriving as a fact rather than a slide.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Your snake uses <code>rand()</code>. Prove fruit never spawns on the snake.</p>
+<p>The rule is one line of code and everybody has it. Write the test.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>You cannot, and the reason is not the test.</p>
+<p>With <code>rand()</code> called inside <code>place_fruit()</code>, the only available test is <em>"run it
+five hundred times and check it never happened."</em> That test is slow, it is
+probabilistic, and when it fails it cannot tell you which call did it.</p>
+<p>Inject the source of randomness and the test becomes three lines with an exact
+expected value — the <code>stub::randomValues</code> example above.</p>
+<p><mark>The untestable part was never the rule. It was the dependency the rule reached
+out and grabbed.</mark></p>
+</details>
+</div>
+<hr />
+<h2 id="4-tests-that-pass-without-testing">4. Tests that pass without testing</h2>
+<p>The most expensive test is not the one that fails. It is the one that has never
+failed and never could.</p>
+<hr />
+<h4 id="read-this-one-carefully">Read this one carefully</h4>
+<div class="highlight"><pre><span></span><code><span class="n">TEST_F</span><span class="p">(</span><span class="n">SnakeTest</span><span class="p">,</span><span class="w"> </span><span class="n">MainLoopKeyPresses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 4 frames, each with a different key; direction rules exercised</span>
+<span class="w">    </span><span class="n">stub</span><span class="o">::</span><span class="n">framesUntilClose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">    </span><span class="n">stub</span><span class="o">::</span><span class="n">randomValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span>
+<span class="w">    </span><span class="n">stub</span><span class="o">::</span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="n">KEY_UP</span><span class="p">,</span><span class="nb">true</span><span class="p">},{</span><span class="n">KEY_DOWN</span><span class="p">,</span><span class="nb">true</span><span class="p">},{</span><span class="n">KEY_LEFT</span><span class="p">,</span><span class="nb">true</span><span class="p">},{</span><span class="n">KEY_RIGHT</span><span class="p">,</span><span class="nb">true</span><span class="p">}};</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">snake_main</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The comment says the direction rules are exercised. They are — the code runs.</p>
+<p><strong>Nothing about direction is asserted.</strong> The only assertion is that <code>main</code> returned <code>0</code>.</p>
+<p>So delete the rule. All four guards, in the game:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_UP</span><span class="p">)</span><span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="p">.</span><span class="n">y</span><span class="o">!=</span><span class="mi">1</span><span class="p">))</span><span class="w">   </span><span class="o">-&gt;</span><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_UP</span><span class="p">))</span>
+<span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_DOWN</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="p">.</span><span class="n">y</span><span class="o">!=</span><span class="mi">-1</span><span class="p">))</span><span class="w">  </span><span class="o">-&gt;</span><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_DOWN</span><span class="p">))</span>
+<span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_LEFT</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="p">.</span><span class="n">x</span><span class="o">!=</span><span class="mi">1</span><span class="p">))</span><span class="w">   </span><span class="o">-&gt;</span><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_LEFT</span><span class="p">))</span>
+<span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_RIGHT</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="p">.</span><span class="n">x</span><span class="o">!=</span><span class="mi">-1</span><span class="p">))</span><span class="w">  </span><span class="o">-&gt;</span><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_RIGHT</span><span class="p">))</span>
+</code></pre></div>
+<p>The snake can now reverse into itself. Rebuild and run:</p>
+<div class="highlight"><pre><span></span><code>[==========] 19 tests from 1 test suite ran.
+[  PASSED  ] 19 tests.
+</code></pre></div>
+<p>Not one test noticed. Not just <code>MainLoopKeyPresses</code> — <mark>the entire suite is blind to a
+rule the game cannot be played without.</mark></p>
+<p>Coverage goes up. Verification does not exist.</p>
+<blockquote>
+<p><mark>It can only confirm that the code does what it does.</mark></p>
+</blockquote>
+<hr />
+<h4 id="leaking-the-implementation-into-the-test">Leaking the implementation into the test</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Head starts at x==1 moving right. With time advancing 1s per frame every</span>
+<span class="c1">// frame triggers an update, so the head reaches x==cellcount on frame 24.</span>
+<span class="n">stub</span><span class="o">::</span><span class="n">framesUntilClose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
+</code></pre></div>
+<p>The test encodes an arithmetic derivation about the game's internals — the head must
+reach the wall inside the 30 frames the test allows.</p>
+<p>Widen the board and re-run. <code>cellcount</code> is a pure configuration constant; no behaviour
+changes:</p>
+<table>
+<thead>
+<tr>
+<th><code>cellcount</code></th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25 (as shipped)</td>
+<td>19 passed</td>
+</tr>
+<tr>
+<td>29</td>
+<td>19 passed</td>
+</tr>
+<tr>
+<td>31</td>
+<td>19 passed</td>
+</tr>
+<tr>
+<td><strong>32</strong></td>
+<td><strong><code>MainLoopHitsRightWallAndResets</code> fails</strong></td>
+</tr>
+<tr>
+<td>35</td>
+<td>same one fails</td>
+</tr>
+</tbody>
+</table>
+<p>Nothing broke at 32. The snake simply ran out of frames before reaching the wall, so
+<code>go()</code> was never called and the score was never reset.</p>
+<p>The test has a <strong>silent tolerance window</strong> — it holds to 31 and not past it. That number
+appears nowhere. Nobody chose it. It is a side effect of <code>framesUntilClose = 30</code>.</p>
+<p>That is a <strong>false positive</strong>: red without a defect. <code>Lecture9_10.md</code> called it the worse
+of the two failures, and this is what it looks like in the wild.</p>
+<p><strong>Fix:</strong> assert the <em>event</em>, not the frame count. Run until the wall is hit, then check.</p>
+<hr />
+<h4 id="the-assertion-that-was-weakened-to-make-it-pass">The assertion that was weakened to make it pass</h4>
+<div class="highlight"><pre><span></span><code><span class="n">EXPECT_GE</span><span class="p">(</span><span class="n">stub</span><span class="o">::</span><span class="n">soundPlays</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">        </span><span class="c1">// wall sound</span>
+</code></pre></div>
+<p><code>GE</code> where <code>EQ</code> was meant. Somebody wrote <code>EXPECT_EQ(stub::soundPlays, 1)</code>, it failed
+because the loop played the sound twice, and the fastest green was to relax the operator.</p>
+<p>Now the test passes if the wall sound plays once, or forty times.</p>
+<blockquote>
+<p><mark>Every weakened assertion is a bug report somebody chose not to read.</mark></p>
+</blockquote>
+<hr />
+<h4 id="testing-private-methods">Testing private methods</h4>
+<p>DAU-buddy does this four times:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Calls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_calendar.py#L127"><code>test_calendar.py#L127</code></a></td>
+<td><code>calendar_service._parse_day_substitution()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_chat_guardrails.py#L43"><code>test_chat_guardrails.py#L43</code></a></td>
+<td><code>gemini._extract_function_calls()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_seed_timetable.py#L263"><code>test_seed_timetable.py#L263</code></a></td>
+<td><code>seed_timetable._parse_section_header()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_seed_timetable.py#L296"><code>test_seed_timetable.py#L296</code></a></td>
+<td><code>seed_timetable._filter_meta()</code></td>
+</tr>
+</tbody>
+</table>
+<p>The usual rule says do not test private methods. Apply it here and you delete some of
+the best tests in the repository.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Four tests call a <code>_private</code> function. Which rule is wrong?</p>
+<p>Either the tests are wrong, or the rule is, or the code is. Pick one and defend it.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>The underscore is wrong.</strong></p>
+<p>Look at what all four have in common: they are pure functions. String in, tuple
+out. No state, no I/O, no collaborators.</p>
+<p>And they have real edge cases. <code>_parse_section_header</code> does not just split a
+string — it <em>normalises</em> the programme name, and the workbook it parses ships
+with typos:</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"BTech (MnC) Core: SEMESTER III"</code></td>
+<td><code>("B Tech (MnC)", 3)</code></td>
+</tr>
+<tr>
+<td><code>"BTech (ICT &amp;  CS) Elective: SEMESTER V (2024 Batch)"</code></td>
+<td><code>("B Tech (ICT and CS)", 5)</code></td>
+</tr>
+<tr>
+<td><code>"MSc (DS) Coe : SEMESTER III (2025 Batch)"</code></td>
+<td><code>("MSc (DS)", 3)</code></td>
+</tr>
+<tr>
+<td><code>"Some New Programme: TERM 2"</code></td>
+<td><code>(None, None)</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>BTech</code> becomes <code>B Tech</code>. <code>&amp;</code> becomes <code>and</code>. <code>Coe</code> is a typo for <code>Core</code> and is
+tolerated. One test is named <code>test_longest_key_wins</code> because <code>BTech</code> is also a
+key and the more specific match has to take precedence.</p>
+<p>A pure function with its own input space and its own edge cases is <strong>a unit</strong>.
+The <code>_</code> says "implementation detail of this module", and for these four it is a
+lie — they have a contract worth stating and worth protecting.</p>
+<p>The rule is right about <em>why</em>: do not reach into a class to observe state the
+public interface deliberately hides. That is the Fix 1 anti-pattern from 13-14.
+These four are not that. They are a module that has not yet admitted what its
+interface is.</p>
+<p><mark>Ask whether the thing has a contract, not whether it has an underscore.</mark></p>
+</details>
+</div>
+<hr />
+<h2 id="5-fixtures">5. Fixtures</h2>
+<p>Two fixtures, from the two code bases:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mock_db</span><span class="p">(</span><span class="n">mocker</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">fetchall</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fetchone</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Point library_service.db_connection at a mock cursor.&quot;&quot;&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">SetUp</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stub</span><span class="o">::</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="n">lup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>mock_db</code></th>
+<th><code>SetUp</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Takes arguments</td>
+<td>yes — each test asks for its own rows</td>
+<td>no</td>
+</tr>
+<tr>
+<td>What it does</td>
+<td>supplies a dependency</td>
+<td>resets globals</td>
+</tr>
+<tr>
+<td>If the design improved</td>
+<td>unchanged</td>
+<td>unnecessary</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><mark>A fixture that would disappear if the design were better is telling you about the
+design.</mark></p>
+</blockquote>
+<p><code>mock_db</code> is not going anywhere; injecting a cursor is what the test <em>wants</em> to do.
+<code>SetUp</code> exists only because <code>lup</code>, <code>sc</code> and <code>run</code> are file-scope mutable state, and it
+will exist for exactly as long as they are.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Open a test you have written. Which row of the catalogue is it?</p>
+<p>Not a trick question. Pick one test, name the smell, name the fix. If you cannot
+find a smell, name the assertion that would fail if you deleted the feature.</p>
+<details class="hint">
+<summary>What to look for</summary>
+<ul>
+<li>Does it touch a file, a clock, a network, or a database it did not create?</li>
+<li>Delete the feature it tests. Does it go red?</li>
+<li>Change something cosmetic — a rename, a constant. Does it go red?</li>
+<li>How many behaviours does it check?</li>
+<li>When it fails, does the message tell you what broke?</li>
+</ul>
+<p>The second and third are the important ones, and they pull in opposite
+directions. A test must fail when behaviour changes and must not fail when it
+does not. <mark>Most bad tests fail the first check. The expensive ones fail the
+second.</mark></p>
+</details>
+</div>
+<hr />
+<h2 id="back-to-the-claim">Back to the claim</h2>
+<p>Every smell in this lecture traces to one of two roots.</p>
+<table>
+<thead>
+<tr>
+<th>Root</th>
+<th>Smells it produces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The dependency could not be controlled</strong></td>
+<td>mystery guest, resource optimism, vague assertion, conditional assert, general fixture</td>
+</tr>
+<tr>
+<td><strong>The assertion was written to pass, not to catch</strong></td>
+<td>weakened operator, leaked implementation detail, no assertion at all</td>
+</tr>
+</tbody>
+</table>
+<p>The first root is 13-14's subject arriving one lecture late: a missing seam shows up as a
+bad test before it shows up as bad code.</p>
+<p>The second is nobody's design failing. It is what happens when a red build is an
+obstacle instead of information.</p>
+<blockquote>
+<p><mark>Test code is code — and a suite you have stopped trusting is worse than no suite,
+because you are still paying for it.</mark></p>
+</blockquote>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li>Chapter 10, Test Code Quality — <em>Effective Software Testing</em>, Maurício Aniche</li>
+<li>Chapter 11, Test Code Smells and Anti-patterns — <em>Effective Software Testing</em>, Maurício Aniche</li>
+<li><a href="http://xunitpatterns.com/Test%20Smells.html">xUnit Test Patterns — test smells catalogue</a>, Gerard Meszaros</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture13_14/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 13-14:Testability and design">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                13-14:Testability and design
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../labs/assignment-1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1:Make it multiplayer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                1:Make it multiplayer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture13_14/">
       
       
+        <link rel="prev" href="../Lecture11_12/">
+      
+      
+        <link rel="next" href="../Lecture15_16/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Testability and design - IT643 - Software Design and Testing | DAU</title>
+        <title>13-14:Testability and design - IT643 - Software Design and Testing | DAU</title>
       
     
     
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Testability and design
+              13-14:Testability and design
             
           </span>
         </div>
@@ -158,10 +162,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../Lecture0/" class="md-tabs__link">
           
   
@@ -258,26 +264,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -295,7 +304,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -586,6 +595,541 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testability-and-design_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testability and design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testability and design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fix-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fix 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Root cause
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-that-sequence-showed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What that sequence showed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seven-testing-pains-and-what-each-one-is-really-telling-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seven testing pains, and what each one is really telling you
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-for-testability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Designing for Testability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Designing for Testability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-separate-infrastructure-code-from-domain-code-at-architectural-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Separate infrastructure code from domain code (at architectural level)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Separate infrastructure code from domain code (at architectural level)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-cannot-run-without-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule cannot run without a database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known issues:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-seam-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a seam is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-every-call-is-a-seam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not every call is a seam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-test-that-was-impossible-one-slide-ago" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The test that was impossible one slide ago
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-kinds-in-descending-order-of-dignity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three kinds, in descending order of dignity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-call-three-seams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One call, three seams
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seam-1-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seam 1: preprocessing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seam-2-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seam 2: link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seam-3-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seam 3: object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-same-three-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same three, side by side
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-object-seam-at-full-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The object seam, at full size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-test-you-could-not-write-before" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The test you could not write before
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-bigger-one-four-collaborators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A bigger one: four collaborators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-use-a-seam-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you use a seam for
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dependency-injection-and-controllability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dependency injection and Controllability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dependency injection and Controllability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-the-snake-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In the snake game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-make-classes-and-methods-observable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Make classes and methods observable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Make classes and methods observable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-the-snake-game_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In the snake game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dependency-via-class-constructor-or-value-via-method-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dependency via class constructor or value via method parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testability-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testability in a real code base
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testability in a real code base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-that-cannot-run-without-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule that cannot run without a database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-flaws-in-nine-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three flaws in nine lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-snake-games" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        36 snake games
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -746,6 +1290,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testability-and-design_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -756,6 +1311,17 @@
   
     <nav class="md-nav" aria-label="Testability and design">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#fix-1" class="md-nav__link">
@@ -780,10 +1346,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#what-that-sequence-showed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        What that sequence showed
       
     </span>
   </a>
@@ -796,96 +1362,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing-pains-and-their-corresponding-design-flaws" class="md-nav__link">
+  <a href="#seven-testing-pains-and-what-each-one-is-really-telling-you" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Testing Pains and Their Corresponding Design Flaws
+        Seven testing pains, and what each one is really telling you
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Testing Pains and Their Corresponding Design Flaws">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-difficult-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Difficult Setup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-state-leaks-and-incomplete-shutdown" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. State Leaks and Incomplete Shutdown
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-framework-frustration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Framework Frustration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-difficult-mocking" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Difficult Mocking
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-hidden-inputs-and-effects" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Hidden Inputs and Effects
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-unwieldy-parameter-lists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Unwieldy Parameter Lists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-test-thrash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Test Thrash
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -914,10 +1397,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bad-design" class="md-nav__link">
+  <a href="#the-rule-cannot-run-without-a-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bad design
+        The rule cannot run without a database
       
     </span>
   </a>
@@ -936,10 +1419,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#what-a-seam-is" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        What a seam is
       
     </span>
   </a>
@@ -947,10 +1430,131 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#good-design" class="md-nav__link">
+  <a href="#not-every-call-is-a-seam" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Good Design
+        Not every call is a seam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-test-that-was-impossible-one-slide-ago" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The test that was impossible one slide ago
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-kinds-in-descending-order-of-dignity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three kinds, in descending order of dignity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-call-three-seams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One call, three seams
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seam-1-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seam 1: preprocessing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seam-2-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seam 2: link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seam-3-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seam 3: object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-same-three-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same three, side by side
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-object-seam-at-full-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The object seam, at full size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-test-you-could-not-write-before" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The test you could not write before
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-bigger-one-four-collaborators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A bigger one: four collaborators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-use-a-seam-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you use a seam for
       
     </span>
   </a>
@@ -971,6 +1575,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Dependency injection and Controllability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-the-snake-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In the snake game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -981,6 +1602,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. Make classes and methods observable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-the-snake-game_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In the snake game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -997,6 +1635,67 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testability-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testability in a real code base
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testability in a real code base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-that-cannot-run-without-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule that cannot run without a database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-flaws-in-nine-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three flaws in nine lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-snake-games" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        36 snake games
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the claim
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1039,9 +1738,21 @@
 </li>
 </ul>
 <hr />
+<h2 id="the-claim">The claim</h2>
+<p>Everything that follows argues for two sentences:</p>
+<blockquote>
+<ol>
+<li><mark>Untestable code is a design smell.</mark> The difficulty is the symptom. The defect is
+   in the design.</li>
+<li><mark>Making code testable is not the same as improving it.</mark> You can always force a
+   test to become possible. That usually leaves the design worse.</li>
+</ol>
+</blockquote>
+<p>The first is easy to accept. The second is where the work is, so start there.</p>
+<hr />
 <h2 id="testability-and-design_1">Testability and design</h2>
 <ul>
-<li><strong>Iceberg class</strong></li>
+<li><strong>Iceberg class</strong> — one method above the waterline, five below.</li>
 </ul>
 <table>
 <thead>
@@ -1051,26 +1762,65 @@
 </thead>
 <tbody>
 <tr>
-<td>+ Evaluate(String)</td>
+<td>+ evaluate(rule)</td>
 </tr>
 <tr>
-<td>- ParseAdjunctTerm()</td>
+<td>- _parse_adjunct_term()</td>
 </tr>
 <tr>
-<td>- ParseFactorTerm()</td>
+<td>- _parse_factor_term()</td>
 </tr>
 <tr>
-<td>- ParseAdjunct()</td>
+<td>- _parse_adjunct()</td>
 </tr>
 <tr>
-<td>- HasMoreTokens()</td>
+<td>- _has_more_tokens()</td>
 </tr>
 <tr>
-<td>- GetNextToken()</td>
+<td>- _get_next_token()</td>
 </tr>
 </tbody>
 </table>
-<p>Testability: Not good</p>
+<p>It evaluates rule strings like <code>"active AND premium OR trial"</code>. The leading <code>_</code> is
+Python's marker for private — the same thing the <code>-</code> says in the diagram:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RuleEvaluator</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule</span><span class="p">):</span>                 <span class="c1"># the only way in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span>   <span class="o">=</span> <span class="n">rule</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_adjunct</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_has_more_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="o">...</span>         <span class="c1"># skip separators, anything left?</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_next_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="o">...</span>         <span class="c1"># read up to the next separator</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_adjunct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="o">...</span>        <span class="c1"># OR  level</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_adjunct_term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>        <span class="c1"># AND level</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_factor_term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="o">...</span>        <span class="c1"># a single term</span>
+</code></pre></div>
+<p>Testability: not good.</p>
+<hr />
+<h3 id="why-not">Why not</h3>
+<p>Five of the six methods are private. <mark>The only door into this class is
+<code>evaluate(rule)</code>, and the only thing that comes back is one boolean.</mark></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># the test you want</span>
+<span class="k">assert</span> <span class="n">tokens_of</span><span class="p">(</span><span class="s2">&quot;active</span><span class="se">\t</span><span class="s2">AND</span><span class="se">\t</span><span class="s2">premium&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;AND&quot;</span><span class="p">,</span> <span class="s2">&quot;premium&quot;</span><span class="p">]</span>
+
+<span class="c1"># the test you can write</span>
+<span class="k">assert</span> <span class="n">RuleEvaluator</span><span class="p">()</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;active</span><span class="se">\t</span><span class="s2">AND</span><span class="se">\t</span><span class="s2">premium&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+</code></pre></div>
+<p>The second assertion is worth almost nothing:</p>
+<ul>
+<li><strong>When it fails</strong>, you do not know why. A tokenizer that does not treat a tab as a
+  separator fails it. So does an <code>AND</code> that got its precedence wrong. So does a typo in
+  <code>_parse_factor_term</code>. One boolean cannot separate five methods.</li>
+<li><strong>When it passes</strong>, it does not tell you the tokenizer is right. It tells you the whole
+  pipeline happened to agree on this one string.</li>
+</ul>
+<p>To corner a tokenizer bug you must invent rule strings until one of them makes the final
+answer flip — reasoning backwards through four other methods to design each input.</p>
+<blockquote>
+<p><mark>The pain is not that the tests are hard to write. It is that they cannot be aimed.</mark></p>
+</blockquote>
 <hr />
 <h3 id="fix-1">Fix 1</h3>
 <p>Make private function public.
@@ -1083,25 +1833,65 @@ Testable? Yes. Good design?</p>
 </thead>
 <tbody>
 <tr>
-<td>+ Evaluate(String)</td>
+<td>+ evaluate(rule)</td>
 </tr>
 <tr>
-<td>- ParseAdjunctTerm()</td>
+<td>- _parse_adjunct_term()</td>
 </tr>
 <tr>
-<td>- ParseFactorTerm()</td>
+<td>- _parse_factor_term()</td>
 </tr>
 <tr>
-<td>- ParseAdjunct()</td>
+<td>- _parse_adjunct()</td>
 </tr>
 <tr>
-<td>+ HasMoreTokens()</td>
+<td>+ has_more_tokens()</td>
 </tr>
 <tr>
-<td>- GetNextToken()</td>
+<td>- _get_next_token()</td>
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RuleEvaluator</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span>   <span class="o">=</span> <span class="n">rule</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_adjunct</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_more_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>            <span class="c1"># underscore dropped. now public</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_next_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+</code></pre></div>
+<p>The test is now possible — and look at what it costs:</p>
+<div class="highlight"><pre><span></span><code><span class="n">e</span> <span class="o">=</span> <span class="n">RuleEvaluator</span><span class="p">()</span>
+<span class="n">e</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;active</span><span class="se">\t</span><span class="s2">AND</span><span class="se">\t</span><span class="s2">premium&quot;</span><span class="p">)</span>           <span class="c1"># must run first: it sets self.source</span>
+<span class="k">assert</span> <span class="n">e</span><span class="o">.</span><span class="n">has_more_tokens</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">False</span>
+</code></pre></div>
+<p><mark>You cannot call the public method until you have called the other public method.</mark> The
+class now advertises that it holds a parse position, and every client — not only the test
+— is free to read it mid-parse.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 It is testable now. Is it better?</p>
+<p>Fix 1 cost one keyword and bought a test. Name what the class gave up.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Three things, none of which the test needed.</p>
+<ul>
+<li><strong>A promise it cannot keep.</strong> <code>has_more_tokens()</code> is public, so it is part of
+  the contract now. Tokenizing can no longer change without breaking callers you
+  have never met.</li>
+<li><strong>An object that is only half usable.</strong> Call it before <code>evaluate()</code> and it reads
+  a position nobody set. The class has acquired an order of operations and no way
+  to state it.</li>
+<li><strong>Nothing on the diagnosis.</strong> The test still cannot ask <em>"does this tokenizer
+  split on tabs?"</em> It can only watch a parse already in flight.</li>
+</ul>
+<p><mark>Fix 1 is available for every untestable class you will ever meet.</mark> A private
+method made public, a field exposed, a setter added for tests only. The suite goes
+green every time, and the design is worse every time.</p>
+</details>
+</div>
 <hr />
 <h3 id="root-cause">Root cause</h3>
 <ol>
@@ -1115,25 +1905,27 @@ Testable? Yes. Good design?</p>
 </thead>
 <tbody>
 <tr>
-<td><mark>+ Evaluate(String)</mark></td>
+<td><mark>+ evaluate(rule)</mark></td>
 </tr>
 <tr>
-<td><strong>- ParseAdjunctTerm()</strong></td>
+<td><strong>- _parse_adjunct_term()</strong></td>
 </tr>
 <tr>
-<td><strong>- ParseFactorTerm()</strong></td>
+<td><strong>- _parse_factor_term()</strong></td>
 </tr>
 <tr>
-<td><strong>- ParseAdjunct()</strong></td>
+<td><strong>- _parse_adjunct()</strong></td>
 </tr>
 <tr>
-<td><em>+ HasMoreTokens()</em></td>
+<td><em>+ has_more_tokens()</em></td>
 </tr>
 <tr>
-<td><em>- GetNextToken()</em></td>
+<td><em>- _get_next_token()</em></td>
 </tr>
 </tbody>
 </table>
+<p>Highlighted: the one thing this class was asked to do. <strong>Bold</strong>: parsing. <em>Italic</em>:
+tokenizing. Two jobs in one box.</p>
 <hr />
 <table>
 <thead>
@@ -1143,16 +1935,16 @@ Testable? Yes. Good design?</p>
 </thead>
 <tbody>
 <tr>
-<td>+ Evaluate(String)</td>
+<td>+ evaluate(rule)</td>
 </tr>
 <tr>
-<td>- ParseAdjunctTerm()</td>
+<td>- _parse_adjunct_term()</td>
 </tr>
 <tr>
-<td>- ParseFactorTerm()</td>
+<td>- _parse_factor_term()</td>
 </tr>
 <tr>
-<td>- ParseAdjunct()</td>
+<td>- _parse_adjunct()</td>
 </tr>
 </tbody>
 </table>
@@ -1164,148 +1956,198 @@ Testable? Yes. Good design?</p>
 </thead>
 <tbody>
 <tr>
-<td>+ HasMoreTokens()</td>
+<td>+ has_more_tokens()</td>
 </tr>
 <tr>
-<td>+ GetNextToken()</td>
+<td>+ get_next_token()</td>
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RuleTokenizer</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>               <span class="c1"># arrives complete</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span>   <span class="o">=</span> <span class="n">source</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_more_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_next_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="o">...</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RuleEvaluator</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span> <span class="o">=</span> <span class="n">RuleTokenizer</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span>    <span class="c1"># held privately</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_adjunct</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_adjunct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_adjunct_term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_factor_term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="o">...</span>
+</code></pre></div>
+<p>And the test you actually wanted, three slides ago:</p>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="n">RuleTokenizer</span><span class="p">(</span><span class="s2">&quot;active</span><span class="se">\t</span><span class="s2">AND</span><span class="se">\t</span><span class="s2">premium&quot;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">get_next_token</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;AND&quot;</span><span class="p">,</span> <span class="s2">&quot;premium&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>No rule string to reverse-engineer, no <code>evaluate()</code> call to prime the object, and a
+failure names exactly one method.</p>
 <ul>
-<li>The <code>RuleTokenizer</code> class now has a clean, public interface (<code>hasMoreTokens</code>, <code>getNextToken</code>), making it independently testable.<ul>
-<li>The original <code>RuleEvaluator</code> holds a private instance of the <code>RuleTokenizer</code>, maintaining its external encapsulation.</li>
-<li>This new structure adheres to SRP, resulting in smaller, more focused, and more maintainable classes. The testability problem disappears as a side effect of improving the design.</li>
+<li>The <code>RuleTokenizer</code> class now has a clean, public interface (<code>has_more_tokens</code>, <code>get_next_token</code>), making it independently testable.  <ul>
+<li>The original <code>RuleEvaluator</code> holds a private instance of the <code>RuleTokenizer</code>, maintaining its external encapsulation.  </li>
+<li>This new structure adheres to SRP, resulting in smaller, more focused, and more maintainable classes. The testability problem disappears as a side effect of improving the design.  </li>
 </ul>
 </li>
 </ul>
 <hr />
-<h3 id="conclusion">Conclusion</h3>
-<ol>
-<li>Non testability is a code smell that points us to bad design.</li>
-<li>Forcing testability does not necessarily means improved design </li>
-</ol>
-<hr />
-<h2 id="testing-pains-and-their-corresponding-design-flaws">Testing Pains and Their Corresponding Design Flaws</h2>
-<h3 id="1-difficult-setup">1. Difficult Setup</h3>
+<h3 id="what-that-sequence-showed">What that sequence showed</h3>
 <ul>
-<li><strong>Testing Pain:</strong> The process of instantiating a single class for a test becomes a complex detective-work job, requiring the creation of a cascade of dependent objects ("you find yourself kind of bringing half the application in just to instantiate one object").</li>
-<li><strong>Underlying Design Flaw:</strong> <strong>Excessive Coupling.</strong> The class under test has too many dependencies and is not properly factored. Good design would break this gargantuan class into smaller, <mark>more cohesive units with fewer dependencies.</mark></li>
+<li><strong>Fix 1</strong> made the class testable and made it worse. The test could now reach
+  <code>has_more_tokens()</code> — and so could every other client.  </li>
+<li><strong>Extracting <code>RuleTokenizer</code></strong> made it testable and made it better. Nobody was aiming at
+  testability; it was an SRP fix, and the testability arrived as a side effect.  </li>
 </ul>
+<p><mark>Both routes end at "now I can test it". Only one of them is a fix.</mark></p>
 <hr />
-<h3 id="2-state-leaks-and-incomplete-shutdown">2. State Leaks and Incomplete Shutdown</h3>
-<ul>
-<li><strong>Testing Pain:</strong> Tests fail intermittently or cause side effects in subsequent tests. This is often because a class does not release resources (e.g., file handles, network connections) or clean up static mutable data.</li>
-<li><strong>Underlying Design Flaw:</strong> <strong>Poor Resource Management and Use of Global State.</strong> The class is not self-contained and fails to manage its own lifecycle. This often points to the <mark>use of Singletons or other forms of global mutable state, which testing makes "very real" and painful.</mark></li>
-</ul>
+<h2 id="seven-testing-pains-and-what-each-one-is-really-telling-you">Seven testing pains, and what each one is really telling you</h2>
+<p>Every pain below is a complaint about the design. The flaw in the middle column already
+had a name before unit testing existed; the right-hand column is the rest of this lecture.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>The testing pain</th>
+<th>The design flaw underneath</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Difficult setup</strong> — instantiating one class drags in half the application</td>
+<td>Excessive coupling</td>
+<td>smaller, cohesive units with fewer dependencies</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>State leaks</strong> — tests fail intermittently, or poison the next test</td>
+<td>Global mutable state, unmanaged lifecycle</td>
+<td>own your resources; no singletons</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Framework frustration</strong> — logic welded to a GUI, web or persistence framework</td>
+<td>Insufficient separation of concerns</td>
+<td>§1 — infrastructure vs domain</td>
+</tr>
+<tr>
+<td>4a</td>
+<td><strong>Difficult mocking</strong> — a fake returns a fake that returns a fake</td>
+<td>Law of Demeter — <code>a.getB().getC().getD()</code></td>
+<td>shorten the chain</td>
+</tr>
+<tr>
+<td>4b</td>
+<td><strong>Difficult mocking</strong> — the dependency cannot be substituted at all</td>
+<td>Dependency Inversion — you depend on a concrete class</td>
+<td>§2 — dependency injection</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Hidden inputs and effects</strong> — input arrives from nowhere, effects vanish into a database</td>
+<td>Encapsulation violation; the class does more than it says</td>
+<td>§1 — separate computation from I/O</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Unwieldy parameter lists</strong> — twelve arguments to call one method</td>
+<td>Too many responsibilities</td>
+<td>split the class</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Test thrash</strong> — one small change breaks thirty tests</td>
+<td>Open/Closed violation, poor locality</td>
+<td>extend by substitution, not modification</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h3 id="3-framework-frustration">3. Framework Frustration</h3>
-<ul>
-<li><strong>Testing Pain:</strong> Code is difficult to test because it is tightly interwoven with a framework (e.g., GUI, web, or persistence frameworks).</li>
-<li><strong>Underlying Design Flaw:</strong> <strong>Insufficient Separation of Concerns.</strong> The core domain logic is not separated from the framework infrastructure. A better design separates these concerns, <mark>allowing the domain logic to be tested independently as a plain object, with the framework delegating calls to it.</mark></li>
-</ul>
+<div class="admonition question">
+<p class="admonition-title">💬 Which row is your snake game?</p>
+<p>Open your Lab 1 repository. Pick the function you would least like to write a test
+for, and find its row in the table above.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Most of you will land on the same handful.</p>
+<table>
+<thead>
+<tr>
+<th>If your worst function…</th>
+<th>Row</th>
+<th>Because</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>calls <code>getch()</code> or <code>rand()</code> inside the game rules</td>
+<td>5</td>
+<td>the input arrives from somewhere no test can reach</td>
+</tr>
+<tr>
+<td>reads or writes a global board, score or direction</td>
+<td>2</td>
+<td>two tests in one binary now share state</td>
+</tr>
+<tr>
+<td>draws the frame and decides the rules in one pass</td>
+<td>3</td>
+<td>you cannot have the rule without the screen</td>
+</tr>
+<tr>
+<td>is <code>main()</code>, or something <code>main()</code>-shaped at 200 lines</td>
+<td>1 and 6</td>
+<td>nothing can be constructed on its own</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Not one of those rows says "add a test".</mark> Each names a change to the production
+code you would want anyway, and the test becomes possible as a consequence.</p>
+</details>
+</div>
 <hr />
-<h3 id="4-difficult-mocking">4. Difficult Mocking</h3>
-<ul>
-<li><strong>Testing Pain:</strong> The process of creating mock objects for dependencies is convoluted and painful.</li>
-<li><strong>Underlying Design Flaw:</strong> This pain points to two distinct design violations:<ul>
-<li><strong>Violation of the Law of Demeter:</strong> When tests require creating chains of mocks (a fake A returns a fake B, which returns a fake C), it signals that the production code has long dependency chains (<code>object.getA().getB().getC()</code>). This creates pervasive dependencies throughout the system.</li>
-<li><strong>Violation of the Dependency Inversion Principle:</strong> When it's hard to substitute a dependency (e.g., a component that talks to a third-party API), <mark>it's because the code depends on a concrete class rather than an abstraction (interface).</mark> Introducing an interface makes substitution for testing straightforward and improves the design's flexibility.</li>
-</ul>
-</li>
-</ul>
-<hr />
-<h3 id="5-hidden-inputs-and-effects">5. Hidden Inputs and Effects</h3>
-<ul>
-<li><strong>Testing Pain:</strong> A class is untestable because its inputs or outputs are not exposed through its public interface. It may read from a hidden source (e.g., a global configuration) or write to an external system (e.g., a database) without any way to observe or control this behavior in a test.</li>
-<li><strong>Underlying Design Flaw:</strong> <strong>Encapsulation Violation and Insufficient Separation of Concerns.</strong> <mark>A well-designed object should make its inputs and outputs clear. When side effects are hidden, the class is doing more than it claims.</mark> The solution is to separate the computational logic from the external I/O logic into distinct classes.</li>
-</ul>
-<hr />
-<h3 id="6-unwieldy-parameter-lists">6. Unwieldy Parameter Lists</h3>
-<ul>
-<li><strong>Testing Pain:</strong> Instantiating a class or calling a method is painful due to an excessive number of parameters.</li>
-<li><strong>Underlying Design Flaw:</strong> <strong>Too Many Responsibilities.</strong> A long parameter list is a strong indicator that a class or method is trying to do too much. By writing tests, the developer becomes the "first client user of our code" and feels this pain concretely, motivating them to refactor the code into smaller, more focused units.</li>
-</ul>
-<hr />
-<h3 id="7-test-thrash">7. Test Thrash</h3>
-<ul>
-<li><strong>Testing Pain:</strong> A minor change in the production code causes a large number of tests to break.</li>
-<li><strong>Underlying Design Flaw:</strong> <strong>Violation of the Open/Closed Principle.</strong> The design lacks good "locality of concerns," causing changes to ripple across the system. A well-designed system, often composed of small classes with single responsibilities, is more open to extension but closed to modification. ==Changes can be introduced by adding or substituting classes rather than modifying existing ones, minimising test breakage. ==</li>
-</ul>
+<!--### Two of those rows are not new
+
+**Row 7** is *resistance to refactoring* from Lecture 9-10, seen from the other side. There
+it was an attribute you scored a test on. Here it is a defect you fix in the production
+code. ==Same phenomenon, and the test suite is not the thing to change.==
+
+**Row 4b** is why Lecture 11-12 worked at all. `Order` took an abstract `Warehouse&`, so
+the test could hand it a fake. A `Order` that constructed its own `SqlWarehouse` would
+have been untestable, and the four techniques below are how you avoid writing that class.
+
+> ==Notice what is absent from the middle column: "this code has no tests". Every flaw
+> listed is one you would want fixed even if you never wrote a single test.==-->
+
 <hr />
 <h2 id="designing-for-testability">Designing for Testability</h2>
 <h3 id="1-separate-infrastructure-code-from-domain-code-at-architectural-level">1. Separate infrastructure code from domain code (at architectural level)</h3>
-<h4 id="bad-design">Bad design</h4>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
+<h4 id="the-rule-cannot-run-without-a-database">The rule cannot run without a database</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">InvoiceFilter</span><span class="p">:</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">Invoice</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
-<span class="p">};</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                               <span class="c1"># infrastructure</span>
+        <span class="n">conn</span>     <span class="o">=</span> <span class="n">DatabaseConnection</span><span class="p">(</span><span class="s2">&quot;invoices_db&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">)</span>
+        <span class="n">invoices</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute_query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM invoices&quot;</span><span class="p">)</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">invoices</span>
 
-<span class="c1">// Simulated database API (placeholder for actual DB calls)</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConnection</span><span class="w"> </span><span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">DatabaseConnection</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Connecting to DB: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; as &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Closing DB connection&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">executeQuery</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Executing query: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="c1">// Pretend these come from the DB:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="p">{</span><span class="s">&quot;CustomerA&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span><span class="s">&quot;CustomerB&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span><span class="s">&quot;CustomerC&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">}</span>
-<span class="w">        </span><span class="p">};</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">InvoiceFilter</span><span class="w"> </span><span class="p">{</span>
-<span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="c1">// Infrastructure logic embedded in domain class</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">all</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">DatabaseConnection</span><span class="w"> </span><span class="n">conn</span><span class="p">(</span><span class="s">&quot;invoices_db&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM invoices&quot;</span><span class="p">;</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">allInvoices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">);</span>
-<span class="w">            </span><span class="n">conn</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">allInvoices</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DB Error: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="k">public</span><span class="o">:</span>
-
-<span class="w">    </span><span class="c1">// ❌ Domain logic mixed with infrastructure</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lowValueInvoices</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">issuedInvoices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">all</span><span class="p">();</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">issuedInvoices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inv</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
-<span class="w">                </span><span class="n">result</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">inv</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">InvoiceFilter</span><span class="w"> </span><span class="n">filter</span><span class="p">;</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">lowValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filter</span><span class="p">.</span><span class="n">lowValueInvoices</span><span class="p">();</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Low-value invoices:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">lowValue</span><span class="p">)</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ($&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">low_value_invoices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                 <span class="c1"># the business rule</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">inv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all</span><span class="p">():</span>                   <span class="c1"># &lt;- cannot run without a database</span>
+            <span class="k">if</span> <span class="n">inv</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
 </code></pre></div>
+<p>The rule is "an invoice below 100 is low value". Four lines above it decide that you
+cannot ask that question without a live connection.</p>
 <hr />
 <h4 id="known-issues">Known issues:</h4>
 <ul>
@@ -1313,108 +2155,637 @@ Testable? Yes. Good design?</p>
 <li>The more responsibilities, the more complexity, and the more chances for bugs. Classes that are less cohesive contain more code.</li>
 </ul>
 <hr />
-<h4 id="example">Example</h4>
-<p>Suppose an online web shop has the following requirements:
-For all the shopping carts that were paid today, the system should
--  Set the status of the shopping cart as ready for delivery, and persist its new
-state in the database.
-- Notify the delivery center, and let them know they should send the goods
-to the customer.
--  Notify the SAP system.
--  Send an e-mail to the customer confirming that the payment was success-
-ful. The e-mail should contain an estimate of when delivery will happen.
-The information is available via the delivery center API.</p>
+<h4 id="what-a-seam-is">What a seam is</h4>
+<p>Michael Feathers named this in <em>Working Effectively with Legacy Code</em>:</p>
+<blockquote>
+<p>A <strong>seam</strong> is a place where you can alter behaviour in your program <strong>without editing
+in that place</strong>.</p>
+</blockquote>
+<p>Two halves, and the second is the one people miss:</p>
+<ul>
+<li>the <strong>seam</strong> — where the substitution takes effect</li>
+<li>the <strong>enabling point</strong> — where you choose what to substitute</li>
+</ul>
+<p><mark>A seam with no enabling point is not a seam.</mark> If the only way to swap the database is
+to edit <code>_all()</code>, the test cannot do it.</p>
 <hr />
-<h4 id="good-design">Good Design</h4>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<h4 id="not-every-call-is-a-seam">Not every call is a seam</h4>
+<p>This is the test, and it is why the enabling point is in the definition.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Checkout</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">confirm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">gateway</span> <span class="o">=</span> <span class="n">StripeGateway</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">LIVE_KEY</span><span class="p">)</span>   <span class="c1"># the class is decided here</span>
+        <span class="n">gateway</span><span class="o">.</span><span class="n">charge</span><span class="p">(</span><span class="n">order</span><span class="o">.</span><span class="n">total</span><span class="p">)</span>                 <span class="c1"># ...so this is not a seam</span>
+</code></pre></div>
+<p>You have a very good reason to want that last line replaced: <mark>running this test charges
+a real card.</mark> And you cannot. <code>charge</code> is a method call on an object, it looks
+substitutable, and it is not — the concrete class was fixed one line above, inside the
+method. Nothing outside can reach it.</p>
+<p>The only ways out are to edit <code>confirm</code>, or to ship a test-mode flag into production
+code. Both change the program to suit the test.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Checkout</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gateway</span><span class="p">):</span>                    <span class="c1"># &lt;- enabling point</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gateway</span> <span class="o">=</span> <span class="n">gateway</span>
 
-<span class="c1">//-------------------------------------------</span>
-<span class="c1">// Domain Model</span>
-<span class="c1">//-------------------------------------------</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">ShoppingCart</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">customerName_</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">paid_</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">readyForDelivery_</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">estimatedDelivery_</span><span class="p">;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">confirm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gateway</span><span class="o">.</span><span class="n">charge</span><span class="p">(</span><span class="n">order</span><span class="o">.</span><span class="n">total</span><span class="p">)</span>           <span class="c1"># ...and now it is a seam</span>
+</code></pre></div>
+<p>The call did not change. <mark>What changed is that somewhere else can now decide.</mark> A
+parameter on <code>confirm</code> would work just as well; what matters is only that the decision
+moved outside the method.</p>
+<hr />
+<h4 id="the-test-that-was-impossible-one-slide-ago">The test that was impossible one slide ago</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">unittest.mock</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mock</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_confirm_charges_the_order_total</span><span class="p">():</span>
+    <span class="n">gateway</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">()</span> <span class="c1"># charges nothing, records everything</span>
+
+    <span class="n">checkout</span> <span class="o">=</span> <span class="n">Checkout</span><span class="p">(</span><span class="n">gateway</span><span class="p">)</span> <span class="c1"># modify behavior via mock</span>
+    <span class="n">checkout</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">Order</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">250</span><span class="p">))</span>
+
+    <span class="n">gateway</span><span class="o">.</span><span class="n">charge</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span> <span class="c1"># the test asserts the call, not the return value</span>
+</code></pre></div>
+<p>Four lines, and every one of them was unavailable before the seam existed:</p>
+<ul>
+<li><strong>no card, no API key, no network.</strong> The test runs in microseconds</li>
+<li>it asserts the <strong>amount</strong>. The real gateway would only ever have told you it succeeded</li>
+<li>it asserts <strong>once</strong>. Charge twice and the test fails:
+  <code>Expected 'charge' to be called once. Called 2 times.</code></li>
+<li>nothing in <code>Checkout</code> changed to make this possible — <mark>the production path still
+  constructs a real <code>StripeGateway</code> and still charges real cards</mark></li>
+</ul>
+<p><code>charge</code> is a command: it changes the world and returns nothing worth reading. <mark>You
+cannot check a command by its return value. You check it by watching the call.</mark></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Seam or not? And if it is, where is the enabling point?</p>
+<p>Five lines. For each one: can behaviour there be replaced without editing there —
+and if so, where does the decision live?</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Code</th>
+<th>Seam?</th>
+<th>Enabling point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td><code>conn = psycopg2.connect(...)</code> then <code>conn.execute(sql)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>def run(self, conn): conn.execute(sql)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>c</td>
+<td><code>datetime.now()</code>, called inside the method</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>d</td>
+<td><code>self._clock.now()</code>, clock set in <code>__init__</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>e</td>
+<td><code>requests.get(url)</code>, module imported at the top</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Seam?</th>
+<th>Enabling point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td><strong>no</strong></td>
+<td>none — the connection was built one line up, in the same scope</td>
+</tr>
+<tr>
+<td>b</td>
+<td>yes</td>
+<td>the argument list</td>
+</tr>
+<tr>
+<td>c</td>
+<td><strong>no</strong></td>
+<td>none — the call reaches straight out to the clock</td>
+</tr>
+<tr>
+<td>d</td>
+<td>yes</td>
+<td>the constructor call</td>
+</tr>
+<tr>
+<td>e</td>
+<td>yes, technically</td>
+<td>the module attribute — somebody else reassigns <code>requests.get</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>(e) is the one that should bother you.</strong> It is a seam, and a bad one. The
+enabling point is <em>"some other module reached in and reassigned an attribute"</em> —
+nothing at the call site says so. That is the same objection as the link seam,
+in a language with no linker.</p>
+<p>Note that <strong>c and d are the same call</strong>. The only difference is whether anybody
+else was given a chance to decide.</p>
+</details>
+</div>
+<hr />
+<h4 id="three-kinds-in-descending-order-of-dignity">Three kinds, in descending order of dignity</h4>
+<p>Feathers classifies them by <em>what</em> does the swapping:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Swapped at</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Object seam</strong></td>
+<td>run time, by passing a different object</td>
+<td>cheap, reversible, the one you want</td>
+</tr>
+<tr>
+<td><strong>Link seam</strong></td>
+<td>build time, by linking a different binary</td>
+<td>whole-binary granularity</td>
+</tr>
+<tr>
+<td><strong>Preprocessing seam</strong></td>
+<td>compile time, by <code>#define</code></td>
+<td>last resort</td>
+</tr>
+</tbody>
+</table>
+<p><mark>A design offers object seams. A desperate test manufactures the other two.</mark></p>
+<p>Watch for the third one when you read somebody's tests. It is a confession.</p>
+<hr />
+<h4 id="one-call-three-seams">One call, three seams</h4>
+<p>One line is the whole problem. <code>send_email</code> talks to a mail server; a test must not.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">confirm_order</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">customer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">save</span><span class="p">(</span><span class="n">customer</span><span class="p">);</span>
+<span class="w">    </span><span class="n">send_email</span><span class="p">(</span><span class="n">customer</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Your order is confirmed&quot;</span><span class="p">);</span><span class="w">   </span><span class="cm">/* &lt;- this */</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Three ways to stop it, <mark>and none of the three edits this function.</mark></p>
+<hr />
+<h4 id="seam-1-preprocessing">Seam 1: preprocessing</h4>
+<p>Replace the text before the compiler ever sees it.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* testdefs.h */</span>
+<span class="cp">#ifdef TESTING</span>
+<span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">last_to</span><span class="p">;</span>
+<span class="cp">#define send_email(to, body)  (last_to = (to))</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">send_email</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">body</span><span class="p">);</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;testdefs.h&quot;</span><span class="c1">      /* after the declaration, never before */</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Seam</strong></td>
+<td>the <code>send_email</code> call</td>
+</tr>
+<tr>
+<td><strong>Enabling point</strong></td>
+<td><code>-DTESTING</code>, a compiler flag</td>
+</tr>
+</tbody>
+</table>
+<p>Put the include above the declaration and the macro rewrites the declaration too, and
+nothing compiles. <mark>A seam you can install backwards is a seam you will install
+backwards.</mark></p>
+<hr />
+<h4 id="seam-2-link">Seam 2: link</h4>
+<p>Leave the call alone. Give the linker a different function to resolve it to.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* stub_mailer.c — compiled into the test build in place of mailer.c */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">send_email</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cc<span class="w"> </span>order.c<span class="w"> </span>mailer.c<span class="w">       </span>-o<span class="w"> </span>app<span class="w">      </span><span class="c1"># production</span>
+cc<span class="w"> </span>order.c<span class="w"> </span>stub_mailer.c<span class="w">  </span>-o<span class="w"> </span>tests<span class="w">    </span><span class="c1"># test</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Seam</strong></td>
+<td>the unresolved <code>send_email</code> reference</td>
+</tr>
+<tr>
+<td><strong>Enabling point</strong></td>
+<td>the build script</td>
+</tr>
+</tbody>
+</table>
+<p>Nothing in the source says any of this is happening. <mark>Read <code>order.c</code> all day and you
+will not learn that the mail is fake.</mark></p>
+<hr />
+<h4 id="seam-3-object">Seam 3: object</h4>
+<p>Stop calling a free function. Take the mailer as an argument.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">confirm_order</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">customer</span><span class="p">,</span><span class="w"> </span><span class="n">Mailer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mailer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">save</span><span class="p">(</span><span class="n">customer</span><span class="p">);</span>
+<span class="w">    </span><span class="n">mailer</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">customer</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Your order is confirmed&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Seam</strong></td>
+<td><code>mailer.send(...)</code></td>
+</tr>
+<tr>
+<td><strong>Enabling point</strong></td>
+<td>the argument list</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="the-same-three-side-by-side">The same three, side by side</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Enabling point</th>
+<th>Granularity</th>
+<th>Visible in the source?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preprocessing</td>
+<td><code>-DTESTING</code></td>
+<td>whole build</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>the build script</td>
+<td>whole binary</td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>Object</strong></td>
+<td>the argument list</td>
+<td><strong>per test</strong></td>
+<td><strong>yes</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Only the third lets one test binary hold two different mailers. The first two are decided
+once, for everything, somewhere the reader is not looking.</p>
+<p><mark>The question is never whether a seam exists. It is which one you can afford to live
+with.</mark></p>
+<p>Note what Python, Java and C# do <strong>not</strong> have: a preprocessor, and a linker you can point
+elsewhere. Two of these three rows are a C and C++ inheritance. <mark>The one language family
+that gives you extra seams is the one that most needs them.</mark></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Make this one testable. Change behaviour by nothing.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">ShoppingCart</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">customerName</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">paid</span><span class="p">)</span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">customerName_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">customerName</span><span class="p">)),</span><span class="w"> </span><span class="n">paid_</span><span class="p">(</span><span class="n">paid</span><span class="p">),</span><span class="w"> </span><span class="n">readyForDelivery_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">customerName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">customerName_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isPaid</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">paid_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">markAsReadyForDelivery</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">day</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">readyForDelivery_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">        </span><span class="n">estimatedDelivery_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">printStatus</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Cart for &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">customerName_</span>
-<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">readyForDelivery_</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; is ready for delivery.</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">                                        </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; is not ready.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="c1">//-------------------------------------------</span>
-<span class="c1">// Interfaces for collaborators (injected deps)</span>
-<span class="c1">//-------------------------------------------</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">IShoppingCartRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IShoppingCartRepository</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ShoppingCart</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cartsPaidToday</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">persist</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">IDeliveryCenter</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IDeliveryCenter</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="nf">deliver</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">ICustomerNotifier</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ICustomerNotifier</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sendEstimatedDeliveryNotification</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">ISAP</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ISAP</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">cartReadyForDelivery</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ShoppingCart</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="c1">//-------------------------------------------</span>
-<span class="c1">// Main class — PaidShoppingCartsBatch</span>
-<span class="c1">//-------------------------------------------</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">PaidShoppingCartsBatch</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">IShoppingCartRepository</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db_</span><span class="p">;</span>
-<span class="w">    </span><span class="n">IDeliveryCenter</span><span class="o">&amp;</span><span class="w"> </span><span class="n">deliveryCenter_</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ICustomerNotifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">notifier_</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ISAP</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sap_</span><span class="p">;</span>
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">PaidShoppingCartsBatch</span><span class="p">(</span><span class="n">IShoppingCartRepository</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">IDeliveryCenter</span><span class="o">&amp;</span><span class="w"> </span><span class="n">deliveryCenter</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">ICustomerNotifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">notifier</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">ISAP</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sap</span><span class="p">)</span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">db_</span><span class="p">(</span><span class="n">db</span><span class="p">),</span><span class="w"> </span><span class="n">deliveryCenter_</span><span class="p">(</span><span class="n">deliveryCenter</span><span class="p">),</span><span class="w"> </span><span class="n">notifier_</span><span class="p">(</span><span class="n">notifier</span><span class="p">),</span><span class="w"> </span><span class="n">sap_</span><span class="p">(</span><span class="n">sap</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">processAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">paidCarts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db_</span><span class="p">.</span><span class="n">cartsPaidToday</span><span class="p">();</span>
-
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cart</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">paidCarts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">estimatedDay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deliveryCenter_</span><span class="p">.</span><span class="n">deliver</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
-<span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="n">markAsReadyForDelivery</span><span class="p">(</span><span class="n">estimatedDay</span><span class="p">);</span>
-<span class="w">            </span><span class="n">db_</span><span class="p">.</span><span class="n">persist</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
-<span class="w">            </span><span class="n">notifier_</span><span class="p">.</span><span class="n">sendEstimatedDeliveryNotification</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
-<span class="w">            </span><span class="n">sap_</span><span class="p">.</span><span class="n">cartReadyForDelivery</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">confirm</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">customer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">save</span><span class="p">(</span><span class="n">customer</span><span class="p">);</span>
+<span class="w">        </span><span class="n">send_email</span><span class="p">(</span><span class="n">customer</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Your order is confirmed&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// free function</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
+<p>You may not rewrite <code>confirm</code>. You may not change what the program does. Add as
+little as you can get away with, and say where the enabling point ends up.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Add a method to the class with the same signature as the free function, and have
+it forward:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">confirm</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">customer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">save</span><span class="p">(</span><span class="n">customer</span><span class="p">);</span>
+<span class="w">        </span><span class="n">send_email</span><span class="p">(</span><span class="n">customer</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Your order is confirmed&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// now resolves to the member</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">send_email</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">::</span><span class="n">send_email</span><span class="p">(</span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p">);</span><span class="w">                            </span><span class="c1">// the real one</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><code>confirm</code> is untouched. The call now resolves to the member rather than the free
+function, and the member does exactly what the free function did. <strong>Behaviour is
+identical.</strong> Then subclass it in the test and override <code>send_email</code> to do nothing.</p>
+<ul>
+<li><strong>Seam</strong> — the <code>send_email</code> call, unchanged.</li>
+<li><strong>Enabling point</strong> — which class the test instantiates.</li>
+</ul>
+<p>The same trick has a second form: a private static method becomes overridable by
+dropping <code>static</code> and widening it to <code>protected</code>. Both are one-line changes that
+create an enabling point where there was none.</p>
+<p><mark>You do not need the design to be right. You need one place where the decision
+can move.</mark></p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 One of you wrote this. Where is the seam?</p>
+<p>From <a href="https://github.com/dudhatmonar/snake-game-cpp/blob/f9428f408be81893f22de5f4a737e1f4f2286b9a/snake_game.cpp#L192-L201"><code>dudhatmonar/snake-game-cpp</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">saveHighScore</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">highScore</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ofstream</span><span class="w"> </span><span class="n">outFile</span><span class="p">(</span><span class="n">HIGH_SCORE_FILE</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">outFile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">outFile</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="w">            </span><span class="n">outFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="w">            </span><span class="n">highScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Three questions, in order:</p>
+<ol>
+<li>What rule does this function implement?</li>
+<li>Where is the enabling point today?</li>
+<li>One branch here cannot be reached by any test. Which, and why?</li>
+</ol>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>1. The rule.</strong> <em>A high score is recorded only when it is beaten.</em> An equal score
+must not overwrite. Whether that should be <code>&gt;</code> or <code>&gt;=</code> is a real boundary
+question — and nobody can settle it with a test today.</p>
+<p><strong>2. There is none.</strong> <code>ofstream outFile(HIGH_SCORE_FILE)</code> builds the collaborator
+inside the method, and <code>HIGH_SCORE_FILE</code> is a file-scope <code>const string</code>.
+Construction in the same scope, so nothing outside gets to decide — the same
+shape as <code>StripeGateway(api_key=LIVE_KEY)</code>.</p>
+<p>The cost is immediate: the test writes <code>score.txt</code> into the working directory, and
+the second test reads whatever the first one left there.</p>
+<p><strong>3. <code>if (outFile.is_open())</code> has no <code>else</code>.</strong> When the file will not open,
+<code>highScore = score</code> never runs. The object keeps the old value while the caller
+believes the save succeeded. To reach that branch you must make a write fail on
+demand, and <mark>you cannot make a real <code>ofstream</code> fail on demand.</mark></p>
+<p>One way to install the seam:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">saveHighScore</span><span class="p">(</span><span class="n">ScoreStore</span><span class="w"> </span><span class="o">&amp;</span><span class="n">store</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// &lt;- enabling point</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">highScore</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">store</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">score</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">highScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A fake <code>ScoreStore</code> can now refuse the write. <mark>The argument for the seam was
+never convenience. That branch is already in the code, already wrong, and
+currently unreachable.</mark></p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 This author injected four things. Name the fifth.</p>
+<p>From <a href="https://github.com/divyesh-dandwani/Snake-Game-CPP/blob/205fd2aea17acea256a39ee3edfbd822bf0b6440/snake_gamebox.cpp#L193-L237"><code>divyesh-dandwani/Snake-Game-CPP</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Point</span><span class="w"> </span><span class="nf">generateFood</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">snake</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">blocks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ok</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">attempts</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">f</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">w</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">inside</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="w">                 </span><span class="p">{</span><span class="w"> </span><span class="n">attempts</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">occupied</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="n">attempts</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">freeNeighborCount</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="n">attempts</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<p>Board size, snake and obstacles all arrive as parameters. What does not — and what
+does that cost?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong><code>rand()</code>.</strong> Everything the function needs was handed to it except the one thing
+that decides the answer.</p>
+<p><mark>Partial injection is not a beginner's mistake. It is what happens when you pass
+in the things you were already passing around, and stop at the one that feels like
+part of the language.</mark></p>
+<p>There is a real rule on that third condition: <em>food never spawns anywhere with
+fewer than two free neighbours</em>, so it never appears in a dead end. That is a
+deliberate design decision, and no test can check it — not because it is hard, but
+because nobody can choose what <code>rand()</code> returns.</p>
+<p>One parameter fixes it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Point</span><span class="w"> </span><span class="nf">generateFood</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">snake</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">blocks</span><span class="p">,</span><span class="w"> </span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">next_random</span><span class="p">);</span>
+</code></pre></div>
+<p>Then a test scripts the sequence, aims the first draw straight at a dead end, and
+asserts the function rejected it.</p>
+</details>
+</div>
+<hr />
+<h4 id="the-object-seam-at-full-size">The object seam, at full size</h4>
+<p><code>confirm_order</code> took a mailer and the slide fit in four lines. Here is the same move on a
+real domain class — and this time the seam is not rescuing a call, it is <mark>the thing that
+separates the rule from the infrastructure.</mark></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">InvoiceRepository</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Invoice</span><span class="p">]:</span> <span class="o">...</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InvoiceFilter</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">InvoiceRepository</span><span class="p">):</span>  <span class="c1"># the seam</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_repo</span> <span class="o">=</span> <span class="n">repo</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">low_value_invoices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">inv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repo</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">inv</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>The rule did not change. <code>self._all()</code> became <code>self._repo.all()</code>. <mark>Everything that made this class
+untestable lived in the four lines that fetched the data, never in the rule itself.</mark></p>
+<hr />
+<h4 id="the-test-you-could-not-write-before">The test you could not write before</h4>
+<div class="highlight"><pre><span></span><code><span class="n">repo</span>           <span class="o">=</span> <span class="n">InMemoryInvoices</span><span class="p">([(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)])</span>
+<span class="n">invoice_filter</span> <span class="o">=</span> <span class="n">InvoiceFilter</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">invoice_filter</span><span class="o">.</span><span class="n">low_value_invoices</span><span class="p">()</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)]</span>
+</code></pre></div>
+<p>No connection string, no schema, no rows to seed, no cleanup. <code>InMemoryInvoices</code> is a
+<strong>fake</strong> in the Lecture 11-12 sense — a working implementation that takes a shortcut
+unfit for production.</p>
+<blockquote>
+<p><mark>The class was never hard to test. It was hard to reach.</mark></p>
+</blockquote>
+<hr />
+<h4 id="a-bigger-one-four-collaborators">A bigger one: four collaborators</h4>
+<p>Suppose an online web shop has the following requirements. For all the shopping carts
+that were paid today, the system should</p>
+<ul>
+<li>Set the status of the shopping cart as ready for delivery, and persist its new state in the database.</li>
+<li>Notify the delivery center, and let them know they should send the goods to the customer.</li>
+<li>Notify the SAP system.</li>
+<li>Send an e-mail to the customer confirming that the payment was successful. The e-mail should contain an estimate of when delivery will happen. The information is available via the delivery center API.</li>
+</ul>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ShoppingCartRepository</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">carts_paid_today</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Cart</span><span class="p">]:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">persist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cart</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DeliveryCenter</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deliver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cart</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">date</span><span class="p">:</span> <span class="o">...</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomerNotifier</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">send_estimated_delivery_notification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cart</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SAP</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cart_ready_for_delivery</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cart</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PaidShoppingCartsBatch</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">delivery_center</span><span class="p">,</span> <span class="n">notifier</span><span class="p">,</span> <span class="n">sap</span><span class="p">):</span>   <span class="c1"># four seams</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delivery_center</span> <span class="o">=</span> <span class="n">db</span><span class="p">,</span> <span class="n">delivery_center</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_notifier</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sap</span>       <span class="o">=</span> <span class="n">notifier</span><span class="p">,</span> <span class="n">sap</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">cart</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">carts_paid_today</span><span class="p">():</span>
+            <span class="n">estimated_day</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delivery_center</span><span class="o">.</span><span class="n">deliver</span><span class="p">(</span><span class="n">cart</span><span class="p">)</span>
+            <span class="n">cart</span><span class="o">.</span><span class="n">mark_as_ready_for_delivery</span><span class="p">(</span><span class="n">estimated_day</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">persist</span><span class="p">(</span><span class="n">cart</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_notifier</span><span class="o">.</span><span class="n">send_estimated_delivery_notification</span><span class="p">(</span><span class="n">cart</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sap</span><span class="o">.</span><span class="n">cart_ready_for_delivery</span><span class="p">(</span><span class="n">cart</span><span class="p">)</span>
+</code></pre></div>
+<p>Four dependencies, four interfaces, one constructor. <mark><code>process_all</code> performs no I/O of its
+own — it only decides the order in which four collaborators are called.</mark> That ordering is
+the entire domain rule, and a test can now watch it happen with four fakes.</p>
 <hr />
 <p><img alt="" src="../../images/testing/adaptors_ports.png" /></p>
+<hr />
+<h4 id="what-you-use-a-seam-for">What you use a seam for</h4>
+<p>Two jobs, and they need different substitutes.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Goal</th>
+<th>What the substitute must do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Separation</strong></td>
+<td>stop unwanted behaviour running</td>
+<td>nothing. An empty function is enough</td>
+</tr>
+<tr>
+<td><strong>Sensing</strong></td>
+<td>see what the code did, when the effect is otherwise invisible</td>
+<td>record the calls and their arguments</td>
+</tr>
+</tbody>
+</table>
+<p><mark>A stub separates. A spy senses.</mark> The seam is what lets either one be installed.</p>
+<p>Start sensing with the simplest recording you can, and let it grow only as far as the
+assertions force it.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Three tests. What does each one tell you about the code it tests?</p>
+<p>No commentary, just the opening lines. Read them as evidence.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># A</span>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;billing.stripe.Charge.create&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_refund_is_capped</span><span class="p">(</span><span class="n">mock_create</span><span class="p">):</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// B</span>
+<span class="cp">#define main snake_main</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../test.cpp&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># C</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">OrderService</span><span class="p">(</span><span class="n">mailer</span><span class="o">=</span><span class="n">FakeMailer</span><span class="p">())</span>
+</code></pre></div>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What the test had to do</th>
+<th>What the design offered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>reach past the code and patch a name inside a third-party module</td>
+<td>no seam of its own — it borrowed Python's</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>rename the entry point and swallow the whole file</td>
+<td>nothing, at any of the three stages</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>pass an argument</td>
+<td>a seam, deliberately</td>
+</tr>
+</tbody>
+</table>
+<p>A is the interesting one. It works, it is common, and it is still a report: the
+code under test named <code>stripe</code> directly, so the test had to know that too. Rename
+the dependency and the test breaks without a single behaviour changing.</p>
+<p>B is what happens when the answer is <em>none of the three</em> — covered on the next
+slide.</p>
+<blockquote>
+<p><mark>A test is a receipt for what the design would not give it.</mark></p>
+</blockquote>
+<p>Read your own tests this way and you never need to ask whether a design is
+testable. The tests already said.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Which seam did your snake game leave you?</p>
+<p>Open your own repository. Find where you read the clock, the keyboard, or the random
+number generator. Ask what you would have to change to substitute it — and <em>where</em>
+that change would live.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>For almost all of you the honest answer is <strong>none of the three</strong>.</p>
+<p>A link seam needs the dependency to be behind a function you link against. A
+preprocessing seam needs the call to come through a header you can shadow. An
+object seam needs something to pass in. A direct <code>getch()</code> in the middle of a
+loop, in a single translation unit, offers no substitution point at any of the
+three stages.</p>
+<p>That is why the harness for this course had to rename <code>main</code> and swallow the
+whole file. <mark>When a design offers no seam, the test does not get to stop
+needing one — it just has to buy a worse one.</mark></p>
+</details>
+</div>
 <hr />
 <h3 id="2-dependency-injection-and-controllability">2.  Dependency injection and Controllability</h3>
 <ul>
@@ -1424,17 +2795,40 @@ The information is available via the delivery center API.</p>
 </li>
 <li>Dependency Injection<ul>
 <li>All external dependencies should be passed into a class (e.g. via its constructor or setter methods) rather than hard-coded inside it.</li>
-<li>By coding to abstractions (abstract classes, interfaces, or even C++ templates), unit tests can “plug in” stub or mock implementations.</li>
+<li>By coding to an abstraction rather than a concrete class, unit tests can “plug in” a stub or a fake. What supplies the abstraction is a language detail — a <code>Protocol</code>, an abstract base class, an interface, or a plain callable passed in.</li>
 </ul>
 </li>
 </ul>
 <hr />
+<h4 id="in-the-snake-game">In the snake game</h4>
+<p><code>getch()</code> appears in 32 of your 36 repos, called from inside the loop it drives:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">read_key</span><span class="p">()</span>               <span class="c1"># the real keyboard. nothing can control it</span>
+        <span class="o">...</span>
+</code></pre></div>
+<p>Pass it in instead:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read_key</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_key</span> <span class="o">=</span> <span class="n">read_key</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_key</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">keys</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">])</span>           <span class="c1"># a scripted player</span>
+<span class="n">g</span>    <span class="o">=</span> <span class="n">Game</span><span class="p">(</span><span class="n">read_key</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">next</span><span class="p">(</span><span class="n">keys</span><span class="p">))</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">();</span> <span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">();</span> <span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>           <span class="c1"># left, left, up</span>
+</code></pre></div>
+<p><mark>That is controllability: the test decides what the player does.</mark> Without the seam, the
+only way to exercise a left turn is for a human to press a key.</p>
+<hr />
 <h3 id="3-make-classes-and-methods-observable">3. Make classes and methods observable</h3>
 <p>Observability, at the class level, is about how easy it is to assert that the behavior of the functionality went as expected. 
-Ensure that your classes provide developers with simple and easy ways to assert their state.
-Common way:
-- Introducing methods to facilitate assertions
-- void methods are hard to test and can be improved by making them return some assertable value instead</p>
+Ensure that your classes provide developers with simple and easy ways to assert their state.<br />
+Common way:<br />
+- Introducing methods to facilitate assertions<br />
+- void methods are hard to test and can be improved by making them return some assertable value instead  </p>
 <p>Example:</p>
 <table>
 <thead>
@@ -1458,16 +2852,196 @@ Common way:
 </tbody>
 </table>
 <hr />
+<h4 id="in-the-snake-game_1">In the snake game</h4>
+<p><code>grow()</code> returns nothing, so a test can only spy on it or reach into a private field:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                    <span class="c1"># void. did anything happen?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_growing</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+<p>Add the query the game loop wants anyway:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_body</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Snake</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+<span class="n">s</span><span class="o">.</span><span class="n">grow</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">UP</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span>
+</code></pre></div>
+<p><mark>One method to add, and the test stops caring how growth is implemented.</mark></p>
+<hr />
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Make one snake method observable</p>
+<p>The table above says: verify through state, not by spying. In most of your repos a
+collision is detected inside <code>logic()</code> and acted on immediately — a global flag is
+set, or <code>game_over()</code> is called, or something is printed.</p>
+<p>What would you add so a test can assert a collision <em>without</em> spying on anything?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>A query. The collision already happens; nothing exposes the result.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span> <span class="o">...</span>     <span class="c1"># command — moves, may die</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        <span class="o">...</span>     <span class="c1"># query   — the addition</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Snake</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span> <span class="n">board</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">s</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">LEFT</span><span class="p">)</span>                           <span class="c1"># walks into the wall</span>
+
+<span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">is_alive</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">False</span>
+</code></pre></div>
+<p>No spy, no screen scraping, no global to reset between tests. This is the
+command/query split from Lecture 11-12, used as a design tool rather than a
+classification.</p>
+<blockquote>
+<p><mark>One caution: this is not a licence to add a getter per private field.</mark>
+<code>is_alive()</code> is observable behaviour — the game loop already needs it to know
+when to stop. A getter that only a test would ever call is Fix 1 wearing a
+different hat.</p>
+</blockquote>
+</details>
+</div>
+<hr />
+<hr />
 <h3 id="4-dependency-via-class-constructor-or-value-via-method-parameter">4. Dependency via class constructor or value via method parameter</h3>
 <ul>
 <li>Receiving a dependency via constructor adds a little complexity to the overall class and its tests but simplifies its client classes. </li>
 <li>Receiving the data via method parameter simplifies the class and its tests but adds a little complexity to the clients. </li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">place_fruit</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>   <span class="c1"># dependency — fixed for this Game</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_place_fruit</span> <span class="o">=</span> <span class="n">place_fruit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_board</span>       <span class="o">=</span> <span class="n">board</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>                <span class="c1"># data — different every tick</span>
+        <span class="o">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">g</span> <span class="o">=</span> <span class="n">Game</span><span class="p">(</span><span class="n">place_fruit</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">board</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>   <span class="c1"># once</span>
+<span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">UP</span><span class="p">)</span>                                             <span class="c1"># per call</span>
+<span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">LEFT</span><span class="p">)</span>
+</code></pre></div>
+<p><mark>If it varies per call, pass it per call. If it is fixed for the object's life, pass it
+once.</mark> The fruit placer is a dependency; the direction is data.</p>
+<h2 id="testability-in-a-real-code-base">Testability in a real code base</h2>
+<h3 id="the-rule-that-cannot-run-without-a-database">The rule that cannot run without a database</h3>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/calendar_service.py#L33-L52"><code>get_day_substitution</code></a> answers a domain
+question — <em>which weekday does campus actually run on this date?</em> It opens its own
+connection to do it:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_day_substitution</span><span class="p">(</span><span class="n">date_str</span><span class="p">):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT event_name FROM academic_calendar WHERE ...&quot;</span>
+    <span class="k">with</span> <span class="n">db_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>                 <span class="c1"># infrastructure, inside the rule</span>
+        <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_str</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">_parse_day_substitution</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()])</span>
+</code></pre></div>
+<p>Same shape as <code>InvoiceFilter._all()</code>. Rows 3 and 5 of the pains table.</p>
+<p>Lecture 11-12 showed the workaround: the <a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_timetable_service.py#L17-L27"><code>mock_db</code></a>
+fixture reaches in from outside and patches <code>db_connection</code> for the duration of a test.</p>
+<blockquote>
+<p><mark>That is a seam cut by the test, not offered by the design.</mark> Monkeypatching is what
+you reach for when technique §1 was never applied.</p>
+</blockquote>
+<hr />
+<h3 id="three-flaws-in-nine-lines">Three flaws in nine lines</h3>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/gemini.py#L26-L38"><code>is_gemini_available</code></a> decides whether to call the
+model or fall back to local NLP:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_gemini_healthy</span>    <span class="o">=</span> <span class="kc">True</span>                         <span class="c1"># module-level mutable state</span>
+<span class="n">_gemini_last_check</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_gemini_available</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">global</span> <span class="n">_gemini_healthy</span><span class="p">,</span> <span class="n">_gemini_last_check</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_gemini_healthy</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">_gemini_last_check</span> <span class="o">&lt;</span> <span class="n">_GEMINI_COOLDOWN</span><span class="p">:</span>   <span class="c1"># reads the clock</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">_gemini_healthy</span> <span class="o">=</span> <span class="kc">True</span>                    <span class="c1"># a query that writes</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>What it does</th>
+<th>Pains row</th>
+<th>Cost in a test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>module-level mutable state</td>
+<td>2 — state leaks</td>
+<td>one test that records a failure changes the next test's answer</td>
+</tr>
+<tr>
+<td>calls <code>time.time()</code> directly</td>
+<td>5 — hidden input</td>
+<td>you cannot test the cooldown without sleeping 60 seconds</td>
+</tr>
+<tr>
+<td>writes the flag it reports on</td>
+<td>—</td>
+<td>asking twice gives two different answers</td>
+</tr>
+</tbody>
+</table>
+<p>Technique §2 fixes all three at once — hold the state in an object, inject the clock:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GeminiCircuit</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">cooldown</span><span class="o">=</span><span class="mf">60.0</span><span class="p">):</span>     <span class="c1"># clock is now a seam</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cooldown</span> <span class="o">=</span> <span class="n">clock</span><span class="p">,</span> <span class="n">cooldown</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_healthy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_check</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_available</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_failure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+</code></pre></div>
+<p>A test hands it <code>lambda: 1000.0</code>, records a failure, hands it <code>lambda: 1061.0</code>, and
+asserts recovery. No sleeping, no globals, no ordering between tests.</p>
+<hr />
+<h3 id="36-snake-games">36 snake games</h3>
+<p>Lecture 11-12 counted the untestable dependencies across your repos: <code>getch</code> in 31,
+<code>Sleep</code> in 28, <code>rand</code> in 22, the screen in 18, a high-score file in 17.</p>
+<p>The reason none of them can be stubbed is not the language. It is <em>where</em> the call sits:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">logic</span><span class="p">():</span>                                  <span class="c1"># 22 of 36 repos, shape varies</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="n">head</span> <span class="o">==</span> <span class="n">fruit</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="n">fruit</span> <span class="o">=</span> <span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">width</span><span class="p">,</span> <span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">height</span><span class="p">)</span>      <span class="c1"># no seam</span>
+</code></pre></div>
+<p>Technique §4 — pass the value in through the method — costs one parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">logic</span><span class="p">(</span><span class="n">place_fruit</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="n">head</span> <span class="o">==</span> <span class="n">fruit</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="n">fruit</span> <span class="o">=</span> <span class="n">place_fruit</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">logic</span><span class="p">(</span><span class="n">place_fruit</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>             <span class="c1"># the fruit lands where the test says</span>
+</code></pre></div>
+<p><mark>Nothing about the game changed. The rule became reachable.</mark></p>
+<hr />
+<hr />
+<h2 id="back-to-the-claim">Back to the claim</h2>
+<blockquote>
+<p><strong>Untestable code is a design smell.</strong></p>
+</blockquote>
+<p>Every pain in this lecture had a design flaw underneath it, and each flaw already had a
+name before unit testing existed: coupling, global state, mixed concerns, Demeter, DIP,
+SRP, OCP. <mark>None of them were invented to make testing easier.</mark> A test is simply the
+cheapest place to notice them, because it is the first client of your code whose
+requirements you control completely.</p>
+<blockquote>
+<p><strong>Making code testable is not the same as improving it.</strong></p>
+</blockquote>
+<p>Fix 1 is always available. Make the private method public, expose the field, add a setter
+nobody needs, hand the test a back door. The suite goes green and the design is worse
+than when you started.</p>
+<p>The four techniques are the whole difference: each one makes the code testable <strong>by</strong>
+removing the coupling rather than routing around it.</p>
+<p><mark>If a change made your code easier to test and harder to explain, you did Fix 1.</mark></p>
 <hr />
 <h2 id="references">References:</h2>
 <ol>
 <li><a href="https://youtu.be/4cVZvoFGJTU?list=TLGG0KwbRmmxQHswMzExMjAyNQ">Michael Feathers - the deep synergy between testability and good design - YouTube</a></li>
 <li>Chapter 7, Designing for Testability "Effective Software testing by MAURÍCIO ANICHE"</li>
+<li>Chapter 4, The Seam Model — <em>Working Effectively with Legacy Code</em>, Michael Feathers</li>
 </ol>
 
 
@@ -1493,6 +3067,44 @@ Common way:
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture11_12/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11-12:Testing with external dependencies: test doubles">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                11-12:Testing with external dependencies: test doubles
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture15_16/" class="md-footer__link md-footer__link--next" aria-label="Next: 15-16:Test code quality">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                15-16:Test code quality
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

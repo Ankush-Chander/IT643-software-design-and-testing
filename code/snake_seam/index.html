@@ -10,25 +10,27 @@
       
       
       
+        <link rel="canonical" href="https://IT643.ankushchander.com/code/snake_seam/">
+      
       
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>IT643 - Software Design and Testing | DAU</title>
+        <title>snake_seam — a preprocessing seam, end to end - IT643 - Software Design and Testing | DAU</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="/assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#snake_seam-a-preprocessing-seam-end-to-end" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -81,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -101,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              snake_seam — a preprocessing seam, end to end
             
           </span>
         </div>
@@ -134,7 +141,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -155,7 +162,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/lectures/Lecture0/" class="md-tabs__link">
+        <a href="../../lectures/Lecture0/" class="md-tabs__link">
           
   
   
@@ -175,7 +182,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/labs/assignment-1/" class="md-tabs__link">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
           
   
   
@@ -209,7 +216,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -227,7 +234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -306,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture0/" class="md-nav__link">
+      <a href="../../lectures/Lecture0/" class="md-nav__link">
         
   
   
@@ -334,7 +341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture1/" class="md-nav__link">
+      <a href="../../lectures/Lecture1/" class="md-nav__link">
         
   
   
@@ -362,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture2/" class="md-nav__link">
+      <a href="../../lectures/Lecture2/" class="md-nav__link">
         
   
   
@@ -390,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture3/" class="md-nav__link">
+      <a href="../../lectures/Lecture3/" class="md-nav__link">
         
   
   
@@ -418,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture3-demo/" class="md-nav__link">
+      <a href="../../lectures/Lecture3-demo/" class="md-nav__link">
         
   
   
@@ -446,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture4/" class="md-nav__link">
+      <a href="../../lectures/Lecture4/" class="md-nav__link">
         
   
   
@@ -474,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture5_6/" class="md-nav__link">
+      <a href="../../lectures/Lecture5_6/" class="md-nav__link">
         
   
   
@@ -502,7 +509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture7_8/" class="md-nav__link">
+      <a href="../../lectures/Lecture7_8/" class="md-nav__link">
         
   
   
@@ -530,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture9_10/" class="md-nav__link">
+      <a href="../../lectures/Lecture9_10/" class="md-nav__link">
         
   
   
@@ -558,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture11_12/" class="md-nav__link">
+      <a href="../../lectures/Lecture11_12/" class="md-nav__link">
         
   
   
@@ -586,7 +593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture13_14/" class="md-nav__link">
+      <a href="../../lectures/Lecture13_14/" class="md-nav__link">
         
   
   
@@ -614,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/lectures/Lecture15_16/" class="md-nav__link">
+      <a href="../../lectures/Lecture15_16/" class="md-nav__link">
         
   
   
@@ -701,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/labs/assignment-1/" class="md-nav__link">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
         
   
   
@@ -729,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/labs/assignment-2_3/" class="md-nav__link">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
         
   
   
@@ -774,6 +781,60 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-demonstrates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it demonstrates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-and-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build and run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-two-exercises-in-the-lectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The two exercises in the lectures
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -786,8 +847,99 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="snake_seam-a-preprocessing-seam-end-to-end">snake_seam — a preprocessing seam, end to end</h1>
+<p>Used by <strong>Lecture 13-14 (Testability and design)</strong> and <strong>Lecture 15-16 (Test code quality)</strong>.</p>
+<h2 id="attribution">Attribution</h2>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test.cpp</code> — the game</td>
+<td>Written by a student in this course. Source: <a href="https://github.com/Shiroilt/solo-leveling-chapter-snake-monster/blob/93f9af1844e1b11ae37a984f5dfc8208da3ae017/snake/test.cpp"><code>Shiroilt/solo-leveling-chapter-snake-monster@93f9af1</code>, <code>snake/test.cpp</code></a>. Unmodified.</td>
+</tr>
+<tr>
+<td><code>tests/</code> — the harness, stubs and CMake</td>
+<td>Written for this course. <strong>Not</strong> the student's work, and not present in their repository.</td>
+</tr>
+</tbody>
+</table>
+<p>No snake game submitted to this course contains a test. The harness exists to show what
+testing one costs when the design offers no seam.</p>
+<h2 id="what-it-demonstrates">What it demonstrates</h2>
+<p>The game is a single translation unit. The score, the clock and <code>main</code> are all
+file-scope. There is nothing to pass in, so there is nothing to substitute.</p>
+<p><code>tests/snake_test.cpp</code> breaks in from outside:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
+<span class="cp">#define main snake_main       </span><span class="c1">// rename the entry point</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../test.cpp&quot;</span><span class="c1">        // swallow the whole translation unit</span>
+<span class="cp">#undef main</span>
+</code></pre></div>
+<ul>
+<li><strong>Seam</strong> — the <code>#include "raylib.h"</code> line inside the game.</li>
+<li><strong>Enabling point</strong> — <code>-I stubs</code>, set by <code>target_include_directories</code> in
+  <code>tests/CMakeLists.txt</code>. It puts <code>tests/stubs/raylib.h</code> ahead of the real library, so
+  <code>GetTime()</code>, <code>IsKeyPressed()</code> and <code>GetRandomValue()</code> resolve to scripted stubs.</li>
+</ul>
+<p>Not one line of the game was edited. That is what makes it a seam. The enabling point is
+a build flag, which is what makes it the worst kind — one binary cannot hold two
+different clocks.</p>
+<h2 id="build-and-run">Build and run</h2>
+<p>Requires GoogleTest.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>tests<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make
+./runTests
+</code></pre></div>
+<p>Expected: <code>[  PASSED  ] 19 tests.</code></p>
+<h2 id="the-two-exercises-in-the-lectures">The two exercises in the lectures</h2>
+<p>Both are mutations of <code>test.cpp</code>. Both are measured, not asserted.</p>
+<p><strong>1. The suite is blind to the direction rule.</strong> Delete the guard on all four keys:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_UP</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="p">.</span><span class="n">y</span><span class="o">!=</span><span class="mi">1</span><span class="p">))</span><span class="w">   </span><span class="o">-&gt;</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">IsKeyPressed</span><span class="p">(</span><span class="n">KEY_UP</span><span class="p">))</span>
+</code></pre></div>
+<p>The snake can now reverse into itself. Rebuild: <strong>19 tests still pass.</strong></p>
+<p><strong>2. The wall test has a silent tolerance window.</strong> <code>cellcount</code> is a configuration
+constant, currently 25.</p>
+<table>
+<thead>
+<tr>
+<th><code>cellcount</code></th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25, 29, 31</td>
+<td>19 passed</td>
+</tr>
+<tr>
+<td><strong>32</strong></td>
+<td><code>MainLoopHitsRightWallAndResets</code> fails</td>
+</tr>
+</tbody>
+</table>
+<p>Nothing breaks at 32 — the snake just runs out of frames before reaching the wall,
+because the test fixes <code>framesUntilClose = 30</code>. That boundary is chosen by nobody.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -830,16 +982,16 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="/assets/slides/js/slides.js"></script>
+        <script src="../../assets/slides/js/slides.js"></script>
       
     
   </body>

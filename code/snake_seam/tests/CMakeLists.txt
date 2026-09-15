@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(snake_tests CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -O0 -g")
+find_package(GTest REQUIRED)
+add_executable(runTests snake_test.cpp stubs/stub.cpp)
+target_include_directories(runTests PRIVATE stubs)
+target_link_libraries(runTests GTest::gtest GTest::gtest_main pthread gcov)
