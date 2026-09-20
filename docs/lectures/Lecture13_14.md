@@ -992,13 +992,38 @@ class Game:
 ```
 
 ```python
-g = Game(place_fruit=lambda: (5, 5), board=(20, 20))   # once
-g.step(UP)                                             # per call
+g = Game(place_fruit=lambda: (5, 5), board=(20, 20))   # dependencies supplied once
+g.step(UP)                                             # only changing data per call
 g.step(LEFT)
 ```
 
+The same dependencies can instead be passed through the method:
+
+```python
+class Game:
+
+    def step(self, direction, place_fruit, board):
+        # The class is simpler: it does not store or initialize dependencies.
+        ...
+```
+
+```python
+# Every client must now know, retain, and repeatedly supply the dependencies.
+place_fruit = lambda: (5, 5)
+board = (20, 20)
+
+g = Game()
+g.step(UP, place_fruit, board)
+g.step(LEFT, place_fruit, board)
+```
+
+This makes `Game` and its unit tests easier to set up because each call is self-contained.
+However, it makes clients more complex: every call site must provide the correct dependencies,
+even when they remain fixed throughout the object's lifetime. Adding another dependency would
+also require changing every client call.
+
 ==If it varies per call, pass it per call. If it is fixed for the object's life, pass it
-once.== The fruit placer is a dependency; the direction is data.
+once.== The fruit placer and board are dependencies; the direction is data.
 
 ## Testability in a real code base
 
@@ -1050,6 +1075,28 @@ def is_gemini_available() -> bool:
 | calls `time.time()` directly | 5 — hidden input | you cannot test the cooldown without sleeping 60 seconds |
 | writes the flag it reports on | — | asking twice gives two different answers |
 
+The corresponding test exposes those costs:
+
+```python
+def test_gemini_recovers_after_cooldown(monkeypatch):
+    # PAIN: the test must reach into module globals to arrange the initial state.
+    gemini._gemini_healthy = False
+    gemini._gemini_last_check = 1000.0
+
+    # PAIN: without patching the hidden clock, this test must really sleep for 60 s.
+    # PAIN: patching requires knowing where `time` was imported in the implementation.
+    monkeypatch.setattr(gemini.time, "time", lambda: 1061.0)
+
+    assert gemini.is_gemini_available() is True
+
+    # PAIN: a method named like a query changes shared state as a side effect.
+    assert gemini._gemini_healthy is True
+
+    # PAIN: cleanup is essential; otherwise this test can affect whichever test runs next.
+    gemini._gemini_healthy = True
+    gemini._gemini_last_check = 0.0
+```
+
 Technique §2 fixes all three at once — hold the state in an object, inject the clock:
 
 ```python
@@ -1063,8 +1110,25 @@ class GeminiCircuit:
     def record_failure(self): ...
 ```
 
-A test hands it `lambda: 1000.0`, records a failure, hands it `lambda: 1061.0`, and
-asserts recovery. No sleeping, no globals, no ordering between tests.
+Its test controls time through the public dependency and owns all state locally:
+
+```python
+def test_gemini_circuit_recovers_after_cooldown():
+    now = [1000.0]
+    circuit = GeminiCircuit(clock=lambda: now[0], cooldown=60.0)
+
+    circuit.record_failure()
+    assert circuit.is_available() is False
+
+    # No sleep or implementation-level patch: advance the injected fake clock.
+    now[0] = 1061.0
+    assert circuit.is_available() is True
+
+    # No cleanup: this state belongs only to this test's circuit instance.
+```
+
+The second test is fast, deterministic, and independent of test order. It also interacts only
+through `GeminiCircuit`'s public API rather than modifying production-module internals.
 
 ---
 ### 36 snake games

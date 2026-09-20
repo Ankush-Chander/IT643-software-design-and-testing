@@ -26,6 +26,7 @@ nav:
   - Labs:
       - "1:Make it multiplayer": 'labs/assignment-1.md'
       - "2_3:Detect code smell": 'labs/assignment-2_3.md'
+      - "4:The tests you cannot write": 'labs/assignment-4.md'
 
 ## Configuration
 theme:

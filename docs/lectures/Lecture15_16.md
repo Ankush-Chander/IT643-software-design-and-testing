@@ -28,33 +28,7 @@ matter.
 - Fixtures, and what they reveal about the design
 
 ---
-## Where 13-14 left off
 
-==Not one of the 36 snake repositories contains a single test.== Not one.
-
-So for this lecture a suite was written for you, over one of them — the game is the
-student's ([`snake/test.cpp`](https://github.com/Shiroilt/solo-leveling-chapter-snake-monster/blob/93f9af1844e1b11ae37a984f5dfc8208da3ae017/snake/test.cpp)),
-the tests are ours ([`docs/code/snake_seam/`](../code/snake_seam/README.md)). It opens
-like this:
-
-```cpp
-#include <gtest/gtest.h>
-#define main snake_main       // rename the entry point
-#include "../test.cpp"        // swallow the whole translation unit
-#undef main
-```
-
-No object seam existed, so the harness had to manufacture a **preprocessing seam** — the
-last resort on 13-14's list. Rename `main`, pull the entire translation unit into the
-test binary, put it back.
-
-It works. It is also this whole lecture in three lines: ==the test suite paid for a
-design decision the production code refused to make.==
-
-Everything in the catalogue below starts here. The smells are not carelessness. They are
-what a test has to do when the design gives it nothing to hold on to.
-
----
 ## 1. Test code is code
 
 You wrote a test once. You will read it every time it fails, and every time you are not
@@ -94,8 +68,6 @@ def test_retrieve_respects_limit(retriever):
     results = retriever.retrieve_faculty("a", limit=2)
     assert len(results) <= 2
 ```
-
-Nothing here is stupid. Every line was written by someone trying to be useful.
 
 ---
 #### What each line costs

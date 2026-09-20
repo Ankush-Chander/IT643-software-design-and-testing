@@ -29,6 +29,7 @@ This course covers the foundations of software engineering in the post-LLM era â
 - [11_12: Testing with external dependencies: test doubles](Lecture11_12.md)  
 - [13_14: Testability and design](Lecture13_14.md)  
 - [15_16: Test code quality](Lecture15_16.md)  
+<!-- [17: Mutation testing](Lecture17.md) -->
 
 ---
 

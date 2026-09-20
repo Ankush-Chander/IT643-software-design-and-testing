@@ -30,6 +30,7 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [11_12: Testing with external dependencies: test doubles](lectures/Lecture11_12.md)
 - [13_14: Testability and design](lectures/Lecture13_14.md)
 - [15_16: Test code quality](lectures/Lecture15_16.md)
+<!-- [17: Mutation testing](lectures/Lecture17.md) -->
 
 
 ---
@@ -40,6 +41,7 @@ This course argues that the scarce skill is shifting from *producing code* to **
 |---|---|---|---|
 | [1: Make it multiplayer](labs/assignment-1.md) | Add a second player to another group's snake game, then measure what the change cost | 40 | Wednesday, 12:00 PM |
 | [2_3: Detect code smell](labs/assignment-2_3.md) | Detect code smells in the snake game codebase | 40 | Monday(24/Aug/2026), 11:59 PM |
+| [4: The tests you cannot write](labs/assignment-4.md) | Try to test five rules of your own snake game, then build the seam that makes one of them possible | 40 | Saturday(26/Sep/2026), 11:59 PM |
 
 ---
 
