@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://IT643.ankushchander.com/labs/lab2_3/REPORT-template/">
+        <link rel="canonical" href="https://IT643.ankushchander.com/labs/lab4/REPORT-template/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Lab 2_3 — Group A__ - IT643 - Software Design and Testing | DAU</title>
+        <title>Lab 4 — Group A__ - IT643 - Software Design and Testing | DAU</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-2_3-group-a__" class="md-skip">
+        <a href="#lab-4-group-a__" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 2_3 — Group A__
+              Lab 4 — Group A__
             
           </span>
         </div>
@@ -819,10 +819,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-tool-and-install-route-3" class="md-nav__link">
+  <a href="#1-five-rules-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Tool and install route — [3]
+        1. Five rules — [5]
       
     </span>
   </a>
@@ -830,10 +830,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-what-i-changed-in-the-glossary-4" class="md-nav__link">
+  <a href="#2-what-you-could-test-and-what-stopped-you-10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. What I changed in the glossary — [4]
+        2. What you could test, and what stopped you — [10]
       
     </span>
   </a>
@@ -841,10 +841,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-smell-delta-6" class="md-nav__link">
+  <a href="#3-coverage-and-what-it-missed-6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Smell delta — [6]
+        3. Coverage, and what it missed — [6]
       
     </span>
   </a>
@@ -852,10 +852,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-rejected-candidates-6" class="md-nav__link">
+  <a href="#4-the-seam-10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Rejected candidates — [6]
+        4. The seam — [10]
       
     </span>
   </a>
@@ -863,10 +863,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-commit-map-7" class="md-nav__link">
+  <a href="#5-the-double-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Commit map — [7]
+        5. The double — [4]
       
     </span>
   </a>
@@ -874,43 +874,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-two-run-measurement-4" class="md-nav__link">
+  <a href="#6-two-smells-in-your-own-tests-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Two-run measurement — [4]
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-analysis-q1q2-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Analysis Q1–Q2 — [5]
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-analysis-q3q4-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Analysis Q3–Q4 — [5]
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if-you-did-not-finish" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        If you did not finish
+        6. Two smells in your own tests — [5]
       
     </span>
   </a>
@@ -934,14 +901,12 @@
 
 
 
-<h1 id="lab-2_3-group-a__">Lab 2_3 — Group A__</h1>
+<h1 id="lab-4-group-a__">Lab 4 — Group A__</h1>
 <blockquote>
-<p>Copy this file to <code>lab2_3/REPORT.md</code> in your fork and fill it in. Keep the eight
-headings exactly as they are — they are the marking scheme, in order. Delete this
-quote block and every <code>___</code> when you are done.</p>
+<p>Copy this file to <code>lab4/REPORT.md</code>, fill it in, then paste the finished text into your
+pull request description. Keep the six headings exactly as they are — they are the
+marking scheme, in order. Delete this quote block and every <code>___</code> when you are done.</p>
 </blockquote>
-<hr />
-<h2 id="1-tool-and-install-route-3">1. Tool and install route — [3]</h2>
 <table>
 <thead>
 <tr>
@@ -951,97 +916,65 @@ quote block and every <code>___</code> when you are done.</p>
 </thead>
 <tbody>
 <tr>
-<td>Agent used for run 2</td>
-<td>___ (Claude Code / Codex CLI / Gemini CLI / other — name it)</td>
+<td>Repository</td>
+<td>___ (your own snake game)</td>
 </tr>
 <tr>
-<td><code>ubiquitous-language</code> install route</td>
-<td>___ (<code>~/.claude/skills</code> / project <code>.claude/skills</code> / pasted <code>SKILL.md</code> / other)</td>
+<td>Base tag</td>
+<td><code>lab4-base</code> at commit ___</td>
 </tr>
 <tr>
-<td><code>refactoring/</code> pack install route</td>
-<td>___</td>
-</tr>
-</tbody>
-</table>
-<p>If anything would not install, say what failed here. The paste fallback is a documented
-route and costs no marks.</p>
-<hr />
-<hr />
-<h2 id="2-what-i-changed-in-the-glossary-4">2. What I changed in the glossary — [4]</h2>
-<p>The generated file is at <code>lab2_3/UBIQUITOUS_LANGUAGE.md</code>. Three or four lines here on what
-you corrected and why: terms it invented, definitions it got wrong, ambiguities it missed.</p>
-<hr />
-<hr />
-<h2 id="3-smell-delta-6">3. Smell delta — [6]</h2>
-<p>Reports: <code>lab2_3/audits/main.md</code> (the code as you received it) and <code>lab2_3/audits/lab1-head.md</code>
-(after your Lab-1 PR).</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>count</th>
-<th>representative site (<code>file:line</code>)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Smells my Lab-1 PR <strong>introduced</strong></td>
-<td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>Smells my Lab-1 PR <strong>left untouched</strong></td>
-<td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>Smells my Lab-1 PR <strong>removed</strong></td>
-<td>___</td>
-<td>___</td>
-</tr>
-</tbody>
-</table>
-<p>The third row will probably be zero. Leave it in.</p>
-<hr />
-<h2 id="4-rejected-candidates-6">4. Rejected candidates — [6]</h2>
-<p>At least three things the agent reported that are <em>not</em> real findings on this codebase.</p>
-<table>
-<thead>
-<tr>
-<th>smell reported</th>
-<th><code>file:line</code></th>
-<th>why it does not hold</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>___</td>
-<td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>___</td>
-<td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>___</td>
-<td>___</td>
+<td>Pull request</td>
 <td>___</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="5-commit-map-7">5. Commit map — [7]</h2>
-<p>Run <code>lab2_3/check-lab2_3.sh</code> and paste the table it prints.</p>
+<h2 id="1-five-rules-5">1. Five rules — [5]</h2>
+<p>Written before opening the source. Behaviour, with an observable outcome.</p>
 <table>
 <thead>
 <tr>
 <th>#</th>
-<th>sha</th>
-<th>subject</th>
-<th>what it is</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>___</td>
+</tr>
+<tr>
+<td>2</td>
+<td>___</td>
+</tr>
+<tr>
+<td>3</td>
+<td>___</td>
+</tr>
+<tr>
+<td>4</td>
+<td>___</td>
+</tr>
+<tr>
+<td>5</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p>If you could not state one of your own game's rules without going to look, say which and
+why. It costs no marks.</p>
+<hr />
+<hr />
+<h2 id="2-what-you-could-test-and-what-stopped-you-10">2. What you could test, and what stopped you — [10]</h2>
+<p>No source changes in this part. Every <code>file:line</code> below is a line in <code>lab4-base</code>.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Rule</th>
+<th>Test written?</th>
+<th>Blocking dependency (<code>file:line</code> + what it is)</th>
 </tr>
 </thead>
 <tbody>
@@ -1049,97 +982,177 @@ you corrected and why: terms it invented, definitions it got wrong, ambiguities 
 <td>1</td>
 <td>___</td>
 <td>___</td>
-<td>glossary</td>
+<td>___</td>
 </tr>
 <tr>
 <td>2</td>
 <td>___</td>
 <td>___</td>
-<td>smell report</td>
+<td>___</td>
 </tr>
 <tr>
 <td>3</td>
 <td>___</td>
 <td>___</td>
-<td><strong>the refactor, alone</strong></td>
+<td>___</td>
 </tr>
 <tr>
 <td>4</td>
 <td>___</td>
 <td>___</td>
-<td><strong>the feature, alone</strong></td>
+<td>___</td>
+</tr>
+<tr>
+<td>5</td>
+<td>___</td>
+<td>___</td>
+<td>___</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Rules testable without modifying the source: ___ / 5</strong></p>
+</blockquote>
+<p>"It needs user input" is not a blocking dependency. <code>main.cpp:214 — getch() called inside
+the game loop</code> is.</p>
 <hr />
-<h2 id="6-two-run-measurement-4">6. Two-run measurement — [4]</h2>
-<p>Run 1 is your Lab-1 branch — the numbers you already reported. Run 2 is commit 4 alone.</p>
+<hr />
+<h2 id="3-coverage-and-what-it-missed-6">3. Coverage, and what it missed — [6]</h2>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Run 1 (Lab 1)</th>
-<th>Run 2 (commit 4)</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Smells introduced</td>
+<td>Line coverage</td>
+<td>___ %</td>
+</tr>
+<tr>
+<td>Branch coverage</td>
+<td>___ %</td>
+</tr>
+<tr>
+<td>Command used</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>One rule that is executed by the suite but not verified by it:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rule</td>
+<td>___</td>
+</tr>
+<tr>
+<td>Line that runs</td>
+<td>___</td>
+</tr>
+<tr>
+<td>The assertion that is missing</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<h2 id="4-the-seam-10">4. The seam — [10]</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rule made testable</td>
+<td>___</td>
+</tr>
+<tr>
+<td>Commit 1 (seam)</td>
+<td>___</td>
+</tr>
+<tr>
+<td>Commit 2 (test)</td>
+<td>___</td>
+</tr>
+<tr>
+<td>Seam kind</td>
+<td>object / link / preprocessing</td>
+</tr>
+<tr>
+<td>Enabling point</td>
+<td>___</td>
+</tr>
+<tr>
+<td>What production code gave up</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p>The last row is graded. If the honest answer is "nothing", write that and say why the
+seam cost nothing here.</p>
+<hr />
+<hr />
+<h2 id="5-the-double-4">5. The double — [4]</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What you passed through the seam</td>
+<td>dummy / fake / stub / spy / mock</td>
+</tr>
+<tr>
+<td>The method under test</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p>Two sentences: was the collaborator asked a question or told to do something, and why
+does that decide the answer above?</p>
+<hr />
+<hr />
+<h2 id="6-two-smells-in-your-own-tests-5">6. Two smells in your own tests — [5]</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Smell</th>
+<th><code>file:line</code></th>
+<th>One-line fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>___</td>
 <td>___</td>
 <td>___</td>
 </tr>
 <tr>
-<td>Lines changed, <code>git diff --shortstat -w</code></td>
+<td>2</td>
 <td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>Lines changed, <strong>raw</strong> (no <code>-w</code>)</td>
-<td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>Functions reached</td>
-<td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>Prompts to working code</td>
-<td>___</td>
-<td>___</td>
-</tr>
-<tr>
-<td>Wall-clock time</td>
 <td>___</td>
 <td>___</td>
 </tr>
 </tbody>
 </table>
-<p>Commit 3 (the refactor) on its own: ___ lines <code>-w</code>, ___ raw.</p>
-<p><code>check-lab2_3.sh</code> prints the four line-count numbers for run 2. Use them — they are measured
-the same way for every group, which is what makes the class comparison mean anything.</p>
-<hr />
-<h2 id="7-analysis-q1q2-5">7. Analysis Q1–Q2 — [5]</h2>
-<p><strong>Q1. Which smell did commit 3 actually fix?</strong> Name it from your section 3 report. What was
-expensive before, what does it cost now.</p>
-<hr />
-<p><strong>Q2. Compare commit 4 to your Lab-1 diff.</strong> Same feature, same codebase. What changed in
-the cost and what did not? If it got worse, say so and explain — that marks the same.</p>
-<hr />
-<hr />
-<h2 id="8-analysis-q3q4-5">8. Analysis Q3–Q4 — [5]</h2>
-<p><strong>Q3. Go back through your Lab-1 <code>LLM-LOG.md</code>. Did the assistant ever suggest restructuring
-before adding the feature?</strong> Quote it if it did. If it did not, what would have had to be
-different in your prompt?</p>
-<hr />
-<p><strong>Q4. How do you know commit 3 did not change behaviour?</strong> Answer honestly. Most of you will
-find that you do not know. Say that plainly if it is true, and describe what you would have
-needed in order to actually know.</p>
-<hr />
-<hr />
-<p>Sections 7 and 8 together: <strong>500 words maximum.</strong></p>
-<h2 id="if-you-did-not-finish">If you did not finish</h2>
-<p>Say so here and lose no marks. What you got to, where it broke, what you tried.</p>
+<p>Fixing them is optional. Finding them is not.</p>
 <hr />
 
 

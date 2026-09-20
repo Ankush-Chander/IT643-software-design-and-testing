@@ -1245,6 +1245,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2917,12 +2945,31 @@ different hat.</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>                <span class="c1"># data — different every tick</span>
         <span class="o">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">g</span> <span class="o">=</span> <span class="n">Game</span><span class="p">(</span><span class="n">place_fruit</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">board</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>   <span class="c1"># once</span>
-<span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">UP</span><span class="p">)</span>                                             <span class="c1"># per call</span>
+<div class="highlight"><pre><span></span><code><span class="n">g</span> <span class="o">=</span> <span class="n">Game</span><span class="p">(</span><span class="n">place_fruit</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">board</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>   <span class="c1"># dependencies supplied once</span>
+<span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">UP</span><span class="p">)</span>                                             <span class="c1"># only changing data per call</span>
 <span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">LEFT</span><span class="p">)</span>
 </code></pre></div>
+<p>The same dependencies can instead be passed through the method:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">place_fruit</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+        <span class="c1"># The class is simpler: it does not store or initialize dependencies.</span>
+        <span class="o">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Every client must now know, retain, and repeatedly supply the dependencies.</span>
+<span class="n">place_fruit</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">board</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">UP</span><span class="p">,</span> <span class="n">place_fruit</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">place_fruit</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+</code></pre></div>
+<p>This makes <code>Game</code> and its unit tests easier to set up because each call is self-contained.
+However, it makes clients more complex: every call site must provide the correct dependencies,
+even when they remain fixed throughout the object's lifetime. Adding another dependency would
+also require changing every client call.</p>
 <p><mark>If it varies per call, pass it per call. If it is fixed for the object's life, pass it
-once.</mark> The fruit placer is a dependency; the direction is data.</p>
+once.</mark> The fruit placer and board are dependencies; the direction is data.</p>
 <h2 id="testability-in-a-real-code-base">Testability in a real code base</h2>
 <h3 id="the-rule-that-cannot-run-without-a-database">The rule that cannot run without a database</h3>
 <p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/calendar_service.py#L33-L52"><code>get_day_substitution</code></a> answers a domain
@@ -2983,6 +3030,25 @@ model or fall back to local NLP:</p>
 </tr>
 </tbody>
 </table>
+<p>The corresponding test exposes those costs:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_gemini_recovers_after_cooldown</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="c1"># PAIN: the test must reach into module globals to arrange the initial state.</span>
+    <span class="n">gemini</span><span class="o">.</span><span class="n">_gemini_healthy</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">gemini</span><span class="o">.</span><span class="n">_gemini_last_check</span> <span class="o">=</span> <span class="mf">1000.0</span>
+
+    <span class="c1"># PAIN: without patching the hidden clock, this test must really sleep for 60 s.</span>
+    <span class="c1"># PAIN: patching requires knowing where `time` was imported in the implementation.</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setattr</span><span class="p">(</span><span class="n">gemini</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="mf">1061.0</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">gemini</span><span class="o">.</span><span class="n">is_gemini_available</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span>
+
+    <span class="c1"># PAIN: a method named like a query changes shared state as a side effect.</span>
+    <span class="k">assert</span> <span class="n">gemini</span><span class="o">.</span><span class="n">_gemini_healthy</span> <span class="ow">is</span> <span class="kc">True</span>
+
+    <span class="c1"># PAIN: cleanup is essential; otherwise this test can affect whichever test runs next.</span>
+    <span class="n">gemini</span><span class="o">.</span><span class="n">_gemini_healthy</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">gemini</span><span class="o">.</span><span class="n">_gemini_last_check</span> <span class="o">=</span> <span class="mf">0.0</span>
+</code></pre></div>
 <p>Technique §2 fixes all three at once — hold the state in an object, inject the clock:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GeminiCircuit</span><span class="p">:</span>
 
@@ -2993,8 +3059,22 @@ model or fall back to local NLP:</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_available</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">record_failure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
 </code></pre></div>
-<p>A test hands it <code>lambda: 1000.0</code>, records a failure, hands it <code>lambda: 1061.0</code>, and
-asserts recovery. No sleeping, no globals, no ordering between tests.</p>
+<p>Its test controls time through the public dependency and owns all state locally:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_gemini_circuit_recovers_after_cooldown</span><span class="p">():</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1000.0</span><span class="p">]</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">GeminiCircuit</span><span class="p">(</span><span class="n">clock</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cooldown</span><span class="o">=</span><span class="mf">60.0</span><span class="p">)</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">record_failure</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">circuit</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">False</span>
+
+    <span class="c1"># No sleep or implementation-level patch: advance the injected fake clock.</span>
+    <span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1061.0</span>
+    <span class="k">assert</span> <span class="n">circuit</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span>
+
+    <span class="c1"># No cleanup: this state belongs only to this test&#39;s circuit instance.</span>
+</code></pre></div>
+<p>The second test is fast, deterministic, and independent of test order. It also interacts only
+through <code>GeminiCircuit</code>'s public API rather than modifying production-module internals.</p>
 <hr />
 <h3 id="36-snake-games">36 snake games</h3>
 <p>Lecture 11-12 counted the untestable dependencies across your repos: <code>getch</code> in 31,

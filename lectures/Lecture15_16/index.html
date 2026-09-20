@@ -729,17 +729,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-13-14-left-off" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where 13-14 left off
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#1-test-code-is-code" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1118,6 +1107,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1187,17 +1204,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-13-14-left-off" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where 13-14 left off
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1503,25 +1509,6 @@ matter.</p>
 <li>Fixtures, and what they reveal about the design</li>
 </ul>
 <hr />
-<h2 id="where-13-14-left-off">Where 13-14 left off</h2>
-<p><mark>Not one of the 36 snake repositories contains a single test.</mark> Not one.</p>
-<p>So for this lecture a suite was written for you, over one of them — the game is the
-student's (<a href="https://github.com/Shiroilt/solo-leveling-chapter-snake-monster/blob/93f9af1844e1b11ae37a984f5dfc8208da3ae017/snake/test.cpp"><code>snake/test.cpp</code></a>),
-the tests are ours (<a href="../../code/snake_seam/"><code>docs/code/snake_seam/</code></a>). It opens
-like this:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
-<span class="cp">#define main snake_main       </span><span class="c1">// rename the entry point</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../test.cpp&quot;</span><span class="c1">        // swallow the whole translation unit</span>
-<span class="cp">#undef main</span>
-</code></pre></div>
-<p>No object seam existed, so the harness had to manufacture a <strong>preprocessing seam</strong> — the
-last resort on 13-14's list. Rename <code>main</code>, pull the entire translation unit into the
-test binary, put it back.</p>
-<p>It works. It is also this whole lecture in three lines: <mark>the test suite paid for a
-design decision the production code refused to make.</mark></p>
-<p>Everything in the catalogue below starts here. The smells are not carelessness. They are
-what a test has to do when the design gives it nothing to hold on to.</p>
-<hr />
 <h2 id="1-test-code-is-code">1. Test code is code</h2>
 <p>You wrote a test once. You will read it every time it fails, and every time you are not
 sure whether it failed for a real reason.</p>
@@ -1557,7 +1544,6 @@ green.</p>
     <span class="n">results</span> <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">retrieve_faculty</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span>
 </code></pre></div>
-<p>Nothing here is stupid. Every line was written by someone trying to be useful.</p>
 <hr />
 <h4 id="what-each-line-costs">What each line costs</h4>
 <table>

@@ -1,0 +1,1463 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture17/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Mutation testing - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mutation-testing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mutation testing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-something-you-have-already-seen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Something you have already seen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Something you have already seen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#give-it-a-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Give it a name
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The operators
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-real-suite-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. A real suite, measured
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. A real suite, measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#survivor-6-is-the-one-to-look-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Survivor 6 is the one to look at
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#survivors-4-and-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Survivors 4 and 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-survivors-7-and-8-are-a-different-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Survivors 7 and 8 are a different problem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Survivors 7 and 8 are a different problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-the-hard-part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is the hard part
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-means-the-score-is-a-judgement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which means the score is a judgement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-it-costs-and-what-it-misses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. What it costs, and what it misses
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. What it costs, and what it misses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mutation-testing">Mutation testing</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Line and branch coverage</li>
+<li>Specification and structural testing</li>
+<li>Test smells and anti-patterns</li>
+</ul>
+<hr />
+<h2 id="the-claim">The claim</h2>
+<blockquote>
+<p><mark>Coverage asks whether the test ran the line. Mutation testing asks whether the test
+would have noticed if the line were wrong.</mark></p>
+</blockquote>
+<p>Those are different questions, and only one of them is about your tests.</p>
+<hr />
+<h2 id="1-something-you-have-already-seen">1. Something you have already seen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">eligible</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">member</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">EXPECT_TRUE</span><span class="w"> </span><span class="p">(</span><span class="n">eligible</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w">  </span><span class="mi">500</span><span class="p">));</span>
+<span class="n">EXPECT_FALSE</span><span class="p">(</span><span class="n">eligible</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">));</span>
+</code></pre></div>
+<p>Both outcomes of the decision are reached. <strong>Decision coverage: 100%.</strong></p>
+<p>Now delete half the rule:</p>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">member</span><span class="p">;</span><span class="w">                     </span><span class="c1">// `|| amount &gt; 1000` removed</span>
+</code></pre></div>
+<p><mark>Both tests still pass.</mark> The suite did not notice that the program changed.</p>
+<hr />
+<h4 id="give-it-a-name">Give it a name</h4>
+<p>That deleted operand is a <strong>mutant</strong> — the same program with one small, deliberate
+change. The suite stayed green, so the mutant <strong>survived</strong>.</p>
+<p>A survivor is not a vague worry. It is a specific missing test, and it tells you which
+one: <code>eligible(false, 1500)</code>.</p>
+<p>Write that test and the mutant dies.</p>
+<hr />
+<h2 id="2-the-method">2. The method</h2>
+<ol>
+<li>Change the program in one small way</li>
+<li>Run the suite</li>
+<li>Suite goes red → the mutant is <strong>killed</strong></li>
+<li>Suite stays green → the mutant <strong>survived</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mutant</strong></td>
+<td>the program with one deliberate change</td>
+</tr>
+<tr>
+<td><strong>Mutation operator</strong></td>
+<td>the rule that produced the change</td>
+</tr>
+<tr>
+<td><strong>Killed</strong></td>
+<td>at least one test failed. The suite noticed</td>
+</tr>
+<tr>
+<td><strong>Survived</strong></td>
+<td>every test passed. The suite did not</td>
+</tr>
+<tr>
+<td><strong>Mutation score</strong></td>
+<td>killed ÷ (total − equivalent)</td>
+</tr>
+</tbody>
+</table>
+<p><mark>A coverage report tells you what the tests touched. A mutation score tells you what
+they would defend.</mark></p>
+<hr />
+<h2 id="3-the-operators">3. The operators</h2>
+<p>Mechanical. No judgement, no cleverness — which is why a machine can generate them.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Change</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relational</td>
+<td>swap a comparison</td>
+<td><code>score &gt; high</code> → <code>score &gt;= high</code></td>
+</tr>
+<tr>
+<td>Arithmetic</td>
+<td>swap an operator</td>
+<td><code>x + 1</code> → <code>x - 1</code></td>
+</tr>
+<tr>
+<td>Logical</td>
+<td>swap a connective</td>
+<td><code>a &amp;&amp; b</code> → <code>a \|\| b</code></td>
+</tr>
+<tr>
+<td>Constant</td>
+<td>replace a literal</td>
+<td><code>cellcount</code> → <code>0</code></td>
+</tr>
+<tr>
+<td>Statement deletion</td>
+<td>remove a line</td>
+<td>drop the guard</td>
+</tr>
+<tr>
+<td>Return value</td>
+<td>invert a result</td>
+<td><code>return true</code> → <code>return false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Six operators over a few hundred lines produce hundreds of mutants. That is the point:
+<mark>the machine proposes, and every survivor is a question you have to answer.</mark></p>
+<hr />
+<h2 id="4-a-real-suite-measured">4. A real suite, measured</h2>
+<p>The snake harness in <a href="../../code/snake_seam/"><code>docs/code/snake_seam/</code></a>. Nineteen
+tests. All of them pass.</p>
+<p>Eight mutants, one at a time, rebuild and re-run each:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Mutation</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>sc++</code> deleted</td>
+<td><strong>killed</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>if (addb == true)</code> → <code>!= true</code></td>
+<td><strong>killed</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>eid</code> returns <code>false</code> on a match</td>
+<td><strong>killed</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>ct - lup &gt;= in</code> → <code>&gt; in</code></td>
+<td>survived</td>
+</tr>
+<tr>
+<td>5</td>
+<td>all four direction guards deleted</td>
+<td>survived</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>if(eid(head, body))</code> → <code>if(false)</code></td>
+<td>survived</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>x == cellcount</code> → <code>x &gt;= cellcount</code></td>
+<td>survived</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>y == -1</code> → <code>y &lt;= -1</code></td>
+<td>survived</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Three killed out of eight. A mutation score of 37.5%, from a suite that is entirely
+green.</mark></p>
+<hr />
+<h4 id="survivor-6-is-the-one-to-look-at">Survivor 6 is the one to look at</h4>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">eid</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">hb</span><span class="p">))</span><span class="w">        </span><span class="c1">// does the head touch the body?</span>
+</code></pre></div>
+<p>Replace the whole condition with <code>if(false)</code>. The snake can now pass straight through
+itself. Nothing detects it.</p>
+<p><strong>All nineteen tests still pass.</strong></p>
+<p>Read the test names and you find out why:</p>
+<div class="highlight"><pre><span></span><code>EidFindsElement            SnakeUpdateMovesWithoutGrowing   MainLoopKeyPresses
+EidMissingElement          SnakeUpdateGrowsWhenAddb         MainLoopEatsFoodAndScores
+EidEmptyDeque              SnakeDrawDrawsEachSegment        MainLoopHitsRightWallAndResets
+EventTriggerFires...       SnakeResetRestoresDefaults       MainLoopHitsTopWall
+FoodConstructorLoads...    GoResetsScoreSnakeAndFood        ...
+</code></pre></div>
+<p>Walls, food, score, growth, reset. <mark>Not one test says the snake dies when it hits
+itself.</mark> That is the central rule of the game.</p>
+<p>Nobody noticed, because every metric the suite reports was green.</p>
+<hr />
+<h4 id="survivors-4-and-5">Survivors 4 and 5</h4>
+<p><strong>4 — <code>&gt;=</code> became <code>&gt;</code>.</strong> The clock now fires one instant later. No test puts the elapsed
+time exactly on the boundary, so no test can tell. A missing boundary case, named
+precisely.</p>
+<p><strong>5 — the direction guards.</strong> With them deleted the snake can reverse into itself. There
+is a test called <code>MainLoopKeyPresses</code> that presses all four keys; it asserts only that
+<code>main</code> returned <code>0</code>.</p>
+<p>Both are ordinary missing tests. You can write them this afternoon.</p>
+<hr />
+<h2 id="5-survivors-7-and-8-are-a-different-problem">5. Survivors 7 and 8 are a different problem</h2>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">cellcount</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w">     </span><span class="c1">// original</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">cellcount</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w">     </span><span class="c1">// mutant</span>
+</code></pre></div>
+<p>No test kills it. Before you write one, ask whether a test <em>could</em>.</p>
+<p>The head moves one cell per step, and the check runs immediately after the move. So <code>x</code>
+can reach <code>cellcount</code> and can never overshoot it. <mark>Under that invariant, <code>==</code> and <code>&gt;=</code>
+cannot ever disagree, and no test can distinguish them.</mark></p>
+<p>That is an <strong>equivalent mutant</strong>: a changed program with unchanged behaviour. No test
+kills it, and no test should.</p>
+<hr />
+<h4 id="why-this-is-the-hard-part">Why this is the hard part</h4>
+<p>Notice what deciding it required: an argument about an invariant that <mark>appears nowhere
+in the code</mark>. The snake moves one cell at a time because of how <code>update</code> happens to be
+written, not because anything says so.</p>
+<p>Change the game to allow a dash move, and mutant 7 stops being equivalent — it becomes a
+bug.</p>
+<p>Detecting equivalent mutants in general is <strong>undecidable</strong>. There is no tool that will
+sort your survivors for you.</p>
+<hr />
+<h4 id="which-means-the-score-is-a-judgement">Which means the score is a judgement</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Killed</th>
+<th>Total</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Counting every mutant</td>
+<td>3</td>
+<td>8</td>
+<td><strong>37.5%</strong></td>
+</tr>
+<tr>
+<td>Excluding 7 and 8 as equivalent</td>
+<td>3</td>
+<td>6</td>
+<td><strong>50%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Same suite, same eight mutants, two different numbers — and the difference is a human
+decision that took a minute of reasoning.</p>
+<p><mark>Do not chase 100%. It is not a target you failed to reach; it is a number that does not
+mean anything.</mark></p>
+<hr />
+<h2 id="6-what-it-costs-and-what-it-misses">6. What it costs, and what it misses</h2>
+<p><strong>Cost.</strong> Every mutant runs the whole suite. A hundred mutants is a hundred runs.
+In practice: mutate only files that changed, sample the operators, run it nightly rather
+than on every commit.</p>
+<p><strong>What it misses.</strong> Two different diseases, and this tool sees one of them:</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Does mutation testing find it?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A mutant survives</td>
+<td>a missing test</td>
+<td><strong>yes — that is exactly what it reports</strong></td>
+</tr>
+<tr>
+<td>A test breaks when you rename a variable or change a constant</td>
+<td>a fragile test</td>
+<td><strong>no. Blind to it</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A suite can score well and still be full of tests that fail for no reason. Mutation
+testing has nothing to say about those.</p>
+<hr />
+<h4 id="the-tools">The tools</h4>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java</td>
+<td>PIT</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>mutmut, cosmic-ray</td>
+</tr>
+<tr>
+<td>C / C++</td>
+<td>mull</td>
+</tr>
+</tbody>
+</table>
+<p>The table in §4 was produced by hand: eight edits, eight rebuilds. <mark>The technique does
+not need a tool. It needs you to be willing to break your own code on purpose.</mark></p>
+<hr />
+<h2 id="7-exercise">7. Exercise</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">saveHighScore</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">highScore</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ofstream</span><span class="w"> </span><span class="n">outFile</span><span class="p">(</span><span class="n">HIGH_SCORE_FILE</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">outFile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">outFile</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="w">            </span><span class="n">outFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="w">            </span><span class="n">highScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>On paper, no compiler:</p>
+<ol>
+<li>Apply three operators — one relational, one statement deletion, one constant</li>
+<li>For each, decide: would a test you would plausibly write have caught it?</li>
+<li>Find one mutant you believe is equivalent, and write the argument for why</li>
+</ol>
+<hr />
+<h2 id="back-to-the-claim">Back to the claim</h2>
+<p>The module has asked several times how to choose tests: from the specification, from the
+structure of the code, from the dependencies that got in the way.</p>
+<p>This is the only technique that turns the question around and asks what the tests are
+worth.</p>
+<blockquote>
+<p><mark>Coverage is a measure of your code. A mutation score is a measure of your tests.</mark></p>
+</blockquote>
+<p>Nineteen passing tests, and the snake could eat itself.</p>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li>Chapter 9, Writing Larger Tests — <em>Software Engineering at Google</em></li>
+<li><a href="https://pitest.org/">PIT Mutation Testing</a> — the tool, and its documentation on equivalent mutants</li>
+<li>Jia &amp; Harman, <em>An Analysis and Survey of the Development of Mutation Testing</em>, IEEE TSE 2011</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
