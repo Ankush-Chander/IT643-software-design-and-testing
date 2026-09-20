@@ -27,6 +27,13 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [4: Refactoring](docs/lectures/Lecture4.md)
 - [5-6: Smells in the data](docs/lectures/Lecture5_6.md)
 
+### Module 3: Testing
+- [7_8: Unit testing fundamentals & the AAA framework](docs/lectures/Lecture7_8.md)
+- [9_10: Choosing what to test, and what makes a test good](docs/lectures/Lecture9_10.md)
+- [11_12: Testing with external dependencies: test doubles](docs/lectures/Lecture11_12.md)
+- [13_14: Testability and design](docs/lectures/Lecture13_14.md)
+- [15_16: Test code quality](docs/lectures/Lecture15_16.md)
+
 ---
 
 ## Labs
