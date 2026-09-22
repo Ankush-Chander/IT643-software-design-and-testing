@@ -1,0 +1,2660 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture17_18/">
+      
+      
+        <link rel="prev" href="../Lecture15_16/">
+      
+      
+        <link rel="next" href="../../labs/assignment-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>17-18: SOLID Principles - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solid" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              17-18: SOLID Principles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-scales-one-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four scales, one question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-a-design-principle-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a design principle is
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-ways-a-design-rots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four ways a design rots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-five" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The five
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-single-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single Responsibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Single Responsibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-violation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The violation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srp-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRP in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The split
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-openclosed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Open/Closed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Open/Closed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-violation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The violation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spec-specification-is-not-decoration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spec: Specification is not decoration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocp-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OCP in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-liskov-substitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Liskov Substitution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Liskov Substitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-function-that-takes-a-rectangle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A function that takes a rectangle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-interface-segregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Interface Segregation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Interface Segregation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-violation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The violation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dependency-inversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dependency Inversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Dependency Inversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-abstraction-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The abstraction first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-way-the-arrow-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which way the arrow points
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DIP in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-receipt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The receipt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix-is-one-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix is one parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-two-you-have-already-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which two you have already used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#you-have-been-using-all-five" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You have been using all five
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="You have been using all five">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openclosed-one-method-and-everything-already-written-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open/Closed — one method, and everything already written works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liskov-the-language-refuses-to-let-you-break-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liskov — the language refuses to let you break it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-segregation-by-deliberate-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Segregation — by deliberate design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-which-is-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        So which is it?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-scales-one-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four scales, one question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-a-design-principle-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a design principle is
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-ways-a-design-rots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four ways a design rots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-five" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The five
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-single-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single Responsibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Single Responsibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-violation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The violation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srp-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRP in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The split
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-openclosed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Open/Closed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Open/Closed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-violation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The violation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spec-specification-is-not-decoration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spec: Specification is not decoration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocp-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OCP in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-liskov-substitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Liskov Substitution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Liskov Substitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-function-that-takes-a-rectangle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A function that takes a rectangle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-interface-segregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Interface Segregation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Interface Segregation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-violation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The violation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dependency-inversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dependency Inversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Dependency Inversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-abstraction-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The abstraction first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-way-the-arrow-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which way the arrow points
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip-in-a-real-code-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DIP in a real code base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-receipt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The receipt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fix-is-one-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The fix is one parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-two-you-have-already-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which two you have already used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#you-have-been-using-all-five" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You have been using all five
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="You have been using all five">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openclosed-one-method-and-everything-already-written-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open/Closed — one method, and everything already written works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liskov-the-language-refuses-to-let-you-break-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liskov — the language refuses to let you break it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-segregation-by-deliberate-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Segregation — by deliberate design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-which-is-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        So which is it?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="solid">SOLID</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Complexity, and where it comes from</li>
+<li>Refactoring, and the smells that prompt it</li>
+<li>Testability as a property of the design</li>
+</ul>
+<hr />
+<h2 id="four-scales-one-question">Four scales, one question</h2>
+<p>Design is the same question asked at four sizes. The answer changes at every rung.</p>
+<table>
+<thead>
+<tr>
+<th>Scale</th>
+<th>Unit</th>
+<th>Where</th>
+<th>The question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code</strong></td>
+<td>a function</td>
+<td>3 – 6</td>
+<td>can a reader follow this?</td>
+</tr>
+<tr>
+<td><strong>Class</strong></td>
+<td>one class</td>
+<td><strong>here</strong></td>
+<td>what makes it change?</td>
+</tr>
+<tr>
+<td><strong>Component</strong></td>
+<td>a group of classes</td>
+<td>19-20</td>
+<td>which way do the dependencies point?</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td>the whole thing</td>
+<td>21</td>
+<td>what is inside the boundary?</td>
+</tr>
+</tbody>
+</table>
+<p>Lectures 3 to 6 worked the bottom rung: complexity, refactoring, smells. All of it inside
+a function.</p>
+<p><mark>SOLID is the next rung up. Not better rules — the same concern, one size larger.</mark></p>
+<hr />
+<h2 id="what-a-design-principle-is">What a design principle is</h2>
+<p>Not a rule, not a pattern, not a library. <mark>A design principle is an abstract claim about
+structure that holds across languages and platforms.</mark></p>
+<p>Patterns tell you what to build. Principles tell you why one arrangement is worse than
+another.</p>
+<hr />
+<h2 id="four-ways-a-design-rots">Four ways a design rots</h2>
+<p>Before the principles, the symptoms they exist to answer.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Symptom</th>
+<th>What it feels like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rigidity</strong></td>
+<td>hard to change, even simply</td>
+<td>one change cascades into dependent modules</td>
+</tr>
+<tr>
+<td><strong>Fragility</strong></td>
+<td>breaks in many places when changed</td>
+<td>you fix here, it breaks somewhere unrelated</td>
+</tr>
+<tr>
+<td><strong>Immobility</strong></td>
+<td>cannot reuse a part elsewhere</td>
+<td>the piece you want drags the whole system with it</td>
+</tr>
+<tr>
+<td><strong>Viscosity</strong></td>
+<td>the hack is easier than the fix</td>
+<td><mark>it is easy to do the wrong thing and hard to do the right thing</mark></td>
+</tr>
+</tbody>
+</table>
+<p>Viscosity is the one that decides the other three. A design where the correct change is
+harder than the shortcut will get shortcuts, every time, from everybody.</p>
+<hr />
+<h2 id="the-five">The five</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Principle</th>
+<th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S</strong></td>
+<td>Single Responsibility</td>
+<td>one class, one reason to change</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>Open/Closed</td>
+<td>open for extension, closed for modification</td>
+</tr>
+<tr>
+<td><strong>L</strong></td>
+<td>Liskov Substitution</td>
+<td>a subclass must be usable as its base class</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>Interface Segregation</td>
+<td>many small interfaces beat one large one</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Dependency Inversion</td>
+<td>both sides depend on an abstraction</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-single-responsibility">1. Single Responsibility</h2>
+<blockquote>
+<p><mark>A class should have one, and only one, reason to change.</mark></p>
+</blockquote>
+<p><img alt="" src="../../images/solid/srp.png" /></p>
+<hr />
+<h4 id="the-violation">The violation</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Journal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="c1"># a second responsibility, bolted on</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="o">...</span>
+</code></pre></div>
+<p><code>Journal</code> now has <strong>two reasons to change</strong>: the rules of journalling, and the mechanics
+of storage. Move to a database and a class about diary entries has to be edited.</p>
+<hr />
+<h4 id="the-fix">The fix</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Journal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PersistenceManager</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">journal</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">journal</span><span class="p">))</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="n">journal</span> <span class="o">=</span> <span class="n">Journal</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+                <span class="n">journal</span><span class="o">.</span><span class="n">add_entry</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">journal</span>
+</code></pre></div>
+<p>Nothing was deleted. The same two jobs exist — they now live in two places, and each has
+one reason to change.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Is <code>__str__</code> a second responsibility?</p>
+<p><code>Journal</code> still formats itself into text. That is arguably presentation, not
+journalling. Should it move out too?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>No — and the reason matters more than the answer.</strong></p>
+<p>A responsibility is <em>a reason to change</em>, not a category of work. Ask who would
+ask for the change:</p>
+<ul>
+<li>the format of a diary entry changes → whoever owns journalling</li>
+<li>the storage medium changes → whoever owns infrastructure</li>
+</ul>
+<p>Those are different people. <code>__str__</code> and <code>add_entry</code> answer to the same one.</p>
+<p><mark>SRP is not "one class, one method". It is one class, one audience.</mark> Split on
+every category of work and you get a hundred classes that must all change
+together, which is the same disease with more files.</p>
+</details>
+</div>
+<hr />
+<h4 id="srp-in-a-real-code-base">SRP in a real code base</h4>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/faculty_service.py#L98-L139"><code>faculty_service.py#L98-L139</code></a> — forty
+lines, three audiences:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">search_faculty_db</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">error_on_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">retriever</span> <span class="o">=</span> <span class="n">PostgresFullTextRetriever</span><span class="p">()</span>          <span class="c1"># retrieval</span>
+    <span class="n">records</span>   <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">retrieve_faculty</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">records</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;I couldn&#39;t find any faculty or staff members &quot;</span>   <span class="c1"># user-facing copy</span>
+                <span class="sa">f</span><span class="s2">&quot;matching **&#39;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#39;** in our records.</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;### Search Results for &#39;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>            <span class="c1"># Markdown formatting</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rec</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;#### </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">rec</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> …&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div>
+<p>Swap the search backend, reword an error, restyle the output — <mark>three different people
+asking for three different things, all editing the same function.</mark></p>
+<hr />
+<h4 id="the-split">The split</h4>
+<div class="highlight"><pre><span></span><code><span class="n">NOT_FOUND</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;I couldn&#39;t find any faculty or staff members matching &quot;</span>
+             <span class="s2">&quot;**&#39;</span><span class="si">{query}</span><span class="s2">&#39;** in our records.</span><span class="se">\n\n</span><span class="s2">…&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">search_faculty</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">retriever</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">retriever</span><span class="o">.</span><span class="n">retrieve_faculty</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">format_faculty_results</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">records</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;### Search Results for &#39;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
+           <span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span><span class="si">}</span><span class="s2"> record(s):&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rec</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;#### </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">rec</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">rec</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;faculty_type&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> Faculty)&quot;</span><span class="p">)</span>
+        <span class="o">...</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">search_faculty_db</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">error_on_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retriever</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>   <span class="c1"># composition only</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">search_faculty</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">retriever</span> <span class="ow">or</span> <span class="n">PostgresFullTextRetriever</span><span class="p">())</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">records</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">NOT_FOUND</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">)</span> <span class="k">if</span> <span class="n">error_on_empty</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">format_faculty_results</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>swap search backend</td>
+<td><code>search_faculty_db</code></td>
+<td><code>search_faculty</code></td>
+</tr>
+<tr>
+<td>reword the error</td>
+<td><code>search_faculty_db</code></td>
+<td><code>NOT_FOUND</code></td>
+</tr>
+<tr>
+<td>restyle output</td>
+<td><code>search_faculty_db</code></td>
+<td><code>format_faculty_results</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>format_faculty_results</code> is now pure — list in, string out. <mark>Three dicts and no database
+test it.</mark> Nothing in that file could be tested that way before.</p>
+<hr />
+<h2 id="2-openclosed">2. Open/Closed</h2>
+<blockquote>
+<p><mark>A module should be open for extension but closed for modification.</mark></p>
+</blockquote>
+<p><img alt="" src="../../images/solid/open_closed_principle.png" /></p>
+<hr />
+<h4 id="the-violation_1">The violation</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ProductFilter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_by_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span><span class="p">:</span> <span class="k">yield</span> <span class="n">p</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_by_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">size</span><span class="p">:</span> <span class="k">yield</span> <span class="n">p</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_by_size_and_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span> <span class="ow">and</span> <span class="n">p</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">size</span><span class="p">:</span> <span class="k">yield</span> <span class="n">p</span>
+</code></pre></div>
+<p>Count the methods as criteria are added:</p>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Methods needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 — colour, size</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3 — + weight</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Every new criterion means editing a class that already worked.</mark> The combinations grow
+as <code>2ⁿ − 1</code>.</p>
+<hr />
+<h4 id="the-fix_1">The fix</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Specification</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_satisfied</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">AndSpecification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ColorSpecification</span><span class="p">(</span><span class="n">Specification</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_satisfied</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span> <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SizeSpecification</span><span class="p">(</span><span class="n">Specification</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_satisfied</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span> <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AndSpecification</span><span class="p">(</span><span class="n">Specification</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_satisfied</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">is_satisfied</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BetterFilter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">Specification</span><span class="p">):</span>      <span class="c1"># &lt;- the whole contract</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">is_satisfied</span><span class="p">(</span><span class="n">item</span><span class="p">):</span> <span class="k">yield</span> <span class="n">item</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">large_green</span> <span class="o">=</span> <span class="n">SizeSpecification</span><span class="p">(</span><span class="n">Size</span><span class="o">.</span><span class="n">LARGE</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">ColorSpecification</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">BetterFilter</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">large_green</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>A new criterion is a <strong>new class</strong>. <code>BetterFilter</code> is never opened again.</p>
+<hr />
+<h4 id="spec-specification-is-not-decoration"><code>spec: Specification</code> is not decoration</h4>
+<p>Leave the parameter untyped and <code>BetterFilter</code> depends on nothing in particular — it
+just hopes whatever arrives has an <code>is_satisfied</code>. The abstraction that makes this work
+is then nowhere in the code.</p>
+<p>Make <code>Specification</code> abstract and a half-written criterion dies at construction, not
+silently at filter time:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WeightSpecification</span><span class="p">(</span><span class="n">Specification</span><span class="p">):</span>    <span class="c1"># forgot is_satisfied</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kg</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">kg</span> <span class="o">=</span> <span class="n">kg</span>
+
+<span class="n">WeightSpecification</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>TypeError: Can&#39;t instantiate abstract class WeightSpecification
+           without an implementation for abstract method &#39;is_satisfied&#39;
+</code></pre></div>
+<p>Without <code>ABC</code>, that class instantiates fine, <code>is_satisfied</code> returns <code>None</code>, <code>None</code> is
+falsy, and <mark>the filter quietly returns nothing at all</mark>. No error, no results, no clue.</p>
+<p><strong>Open for extension</strong> means there is a named thing to extend. The abstract base <em>is</em>
+the extension point.</p>
+<hr />
+<h4 id="ocp-in-a-real-code-base">OCP in a real code base</h4>
+<p><a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/fallback.py#L289-L303"><code>fallback.py#L289-L303</code></a> — one <code>if</code> and five
+<code>elif</code>s, nested six levels deep inside a handler:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dl</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_desig</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="k">if</span>   <span class="s2">&quot;it&quot;</span> <span class="ow">in</span> <span class="n">dl</span> <span class="ow">or</span> <span class="s2">&quot;system&quot;</span> <span class="ow">in</span> <span class="n">dl</span> <span class="ow">or</span> <span class="s2">&quot;network&quot;</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>  <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;…campus IT infrastructure…&quot;</span>
+<span class="k">elif</span> <span class="s2">&quot;account&quot;</span> <span class="ow">in</span> <span class="n">dl</span> <span class="ow">or</span> <span class="s2">&quot;finance&quot;</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>               <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;…financial audits…&quot;</span>
+<span class="k">elif</span> <span class="s2">&quot;library&quot;</span> <span class="ow">in</span> <span class="n">dl</span> <span class="ow">or</span> <span class="s2">&quot;resource&quot;</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>              <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;…library books…&quot;</span>
+<span class="k">elif</span> <span class="s2">&quot;placement&quot;</span> <span class="ow">in</span> <span class="n">dl</span> <span class="ow">or</span> <span class="s2">&quot;career&quot;</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>              <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;…corporate recruitment…&quot;</span>
+<span class="k">elif</span> <span class="s2">&quot;hostel&quot;</span> <span class="ow">in</span> <span class="n">dl</span> <span class="ow">or</span> <span class="s2">&quot;warden&quot;</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>                 <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;…student housing…&quot;</span>
+<span class="k">elif</span> <span class="s2">&quot;lab&quot;</span> <span class="ow">in</span> <span class="n">dl</span> <span class="ow">or</span> <span class="s2">&quot;laboratory&quot;</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>                <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;…&quot;</span>
+</code></pre></div>
+<p>A new department means editing a function that already works.</p>
+<hr />
+<h4 id="the-table">The table</h4>
+<div class="highlight"><pre><span></span><code><span class="n">DESIGNATION_BLURBS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">((</span><span class="s2">&quot;it&quot;</span><span class="p">,</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;network&quot;</span><span class="p">),</span>          <span class="s2">&quot;managing the campus IT infrastructure…&quot;</span><span class="p">),</span>
+    <span class="p">((</span><span class="s2">&quot;account&quot;</span><span class="p">,</span> <span class="s2">&quot;finance&quot;</span><span class="p">,</span> <span class="s2">&quot;audit&quot;</span><span class="p">),</span>      <span class="s2">&quot;managing financial audits, accounts…&quot;</span><span class="p">),</span>
+    <span class="p">((</span><span class="s2">&quot;library&quot;</span><span class="p">,</span> <span class="s2">&quot;resource&quot;</span><span class="p">,</span> <span class="s2">&quot;librarian&quot;</span><span class="p">),</span> <span class="s2">&quot;managing library books, journals…&quot;</span><span class="p">),</span>
+    <span class="p">((</span><span class="s2">&quot;placement&quot;</span><span class="p">,</span> <span class="s2">&quot;career&quot;</span><span class="p">),</span>              <span class="s2">&quot;coordinating corporate recruitment…&quot;</span><span class="p">),</span>
+    <span class="p">((</span><span class="s2">&quot;hostel&quot;</span><span class="p">,</span> <span class="s2">&quot;warden&quot;</span><span class="p">,</span> <span class="s2">&quot;residential&quot;</span><span class="p">),</span>  <span class="s2">&quot;managing campus student housing…&quot;</span><span class="p">),</span>
+    <span class="p">((</span><span class="s2">&quot;lab&quot;</span><span class="p">,</span> <span class="s2">&quot;laboratory&quot;</span><span class="p">,</span> <span class="s2">&quot;workshop&quot;</span><span class="p">),</span>    <span class="s2">&quot;…&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">describe_designation</span><span class="p">(</span><span class="n">designation</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">dl</span> <span class="o">=</span> <span class="p">(</span><span class="n">designation</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">keywords</span><span class="p">,</span> <span class="n">blurb</span> <span class="ow">in</span> <span class="n">DESIGNATION_BLURBS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">dl</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">blurb</span>
+    <span class="k">return</span> <span class="n">DEFAULT_BLURB</span>
+</code></pre></div>
+<p>The call site becomes one line: <code>desc = describe_designation(s_desig)</code>.</p>
+<p>A new department is a <strong>new row</strong>, not an edit to logic. And <code>describe_designation</code> is a
+pure function at module level — where the original was reachable only by driving the
+entire fallback path.</p>
+<blockquote>
+<p><mark>This is OCP without inheritance.</mark> The extension point is a data table. Extension
+points do not have to be polymorphic — they have to be named and separate.</p>
+</blockquote>
+<hr />
+<h2 id="3-liskov-substitution">3. Liskov Substitution</h2>
+<blockquote>
+<p><mark>Subclasses should be substitutable for their base classes.</mark></p>
+</blockquote>
+<p><img alt="" src="../../images/solid/lsp.jpg" /></p>
+<hr />
+<h4 id="a-function-that-takes-a-rectangle">A function that takes a rectangle</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stretch_to_height</span><span class="p">(</span><span class="n">rc</span><span class="p">:</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">new_height</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">rc</span><span class="o">.</span><span class="n">width</span>
+    <span class="n">rc</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">new_height</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;expected: </span><span class="si">{</span><span class="n">w</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">new_height</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">rc</span><span class="o">.</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The name is the contract. <strong>Stretch</strong> one dimension — the other stays put. That is what a
+rectangle <em>is</em>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="n">Rectangle</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+
+    <span class="nd">@Rectangle</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">v</span>          <span class="c1"># keeps the square square</span>
+</code></pre></div>
+<hr />
+<h4 id="what-happens">What happens</h4>
+<div class="highlight"><pre><span></span><code><span class="n">stretch_to_height</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>    <span class="c1"># expected: 20, got 20</span>
+<span class="n">stretch_to_height</span><span class="p">(</span><span class="n">Square</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>          <span class="c1"># expected: 50, got 100</span>
+</code></pre></div>
+<p><code>Square</code> never breaks its own invariant. It breaks a caller's.</p>
+<p><mark>A square is a rectangle in geometry and not in code, because in code a rectangle
+carries a promise that width and height move independently.</mark> Inheritance inherits the
+promises too.</p>
+<p>The fix is not a cleverer <code>Square</code>. It is to stop claiming <code>Square</code> is a <code>Rectangle</code>.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Who broke the contract?</p>
+<p>Three candidates: <code>Rectangle</code>, <code>Square</code>, or <code>stretch_to_height</code>. Pick one.</p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong><code>Square</code></strong> — but only because <code>Rectangle</code> made a promise it then inherited.</p>
+<p><code>stretch_to_height</code> did nothing exotic. It relied on the base class's stated interface:
+independent mutable width and height. Any caller may.</p>
+<p><code>Square</code> accepted that interface and then violated it. <mark>A subclass may
+strengthen what it guarantees; it may never weaken what callers are allowed to
+assume.</mark></p>
+<p>Note what this rules out. If <code>Rectangle</code> were immutable — no setters, <code>resize()</code>
+returning a new instance — <code>Square</code> would substitute cleanly. <strong>The mutability
+created the contract that the subclass could break.</strong></p>
+</details>
+</div>
+<hr />
+<h2 id="4-interface-segregation">4. Interface Segregation</h2>
+<blockquote>
+<p><mark>Many client-specific interfaces are better than one general-purpose interface.</mark></p>
+</blockquote>
+<p><img alt="" src="../../images/solid/isp.png" /></p>
+<hr />
+<h4 id="the-violation_2">The violation</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Machine</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>   <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OldFashionedPrinter</span><span class="p">(</span><span class="n">Machine</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>                     <span class="c1"># fine</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>                     <span class="c1"># silently does nothing</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Printer cannot scan!&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Two bad options and no good one. <code>fax</code> lies quietly; <code>scan</code> explodes at run time. Both
+happen because the interface promised things this device cannot do.</p>
+<hr />
+<h4 id="the-fix_2">The fix</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Printer</span><span class="p">:</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span> <span class="o">...</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Scanner</span><span class="p">:</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span> <span class="o">...</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Photocopier</span><span class="p">(</span><span class="n">Printer</span><span class="p">,</span> <span class="n">Scanner</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>  <span class="o">...</span>
+</code></pre></div>
+<p><mark>A class should not be forced to depend on methods it does not use.</mark> A printer that
+cannot scan should be unable to <em>say</em> <code>scan</code>, not forced to fail when asked.</p>
+<hr />
+<h2 id="5-dependency-inversion">5. Dependency Inversion</h2>
+<blockquote>
+<p><mark>High-level modules should not depend on low-level modules. Both should depend on
+abstractions.</mark></p>
+<p><mark>Abstractions should not depend on details. Details should depend on abstractions.</mark></p>
+</blockquote>
+<p>Not the same thing as dependency injection. Inversion is about which way the arrow
+points; injection is one way to arrange it.</p>
+<p><img alt="" src="../../images/solid/dip.png" /></p>
+<hr />
+<h4 id="the-abstraction-first">The abstraction first</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Logger</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="o">...</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ConsoleLogger</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Console] </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FileLogger</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">filepath</span> <span class="o">=</span> <span class="n">filepath</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[File] </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RemoteLogger</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Remote] </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="p">:</span>                       <span class="c1"># the high-level module</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Application started&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h4 id="which-way-the-arrow-points">Which way the arrow points</h4>
+<p>Without the abstraction, <code>App</code> names <code>FileLogger</code> and the arrow runs <strong>downward</strong> —
+policy depending on detail. Change the log destination and <code>App</code> is edited.</p>
+<p>With it, both sides point <strong>at <code>Logger</code></strong>. <code>App</code> depends on an idea; <code>FileLogger</code>
+depends on the same idea. Neither knows the other exists.</p>
+<p><mark>The detail became the plug-in and the policy became the socket.</mark> That is the
+inversion.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Which principle does each of these break?</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Symptom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>Adding a payment method means editing <code>Checkout</code></td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>NullCustomer.email()</code> raises, and every caller now needs a guard</td>
+</tr>
+<tr>
+<td>c</td>
+<td>A class that parses CSV, validates rows, and writes to Postgres</td>
+</tr>
+<tr>
+<td>d</td>
+<td><code>Report</code> constructs <code>PostgresConnection</code> in its constructor</td>
+</tr>
+</tbody>
+</table>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Principle</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td><strong>Open/Closed</strong></td>
+<td>extension forces modification</td>
+</tr>
+<tr>
+<td>b</td>
+<td><strong>Liskov</strong></td>
+<td>the subclass weakened what callers could assume</td>
+</tr>
+<tr>
+<td>c</td>
+<td><strong>Single Responsibility</strong></td>
+<td>three reasons to change</td>
+</tr>
+<tr>
+<td>d</td>
+<td><strong>Dependency Inversion</strong></td>
+<td>policy names a detail</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that <strong>(b) and (d) would both be caught by trying to write a test.</strong> You
+cannot substitute a <code>NullCustomer</code> safely, and you cannot substitute the
+database at all.</p>
+<p><mark>That is not a coincidence. These principles were written decades before anyone
+used a test to find them — the test is just the cheapest way to notice.</mark></p>
+</details>
+</div>
+<hr />
+<h4 id="dip-in-a-real-code-base">DIP in a real code base</h4>
+<p>The abstraction already exists —
+<a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/api/services/retrieval.py#L15-L26"><code>retrieval.py#L15-L26</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BaseRetriever</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract interface for retrieving records from the database.&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve_faculty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span> <span class="o">...</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve_staff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span> <span class="o">...</span>
+</code></pre></div>
+<p>And it is bypassed, in two places:</p>
+<div class="highlight"><pre><span></span><code><span class="n">faculty_service</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">101</span>    <span class="n">retriever</span> <span class="o">=</span> <span class="n">PostgresFullTextRetriever</span><span class="p">()</span>
+<span class="n">staff_service</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">100</span>      <span class="n">retriever</span> <span class="o">=</span> <span class="n">PostgresFullTextRetriever</span><span class="p">()</span>
+</code></pre></div>
+<p><mark>The socket was built and then nobody plugged into it.</mark></p>
+<hr />
+<h4 id="the-receipt">The receipt</h4>
+<p>Three tests pay for it —
+<a href="https://github.com/Piyushtanwani/DAU-buddy/blob/b909c221fcccb069f3ff9eb40e8292b435145d8a/tests/test_fuzzy_directory_search.py#L226"><code>test_fuzzy_directory_search.py#L226</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;api.services.faculty_service.PostgresFullTextRetriever&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mock_retriever</span><span class="p">:</span>
+</code></pre></div>
+<p>That string encodes <strong>which module imports which class</strong>. Move the import and three tests
+break with no behaviour changed.</p>
+<hr />
+<h4 id="the-fix-is-one-parameter">The fix is one parameter</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">search_faculty_db</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">error_on_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                      <span class="n">retriever</span><span class="p">:</span> <span class="n">BaseRetriever</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="n">retriever</span> <span class="o">=</span> <span class="n">retriever</span> <span class="ow">or</span> <span class="n">PostgresFullTextRetriever</span><span class="p">()</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">retrieve_faculty</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p>Every existing call site keeps working. The test loses the module path:</p>
+<div class="highlight"><pre><span></span><code><span class="n">search_faculty_db</span><span class="p">(</span><span class="s2">&quot;machine learning&quot;</span><span class="p">,</span> <span class="n">retriever</span><span class="o">=</span><span class="n">FakeRetriever</span><span class="p">([{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ada&quot;</span><span class="p">}]))</span>
+</code></pre></div>
+<p>The module still imports the concrete class for its default. <mark>That is a compromise, not
+a purity failure</mark> — it costs no call sites and it creates the place where the decision
+can move.</p>
+<hr />
+<h2 id="which-two-you-have-already-used">Which two you have already used</h2>
+<p>Of the five, two do most of the work in practice:</p>
+<ul>
+<li><strong>SRP</strong>, because a class with one reason to change is a class you can hold in your head</li>
+<li><strong>DIP</strong>, because it is the only one that decides whether a thing can be substituted at
+  all</li>
+</ul>
+<p><strong>L</strong> and <strong>I</strong> are narrower: they fire on inheritance hierarchies and on wide
+interfaces, and a codebase can go years without either.</p>
+<p><mark>Learn all five. Expect to reach for two.</mark></p>
+<hr />
+<h2 id="you-have-been-using-all-five">You have been using all five</h2>
+<p>The principles are not academic. The people who designed your language applied them, and
+you have been consuming the result since your first <code>for</code> loop.</p>
+<hr />
+<h4 id="openclosed-one-method-and-everything-already-written-works">Open/Closed — one method, and everything already written works</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Bag</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="n">items</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">Bag</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>        <span class="c1"># [3, 1, 2]</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># [1, 2, 3]</span>
+<span class="nb">min</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 1 3</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>         <span class="c1"># 6</span>
+<span class="mi">3</span> <span class="ow">in</span> <span class="n">b</span>         <span class="c1"># True</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Bag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<p><code>sorted</code>, <code>min</code>, <code>sum</code>, <code>in</code>, unpacking, every comprehension and every <code>for</code> loop —
+<strong>extended, none modified.</strong> Not one of them knows <code>Bag</code> exists.</p>
+<blockquote>
+<p><mark>Every one of those was written before <code>Bag</code> existed, and none of them changed.</mark></p>
+</blockquote>
+<hr />
+<h4 id="liskov-the-language-refuses-to-let-you-break-it">Liskov — the language refuses to let you break it</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Point</span><span class="o">.</span><span class="fm">__hash__</span>
+<span class="kc">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unhashable</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;Point&#39;</span>
+</code></pre></div>
+<p>The contract says <em>equal objects hash equally</em>. You redefined equality and said nothing
+about hashing, so Python <strong>broke your class on purpose</strong> rather than let it corrupt every
+<code>set</code> and <code>dict</code> it touches.</p>
+<p>In C++ the same mistake is quieter and worse: an <code>operator&lt;</code> that is not a strict weak
+ordering makes <code>std::sort</code> <mark>undefined behaviour</mark>, not merely a wrong order.</p>
+<hr />
+<h4 id="interface-segregation-by-deliberate-design">Interface Segregation — by deliberate design</h4>
+<p><code>collections.abc</code> is a hierarchy of <strong>one-method</strong> interfaces:</p>
+<table>
+<thead>
+<tr>
+<th>ABC</th>
+<th>Requires</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Sized</code></td>
+<td><code>__len__</code></td>
+</tr>
+<tr>
+<td><code>Iterable</code></td>
+<td><code>__iter__</code></td>
+</tr>
+<tr>
+<td><code>Container</code></td>
+<td><code>__contains__</code></td>
+</tr>
+<tr>
+<td><code>Hashable</code></td>
+<td><code>__hash__</code></td>
+</tr>
+</tbody>
+</table>
+<p>They were not split by accident. A type implements only the protocols it can honour, and
+a class that can be iterated but not measured says exactly that.</p>
+<p><strong>Dependency Inversion</strong> is in the same place: <code>len(x)</code> does not depend on <code>x</code>'s class. It
+depends on <code>__len__</code>, and so does <code>x</code>. Both sides point at the protocol.</p>
+<hr />
+<h4 id="so-which-is-it">So which is it?</h4>
+<p>The previous slide said you will reach for <strong>SRP</strong> and <strong>DIP</strong>. This one shows <strong>L</strong> and
+<strong>I</strong> everywhere. Both are true, and the difference is which side of the interface you
+are standing on.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authoring</strong> a class or a module</td>
+<td>SRP and DIP are the ones you apply</td>
+</tr>
+<tr>
+<td><strong>Conforming</strong> to an interface you did not write</td>
+<td>L and I are the ones you obey</td>
+</tr>
+</tbody>
+</table>
+<p><mark>You break Liskov the day you implement <code>__eq__</code>, <code>operator&lt;</code>, or <code>compareTo</code> without
+reading what the caller was promised.</mark></p>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li>Robert C. Martin, <a href="http://www.cvc.uab.es/shared/teach/a21291/temes/object_oriented_design/materials_adicionals/principles_and_patterns.pdf"><em>Design Principles and Design Patterns</em></a></li>
+<li><a href="https://en.wikipedia.org/wiki/SOLID">SOLID — Wikipedia</a></li>
+<li><a href="https://medium.com/@trekhleb/solid-principles-around-you-6db2f0e12139">SOLID Principles Around You</a></li>
+<li><a href="https://hackernoon.com/the-open-closed-principle-c3dc45419784">The Open-Closed Principle</a></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture15_16/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 15-16:Test code quality">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                15-16:Test code quality
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../labs/assignment-1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1:Make it multiplayer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                1:Make it multiplayer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
