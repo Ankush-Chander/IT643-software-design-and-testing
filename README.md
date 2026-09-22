@@ -34,6 +34,8 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [13_14: Testability and design](docs/lectures/Lecture13_14.md)
 - [15_16: Test code quality](docs/lectures/Lecture15_16.md)
 
+### Module 4: Design beyond a class
+- [17_18: SOLID principles](docs/lectures/Lecture17_18.md)
 ---
 
 ## Labs

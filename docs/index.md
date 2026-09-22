@@ -32,6 +32,9 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [15_16: Test code quality](lectures/Lecture15_16.md)
 <!-- [17: Mutation testing](lectures/Lecture17.md) -->
 
+### Module 4: Design beyond a class
+- [17_18: SOLID Principles](lectures/Lecture17_18.md)
+
 
 ---
 
