@@ -1,0 +1,1961 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture23/">
+      
+      
+        <link rel="prev" href="../Lecture21_22/">
+      
+      
+        <link rel="next" href="../../project/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>23: Architecture: boundaries - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture-boundaries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              23: Architecture: boundaries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture19_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture21_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-scales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four scales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-with-a-small-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start with a small system
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Start with a small system">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-request-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change request 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-request-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change request 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-request-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change request 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#look-at-what-changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Look at what changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dependency-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The dependency rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The dependency rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ports-and-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ports and adapters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ports and adapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-game-rebuilt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The game, rebuilt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapters-outside" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapters, outside
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-three-change-requests-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three change requests, again
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-a-boundary-buys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a boundary buys
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-a-boundary-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a boundary costs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-scales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four scales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-with-a-small-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start with a small system
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Start with a small system">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-request-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change request 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-request-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change request 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-request-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change request 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#look-at-what-changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Look at what changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dependency-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The dependency rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The dependency rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ports-and-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ports and adapters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ports and adapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-game-rebuilt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The game, rebuilt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapters-outside" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapters, outside
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-three-change-requests-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three change requests, again
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-a-boundary-buys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a boundary buys
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-a-boundary-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a boundary costs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="architecture-boundaries">Architecture: boundaries</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>SOLID — principles for one class</li>
+<li>Component principles — what ships together, and which way components point</li>
+</ul>
+<hr />
+<h2 id="the-question">The question</h2>
+<p>Where does <strong>design</strong> end and <strong>architecture</strong> begin?</p>
+<p>Hold that. It gets answered at the end.</p>
+<hr />
+<h2 id="four-scales">Four scales</h2>
+<table>
+<thead>
+<tr>
+<th>Scale</th>
+<th>Unit</th>
+<th>Asks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code</td>
+<td>a function</td>
+<td>can a reader follow this?</td>
+</tr>
+<tr>
+<td>Class</td>
+<td>one class</td>
+<td>what makes it change?</td>
+</tr>
+<tr>
+<td>Component</td>
+<td>a group of classes</td>
+<td>which way do dependencies point?</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td>the whole thing</td>
+<td><strong>what is inside the boundary?</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This lecture is the top row.</p>
+<hr />
+<h2 id="start-with-a-small-system">Start with a small system</h2>
+<p>A snake game that remembers the high score.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;score.json&quot;</span><span class="p">))[</span><span class="s2">&quot;best&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">({</span><span class="s2">&quot;best&quot;</span><span class="p">:</span> <span class="n">score</span><span class="p">},</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;score.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>Works. Ships. Now three change requests arrive.</p>
+<hr />
+<h4 id="change-request-1">Change request 1</h4>
+<p><em>"Store scores in a database, not a file."</em></p>
+<p>What do you edit? <strong><code>Game</code>.</strong></p>
+<hr />
+<h4 id="change-request-2">Change request 2</h4>
+<p><em>"Show a leaderboard on a website."</em></p>
+<p>What do you edit? <strong><code>Game</code></strong> — it is the only thing that knows where scores live.</p>
+<hr />
+<h4 id="change-request-3">Change request 3</h4>
+<p><em>"Let two players share one leaderboard over the network."</em></p>
+<p>What do you edit? <strong><code>Game</code>. Again.</strong></p>
+<hr />
+<h4 id="look-at-what-changed">Look at what changed</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Changes how often</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the rule — <em>a high score is saved only if beaten</em></td>
+<td>almost never</td>
+</tr>
+<tr>
+<td>where scores are stored</td>
+<td>three times this term</td>
+</tr>
+</tbody>
+</table>
+<p><mark>The part that changes least is being edited for the parts that change most.</mark></p>
+<p>So which way should the dependency point?</p>
+<hr />
+<h2 id="the-dependency-rule">The dependency rule</h2>
+<blockquote>
+<p><mark>Source code dependencies point inward — toward the rules, never away from them.</mark></p>
+</blockquote>
+<p>The rules know nothing about files, databases, or websites.
+The file, database and website all know about the rules.</p>
+<hr />
+<h4 id="the-rings">The rings</h4>
+<table>
+<thead>
+<tr>
+<th>Ring</th>
+<th>Contains</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entities</strong></td>
+<td>business rules — <em>a high score is kept only if beaten</em></td>
+<td>rarely</td>
+</tr>
+<tr>
+<td><strong>Use cases</strong></td>
+<td>application flow — <em>finish a game, record the result</em></td>
+<td>sometimes</td>
+</tr>
+<tr>
+<td><strong>Adapters</strong></td>
+<td>translate between rules and the outside</td>
+<td>often</td>
+</tr>
+<tr>
+<td><strong>Frameworks &amp; drivers</strong></td>
+<td>database, web server, UI toolkit</td>
+<td>constantly</td>
+</tr>
+</tbody>
+</table>
+<p>Dependencies cross rings <strong>inward only</strong>. Nothing inside names anything outside.</p>
+<hr />
+<h2 id="ports-and-adapters">Ports and adapters</h2>
+<p><img alt="" src="../../images/testing/adaptors_ports.png" /></p>
+<ul>
+<li><strong>Port</strong> — an interface the core <strong>owns</strong>, describing what it needs</li>
+<li><strong>Adapter</strong> — an implementation <strong>outside</strong>, plugged into a port</li>
+</ul>
+<p>The core states what it needs. It does not say who provides it.</p>
+<hr />
+<h4 id="the-game-rebuilt">The game, rebuilt</h4>
+<p>The core owns the rule <strong>and</strong> the port:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ScoreStore</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>          <span class="c1"># the port</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">best</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="n">ScoreStore</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="o">=</span> <span class="n">store</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">best</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+<p>No <code>json</code>. No <code>open</code>. No filename.</p>
+<hr />
+<h4 id="adapters-outside">Adapters, outside</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FileScoreStore</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">best</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">))[</span><span class="s2">&quot;best&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">({</span><span class="s2">&quot;best&quot;</span><span class="p">:</span> <span class="n">score</span><span class="p">},</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InMemoryScoreStore</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">best</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best</span> <span class="o">=</span> <span class="n">score</span>
+</code></pre></div>
+<p>Same <code>Game</code>, both stores, scores <code>40, 30, 55</code>:</p>
+<div class="highlight"><pre><span></span><code>FileScoreStore      True  False  True   best=55
+InMemoryScoreStore  True  False  True   best=55
+</code></pre></div>
+<hr />
+<h4 id="the-three-change-requests-again">The three change requests, again</h4>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Before</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>database instead of file</td>
+<td>edit <code>Game</code></td>
+<td>write <code>PostgresScoreStore</code></td>
+</tr>
+<tr>
+<td>leaderboard website</td>
+<td>edit <code>Game</code></td>
+<td>web adapter reads the same port</td>
+</tr>
+<tr>
+<td>shared over network</td>
+<td>edit <code>Game</code></td>
+<td>write <code>NetworkScoreStore</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>Game</code> is edited <strong>zero</strong> times.</p>
+<hr />
+<h2 id="what-a-boundary-buys">What a boundary buys</h2>
+<p>A boundary lets you make a decision <strong>later</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Without a boundary</th>
+<th>With one</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>which database</td>
+<td>before writing game logic</td>
+<td>when you have real data</td>
+</tr>
+<tr>
+<td>which web framework</td>
+<td>before the first screen</td>
+<td>when you know what the screens are</td>
+</tr>
+<tr>
+<td>file, cloud, or network</td>
+<td>day one</td>
+<td>whenever it actually matters</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Good architecture maximises the number of decisions not yet made.</mark></p>
+<p>The rules can be written, run and tested before any of those decisions exist.</p>
+<hr />
+<h2 id="what-a-boundary-costs">What a boundary costs</h2>
+<p>Not free:</p>
+<ul>
+<li>one more interface to name and keep honest</li>
+<li>one more file to read before you find the real code</li>
+<li>indirection a newcomer has to trace</li>
+</ul>
+<p>A 200-line script with one storage option does not need a port.</p>
+<p>Draw a boundary where <strong>something on the other side is likely to change</strong> — not
+everywhere a boundary could be drawn.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Which way does it point?</p>
+<p>Each line is an import inside the file named on the left. Inward or outward?</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Imports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a. <code>game.py</code></td>
+<td><code>from storage.postgres import PostgresScoreStore</code></td>
+</tr>
+<tr>
+<td>b. <code>postgres_store.py</code></td>
+<td><code>from game import ScoreStore</code></td>
+</tr>
+<tr>
+<td>c. <code>web/leaderboard.py</code></td>
+<td><code>from game import Game</code></td>
+</tr>
+<tr>
+<td>d. <code>game.py</code></td>
+<td><code>import flask</code></td>
+</tr>
+</tbody>
+</table>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Direction</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>rules → database</td>
+<td><strong>outward. Violation</strong></td>
+</tr>
+<tr>
+<td>b</td>
+<td>database → rules</td>
+<td>inward. Correct</td>
+</tr>
+<tr>
+<td>c</td>
+<td>web → rules</td>
+<td>inward. Correct</td>
+</tr>
+<tr>
+<td>d</td>
+<td>rules → framework</td>
+<td><strong>outward. Violation</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The test is one question: <mark>does the file with the rules name anything that
+changes more often than the rules do?</mark> If yes, the arrow points the wrong way.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Where is the boundary in your snake game?</p>
+<p>List every place your game touches the outside world: keyboard, screen, clock,
+random numbers, files.</p>
+<p>For each one: does your game logic <strong>name it directly</strong>, or does it depend on
+something the core owns?</p>
+<details class="hint">
+<summary>What to look for</summary>
+<p>Most snake games have <strong>no boundary at all</strong>. Game logic calls <code>getch()</code>,
+<code>Sleep()</code>, <code>rand()</code>, <code>cout</code> and <code>ofstream</code> directly.</p>
+<p>That is not wrong for a first version. It means every one of those is a
+decision made on day one that cannot now be changed without editing the rules.</p>
+<p>Pick the one most likely to change. That is where your first port goes.</p>
+</details>
+</div>
+<hr />
+<h2 id="back-to-the-question">Back to the question</h2>
+<p>Where does design end and architecture begin?</p>
+<p>It doesn't. <strong>Same question, different scale.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Class</th>
+<th>Component</th>
+<th>System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>one reason to change</td>
+<td>SRP</td>
+<td>CCP</td>
+<td>a ring changes for one kind of reason</td>
+</tr>
+<tr>
+<td>depend on abstractions</td>
+<td>DIP</td>
+<td>SAP</td>
+<td>the dependency rule</td>
+</tr>
+<tr>
+<td>don't force unused dependencies</td>
+<td>ISP</td>
+<td>CRP</td>
+<td>ports expose only what the core needs</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Architecture is design where the unit is the whole system and the cost of a wrong arrow
+is highest.</mark></p>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li>Chapter 22, The Clean Architecture — <em>Clean Architecture</em>, Robert C. Martin</li>
+<li><a href="https://alistair.cockburn.us/hexagonal-architecture/">Hexagonal Architecture</a> — Alistair Cockburn</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture21_22/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 21-22: Component principles">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                21-22: Component principles
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../project/" class="md-footer__link md-footer__link--next" aria-label="Next: Project">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Project
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

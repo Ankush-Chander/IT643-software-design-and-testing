@@ -1,0 +1,2534 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture21_22/">
+      
+      
+        <link rel="prev" href="../Lecture19_20/">
+      
+      
+        <link rel="next" href="../Lecture23/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>21-22: Component principles - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#component-principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              21-22: Component principles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture19_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a component
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is a component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#components-are-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components are products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-good-one-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a good one looks like
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cohesion-and-coupling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cohesion and coupling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cohesion and coupling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cohesion-is-a-spectrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cohesion is a spectrum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coupling-is-also-a-spectrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coupling is also a spectrum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cohesion-which-classes-belong-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cohesion: which classes belong together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cohesion: which classes belong together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rep-reuserelease-equivalence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REP — Reuse/Release Equivalence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccp-common-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CCP — Common Closure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crp-common-reuse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRP — Common Reuse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#they-pull-against-each-other" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        They pull against each other
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-tension-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tension diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coupling-which-way-the-dependencies-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coupling: which way the dependencies point
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coupling: which way the dependencies point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adp-acyclic-dependencies-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADP — Acyclic Dependencies: the problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-attempt-integrate-on-fridays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First attempt: integrate on Fridays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The trap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#because-you-are-integrating-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Because you are integrating source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-ways-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two ways out
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdp-stable-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDP — Stable Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instability-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The instability metric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sap-stable-abstractions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SAP — Stable Abstractions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-main-sequence-and-two-places-not-to-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The main sequence, and two places not to be
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-six-in-one-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The six, in one place
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a component
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is a component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#components-are-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components are products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-good-one-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a good one looks like
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cohesion-and-coupling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cohesion and coupling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cohesion and coupling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cohesion-is-a-spectrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cohesion is a spectrum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coupling-is-also-a-spectrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coupling is also a spectrum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cohesion-which-classes-belong-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cohesion: which classes belong together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cohesion: which classes belong together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rep-reuserelease-equivalence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REP — Reuse/Release Equivalence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccp-common-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CCP — Common Closure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crp-common-reuse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRP — Common Reuse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#they-pull-against-each-other" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        They pull against each other
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-tension-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tension diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coupling-which-way-the-dependencies-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coupling: which way the dependencies point
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coupling: which way the dependencies point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adp-acyclic-dependencies-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADP — Acyclic Dependencies: the problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-attempt-integrate-on-fridays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First attempt: integrate on Fridays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The trap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#because-you-are-integrating-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Because you are integrating source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-ways-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two ways out
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdp-stable-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDP — Stable Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instability-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The instability metric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sap-stable-abstractions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SAP — Stable Abstractions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-main-sequence-and-two-places-not-to-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The main sequence, and two places not to be
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-six-in-one-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The six, in one place
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="component-principles">Component principles</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>SOLID, at the level of one class</li>
+<li>The data model, and claiming a protocol</li>
+</ul>
+<hr />
+<h2 id="the-claim">The claim</h2>
+<p>A class is not a unit of delivery. You do not ship a class — you ship a <strong>component</strong>, and
+it has its own principles.</p>
+<blockquote>
+<p><mark>Six rules, and every one of them is about a line you cannot see in any source file:
+the boundary between what ships together and what ships apart.</mark></p>
+</blockquote>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>What a component is</li>
+<li>Cohesion: REP, CCP, CRP — and the tension between them</li>
+<li>Coupling: ADP, SDP, SAP</li>
+<li>Measuring a real code base</li>
+</ul>
+<hr />
+<h2 id="what-is-a-component">What is a component</h2>
+<p>A <strong>modular, self-contained, independently deployable unit of software.</strong></p>
+<ul>
+<li>A physical artifact: a <code>.jar</code>, a <code>.dll</code>, a wheel, a packaged JS library</li>
+<li>Standard interface, internals hidden, assembles with others</li>
+<li><mark>A folder is not a component. A thing you can version and release is.</mark></li>
+</ul>
+<p>The test: can you give someone <em>this</em> and nothing else, and can they use it?</p>
+<hr />
+<h4 id="components-are-products">Components are products</h4>
+<p>Calling it a deployment unit undersells it. A component is a <strong>unit of productisation</strong>,
+which means somebody owes its consumers:</p>
+<ul>
+<li>versioning and release management</li>
+<li>communication when something changes</li>
+<li>stability, and support for the version they are on</li>
+</ul>
+<p>That shifts the question from <em>"can I share this code?"</em> to <em>"am I prepared to maintain
+this for other people?"</em></p>
+<hr />
+<h4 id="what-a-good-one-looks-like">What a good one looks like</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reusable</strong></td>
+<td>works in more than one context without modification</td>
+</tr>
+<tr>
+<td><strong>Encapsulated</strong></td>
+<td>internals hidden, only stable interfaces exposed</td>
+</tr>
+<tr>
+<td><strong>Independent</strong></td>
+<td>few dependencies, so it can be built and deployed alone</td>
+</tr>
+<tr>
+<td><strong>Replaceable</strong></td>
+<td>swappable for another implementation that honours the interface</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cohesion-and-coupling">Cohesion and coupling</h2>
+<p>The two forces, at every level of design.</p>
+<ul>
+<li><strong>Cohesion</strong> — how well the things inside belong together</li>
+<li><strong>Coupling</strong> — how much one component depends on another</li>
+</ul>
+<p>Maximise the first, minimise the second. <mark>And note the relationship: high cohesion tends
+to produce loose coupling on its own</mark>, because a component that owns one job has less to
+ask of anyone else.</p>
+<hr />
+<h4 id="cohesion-is-a-spectrum">Cohesion is a spectrum</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Grouped by</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Coincidental</strong> <em>(worst)</em></td>
+<td>nothing</td>
+<td><code>CommonUtilities</code></td>
+</tr>
+<tr>
+<td><strong>Logical</strong></td>
+<td>same category, unrelated work</td>
+<td><code>InputHandler</code> for keyboard, mouse, network</td>
+</tr>
+<tr>
+<td><strong>Temporal</strong></td>
+<td>happens at the same time</td>
+<td>shutdown routines</td>
+</tr>
+<tr>
+<td><strong>Procedural</strong></td>
+<td>execution order</td>
+<td><code>AppInitializer</code>: check licence, load prefs, connect</td>
+</tr>
+<tr>
+<td><strong>Communicational</strong></td>
+<td>the same data</td>
+<td><code>CustomerManager</code>: address update, order history</td>
+</tr>
+<tr>
+<td><strong>Sequential</strong></td>
+<td>output feeds the next</td>
+<td><code>ReportGenerator</code>: fetch → aggregate → format</td>
+</tr>
+<tr>
+<td><strong>Functional</strong> <em>(best)</em></td>
+<td>one task</td>
+<td><code>PaymentProcessor</code>: validate, authorize, capture</td>
+</tr>
+</tbody>
+</table>
+<p><code>utils</code> is not a name. It is an admission that no one could think of one.</p>
+<hr />
+<h4 id="coupling-is-also-a-spectrum">Coupling is also a spectrum</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What crosses the boundary</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Content</strong> <em>(worst)</em></td>
+<td>reaching into internals</td>
+<td>modifying another component's variable</td>
+</tr>
+<tr>
+<td><strong>Common</strong></td>
+<td>shared global state</td>
+<td>a global <code>Configuration</code></td>
+</tr>
+<tr>
+<td><strong>External</strong></td>
+<td>a specific technology</td>
+<td>Oracle-specific SQL</td>
+</tr>
+<tr>
+<td><strong>Control</strong></td>
+<td>a flag that steers logic</td>
+<td><code>sort(data, directionFlag)</code></td>
+</tr>
+<tr>
+<td><strong>Stamp</strong></td>
+<td>a whole object, partly used</td>
+<td><code>Mailer(User)</code> needing only email and name</td>
+</tr>
+<tr>
+<td><strong>Data</strong> <em>(best)</em></td>
+<td>primitives</td>
+<td><code>TaxCalculator(price, region)</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cohesion-which-classes-belong-together">Cohesion: which classes belong together</h2>
+<p>Three principles, and they pull against each other.</p>
+<hr />
+<h4 id="rep-reuserelease-equivalence">REP — Reuse/Release Equivalence</h4>
+<blockquote>
+<p><mark>The granule of reuse is the granule of release.</mark></p>
+</blockquote>
+<p>The smallest thing someone can reuse must be the smallest thing you release and track.</p>
+<p><strong>Copy-paste is not reuse.</strong> Copies diverge; your bug fix never reaches them. Reuse means
+depending on a <strong>versioned artifact</strong>, which implies semantic versioning, release notes,
+and somebody telling consumers what changed.</p>
+<div class="highlight"><pre><span></span><code>implementation &#39;org.springframework:spring-core:5.3.23&#39;     # Maven
+&quot;react&quot;: &quot;^18.2.0&quot;                                          # npm
+pod &#39;Alamofire&#39;, &#39;~&gt; 5.6&#39;                                   # CocoaPods
+</code></pre></div>
+<p>Every package manager you have used is REP, enforced by tooling.</p>
+<hr />
+<h4 id="ccp-common-closure">CCP — Common Closure</h4>
+<blockquote>
+<p><mark>Gather into a component the classes that change for the same reasons, at the same
+times. Separate those that do not.</mark></p>
+</blockquote>
+<p>This is the Single Responsibility Principle, one level up: <strong>a component should have one
+reason to change.</strong></p>
+<p>What it buys:</p>
+<ul>
+<li>a change for one requirement stays inside one component</li>
+<li>only that component is rebuilt, retested, redeployed</li>
+</ul>
+<hr />
+<h4 id="crp-common-reuse">CRP — Common Reuse</h4>
+<blockquote>
+<p><mark>The classes in a component are reused together. If you reuse one, you reuse them
+all.</mark></p>
+</blockquote>
+<p>The other side: <strong>do not force consumers to depend on things they do not use.</strong> This is
+Interface Segregation at the component level — ISP warns against fat interfaces, CRP
+warns against fat components.</p>
+<p>Two costs when you get it wrong:</p>
+<ol>
+<li><strong>Dependency bloat.</strong> A consumer who needs one class inherits the component's entire
+   dependency tree — bigger builds, more version conflicts.</li>
+<li><strong>Release churn.</strong> Mix a volatile class with stable ones and every consumer gets a new
+   release, and has to re-validate, for a change they do not use.</li>
+</ol>
+<hr />
+<h4 id="they-pull-against-each-other">They pull against each other</h4>
+<ul>
+<li><strong>CCP</strong> says <em>group more</em> — keep things that change together in one place</li>
+<li><strong>CRP</strong> says <em>group less</em> — do not make me depend on what I do not use</li>
+<li><strong>REP</strong> sits between them, and says whatever you decide must be releasable</li>
+</ul>
+<p><mark>There is no arrangement that maximises all three.</mark></p>
+<hr />
+<h4 id="the-tension-diagram">The tension diagram</h4>
+<p><img alt="" src="../../images/component_coupling/cohesion_tension.webp" /></p>
+<p>Each <strong>edge</strong> is the price of giving up the principle at the opposite corner:</p>
+<table>
+<thead>
+<tr>
+<th>You sit on this edge</th>
+<th>You abandoned</th>
+<th>And you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REP — CCP</td>
+<td><strong>CRP</strong></td>
+<td>too many unneeded releases</td>
+</tr>
+<tr>
+<td>REP — CRP</td>
+<td><strong>CCP</strong></td>
+<td>too many components change at once</td>
+</tr>
+<tr>
+<td>CCP — CRP</td>
+<td><strong>REP</strong></td>
+<td>components nobody can reuse</td>
+</tr>
+</tbody>
+</table>
+<p>You are always somewhere inside this triangle. The question is not how to escape it but
+<mark>which of the three failures you can currently afford</mark>.</p>
+<p>Early in a project, CCP wins: easy change matters more than troubling consumers you do
+not have yet. As a component matures and gains consumers, the balance shifts toward CRP.</p>
+<blockquote>
+<p><strong>Where in this space do your components fail?</strong></p>
+</blockquote>
+<hr />
+<h2 id="coupling-which-way-the-dependencies-point">Coupling: which way the dependencies point</h2>
+<hr />
+<h4 id="adp-acyclic-dependencies-the-problem">ADP — Acyclic Dependencies: the problem</h4>
+<p>Friday: working code. Monday: broken build. You changed nothing.</p>
+<p>Someone edited a component you depend on.</p>
+<p><strong>The morning-after syndrome.</strong> On a big team, nobody works on what they planned to.</p>
+<hr />
+<h4 id="first-attempt-integrate-on-fridays">First attempt: integrate on Fridays</h4>
+<p>Develop in isolation all week. Integrate Friday.</p>
+<p>It works — four quiet days, one noisy one.</p>
+<p>Then the project grows:</p>
+<table>
+<thead>
+<tr>
+<th>Changes to reconcile</th>
+<th>Friday takes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a handful</td>
+<td>an hour</td>
+</tr>
+<tr>
+<td>dozens</td>
+<td>all day</td>
+</tr>
+<tr>
+<td>too many</td>
+<td>Saturday too</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="the-trap">The trap</h4>
+<p>Friday hurts → integrate fortnightly → bigger batches → hurts more → integrate monthly.</p>
+<blockquote>
+<p><mark>The fix accelerates the problem it was introduced to solve.</mark></p>
+</blockquote>
+<p>Wrong question: <em>how often do we integrate?</em>
+Right question: <strong>why is integrating expensive?</strong></p>
+<hr />
+<h4 id="because-you-are-integrating-source">Because you are integrating source</h4>
+<p>Everyone's latest code, all at once, whether you wanted it or not.</p>
+<p>Integrate <strong>released components</strong> instead:</p>
+<ul>
+<li>a team ships a component with a <strong>version number</strong></li>
+<li>others keep the version they have</li>
+<li>they upgrade <strong>when they choose</strong></li>
+</ul>
+<blockquote>
+<p><mark>No team is at the mercy of another.</mark></p>
+</blockquote>
+<p>Requires one thing: <strong>no cycles</strong>.</p>
+<hr />
+<h4 id="cycles">Cycles</h4>
+<p><img alt="" src="../../images/component_coupling/dependency_cycle.png" /></p>
+<p>A cycle means the components "have, in effect, become one large component."</p>
+<ul>
+<li>they cannot be released independently</li>
+<li>they cannot be unit tested in isolation</li>
+<li>there may be <strong>no correct build order</strong> at all</li>
+</ul>
+<hr />
+<h4 id="two-ways-out">Two ways out</h4>
+<p><strong>1. Invert one dependency.</strong> Put an interface in the lower-level component that the
+higher-level one depends on.</p>
+<p><img alt="" src="../../images/component_coupling/cycle_removal_via_dip.png" /></p>
+<p><strong>2. Extract a new component.</strong> Move what both need into a third thing they both depend
+on.</p>
+<p><img alt="" src="../../images/component_coupling/cycle_removal_via_new_component.png" /></p>
+<hr />
+<h4 id="sdp-stable-dependencies">SDP — Stable Dependencies</h4>
+<blockquote>
+<p><mark>Depend in the direction of stability.</mark></p>
+</blockquote>
+<p>"Stable" here does not mean <em>good</em> or <em>unchanging by nature</em>. It means <strong>hard to change,
+because many things depend on you.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Unstable</th>
+<th>Stable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incoming dependencies</td>
+<td>few</td>
+<td>many</td>
+</tr>
+<tr>
+<td>Outgoing dependencies</td>
+<td>many</td>
+<td>few</td>
+</tr>
+<tr>
+<td>Changing it</td>
+<td>easy, nothing breaks</td>
+<td>expensive, everything breaks</td>
+</tr>
+<tr>
+<td>Martin's phrasing</td>
+<td>"irresponsible and dependent"</td>
+<td>"responsible and independent"</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="examples">Examples</h4>
+<table>
+<thead>
+<tr>
+<th>Stable — many depend on it</th>
+<th>Unstable — it depends on many</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the standard library</td>
+<td><code>main()</code> / the entry point</td>
+</tr>
+<tr>
+<td>a logging interface</td>
+<td>a UI screen</td>
+</tr>
+<tr>
+<td>core entities: <code>Order</code>, <code>Customer</code></td>
+<td>a report generator</td>
+</tr>
+<tr>
+<td>a shared <code>Money</code> or <code>Date</code> type</td>
+<td>a one-off migration script</td>
+</tr>
+<tr>
+<td>a database schema several services read</td>
+<td>the test suite</td>
+</tr>
+</tbody>
+</table>
+<p>Stability is about <strong>position in the dependency graph</strong>, not code quality.
+A stable component can be badly written. An unstable one can be excellent.</p>
+<hr />
+<h4 id="the-instability-metric">The instability metric</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fan-in</strong></td>
+<td>classes outside that depend on this component</td>
+</tr>
+<tr>
+<td><strong>Fan-out</strong></td>
+<td>classes inside that depend on something outside</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td><code>fan-out ÷ (fan-in + fan-out)</code>, range 0 to 1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>I = 0</strong> — maximally stable. Everyone depends on it, it depends on nobody</li>
+<li><strong>I = 1</strong> — maximally unstable. Nobody depends on it, it depends on everyone</li>
+</ul>
+<p><strong>The rule:</strong> <code>I</code> should <em>decrease</em> in the direction of dependency. A component must
+depend only on components more stable than itself.</p>
+<p><strong>Violation:</strong> a core <code>DatabaseLayer</code> depending on a volatile <code>UI</code>. Change the UI and the
+database code rebuilds.</p>
+<hr />
+<h4 id="sap-stable-abstractions">SAP — Stable Abstractions</h4>
+<blockquote>
+<p><mark>A component should be as abstract as it is stable.</mark></p>
+</blockquote>
+<p>If a component is hard to change, it had better be <strong>extendable</strong> instead. That means
+abstract classes and interfaces — extended without being modified.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td><code>abstract classes and interfaces ÷ total classes</code></td>
+</tr>
+<tr>
+<td><strong>A = 0</strong></td>
+<td>entirely concrete</td>
+</tr>
+<tr>
+<td><strong>A = 1</strong></td>
+<td>entirely abstract</td>
+</tr>
+</tbody>
+</table>
+<p>Together, SDP and SAP are <mark>the Dependency Inversion Principle at component scale:
+dependencies run in the direction of abstraction</mark>. The difference from the class-level
+version is that a component can be <em>partly</em> abstract and <em>partly</em> stable.</p>
+<hr />
+<h4 id="the-main-sequence-and-two-places-not-to-be">The main sequence, and two places not to be</h4>
+<p><img alt="" src="../../images/component_coupling/stability_abstraction_relationship.png" /></p>
+<p>A component should sit near the line <code>A + I = 1</code>. Distance from it: <code>D = |A + I − 1|</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Where</th>
+<th>Why it hurts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Zone of Pain</strong></td>
+<td><code>A≈0, I≈0</code> — concrete and stable</td>
+<td>rigid: cannot extend it, cannot change it</td>
+</tr>
+<tr>
+<td><strong>Zone of Uselessness</strong></td>
+<td><code>A≈1, I≈1</code> — abstract and unstable</td>
+<td>abstractions nobody implemented</td>
+</tr>
+</tbody>
+</table>
+<p><code>D</code> finds candidates. It does not rank them — a concrete, stable component that <strong>nothing
+much depends on</strong> is a quiet afternoon's work, while the same score on something with
+nine dependents is not. <mark>Read <code>D</code> to find them, fan-in to rank them.</mark></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Five components. Which one do you fix first?</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>fan-in</th>
+<th>fan-out</th>
+<th>abstract classes</th>
+<th>total classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domain</code></td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>ui</code></td>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr>
+<td><code>interfaces</code></td>
+<td>6</td>
+<td>0</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>legacy_utils</code></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>plugins_api</code></td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Compute <strong>I</strong>, <strong>A</strong> and <strong>D</strong> for each.</li>
+<li>Which zone is each in?</li>
+<li>Which one do you fix first, and why?</li>
+</ol>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>I</th>
+<th>A</th>
+<th>D</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domain</code></td>
+<td>0.00</td>
+<td>0.00</td>
+<td><strong>1.00</strong></td>
+<td>Zone of Pain</td>
+</tr>
+<tr>
+<td><code>ui</code></td>
+<td>1.00</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>main sequence</td>
+</tr>
+<tr>
+<td><code>interfaces</code></td>
+<td>0.00</td>
+<td>1.00</td>
+<td>0.00</td>
+<td>main sequence</td>
+</tr>
+<tr>
+<td><code>legacy_utils</code></td>
+<td>0.00</td>
+<td>0.00</td>
+<td><strong>1.00</strong></td>
+<td>Zone of Pain</td>
+</tr>
+<tr>
+<td><code>plugins_api</code></td>
+<td>1.00</td>
+<td>1.00</td>
+<td><strong>1.00</strong></td>
+<td>Zone of Uselessness</td>
+</tr>
+</tbody>
+</table>
+<p>Three components score <code>D = 1.00</code>. They are not equally urgent.</p>
+<ul>
+<li><strong><code>domain</code> first.</strong> Eight dependents, fully concrete. Cannot be extended, and
+  every change reaches eight other components.</li>
+<li><strong><code>legacy_utils</code> can wait.</strong> Same zone, but one dependent. Fixing it costs one
+  conversation.</li>
+<li><strong><code>plugins_api</code> is a different problem.</strong> Four abstract classes and nobody
+  uses them. Not rigid — just unused. Delete or implement.</li>
+</ul>
+<p><code>ui</code> and <code>interfaces</code> are both on the main sequence, at opposite ends: one
+unstable and concrete, one stable and abstract. Both are correct.</p>
+<p><mark><code>D</code> finds the candidates. Fan-in decides the order.</mark></p>
+</details>
+</div>
+<hr />
+<h2 id="the-six-in-one-place">The six, in one place</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Principle</th>
+<th>Says</th>
+<th>Class-level twin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>REP</strong></td>
+<td>Reuse/Release Equivalence</td>
+<td>the unit of reuse is the unit of release</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>CCP</strong></td>
+<td>Common Closure</td>
+<td>group what changes together</td>
+<td>SRP</td>
+</tr>
+<tr>
+<td><strong>CRP</strong></td>
+<td>Common Reuse</td>
+<td>do not force unused dependencies</td>
+<td>ISP</td>
+</tr>
+<tr>
+<td><strong>ADP</strong></td>
+<td>Acyclic Dependencies</td>
+<td>no cycles</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>SDP</strong></td>
+<td>Stable Dependencies</td>
+<td>depend toward stability</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>SAP</strong></td>
+<td>Stable Abstractions</td>
+<td>be as abstract as you are stable</td>
+<td>DIP</td>
+</tr>
+</tbody>
+</table>
+<p>The first three decide <strong>what goes inside a component</strong>. The last three decide <strong>how
+components point at each other</strong>.</p>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li>Chapters 13–14, <em>Clean Architecture</em> — Robert C. Martin</li>
+<li><a href="https://medium.com/@anca.rebeca/clean-architecture-component-cohesion-principles-8c9722abd9bd">Component cohesion principles</a></li>
+<li><a href="https://khalilstemmler.com/articles/software-design-architecture/full-stack-software-design">The full-stack software design &amp; architecture map</a></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture19_20/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 19-20: The data model">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                19-20: The data model
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture23/" class="md-footer__link md-footer__link--next" aria-label="Next: 23: Architecture: boundaries">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                23: Architecture: boundaries
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2299 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture19_20/">
+      
+      
+        <link rel="prev" href="../Lecture17_18/">
+      
+      
+        <link rel="next" href="../Lecture21_22/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>19-20: The data model - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-data-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              19-20: The data model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-data-model-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the data model is
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What the data model is">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-that-confuses-everyone-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule that confuses everyone first
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-types-vs-your-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in types vs your types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-make-it-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Make it readable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Make it readable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-methods-two-audiences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two methods, two audiences
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-make-it-a-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Make it a sequence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Make it a sequence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-class-that-asks-for-none-of-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The class that asks for none of it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-methods-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two methods instead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-those-two-bought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What those two bought
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-is-not-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading is not writing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-make-it-a-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Make it a number
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Make it a number">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-library-you-already-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A library you already use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-your-own-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In your own code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In your own code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equality-written-out-four-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equality, written out four times
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-of-you-already-fixed-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One of you already fixed it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halfway-there-is-still-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Halfway there is still by hand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-method-that-hides-a-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A method that hides a method
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-same-idea-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same idea elsewhere
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The same idea elsewhere">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-same-class-in-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same class, in C++
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-take-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you take on
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture21_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The claim
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-data-model-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the data model is
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What the data model is">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-that-confuses-everyone-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule that confuses everyone first
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-types-vs-your-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in types vs your types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-make-it-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Make it readable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Make it readable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-methods-two-audiences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two methods, two audiences
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-make-it-a-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Make it a sequence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Make it a sequence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-class-that-asks-for-none-of-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The class that asks for none of it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-methods-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two methods instead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-those-two-bought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What those two bought
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-is-not-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading is not writing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-make-it-a-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Make it a number
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Make it a number">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-library-you-already-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A library you already use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-your-own-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In your own code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In your own code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equality-written-out-four-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equality, written out four times
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-of-you-already-fixed-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One of you already fixed it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halfway-there-is-still-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Halfway there is still by hand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-method-that-hides-a-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A method that hides a method
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-same-idea-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same idea elsewhere
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The same idea elsewhere">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-same-class-in-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same class, in C++
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-take-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you take on
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="the-data-model">The data model</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Design principles, and the four ways a design rots</li>
+<li>The five principles, at the level of one class</li>
+</ul>
+<hr />
+<h2 id="the-claim">The claim</h2>
+<p>You have been taught to write classes that are <em>correct</em>. This lecture is about writing
+classes that are <mark>usable</mark>.</p>
+<blockquote>
+<p>A language already defines what it means to be a sequence, a number, something you can
+print, compare, or loop over. <mark>Your class can claim those meanings instead of
+inventing its own.</mark></p>
+</blockquote>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>What the data model is</li>
+<li>Making an object readable: <code>__repr__</code> and <code>__str__</code></li>
+<li>Making an object behave like a sequence</li>
+<li>Making an object behave like a number</li>
+<li>The same idea in C++, Java, Rust, Go</li>
+<li>What you take on when you claim a protocol</li>
+</ul>
+<hr />
+<h2 id="what-the-data-model-is">What the data model is</h2>
+<p>The set of <strong>protocols</strong> the interpreter itself uses. A protocol is a name and a promise:
+implement <code>__len__</code>, and <code>len()</code> works on your object.</p>
+<p>Python's data model covers:</p>
+<ol>
+<li>Objects, values and types</li>
+<li>The standard type hierarchy</li>
+<li><strong>Special methods</strong> ← this lecture</li>
+<li>Coroutines</li>
+</ol>
+<hr />
+<h4 id="the-rule-that-confuses-everyone-first">The rule that confuses everyone first</h4>
+<p><mark>Special methods are called by the interpreter, not by you.</mark></p>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>        <span class="c1"># you write this</span>
+<span class="n">deck</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>   <span class="c1"># not this</span>
+</code></pre></div>
+<p>You do not call <code>my_object.__repr__()</code>. You call <code>repr(my_object)</code>, and <em>Python</em> dispatches
+to the method you wrote.</p>
+<p>The dunder is the socket. The built-in function is the plug.</p>
+<hr />
+<h2 id="built-in-types-vs-your-types">Built-in types vs your types</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>numerics</strong></td>
+<td><code>int</code>, <code>float</code>, <code>complex</code></td>
+</tr>
+<tr>
+<td><strong>sequences</strong></td>
+<td><code>str</code>, <code>tuple</code>, <code>bytes</code>, <code>list</code>, <code>set</code>, <code>frozenset</code></td>
+</tr>
+<tr>
+<td><strong>mappings</strong></td>
+<td><code>dict</code></td>
+</tr>
+<tr>
+<td><strong>your types</strong></td>
+<td>anything you write with <code>class</code></td>
+</tr>
+</tbody>
+</table>
+<p>Built-in types get indexing, iteration, arithmetic and printing for free. <mark>The data model
+is how a user-defined type asks for the same treatment.</mark></p>
+<hr />
+<h2 id="1-make-it-readable">1. Make it readable</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Lecture</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor</span><span class="p">,</span> <span class="n">venue</span><span class="p">,</span> <span class="n">topic</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">venue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">topic</span> <span class="o">=</span> <span class="n">instructor</span><span class="p">,</span> <span class="n">venue</span><span class="p">,</span> <span class="n">topic</span>
+
+<span class="n">lec</span> <span class="o">=</span> <span class="n">Lecture</span><span class="p">(</span><span class="s2">&quot;Ankush&quot;</span><span class="p">,</span> <span class="s2">&quot;CEP-102&quot;</span><span class="p">,</span> <span class="s2">&quot;The data model&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lec</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;__main__.Lecture object at 0x7d4a1ca31460&gt;
+</code></pre></div>
+<p>A memory address. <mark>Every debugging session with this class starts by losing information.</mark></p>
+<hr />
+<h4 id="two-methods-two-audiences">Two methods, two audiences</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BetterLecture</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor</span><span class="p">,</span> <span class="n">venue</span><span class="p">,</span> <span class="n">topic</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">venue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">topic</span> <span class="o">=</span> <span class="n">instructor</span><span class="p">,</span> <span class="n">venue</span><span class="p">,</span> <span class="n">topic</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;BetterLecture(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="si">!r}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">venue</span><span class="si">!r}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">topic</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">topic</span><span class="si">}</span><span class="s2">, by </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">lec</span><span class="p">)</span>
+<span class="n">The</span> <span class="n">data</span> <span class="n">model</span><span class="p">,</span> <span class="n">by</span> <span class="n">Ankush</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lec</span>
+<span class="n">BetterLecture</span><span class="p">(</span><span class="s1">&#39;Ankush&#39;</span><span class="p">,</span> <span class="s1">&#39;CEP-102&#39;</span><span class="p">,</span> <span class="s1">&#39;The data model&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">lec</span><span class="p">]</span>
+<span class="p">[</span><span class="n">BetterLecture</span><span class="p">(</span><span class="s1">&#39;Ankush&#39;</span><span class="p">,</span> <span class="s1">&#39;CEP-102&#39;</span><span class="p">,</span> <span class="s1">&#39;The data model&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<p>Note <code>!r</code> in the repr. <mark>Without it the output is not valid Python</mark>, which defeats the
+point of a repr you could paste back.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Called by</th>
+<th>For</th>
+<th>Should read like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__repr__</code></td>
+<td><code>repr()</code>, the debugger, the REPL, a list's contents</td>
+<td><strong>you</strong></td>
+<td>code that could rebuild the object</td>
+</tr>
+<tr>
+<td><code>__str__</code></td>
+<td><code>print()</code>, <code>str()</code>, f-strings</td>
+<td><strong>the user</strong></td>
+<td>a sentence</td>
+</tr>
+</tbody>
+</table>
+<p>If you write only one, write <code>__repr__</code> — <code>__str__</code> falls back to it, never the reverse.</p>
+<hr />
+<h2 id="2-make-it-a-sequence">2. Make it a sequence</h2>
+<p>What a list gives you for free:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                    <span class="c1"># indexing</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>                  <span class="c1"># slicing</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span> <span class="o">...</span>         <span class="c1"># iteration</span>
+<span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>        <span class="c1"># comprehension</span>
+<span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>               <span class="c1"># random.choice</span>
+<span class="n">shuffle</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>              <span class="c1"># random.shuffle</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>               <span class="c1"># sorting</span>
+</code></pre></div>
+<p>None of that is special to <code>list</code>. It is the sequence protocol.</p>
+<hr />
+<h4 id="the-class-that-asks-for-none-of-it">The class that asks for none of it</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">NotGoodCardDeck</span><span class="p">:</span>
+    <span class="n">suits</span> <span class="o">=</span> <span class="s1">&#39;spades diamonds clubs hearts&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;JQKA&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cards</span> <span class="o">=</span> <span class="p">[</span><span class="n">Card</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">suit</span><span class="p">)</span> <span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">suits</span> <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranks</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pick_random_card</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pick_cards_by_suit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">suit</span><span class="p">):</span> <span class="o">...</span>
+</code></pre></div>
+<p>Three methods you now have to write, name, document and test — and a user has to <em>learn</em>.
+<code>shuffle</code> already exists. <code>pick_random_card</code> is <code>random.choice</code>.</p>
+<p><mark>Every method here reinvents something the language already had a name for.</mark></p>
+<hr />
+<h4 id="two-methods-instead">Two methods instead</h4>
+<div class="highlight"><pre><span></span><code><span class="n">Card</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Card&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">,</span> <span class="s1">&#39;suit&#39;</span><span class="p">])</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CardDeck</span><span class="p">:</span>
+    <span class="n">suits</span> <span class="o">=</span> <span class="s1">&#39;spades diamonds clubs hearts&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;JQKA&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cards</span> <span class="o">=</span> <span class="p">[</span><span class="n">Card</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">suit</span><span class="p">)</span> <span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">suits</span> <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranks</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cards</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cards</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</code></pre></div>
+<hr />
+<h4 id="what-those-two-bought">What those two bought</h4>
+<div class="highlight"><pre><span></span><code><span class="n">deck</span> <span class="o">=</span> <span class="n">CardDeck</span><span class="p">()</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>                       <span class="c1"># 52</span>
+<span class="n">deck</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                         <span class="c1"># Card(rank=&#39;2&#39;, suit=&#39;spades&#39;)</span>
+<span class="n">deck</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>                       <span class="c1"># [Card(&#39;2&#39;,&#39;spades&#39;), Card(&#39;3&#39;,&#39;spades&#39;), Card(&#39;4&#39;,&#39;spades&#39;)]</span>
+<span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;hearts&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">deck</span>     <span class="c1"># True</span>
+<span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;beasts&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">deck</span>     <span class="c1"># False</span>
+<span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">deck</span><span class="p">)))</span>      <span class="c1"># Card(rank=&#39;A&#39;, suit=&#39;hearts&#39;)</span>
+<span class="n">choice</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>                    <span class="c1"># Card(rank=&#39;9&#39;, suit=&#39;diamonds&#39;)</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">deck</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">spades_high</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># Card(rank=&#39;A&#39;, suit=&#39;spades&#39;)</span>
+</code></pre></div>
+<p>Slicing, membership, iteration, <code>reversed</code>, <code>random.choice</code>, <code>sorted</code> — <strong>none of which
+were mentioned in the class.</strong></p>
+<p><code>__getitem__</code> alone makes an object iterable: Python falls back to calling it with
+0, 1, 2 … until <code>IndexError</code>.</p>
+<hr />
+<h4 id="reading-is-not-writing">Reading is not writing</h4>
+<div class="highlight"><pre><span></span><code><span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+</code></pre></div>
+<p>This needs a third method. <code>random.shuffle</code> works <strong>in place</strong>, so it has to assign:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">card</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cards</span><span class="p">[</span><span class="n">position</span><span class="p">]</span> <span class="o">=</span> <span class="n">card</span>
+</code></pre></div>
+<p>Without it:</p>
+<div class="highlight"><pre><span></span><code>TypeError: &#39;CardDeck&#39; object does not support item assignment
+</code></pre></div>
+<p><mark>Protocols are graded.</mark> Read-only sequence is one contract; mutable sequence is a
+larger one. Claim only what you can honour.</p>
+<hr />
+<h2 id="3-make-it-a-number">3. Make it a number</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">i + </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">j&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Vector(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">scalar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">scalar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="p">):</span>          <span class="c1"># for `5 * v`, not `v * 5`</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">scalar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">scalar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="n">hypot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h4 id="the-result">The result</h4>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>            <span class="c1"># 3i + 4j</span>
+<span class="nb">repr</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>             <span class="c1"># &#39;Vector(3, 4)&#39;</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>               <span class="c1"># 8i + 10j</span>
+<span class="n">a</span> <span class="o">*</span> <span class="mi">5</span>               <span class="c1"># 15i + 20j</span>
+<span class="mi">5</span> <span class="o">*</span> <span class="n">a</span>               <span class="c1"># 15i + 20j</span>
+<span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>              <span class="c1"># 5.0</span>
+<span class="nb">bool</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>             <span class="c1"># True</span>
+<span class="nb">bool</span><span class="p">(</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># False</span>
+</code></pre></div>
+<p>Two details worth noticing:</p>
+<ul>
+<li><strong><code>__rmul__</code> exists because <code>5 * a</code> asks <code>int</code> first.</strong> <code>int</code> does not know about
+  <code>Vector</code>, returns <code>NotImplemented</code>, and Python then asks the right operand. Without
+  <code>__rmul__</code>, <code>a * 5</code> works and <code>5 * a</code> raises.</li>
+<li><strong><code>__bool__</code> defined as "non-zero magnitude"</strong> means <code>if vector:</code> reads as <em>"is this
+  vector non-zero"</em> — a domain statement, written in language syntax.</li>
+</ul>
+<hr />
+<h2 id="a-library-you-already-use">A library you already use</h2>
+<p>spaCy's <code>Doc</code> is a sequence of tokens, and nothing more exotic:</p>
+<div class="highlight"><pre><span></span><code><span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;The iceberg is called the Python data model...&quot;</span><span class="p">)</span>
+
+<span class="n">doc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>                                        <span class="c1"># indexing  -&gt; is</span>
+<span class="n">doc</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>                                      <span class="c1"># slicing   -&gt; Python data model</span>
+<span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s2">&quot;VERB&quot;</span><span class="p">]</span>          <span class="c1"># comprehension</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span> <span class="o">...</span>               <span class="c1"># reversed</span>
+<span class="n">choice</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>                                   <span class="c1"># random.choice</span>
+</code></pre></div>
+<p><em>(Output as recorded in the source notebook.)</em></p>
+<p>There is no <code>doc.get_token_at(2)</code> and no <code>doc.get_slice(5, 8)</code>. <mark>The API is small because
+the language already had names for most of what it does.</mark></p>
+<hr />
+<h2 id="in-your-own-code">In your own code</h2>
+<p>Three of these are already in your repositories. <mark>22 of your 36 repos overload at least
+one operator</mark>, so this is not a foreign idea — it is one you use halfway.</p>
+<hr />
+<h4 id="equality-written-out-four-times">Equality, written out four times</h4>
+<p><a href="https://github.com/Param2725/snake_game/blob/04e3db4/snake.cpp#L20"><code>Param2725/snake_game</code></a>
+declares the type and stops there:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Position</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w">          </span><span class="c1">// no operator==</span>
+</code></pre></div>
+<p>So every comparison is spelled out — <code>snake.cpp:244-249</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">o</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">obstacles</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newHead</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">newHead</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">gameOver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">snake</span><span class="p">)</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newHead</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">newHead</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">gameOver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newHead</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">food</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">newHead</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">food</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">score</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Four coordinate comparisons in six lines. Add a <code>z</code> and every one of them is a bug.</p>
+<hr />
+<h4 id="one-of-you-already-fixed-it">One of you already fixed it</h4>
+<p><a href="https://github.com/CharmiBhayani/SnakeCycle/blob/b9ea0e0/snakeCycle.cpp#L232-L237"><code>CharmiBhayani/SnakeCycle</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Position</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Position</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Position</span><span class="o">&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Position</span><span class="o">&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">o</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Four lines, written once. The three checks above become:</p>
+<div class="highlight"><pre><span></span><code><span class="n">newHead</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">o</span><span class="w">        </span><span class="n">newHead</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s</span><span class="w">        </span><span class="n">newHead</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">food</span>
+</code></pre></div>
+<p><code>operator==</code> is C++'s <code>__eq__</code>. <mark>The comparison did not get shorter by accident — it got
+shorter because the type now knows what equality means.</mark></p>
+<hr />
+<h4 id="halfway-there-is-still-by-hand">Halfway there is still by hand</h4>
+<p>Same repo,
+<a href="https://github.com/CharmiBhayani/SnakeCycle/blob/b9ea0e0/snakeCycle.cpp#L326-L333"><code>snakeCycle.cpp:326-333</code></a>.
+They defined <code>operator==</code> and <strong>still</strong> wrote the search:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">checkSelfCollision</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Position</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">body</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">body</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The standard library already knows this loop:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">checkSelfCollision</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">body</span><span class="p">.</span><span class="n">front</span><span class="p">())</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">body</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Both agree on every input. <mark>Eight lines describing <em>how</em>, replaced by one line saying
+<em>what</em></mark> — and it works only because <code>operator==</code> was already there.</p>
+<p>In Python the same rule is <code>head in body[1:]</code>, via <code>__contains__</code>.</p>
+<p>The identical loop appears in five repos: <code>dudhatmonar:65</code>, <code>Heer117:65</code>,
+<code>LoveShah21:409</code>, <code>kkhushie:173</code>, <code>CharmiBhayani:326</code>.</p>
+<hr />
+<h4 id="a-method-that-hides-a-method">A method that hides a method</h4>
+<p>Eight repos write some version of this:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w">    </span><span class="nf">getLength</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// CharmiBhayani:335, maahirgit:138</span>
+<span class="kt">int</span><span class="w">    </span><span class="nf">length</span><span class="p">()</span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// dudhatmonar:79</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="nf">getLength</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// maitry4:245</span>
+</code></pre></div>
+<p>The whole body is a call to the thing it is hiding, under a name every reader has to
+learn — and a different name in each repo.</p>
+<p><code>size()</code> on the class, or <code>__len__</code> in Python, and <code>len(snake)</code> works for everyone with
+nothing to learn.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Your snake game, as a sequence</p>
+<p>The snake body is a list of coordinates. You wrote methods to grow it, check
+collisions, and draw it.</p>
+<p>Which dunder methods would let you delete code you already wrote?</p>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Deletes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__len__</code></td>
+<td><code>getLength()</code>, <code>size()</code>, <code>bodyCount()</code></td>
+</tr>
+<tr>
+<td><code>__getitem__</code></td>
+<td><code>getSegment(i)</code>, <code>head()</code> becomes <code>body[0]</code></td>
+</tr>
+<tr>
+<td><code>__contains__</code></td>
+<td>the self-collision loop becomes <code>if head in body[1:]</code></td>
+</tr>
+<tr>
+<td><code>__iter__</code></td>
+<td>every <code>for i in range(len(body))</code> in the renderer</td>
+</tr>
+</tbody>
+</table>
+<p>The self-collision check is the striking one. Most implementations write a loop
+comparing the head against each segment. With <code>__contains__</code>, the rule becomes one
+line that <mark>says what it means rather than how it is computed</mark>.</p>
+<p>A caution: only claim <code>__getitem__</code> if indexing your object genuinely makes sense.
+A protocol you implement badly is worse than one you never claimed, because now
+every built-in that trusts it is wrong too.</p>
+</details>
+</div>
+<hr />
+<h2 id="the-same-idea-elsewhere">The same idea elsewhere</h2>
+<p>Python's version is unusually broad, but the idea is not Python's.</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Mechanism</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C++</strong></td>
+<td>operator overloading, iterators</td>
+<td><code>operator+</code>, <code>operator[]</code>, <code>operator&lt;&lt;</code>, <code>begin()</code>/<code>end()</code></td>
+</tr>
+<tr>
+<td><strong>Java</strong></td>
+<td>interfaces</td>
+<td><code>toString</code>, <code>equals</code>/<code>hashCode</code>, <code>Comparable</code>, <code>Iterable</code>, <code>AutoCloseable</code></td>
+</tr>
+<tr>
+<td><strong>C#</strong></td>
+<td>operators + interfaces</td>
+<td><code>operator+</code>, indexers <code>this[int i]</code>, <code>IEnumerable</code>, <code>IDisposable</code></td>
+</tr>
+<tr>
+<td><strong>Rust</strong></td>
+<td>traits</td>
+<td><code>Display</code>, <code>Debug</code>, <code>Add</code>, <code>Index</code>, <code>Iterator</code>, <code>PartialOrd</code></td>
+</tr>
+<tr>
+<td><strong>Go</strong></td>
+<td>implicit interfaces</td>
+<td><code>Stringer</code>, <code>sort.Interface</code>, <code>io.Reader</code>/<code>io.Writer</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="the-same-class-in-c">The same class, in C++</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vector</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Vector</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="o">&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">y</span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">s</span><span class="o">*</span><span class="n">v</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">v</span><span class="p">.</span><span class="n">y</span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;i + &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;j&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><code>operator&lt;&lt;</code> is <code>__str__</code>. The free <code>operator*</code> taking the scalar first is <code>__rmul__</code>.
+<mark>Different spelling, identical idea: the type declares that it participates in an
+existing vocabulary.</mark></p>
+<p>Go states the principle most plainly — a type implements <code>Stringer</code> merely by having a
+<code>String() string</code> method. No inheritance, no declaration.</p>
+<hr />
+<h2 id="what-you-take-on">What you take on</h2>
+<p>Claiming a protocol is a promise to everything that already uses it.</p>
+<table>
+<thead>
+<tr>
+<th>You implement</th>
+<th>You promise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__eq__</code></td>
+<td>equal objects stay equal, and hash the same</td>
+</tr>
+<tr>
+<td><code>__lt__</code></td>
+<td>a consistent ordering, or <code>sorted</code> misbehaves</td>
+</tr>
+<tr>
+<td><code>__len__</code></td>
+<td>a non-negative integer, cheap to compute</td>
+</tr>
+<tr>
+<td><code>__getitem__</code></td>
+<td><code>IndexError</code> past the end, or iteration never stops</td>
+</tr>
+</tbody>
+</table>
+<p><mark>A built-in function does not verify your promise. It relies on it.</mark></p>
+<p>That is the trade the whole lecture rests on: you get an enormous amount of existing code
+for free, and in exchange you are held to the contract that code was written against.</p>
+<hr />
+<h2 id="closing">Closing</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">this</span>
+</code></pre></div>
+<blockquote>
+<p><em>Beautiful is better than ugly. Simple is better than complex.</em>
+<em>Special cases aren't special enough to break the rules.</em></p>
+</blockquote>
+<p>Three questions to ask of any class you write from here:</p>
+<ol>
+<li>Does it print as something a human can read?</li>
+<li>Does it reinvent a verb the language already has?</li>
+<li>If it behaves like a sequence or a number, does it <strong>say so</strong>?</li>
+</ol>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li>Chapter 1, The Python Data Model — <a href="https://www.oreilly.com/library/view/fluent-python/9781491946237/ch01.html"><em>Fluent Python</em></a>, Luciano Ramalho</li>
+<li><a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">Python reference — Data model</a></li>
+<li><a href="https://stackoverflow.com/questions/1436703/difference-between-str-and-repr">Difference between <code>__str__</code> and <code>__repr__</code></a></li>
+<li><a href="https://youtu.be/BWhh3r6W-qE">spaCy v3: design concepts explained</a></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture17_18/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 17-18: SOLID Principles">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                17-18: SOLID Principles
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture21_22/" class="md-footer__link md-footer__link--next" aria-label="Next: 21-22: Component principles">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                21-22: Component principles
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
