@@ -32,6 +32,9 @@ This course covers the foundations of software engineering in the post-LLM era â
 
 ### Module 4: Design beyond a class
 - [17_18: SOLID Principles](Lecture17_18.md) 
+- [19_20: The data model](Lecture19_20.md)
+- [21_22: Component principles](Lecture21_22.md)
+- [23: Architecture: boundaries](Lecture23.md)
 
 ---
 

@@ -36,6 +36,9 @@ This course argues that the scarce skill is shifting from *producing code* to **
 
 ### Module 4: Design beyond a class
 - [17_18: SOLID principles](docs/lectures/Lecture17_18.md)
+- [19_20: The data model](docs/lectures/Lecture19_20.md)
+- [21_22: Component principles](docs/lectures/Lecture21_22.md)
+- [23: Architecture: boundaries](docs/lectures/Lecture23.md)
 ---
 
 ## Labs

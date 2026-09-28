@@ -34,6 +34,9 @@ This course argues that the scarce skill is shifting from *producing code* to **
 
 ### Module 4: Design beyond a class
 - [17_18: SOLID Principles](lectures/Lecture17_18.md)
+- [19_20: The data model](lectures/Lecture19_20.md)
+- [21_22: Component principles](lectures/Lecture21_22.md)
+- [23: Architecture: boundaries](lectures/Lecture23.md)
 
 
 ---
@@ -45,6 +48,12 @@ This course argues that the scarce skill is shifting from *producing code* to **
 | [1: Make it multiplayer](labs/assignment-1.md) | Add a second player to another group's snake game, then measure what the change cost | 40 | Wednesday, 12:00 PM |
 | [2_3: Detect code smell](labs/assignment-2_3.md) | Detect code smells in the snake game codebase | 40 | Monday(24/Aug/2026), 11:59 PM |
 | [4: The tests you cannot write](labs/assignment-4.md) | Try to test five rules of your own snake game, then build the seam that makes one of them possible | 40 | Saturday(26/Sep/2026), 11:59 PM |
+
+---
+
+## Project
+
+[Project evaluation](project.md) — ceiling, deliverables, and how it is scored. Viva immediately after the end-sem exam.
 
 ---
 
