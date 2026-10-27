@@ -1770,9 +1770,11 @@ Speed matters less. The choice is yours, not the agent's.</p>
 <p>A <strong>characterization test</strong> records what the code does <strong>now</strong>, not what it should do.</p>
 <p>Its job is to tell you when behaviour changes. Whether that behaviour is correct is a
 separate question.</p>
+<p>The next three slides walk through tests written for this course, in
+<code>docs/code/snake_legacy/tests/</code>. After that, your agent writes its own.</p>
 <hr />
 <h4 id="getting-update-into-a-test">Getting <code>update()</code> into a test</h4>
-<p><code>update()</code> is private, and <code>Game</code> owns everything. Break in without editing the file:</p>
+<p>From <code>tests/update_test.cpp</code>. <code>update()</code> is private, and <code>Game</code> owns everything. Break in without editing the file:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
 <span class="c1">// ...standard headers first...</span>
 
@@ -1792,7 +1794,7 @@ separate question.</p>
 existed.</p>
 <hr />
 <h4 id="writing-one">Writing one</h4>
-<p>You don't know what eating does yet. Write a test you <strong>expect to fail</strong>:</p>
+<p>From <code>tests/first_try_test.cpp</code>. You don't know what eating does yet. Write a test you <strong>expect to fail</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">Update</span><span class="p">,</span><span class="w"> </span><span class="n">EatingFoodOneCellAhead</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Game</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gameWithFoodAt</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span><span class="w">              </span><span class="c1">// food right in front of the head</span>
 <span class="w">    </span><span class="n">g</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
@@ -1852,14 +1854,19 @@ mark the ones you believe are bugs. Fix them later, on purpose, in a separate ch
 <p class="admonition-title">🧑‍💻 Your turn — step 4: write tests</p>
 <div class="highlight"><pre><span></span><code>Write GoogleTest characterization tests for Game::update() in
 docs/code/snake_legacy/snake.cpp. Record what it does now, not what it should
-do. Include eating food. Don&#39;t edit snake.cpp.
+do. Include eating food. Don&#39;t edit snake.cpp, and don&#39;t read the other files
+in tests/. Put the tests in docs/code/snake_legacy/tests/my_update_test.cpp,
+then build and run them.
 </code></pre></div>
+<p>To build and run them yourself: <code>cd docs/code/snake_legacy/tests &amp;&amp; make my_update_test &amp;&amp; ./my_update_test</code></p>
 <p><strong>Read the tests, not the code.</strong> Find any test where eating moves the head two cells.
 Did your agent pin it as correct, flag it, or miss it?</p>
 <details class="hint">
 <summary>Your decision</summary>
 <p>Each pinned behaviour is correct, a bug, or a question for whoever owns the game.
 The agent can't tell which. Mark them.</p>
+<p>Then compare with <code>tests/five_steps_agent_test.cpp</code>: 18 tests another agent
+session wrote for the same prompt. Did yours find the same behaviours?</p>
 </details>
 </div>
 <hr />
@@ -1887,14 +1894,39 @@ The agent can't tell which. Mark them.</p>
 <hr />
 <div class="admonition question">
 <p class="admonition-title">💬 Which of these pin a bug?</p>
-<p>An agent wrote five tests for <code>update()</code>. <strong>All five pass.</strong> Mark each: correct, bug,
-or unsure.</p>
-<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">MovesOneCellPerTick</span><span class="p">)</span><span class="w">            </span><span class="c1">// head 10 → 11</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">EatingGrowsSnakeByOne</span><span class="p">)</span><span class="w">          </span><span class="c1">// length 3 → 4</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">EatingMovesHeadTwoCells</span><span class="p">)</span><span class="w">        </span><span class="c1">// head 10 → 12</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">EatingInLastColumnKeepsPlaying</span><span class="p">)</span><span class="w"> </span><span class="c1">// head at x = 20, gameOver == false</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedStopsAt0_292</span><span class="p">)</span><span class="w">              </span><span class="c1">// after 100 foods, speedFactor ≈ 0.292</span>
-</code></pre></div>
+<p>An agent session wrote 18 characterization tests for <code>update()</code>, in
+<code>tests/five_steps_agent_test.cpp</code>. <strong>All 18 pass.</strong> Here are five. For each one: does it
+pin correct behaviour, a bug, or something you're unsure about?</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it pins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MovingIntoTheCellTheTailIsLeavingIsNotACollision</code></td>
+<td>the head moves onto the cell the tail just left; the game goes on</td>
+</tr>
+<tr>
+<td><code>EatingFoodScoresGrowsAndMovesTwoCells</code></td>
+<td>eating: score 0 → 1, length 3 → 4, speed 1.0 → 0.95, head 10 → <strong>12</strong></td>
+</tr>
+<tr>
+<td><code>SecondMoveAfterEatingIsNotWallChecked</code></td>
+<td>eating in the last column: head at x = 20, off the board, game still running</td>
+</tr>
+<tr>
+<td><code>KeepsMovingWhenAlreadyGameOver</code></td>
+<td>calling <code>update()</code> after game over still moves the snake</td>
+</tr>
+<tr>
+<td><code>SpeedFactorBottomsOutAfterTwentyFourFoods</code></td>
+<td>speed stops changing after 24 foods, at 0.292</td>
+</tr>
+</tbody>
+</table>
 <details class="hint">
 <summary>Answer</summary>
 <table>
@@ -1907,35 +1939,39 @@ or unsure.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>MovesOneCellPerTick</code></td>
+<td><code>MovingIntoTheCell...</code></td>
 <td>correct</td>
-<td>one cell per frame</td>
+<td>the tail moves away in the same tick; that's how snake works</td>
 </tr>
 <tr>
-<td><code>EatingGrowsSnakeByOne</code></td>
-<td>correct</td>
-<td>growing by one is the rule</td>
+<td><code>EatingFoodScoresGrows...</code></td>
+<td><strong>correct and a bug, in one test</strong></td>
+<td>score, length and speed are right; the jump to 12 is the double step</td>
 </tr>
 <tr>
-<td><code>EatingMovesHeadTwoCells</code></td>
-<td><strong>bug</strong></td>
-<td>the double step</td>
-</tr>
-<tr>
-<td><code>EatingInLastColumnKeepsPlaying</code></td>
+<td><code>SecondMoveAfterEating...</code></td>
 <td><strong>bug</strong></td>
 <td>alive outside the board</td>
 </tr>
 <tr>
-<td><code>SpeedStopsAt0_292</code></td>
+<td><code>KeepsMovingWhenAlreadyGameOver</code></td>
 <td><strong>unsure</strong></td>
-<td>the comment says it stops at 0.3; it stops after 24 foods, at 0.292. Does anyone care?</td>
+<td>the game loop never calls <code>update()</code> after game over, so no player sees it. Harmless today, a bug the day someone calls it.</td>
+</tr>
+<tr>
+<td><code>SpeedFactorBottomsOut...</code></td>
+<td><strong>unsure</strong></td>
+<td>the comment says speed increases "gradually"; nobody said where it should stop</td>
 </tr>
 </tbody>
 </table>
-<p>Keep all five. Rename the two bugs so the next reader knows, for example
-<code>EatingMovesHeadTwoCells_KnownBug</code>. The "unsure" one is a question for whoever
-owns the game, not for the test.</p>
+<p><strong>Look at the second test again.</strong> The day someone fixes the double step, that test
+fails, and it also checks the score. The fixer can't tell whether they broke scoring
+or fixed the bug. Ask the agent to split it: one test per behaviour.</p>
+<p><strong>And the names.</strong> The agent named what it saw: <code>...MovesTwoCells</code>,
+<code>...IsNotWallChecked</code>. It never said which ones are wrong. Its file has one comment
+instead: <em>"Do not 'fix' an expectation here without deciding to change the game's
+behaviour."</em> That decision is yours.</p>
 </details>
 </div>
 <hr />
