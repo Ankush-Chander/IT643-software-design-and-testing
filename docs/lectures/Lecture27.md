@@ -160,10 +160,13 @@ A **characterization test** records what the code does **now**, not what it shou
 Its job is to tell you when behaviour changes. Whether that behaviour is correct is a
 separate question.
 
+The next three slides walk through tests written for this course, in
+`docs/code/snake_legacy/tests/`. After that, your agent writes its own.
+
 ---
 #### Getting `update()` into a test
 
-`update()` is private, and `Game` owns everything. Break in without editing the file:
+From `tests/update_test.cpp`. `update()` is private, and `Game` owns everything. Break in without editing the file:
 
 ```cpp
 #include <gtest/gtest.h>
@@ -190,7 +193,7 @@ existed.
 ---
 #### Writing one
 
-You don't know what eating does yet. Write a test you **expect to fail**:
+From `tests/first_try_test.cpp`. You don't know what eating does yet. Write a test you **expect to fail**:
 
 ```cpp
 TEST(Update, EatingFoodOneCellAhead) {
@@ -253,8 +256,12 @@ snake.move(true);      // step 2: grow, by moving again
     ```
     Write GoogleTest characterization tests for Game::update() in
     docs/code/snake_legacy/snake.cpp. Record what it does now, not what it should
-    do. Include eating food. Don't edit snake.cpp.
+    do. Include eating food. Don't edit snake.cpp, and don't read the other files
+    in tests/. Put the tests in docs/code/snake_legacy/tests/my_update_test.cpp,
+    then build and run them.
     ```
+
+    To build and run them yourself: `cd docs/code/snake_legacy/tests && make my_update_test && ./my_update_test`
 
     **Read the tests, not the code.** Find any test where eating moves the head two cells.
     Did your agent pin it as correct, flag it, or miss it?
@@ -262,6 +269,9 @@ snake.move(true);      // step 2: grow, by moving again
     ??? hint "Your decision"
         Each pinned behaviour is correct, a bug, or a question for whoever owns the game.
         The agent can't tell which. Mark them.
+
+        Then compare with `tests/five_steps_agent_test.cpp`: 18 tests another agent
+        session wrote for the same prompt. Did yours find the same behaviours?
 
 ---
 #### Let the agent write them, you judge them
@@ -279,29 +289,35 @@ A test that pins a bug passes, looks fine, and protects the bug from being fixed
 
 !!! question "💬 Which of these pin a bug?"
 
-    An agent wrote five tests for `update()`. **All five pass.** Mark each: correct, bug,
-    or unsure.
+    An agent session wrote 18 characterization tests for `update()`, in
+    `tests/five_steps_agent_test.cpp`. **All 18 pass.** Here are five. For each one: does it
+    pin correct behaviour, a bug, or something you're unsure about?
 
-    ```cpp
-    TEST(Agent, MovesOneCellPerTick)            // head 10 → 11
-    TEST(Agent, EatingGrowsSnakeByOne)          // length 3 → 4
-    TEST(Agent, EatingMovesHeadTwoCells)        // head 10 → 12
-    TEST(Agent, EatingInLastColumnKeepsPlaying) // head at x = 20, gameOver == false
-    TEST(Agent, SpeedStopsAt0_292)              // after 100 foods, speedFactor ≈ 0.292
-    ```
+    | Test | What it pins |
+    |---|---|
+    | `MovingIntoTheCellTheTailIsLeavingIsNotACollision` | the head moves onto the cell the tail just left; the game goes on |
+    | `EatingFoodScoresGrowsAndMovesTwoCells` | eating: score 0 → 1, length 3 → 4, speed 1.0 → 0.95, head 10 → **12** |
+    | `SecondMoveAfterEatingIsNotWallChecked` | eating in the last column: head at x = 20, off the board, game still running |
+    | `KeepsMovingWhenAlreadyGameOver` | calling `update()` after game over still moves the snake |
+    | `SpeedFactorBottomsOutAfterTwentyFourFoods` | speed stops changing after 24 foods, at 0.292 |
 
     ??? hint "Answer"
         | Test | Verdict | Why |
         |---|---|---|
-        | `MovesOneCellPerTick` | correct | one cell per frame |
-        | `EatingGrowsSnakeByOne` | correct | growing by one is the rule |
-        | `EatingMovesHeadTwoCells` | **bug** | the double step |
-        | `EatingInLastColumnKeepsPlaying` | **bug** | alive outside the board |
-        | `SpeedStopsAt0_292` | **unsure** | the comment says it stops at 0.3; it stops after 24 foods, at 0.292. Does anyone care? |
+        | `MovingIntoTheCell...` | correct | the tail moves away in the same tick; that's how snake works |
+        | `EatingFoodScoresGrows...` | **correct and a bug, in one test** | score, length and speed are right; the jump to 12 is the double step |
+        | `SecondMoveAfterEating...` | **bug** | alive outside the board |
+        | `KeepsMovingWhenAlreadyGameOver` | **unsure** | the game loop never calls `update()` after game over, so no player sees it. Harmless today, a bug the day someone calls it. |
+        | `SpeedFactorBottomsOut...` | **unsure** | the comment says speed increases "gradually"; nobody said where it should stop |
 
-        Keep all five. Rename the two bugs so the next reader knows, for example
-        `EatingMovesHeadTwoCells_KnownBug`. The "unsure" one is a question for whoever
-        owns the game, not for the test.
+        **Look at the second test again.** The day someone fixes the double step, that test
+        fails, and it also checks the score. The fixer can't tell whether they broke scoring
+        or fixed the bug. Ask the agent to split it: one test per behaviour.
+
+        **And the names.** The agent named what it saw: `...MovesTwoCells`,
+        `...IsNotWallChecked`. It never said which ones are wrong. Its file has one comment
+        instead: *"Do not 'fix' an expectation here without deciding to change the game's
+        behaviour."* That decision is yours.
 
 ---
 ## Back to the pause key

@@ -27,8 +27,7 @@ The game is untouched. The tests break in from outside:
 |---|---|---|
 | `first_try_test.cpp` | a test written to fail, so the failure reports the real value | 1 failure: `Which is: 12` |
 | `update_test.cpp` | five characterization tests for `Game::update()` | 5 pass |
-| `agent_tests.cpp` | the quiz: five passing tests, two of which pin a bug | 5 pass |
-| `five_steps_agent_test.cpp` | the 18 tests an agent wrote in steps 3–4 of the five-step run (Lecture 27) | 18 pass |
+| `five_steps_agent_test.cpp` | 18 tests an agent session wrote in steps 3–4 of the five-step run; Lecture 27's quiz uses five of them | 18 pass |
 
 Build and run all three (needs GoogleTest), from `tests/`:
 

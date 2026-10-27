@@ -1,0 +1,44 @@
+diff --git a/snake.cpp b/snake.cpp
+index bd54e65..d865256 100644
+--- a/snake.cpp
++++ b/snake.cpp
+@@ -85,7 +85,15 @@ public:
+     }
+ };
+ 
++class PauseState {
++    bool paused = false;
++public:
++    bool isPaused() const { return paused; }
++    void toggle() { paused = !paused; }
++};
++
+ class Game {
++    PauseState pause;
+     Snake snake;
+     Food food;
+     int score = 0;
+@@ -155,11 +163,14 @@ class Game {
+         }
+         for (int i = 0; i < WIDTH + 2; i++) cout << BORDER;
+         cout << "\nScore: " << score << "   High Score: " << highScore << '\n';
++        cout << (pause.isPaused() ? "PAUSED - press P to resume" : "                          ") << '\n';
+     }
+ 
+     void processInput() {
+         char control = readControl();
+         if (!control) return;
++        if (control == 'p' || control == 'P') { pause.toggle(); return; }
++        if (pause.isPaused() && control != 'q' && control != 'Q') return;
+         if (control == 'U') snake.setDir(Snake::UP);
+         else if (control == 'D') snake.setDir(Snake::DOWN);
+         else if (control == 'L') snake.setDir(Snake::LEFT);
+@@ -209,7 +220,7 @@ public:
+         while (running) {
+             while (!gameOver && running) {
+                 processInput(); // instant response
+-                update();
++                if (!pause.isPaused()) update();
+                 drawBoard();
+                 usleep((int)(baseDelay * speedFactor));
+             }
