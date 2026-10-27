@@ -28,6 +28,7 @@ The game is untouched. The tests break in from outside:
 | `first_try_test.cpp` | a test written to fail, so the failure reports the real value | 1 failure: `Which is: 12` |
 | `update_test.cpp` | five characterization tests for `Game::update()` | 5 pass |
 | `agent_tests.cpp` | the quiz: five passing tests, two of which pin a bug | 5 pass |
+| `five_steps_agent_test.cpp` | the 18 tests an agent wrote in steps 3–4 of the five-step run (Lecture 27) | 18 pass |
 
 Build and run all three (needs GoogleTest), from `tests/`:
 
@@ -69,8 +70,9 @@ Same request to both: *"Press P to pause, P again to resume."*
 |---|---|---|---|
 | `runA_plain_prompt.diff` | none | +13 −1 | `drawBoard`, `processInput`, `restart`, `run`, one new field |
 | `runB_sprout_prompt.diff` | new class; change at most one existing line | +32 −1 | one line in `processInput` |
+| `runC_five_steps.diff` | the five-step process, one prompt per step (Lecture 27) | +12 −1 | `drawBoard`, `processInput`, `run` (one line edited) |
 
-The five `update_test.cpp` tests pass on both, because neither run touched `update()`.
+The five `update_test.cpp` tests pass on all three, because no run touched `update()`.
 
 Apply one to a copy of the game:
 

@@ -323,6 +323,58 @@ after:  [  PASSED  ] 5 tests.
     lecture.
 
 ---
+## Plain prompt vs the five steps
+
+The same request, on the same game, in two fresh agent sessions.
+
+=== "Plain prompt"
+
+    ```
+    Add pause: P pauses, P again resumes.
+    ```
+
+=== "Five steps"
+
+    1. *Don't write code.* List the functions that would have to change, and why.
+    2. Which behaviour of `update()` could a test observe? *Don't write tests yet.*
+    3. Write a test file that can call `update()` *without editing `snake.cpp`*.
+    4. Write characterization tests for `update()`. Record what it does now.
+    5. Add pause, with the decisions steps 1 and 2 made you take:
+
+    ```
+    Put the pause state in a new class. Don't change update(), Snake or Food.
+    While paused, only P and Q do anything. Keep redrawing, with a PAUSED note.
+    Change as few existing lines as you can. Then run the tests.
+    ```
+
+| | Plain prompt | Five steps |
+|---|---|---|
+| Prompts | 1 | 5 |
+| Diff | +13 −1 | +12 −1 |
+| Existing functions edited | 4 | 3 |
+| Tests left behind | **0** | **18**, passing before and after |
+| Bugs found and recorded | **0** | **5** |
+| Who decided what keys do while paused | the agent, silently | you |
+
+**The code came out about the same size. What did the five steps buy?**
+
+??? hint "Answer"
+    **Not better code.** The plain prompt even guessed the same pause behaviour this time.
+    You only know that because the five steps made you decide it first.
+
+    What changed is **what you know after the change**:
+
+    - 18 tests to rerun on the next change to this file
+    - five bugs on record instead of hidden: the double step, the second step skipping
+      both the wall check and the self check, `update()` running after game over, and a
+      capital R turning the snake right instead of restarting
+    - every decision about pause made by a person, on purpose
+
+    The plain prompt's change is the same size, and the next person to touch the file
+    starts from zero again. The cost of the five steps: four extra prompts and some
+    reading.
+
+---
 ## The rule to keep
 
 ==Cover first, then let the agent modify.==
