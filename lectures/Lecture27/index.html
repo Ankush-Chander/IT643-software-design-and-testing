@@ -1094,6 +1094,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#plain-prompt-vs-the-five-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plain prompt vs the five steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-rule-to-keep" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1482,6 +1493,17 @@
     <span class="md-ellipsis">
       
         Back to the pause key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plain-prompt-vs-the-five-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plain prompt vs the five steps
       
     </span>
   </a>
@@ -1929,6 +1951,88 @@ after:  [  PASSED  ] 5 tests.
 changed four other functions, and no test watches them.</p>
 <p>Tests tell you about the code they cover. What to do about the rest is the next
 lecture.</p>
+</details>
+<hr />
+<h2 id="plain-prompt-vs-the-five-steps">Plain prompt vs the five steps</h2>
+<p>The same request, on the same game, in two fresh agent sessions.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Plain prompt</label><label for="__tabbed_1_2">Five steps</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>Add pause: P pauses, P again resumes.
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<ol>
+<li><em>Don't write code.</em> List the functions that would have to change, and why.</li>
+<li>Which behaviour of <code>update()</code> could a test observe? <em>Don't write tests yet.</em></li>
+<li>Write a test file that can call <code>update()</code> <em>without editing <code>snake.cpp</code></em>.</li>
+<li>Write characterization tests for <code>update()</code>. Record what it does now.</li>
+<li>Add pause, with the decisions steps 1 and 2 made you take:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Put the pause state in a new class. Don&#39;t change update(), Snake or Food.
+While paused, only P and Q do anything. Keep redrawing, with a PAUSED note.
+Change as few existing lines as you can. Then run the tests.
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Plain prompt</th>
+<th>Five steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompts</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Diff</td>
+<td>+13 −1</td>
+<td>+12 −1</td>
+</tr>
+<tr>
+<td>Existing functions edited</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Tests left behind</td>
+<td><strong>0</strong></td>
+<td><strong>18</strong>, passing before and after</td>
+</tr>
+<tr>
+<td>Bugs found and recorded</td>
+<td><strong>0</strong></td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>Who decided what keys do while paused</td>
+<td>the agent, silently</td>
+<td>you</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The code came out about the same size. What did the five steps buy?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Not better code.</strong> The plain prompt even guessed the same pause behaviour this time.
+You only know that because the five steps made you decide it first.</p>
+<p>What changed is <strong>what you know after the change</strong>:</p>
+<ul>
+<li>18 tests to rerun on the next change to this file</li>
+<li>five bugs on record instead of hidden: the double step, the second step skipping
+  both the wall check and the self check, <code>update()</code> running after game over, and a
+  capital R turning the snake right instead of restarting</li>
+<li>every decision about pause made by a person, on purpose</li>
+</ul>
+<p>The plain prompt's change is the same size, and the next person to touch the file
+starts from zero again. The cost of the five steps: four extra prompts and some
+reading.</p>
 </details>
 <hr />
 <h2 id="the-rule-to-keep">The rule to keep</h2>

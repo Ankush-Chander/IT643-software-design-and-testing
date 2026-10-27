@@ -3,7 +3,7 @@ CXX      ?= g++
 CXXFLAGS ?= -std=c++17
 LIBS      = -lgtest -lgtest_main -pthread
 
-TESTS = first_try_test update_test agent_tests
+TESTS = first_try_test update_test agent_tests five_steps_agent_test
 
 .PHONY: all clean $(addprefix run-,$(TESTS))
 
@@ -21,6 +21,9 @@ run-update_test: update_test
 
 run-agent_tests: agent_tests
 	./agent_tests
+
+run-five_steps_agent_test: five_steps_agent_test
+	./five_steps_agent_test
 
 clean:
 	rm -f $(TESTS)

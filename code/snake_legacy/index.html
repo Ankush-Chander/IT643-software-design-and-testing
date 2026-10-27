@@ -1206,6 +1206,11 @@
 <td>the quiz: five passing tests, two of which pin a bug</td>
 <td>5 pass</td>
 </tr>
+<tr>
+<td><code>five_steps_agent_test.cpp</code></td>
+<td>the 18 tests an agent wrote in steps 3–4 of the five-step run (Lecture 27)</td>
+<td>18 pass</td>
+</tr>
 </tbody>
 </table>
 <p>Build and run all three (needs GoogleTest), from <code>tests/</code>:</p>
@@ -1275,9 +1280,15 @@ about 90 hours on the default 2-core machine). Stop the codespace when you're do
 <td>+32 −1</td>
 <td>one line in <code>processInput</code></td>
 </tr>
+<tr>
+<td><code>runC_five_steps.diff</code></td>
+<td>the five-step process, one prompt per step (Lecture 27)</td>
+<td>+12 −1</td>
+<td><code>drawBoard</code>, <code>processInput</code>, <code>run</code> (one line edited)</td>
+</tr>
 </tbody>
 </table>
-<p>The five <code>update_test.cpp</code> tests pass on both, because neither run touched <code>update()</code>.</p>
+<p>The five <code>update_test.cpp</code> tests pass on all three, because no run touched <code>update()</code>.</p>
 <p>Apply one to a copy of the game:</p>
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>snake.cpp<span class="w"> </span>/tmp/snake.cpp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/tmp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>patch<span class="w"> </span>-p1<span class="w"> </span>&lt;<span class="w"> </span>&lt;path&gt;/agent_diffs/runA_plain_prompt.diff
 </code></pre></div>
