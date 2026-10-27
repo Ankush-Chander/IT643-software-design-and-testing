@@ -1,0 +1,51 @@
+diff --git a/snake.cpp b/snake.cpp
+index bd54e65..90e0875 100644
+--- a/snake.cpp
++++ b/snake.cpp
+@@ -92,6 +92,7 @@ class Game {
+     int highScore = 0;
+     bool running = true;
+     bool gameOver = false;
++    bool paused = false;
+     double speedFactor = 1.0;
+     const int baseDelay = 180000; // start slow (microseconds)
+ 
+@@ -154,12 +155,17 @@ class Game {
+             cout << BORDER << '\n';
+         }
+         for (int i = 0; i < WIDTH + 2; i++) cout << BORDER;
+-        cout << "\nScore: " << score << "   High Score: " << highScore << '\n';
++        cout << "\nScore: " << score << "   High Score: " << highScore;
++        if (paused) cout << "   [PAUSED - press P to resume]";
++        cout << "\033[K\n";
+     }
+ 
+     void processInput() {
+         char control = readControl();
+         if (!control) return;
++        if (control == 'p' || control == 'P') { paused = !paused; return; }
++        if (control == 'q' || control == 'Q') { running = false; return; }
++        if (paused) return; // ignore steering/restart while paused
+         if (control == 'U') snake.setDir(Snake::UP);
+         else if (control == 'D') snake.setDir(Snake::DOWN);
+         else if (control == 'L') snake.setDir(Snake::LEFT);
+@@ -194,6 +200,7 @@ class Game {
+         snake.reset();
+         score = 0;
+         gameOver = false;
++        paused = false;
+         speedFactor = 1.0;
+         food.spawn(snake);
+     }
+@@ -209,6 +216,11 @@ public:
+         while (running) {
+             while (!gameOver && running) {
+                 processInput(); // instant response
++                if (paused) {
++                    drawBoard();
++                    usleep(50000); // poll for unpause without advancing the game
++                    continue;
++                }
+                 update();
+                 drawBoard();
+                 usleep((int)(baseDelay * speedFactor));

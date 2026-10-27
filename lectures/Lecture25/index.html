@@ -1,0 +1,2614 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture25/">
+      
+      
+        <link rel="prev" href="../Lecture24/">
+      
+      
+        <link rel="next" href="../Lecture26/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>25: Simplicity - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simplicity-kiss-yagni-dry-least-power-information-hiding" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              25: Simplicity
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture19_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture21_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24: Types as design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25: Simplicity
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25: Simplicity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dry-dont-repeat-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DRY — Don't Repeat Yourself
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DRY — Don&#39;t Repeat Yourself">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#same-text-different-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Same text, different knowledge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicated-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicated knowledge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-of-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule of three
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yagni-and-kiss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAGNI and KISS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="YAGNI and KISS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speculative-generality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speculative generality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-an-agent-adds-that-you-didnt-ask-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What an agent adds that you didn't ask for
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-principle-of-least-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The principle of least power
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The principle of least power">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#three-snake-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three snake levels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-ladder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ladder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tension
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The tension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-wrong-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The wrong abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-decision-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A decision rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-hiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information hiding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Information hiding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-private-field-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A private field is not enough
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-hide-in-a-snake-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to hide in a snake game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice — Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26: Interfaces people can use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27: Legacy code: code without tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dry-dont-repeat-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DRY — Don't Repeat Yourself
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DRY — Don&#39;t Repeat Yourself">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#same-text-different-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Same text, different knowledge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicated-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicated knowledge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rule-of-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule of three
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yagni-and-kiss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAGNI and KISS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="YAGNI and KISS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speculative-generality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speculative generality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-an-agent-adds-that-you-didnt-ask-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What an agent adds that you didn't ask for
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-principle-of-least-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The principle of least power
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The principle of least power">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#three-snake-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three snake levels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-ladder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ladder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tension
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The tension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-wrong-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The wrong abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-decision-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A decision rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-hiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information hiding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Information hiding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-private-field-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A private field is not enough
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-hide-in-a-snake-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to hide in a snake game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice — Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="simplicity-kiss-yagni-dry-least-power-information-hiding">Simplicity: KISS, YAGNI, DRY, least power, information hiding</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Types as design: make illegal states unrepresentable, parse at the edge</li>
+</ul>
+<hr />
+<!--## The question
+
+Two versions of a two-player snake game.
+
+=== "A — copy-pasted"
+
+    <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">stepPlayer1</span><span class="p">(</span><span class="n">Snake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">next</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">die</span><span class="p">();</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">stepPlayer2</span><span class="p">(</span><span class="n">Snake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">next</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">die</span><span class="p">();</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "B — a factory"
+
+    <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">SnakeConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Point</span><span class="w">       </span><span class="n">start</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">         </span><span class="n">speed</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">        </span><span class="n">wrapWalls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">skin</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SnakeFactory</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">SnakeFactory</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ISnake</span><span class="o">&gt;</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SnakeConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DefaultSnakeFactory</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">SnakeFactory</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ISnake</span><span class="o">&gt;</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SnakeConfig</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cfg</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Snake</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cfg</span><span class="p">.</span><span class="n">start</span><span class="p">);</span><span class="w">   </span><span class="c1">// speed, wrapWalls, skin: unused</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+**Which one is worse?** Hold your answer.
+
+----->
+
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>DRY — what duplication actually is</li>
+<li>YAGNI and KISS — what you build too early</li>
+<li>Least power — the weakest tool that does the job</li>
+<li>The tension between DRY and YAGNI, and a decision rule</li>
+<li>Information hiding — what to keep behind the boundary</li>
+</ul>
+<hr />
+<h2 id="dry-dont-repeat-yourself">DRY — Don't Repeat Yourself</h2>
+<blockquote>
+<p>Every piece of <strong>knowledge</strong> must have a single, unambiguous, authoritative
+representation within a system.
+— Hunt &amp; Thomas, <em>The Pragmatic Programmer</em></p>
+</blockquote>
+<p>The word is <em>knowledge</em>, not <em>text</em>.</p>
+<hr />
+<h4 id="same-text-different-knowledge">Same text, different knowledge</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// food.cpp</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">spawnBonusFood</span><span class="p">();</span><span class="w">    </span><span class="c1">// designer: a bonus every 5 points</span>
+
+<span class="c1">// level.cpp</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">speedUp</span><span class="p">();</span><span class="w">           </span><span class="c1">// designer: faster every 5 points</span>
+</code></pre></div>
+<p>Same line twice. Merge it?</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isMilestone</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Next week: <em>"speed up every 10 points, keep bonuses at 5."</em></p>
+<p><strong>Which caller breaks when you edit <code>isMilestone</code>?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Both read it, so a change for one silently changes the other.</p>
+<p>The two lines look the same by coincidence. They are two rules that happen to share a
+number today. Leave them apart.</p>
+</details>
+<hr />
+<h4 id="duplicated-knowledge">Duplicated knowledge</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// game.cpp</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">hitWall</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// food.cpp</span>
+<span class="n">Point</span><span class="w"> </span><span class="nf">randomFood</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>The board becomes 30 × 20. Someone updates <code>hitWall</code>, misses <code>food.cpp</code>.</p>
+<p><strong>What does the player see?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Food never appears in the new 10 columns. Update only <code>food.cpp</code> instead, and food
+appears outside the walls, where the snake can never reach it.</p>
+<p>One fact, <em>the board is 20 × 20</em>, lives in two places:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Board</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">  </span><span class="nf">contains</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="nf">randomCell</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>The text in the two files was different. The knowledge was the same. That is the
+duplication DRY is about.</p>
+</details>
+<hr />
+<h4 id="the-rule-of-three">The rule of three</h4>
+<blockquote>
+<p>The first time you do something, you just do it. The second time, you wince at the
+duplication, but you do it anyway. The third time, you refactor.
+— Don Roberts, quoted in Fowler's <em>Refactoring</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Copy</th>
+<th>What you know</th>
+<th>Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>one example</td>
+<td>write it</td>
+</tr>
+<tr>
+<td>2</td>
+<td>what <em>might</em> be shared</td>
+<td>duplicate, note it</td>
+</tr>
+<tr>
+<td>3</td>
+<td>what is shared, what varies</td>
+<td>extract</td>
+</tr>
+</tbody>
+</table>
+<p>Two examples cannot tell you which parts vary. Three usually can.</p>
+<p><strong>Exception:</strong> duplicated <em>knowledge</em> (the board size) gets fixed at copy two.
+Its two copies already disagree the moment one changes.</p>
+<hr />
+<h2 id="yagni-and-kiss">YAGNI and KISS</h2>
+<ul>
+<li><strong>YAGNI</strong> — <em>You Aren't Gonna Need It.</em> Build for today's requirement, not a guessed one.</li>
+<li><strong>KISS</strong> — <em>Keep It Simple.</em> Of the designs that work, pick the one with fewest parts.</li>
+</ul>
+<hr />
+<h4 id="speculative-generality">Speculative generality</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IRenderer</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IRenderer</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">drawSnake</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Snake</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">drawFood</span><span class="p">(</span><span class="n">Point</span><span class="p">)</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TerminalRenderer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IRenderer</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* the only one */</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RendererFactory</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">IRenderer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">make</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">kind</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;terminal&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">TerminalRenderer</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="n">kind</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Built because "we might add a GUI later." Fowler lists four costs of a feature built too
+early:</p>
+<table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>Here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Build</strong></td>
+<td>three classes instead of one</td>
+</tr>
+<tr>
+<td><strong>Delay</strong></td>
+<td>time not spent on what was asked</td>
+</tr>
+<tr>
+<td><strong>Carry</strong></td>
+<td>every reader jumps through three files to find what draws</td>
+</tr>
+<tr>
+<td><strong>Repair</strong></td>
+<td>when the GUI arrives, it needs <code>drawScore()</code> too, so the interface was wrong anyway</td>
+</tr>
+</tbody>
+</table>
+<p>When the GUI is real, extract the interface then. It takes ten minutes.</p>
+<p><strong>Not speculative:</strong> a second implementation that exists today, such as a fake renderer
+in your tests.</p>
+<hr />
+<h4 id="what-an-agent-adds-that-you-didnt-ask-for">What an agent adds that you didn't ask for</h4>
+<p>Prompt: <em>"Add a pause key to the snake game."</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">What the agent wrote (≈ 60 lines)</label><label for="__tabbed_1_2">What you needed (3 lines)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">GameConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">enablePause</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">pauseKey</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;p&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">pauseTimeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">            </span><span class="c1">// 0 = never</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IPauseStrategy</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IPauseStrategy</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldPause</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">InputEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyPauseStrategy</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IPauseStrategy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyBindingManager</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">bindings_</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* ... */</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="sc">&#39;p&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">paused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">paused</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">    </span><span class="c1">// in handleKey()</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">paused</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">                   </span><span class="c1">// first line of step()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Generating the code was free for you. Reading, reviewing and maintaining it is not.</p>
+<p><strong>Review the diff for what you didn't ask for. Delete it.</strong> Or say so in the prompt:
+<em>"smallest change that works; no new classes or config."</em></p>
+<hr />
+<h2 id="the-principle-of-least-power">The principle of least power</h2>
+<p>Use the <strong>least expressive</strong> mechanism that solves the problem.</p>
+<blockquote>
+<p><strong>Does this mechanism offer capabilities we do not actually need?</strong></p>
+</blockquote>
+<p>Coined by Tim Berners-Lee for the web: HTML is data, not a program, which is why every
+browser, search engine and screen reader can read it.</p>
+<hr />
+<h4 id="three-snake-levels">Three snake levels</h4>
+<p>Requirement: three levels. Each has its own <strong>speed</strong> and its own <strong>obstacles</strong>: blocked cells
+inside the grid. The snake dies if it hits one, just as it does at the edge walls.</p>
+<p>Level 2 on the 20 × 20 board: a line of obstacles along row 10, from column 0 to column 14.</p>
+<div class="highlight"><pre><span></span><code>         0         5         10      14        19
+row  9   . . . . . . . . . . . . . . . . . . . .
+row 10   # # # # # # # # # # # # # # # . . . . .
+row 11   . . . . . . . . . . . . . . . . . . . .
+</code></pre></div>
+<p>Three ways to describe it:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Constant</label><label for="__tabbed_2_2">Data</label><label for="__tabbed_2_3">Code</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">SPEED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">              </span><span class="c1">// one speed, no obstacles, one level only</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;speed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;obstacles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;row&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// levels.cpp: each level is a function the game calls at start</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">level2</span><span class="p">(</span><span class="n">Level</span><span class="o">&amp;</span><span class="w"> </span><span class="n">lv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lv</span><span class="p">.</span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">14</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">x</span><span class="p">)</span>
+<span class="w">        </span><span class="n">lv</span><span class="p">.</span><span class="n">addObstacle</span><span class="p">({</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The constant is too weak: it can't describe three levels. <strong>Data or code?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Data.</strong> It is enough, and it is the weaker of the two.</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Data</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fastest level?</td>
+<td>read the files</td>
+<td>run every level function</td>
+</tr>
+<tr>
+<td>Is this level valid?</td>
+<td>check against a schema</td>
+<td>run it, hope it halts</td>
+</tr>
+<tr>
+<td>What can a bad level do?</td>
+<td>fail to parse</td>
+<td>loop forever, write files, crash the game</td>
+</tr>
+<tr>
+<td>Who can edit it?</td>
+<td>a level designer</td>
+<td>a programmer, then a rebuild</td>
+</tr>
+</tbody>
+</table>
+<p>Every capability the code has, and the data lacks, is something a reader or a tool
+can no longer check. Move up a rung only when the lower one can't express the need.</p>
+</details>
+<hr />
+<h4 id="the-ladder">The ladder</h4>
+<table>
+<thead>
+<tr>
+<th>Rung</th>
+<th>Example</th>
+<th>Can be checked by reading?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Constant</td>
+<td><code>SPEED = 5</code></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Data / config</td>
+<td><code>levels.json</code></td>
+<td>yes, against a schema</td>
+</tr>
+<tr>
+<td>Small fixed language</td>
+<td>regex, SQL <code>WHERE</code>, glob <code>*.cpp</code></td>
+<td>mostly</td>
+</tr>
+<tr>
+<td>General code</td>
+<td>a C++ level function, Python <code>eval</code>, plugins</td>
+<td>only by running it</td>
+</tr>
+</tbody>
+</table>
+<p>Least power is YAGNI for capability: don't build in what you don't need, <strong>and</strong> don't
+choose a tool that can do more than you need.</p>
+<hr />
+<h2 id="the-tension">The tension</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DRY</td>
+<td>two copies, so abstract <strong>now</strong></td>
+</tr>
+<tr>
+<td>YAGNI</td>
+<td>no proven need, so <strong>wait</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Both are right, about different things. The question is which mistake is cheaper to undo.</p>
+<hr />
+<h4 id="the-wrong-abstraction">The wrong abstraction</h4>
+<p>Two callers draw a cell. Someone extracts:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">drawCell</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">glyph</span><span class="p">);</span>
+</code></pre></div>
+<p>Four requirements later:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">drawCell</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">glyph</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHead</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFood</span><span class="p">,</span>
+<span class="w">              </span><span class="kt">bool</span><span class="w"> </span><span class="n">blink</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isFood</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">blink</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isHead</span><span class="p">)</span><span class="w">           </span><span class="n">setColour</span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">GREEN</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">BLUE</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isFood</span><span class="p">)</span><span class="w">      </span><span class="n">setColour</span><span class="p">(</span><span class="n">RED</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">setColour</span><span class="p">(</span><span class="n">CYAN</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/* ... */</span>
+<span class="w">    </span><span class="n">putChar</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">glyph</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Each change was small. Nobody wanted to undo the extraction, so each one added a flag.</p>
+<details class="hint">
+<summary>The way out</summary>
+<p>Put the duplication back. Inline <code>drawCell</code> into each caller, delete the branches that
+caller never takes:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">drawHead</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">Colour</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">setColour</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="n">putChar</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;@&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">drawFood</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w">           </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">blinkOff</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="n">setColour</span><span class="p">(</span><span class="n">RED</span><span class="p">);</span><span class="w"> </span><span class="n">putChar</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;*&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">drawBody</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">Colour</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">setColour</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="n">putChar</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Duplication is far cheaper than the wrong abstraction.
+— Sandi Metz</p>
+</blockquote>
+</details>
+<hr />
+<h4 id="a-decision-rule">A decision rule</h4>
+<p>Two pieces of code look alike. Ask, in order:</p>
+<ol>
+<li><strong>Do they change for the same reason?</strong> No → leave them apart. <em>(bonus vs speed-up)</em></li>
+<li><strong>Is it one fact written twice?</strong> Yes → merge now. <em>(board size)</em></li>
+<li><strong>Is this the third copy?</strong> No → duplicate and wait.</li>
+<li><strong>Are you adding a flag to make it fit?</strong> Yes → stop. Inline it back.</li>
+</ol>
+<p>An interface, factory or config option needs a <strong>second user today</strong>, not a likely one.</p>
+<hr />
+<h2 id="information-hiding">Information hiding</h2>
+<p>Hide each <strong>design decision likely to change</strong> behind a module boundary. Expose only what
+clients need.</p>
+<blockquote>
+<p><strong>Can this implementation change without forcing changes throughout the system?</strong></p>
+</blockquote>
+<p>David Parnas, 1972: split a system by <em>what is likely to change</em>, not by the steps of
+the program.</p>
+<hr />
+<h4 id="a-private-field-is-not-enough">A private field is not enough</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">body_</span><span class="p">;</span><span class="w">                        </span><span class="c1">// private field</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">body</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// getter: returns the field itself</span>
+<span class="p">};</span>
+
+<span class="c1">// renderer.cpp</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">().</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">draw</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">()[</span><span class="n">i</span><span class="p">]);</span>
+<span class="c1">// collision.cpp</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">())</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="n">die</span><span class="p">();</span>
+<span class="c1">// ai.cpp</span>
+<span class="n">Point</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">().</span><span class="n">front</span><span class="p">();</span>
+</code></pre></div>
+<p><code>body_</code> is private, but the getter <code>body()</code> returns a <strong>reference</strong> to it. Every caller
+gets the real <code>deque</code>: it can read it, index it, even <code>push_back</code> into it.</p>
+<p>Collision checks are slow on long snakes. You want to add an <code>unordered_set&lt;Point&gt;</code> next to
+the deque. <strong>Which files change?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>All of them, and more.</strong> Every caller knows the body is a <code>deque</code>, and indexes it. Any
+caller can also <code>push_back</code> into it and skip the set.</p>
+<p>Hide the decision. Expose what callers ask, not what you store:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w">         </span><span class="n">body_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_</span><span class="p">;</span><span class="w">    </span><span class="c1">// added later: no caller notices</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">head</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body_</span><span class="p">.</span><span class="n">front</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">  </span><span class="n">occupies</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">cells_</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">body_</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">body_</span><span class="p">.</span><span class="n">end</span><span class="p">()};</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>The change now touches one file. Storage is a decision. <code>occupies()</code> is a question
+callers need answered.</p>
+</details>
+<hr />
+<h4 id="what-to-hide-in-a-snake-game">What to hide in a snake game</h4>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Likely to change?</th>
+<th>Hide behind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>how the body is stored</td>
+<td>yes, for speed</td>
+<td><code>Snake</code></td>
+</tr>
+<tr>
+<td>board size</td>
+<td>yes, per level</td>
+<td><code>Board</code></td>
+</tr>
+<tr>
+<td>high-score file format</td>
+<td>yes, text → JSON</td>
+<td><code>ScoreStore</code></td>
+</tr>
+<tr>
+<td>that a snake has a head</td>
+<td>no</td>
+<td>nothing to hide</td>
+</tr>
+</tbody>
+</table>
+<p>Hide what is likely to change. Hiding what won't change is just a wrapper.</p>
+<hr />
+<h2 id="practice-python">Practice — Python</h2>
+<p>Six snippets. For each: <strong>which principle does it break, if any?</strong></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 1 · Notifications</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">NotificationSender</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EmailSender</span><span class="p">(</span><span class="n">NotificationSender</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+        <span class="n">smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">NotificationSenderFactory</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NotificationSender</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">EmailSender</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
+
+<span class="n">NotificationSenderFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Premature abstraction.</strong> One kind of notification, three classes to reach it.</p>
+<ul>
+<li><code>create("emial")</code> fails at runtime, not when you write it.</li>
+<li>To learn what <code>send</code> does, read the factory, then the ABC, then <code>EmailSender</code>.</li>
+</ul>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">send_email</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+
+<span class="n">send_email</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>One implementation → a function.</strong> When SMS is real, extract the interface
+then; both implementations will show you what it needs.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 2 · GST</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">invoice_total</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="n">subtotal</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">i</span><span class="o">.</span><span class="n">qty</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">subtotal</span> <span class="o">*</span> <span class="mf">1.18</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">refund_amount</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">qty</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">qty</span> <span class="o">*</span> <span class="mf">1.18</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>DRY violation.</strong> One fact, <em>GST is 18%</em>, written twice.</p>
+<div class="highlight"><pre><span></span><code>rate changes to 12%, only invoice_total updated
+invoice_total([pen x1 @ 100])  -&gt; 112.0
+refund_amount(pen, 1)          -&gt; 118.0     # refund exceeds what was paid
+</code></pre></div>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="n">GST_RATE</span> <span class="o">=</span> <span class="mf">0.18</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">with_gst</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">amount</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">GST_RATE</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">invoice_total</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">with_gst</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">i</span><span class="o">.</span><span class="n">qty</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">refund_amount</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">qty</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">with_gst</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">qty</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>GST_RATE = 0.12
+invoice_total([pen x1 @ 100])  -&gt; 112.0
+refund_amount(pen, 1)          -&gt; 112.0
+</code></pre></div>
+<p><strong>Same fact → one place.</strong> Fix it at the second copy; don't wait for a third.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 3 · Length limits</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate_product</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;product name too long&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_address</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">city</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;city too long&quot;</span><span class="p">)</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Nothing. This is fine.</strong></p>
+<p>The <code>50</code> for a product name is a catalogue decision. The <code>50</code> for a city comes from
+the courier's label format. They match by coincidence.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Why it stays</summary>
+<p>The "DRY" version:</p>
+<div class="highlight"><pre><span></span><code><span class="n">MAX_TEXT</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_length</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">MAX_TEXT</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> too long&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>courier now allows 80-char cities; MAX_TEXT = 80
+validate_product(name of 70 chars)  -&gt; passes     # catalogue page layout breaks
+</code></pre></div>
+<p><strong>Same text, different reason to change → leave it.</strong> At most, give each its own
+name: <code>MAX_PRODUCT_NAME = 50</code>, <code>MAX_CITY = 50</code>.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 4 · Price formatting</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">format_price</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;INR&quot;</span><span class="p">,</span> <span class="n">for_invoice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">for_email</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">round_up</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">round_up</span><span class="p">:</span>
+        <span class="n">amount</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">for_invoice</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">currency</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">for_email</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;₹</span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">currency</span> <span class="o">==</span> <span class="s2">&quot;INR&quot;</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">currency</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;₹</span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Premature abstraction, now the wrong one.</strong> Every caller added a flag.</p>
+<div class="highlight"><pre><span></span><code>format_price(99.5, for_invoice=True, for_email=True)  -&gt; &#39;INR 99.50&#39;   # email flag ignored
+format_price(99.5, currency=&quot;USD&quot;)                    -&gt; &#39;₹99.50&#39;      # wrong symbol
+</code></pre></div>
+<p>Three flags and a currency: dozens of combinations, a handful used. Nobody knows
+which of the rest are safe.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<p>Inline it back into each caller, keeping only the branch that caller takes:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">invoice_price</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">currency</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">email_price</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;₹</span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cart_price</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;₹</span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>invoice_price(99.5, &quot;INR&quot;)  -&gt; &#39;INR 99.50&#39;
+email_price(99.5)           -&gt; &#39;₹100&#39;
+cart_price(99.5)            -&gt; &#39;₹99.50&#39;
+</code></pre></div>
+<p><strong>Growing flags → put the duplication back.</strong> Three small functions, no
+impossible combinations.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 5 · Discount rules</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># rules.txt — one rule per line, edited by the marketing team</span>
+<span class="c1">#   total &gt; 1000 and user.is_member</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">discount_applies</span><span class="p">(</span><span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">eval</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Least power.</strong> Every rule so far is a minimum total, sometimes members-only.
+<code>eval</code> accepts any Python.</p>
+<div class="highlight"><pre><span></span><code>rule &quot;total &gt; 1000 and user.is_membr&quot;
+discount_applies(...)  -&gt; AttributeError: &#39;User&#39; object has no attribute &#39;is_membr&#39;
+                          # found at checkout, by a customer
+</code></pre></div>
+<p>A rule can also read files, call the network, or loop forever. And nobody can answer
+"which rules are members-only?" without running them.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DiscountRule</span><span class="p">:</span>
+    <span class="n">min_total</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">members_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">applies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_total</span> <span class="ow">and</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">is_member</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">members_only</span><span class="p">)</span>
+
+<span class="n">rules</span> <span class="o">=</span> <span class="p">[</span><span class="n">DiscountRule</span><span class="p">(</span><span class="o">**</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;rules.json&quot;</span><span class="p">))]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>DiscountRule(**{&quot;min_totl&quot;: 1000})
+    -&gt; TypeError: DiscountRule.__init__() got an unexpected keyword argument &#39;min_totl&#39;
+       # found when the file loads
+DiscountRule(min_total=1000, members_only=True).applies(1500, member)      -&gt; True
+DiscountRule(min_total=1000, members_only=True).applies(1500, non_member)  -&gt; False
+</code></pre></div>
+<p><strong>Code → data.</strong> Two fields cover every rule marketing has written. If they need
+more, add a field.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 6 · Shopping cart</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Cart</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">{}</span>               <span class="c1"># sku -&gt; qty</span>
+
+<span class="c1"># checkout.py</span>
+<span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">PRICES</span><span class="p">[</span><span class="n">sku</span><span class="p">]</span> <span class="o">*</span> <span class="n">qty</span> <span class="k">for</span> <span class="n">sku</span><span class="p">,</span> <span class="n">qty</span> <span class="ow">in</span> <span class="n">cart</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="c1"># ui.py</span>
+<span class="k">for</span> <span class="n">sku</span><span class="p">,</span> <span class="n">qty</span> <span class="ow">in</span> <span class="n">cart</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">render_line</span><span class="p">(</span><span class="n">sku</span><span class="p">,</span> <span class="n">qty</span><span class="p">)</span>
+
+<span class="c1"># promo.py</span>
+<span class="k">if</span> <span class="s2">&quot;FREE-MUG&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cart</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+    <span class="n">cart</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="s2">&quot;FREE-MUG&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>New requirement: keep the price each item had <strong>when it was added</strong>.</p>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Information hiding.</strong> The decision <em>"a cart is a dict of sku → qty"</em> leaks into
+three files. Storing a price per line means changing all of them.</p>
+<p>Nothing guards the dict either:</p>
+<div class="highlight"><pre><span></span><code>cart.items[&quot;PEN&quot;]  = 2
+cart.items[&quot;BOOK&quot;] = -1
+total  -&gt; -180
+</code></pre></div>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Line</span><span class="p">:</span>
+    <span class="n">sku</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">qty</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">unit_price</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cart</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sku</span><span class="p">,</span> <span class="n">qty</span><span class="p">,</span> <span class="n">unit_price</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">qty</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;qty must be positive, got </span><span class="si">{</span><span class="n">qty</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sku</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">sku</span><span class="p">]</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">sku</span><span class="p">,</span> <span class="n">qty</span> <span class="o">+</span> <span class="p">(</span><span class="n">old</span><span class="o">.</span><span class="n">qty</span> <span class="k">if</span> <span class="n">old</span> <span class="k">else</span> <span class="mi">0</span><span class="p">),</span> <span class="n">unit_price</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">quantity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sku</span><span class="p">):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sku</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">qty</span> <span class="k">if</span> <span class="n">line</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">qty</span> <span class="o">*</span> <span class="n">l</span><span class="o">.</span><span class="n">unit_price</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cart.add(&quot;PEN&quot;, 2, 10)
+cart.total()             -&gt; 20
+cart.quantity(&quot;MUG&quot;)     -&gt; 0
+cart.add(&quot;BOOK&quot;, -1, 200) -&gt; ValueError: qty must be positive, got -1
+</code></pre></div>
+<p><strong>Expose questions, hide storage.</strong> The price snapshot changed only <code>Cart</code>.
+<code>checkout.py</code> calls <code>total()</code>, <code>ui.py</code> loops over <code>lines()</code>, and <code>promo.py</code> checks
+<code>quantity("FREE-MUG")</code>.</p>
+</details>
+</div>
+<hr />
+<h2 id="the-rule-to-keep">The rule to keep</h2>
+<p><mark>Merge what changes together. Build only what is asked for today.</mark></p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DRY</td>
+<td>Is this one fact written in two places?</td>
+</tr>
+<tr>
+<td>YAGNI</td>
+<td>Is anyone using this today?</td>
+</tr>
+<tr>
+<td>KISS</td>
+<td>Is there a version with fewer parts that works?</td>
+</tr>
+<tr>
+<td>Least power</td>
+<td>Does this mechanism offer capabilities we do not actually need?</td>
+</tr>
+<tr>
+<td>Information hiding</td>
+<td>Can this implementation change without forcing changes throughout the system?</td>
+</tr>
+</tbody>
+</table>
+<!--Back to the two snakes:
+
+| | Problem | Fix |
+|---|---|---|
+| A — copy-pasted | the board size, written twice | `Board::contains()`, 3 lines |
+| B — a factory | one kind of snake, three types, three unused config fields | delete it |
+
+**B is worse.** A's problem takes 3 lines to fix. B gets harder to delete every time new
+code calls the factory.-->
+
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li><em>The Pragmatic Programmer</em> — Hunt &amp; Thomas (DRY)</li>
+<li><em>Refactoring</em>, 2<sup>nd</sup> ed. — Martin Fowler (the rule of three, speculative generality)</li>
+<li><a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">The Wrong Abstraction</a> — Sandi Metz</li>
+<li><a href="https://martinfowler.com/bliki/Yagni.html">Yagni</a> — Martin Fowler</li>
+<li><a href="https://deviq.com/principles/">Principles</a> — DevIQ</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture24/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 24: Types as design">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                24: Types as design
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture26/" class="md-footer__link md-footer__link--next" aria-label="Next: 26: Interfaces people can use">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                26: Interfaces people can use
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2071 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture27/">
+      
+      
+        <link rel="prev" href="../Lecture26/">
+      
+      
+        <link rel="next" href="../../project/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>27: Legacy code: code without tests - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#legacy-code-code-without-tests" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              27: Legacy code: code without tests
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture19_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture21_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24: Types as design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25: Simplicity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26: Interfaces people can use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27: Legacy code: code without tests
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27: Legacy code: code without tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The game
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-code-legacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What makes code legacy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edit-and-pray-vs-cover-and-modify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit and pray vs cover and modify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-legacy-code-change-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The legacy code change algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The legacy code change algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#your-turn-open-the-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your turn: open the game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#characterization-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characterization tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Characterization tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-update-into-a-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting update() into a test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing one
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-surprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The surprise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let-the-agent-write-them-you-judge-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let the agent write them, you judge them
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-pause-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the pause key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The game
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-code-legacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What makes code legacy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edit-and-pray-vs-cover-and-modify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit and pray vs cover and modify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-legacy-code-change-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The legacy code change algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The legacy code change algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#your-turn-open-the-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your turn: open the game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#characterization-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characterization tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Characterization tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-update-into-a-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting update() into a test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing one
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-surprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The surprise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let-the-agent-write-them-you-judge-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let the agent write them, you judge them
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-pause-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back to the pause key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="legacy-code-code-without-tests">Legacy code: code without tests</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Interfaces people can use: least astonishment, tell don't ask, progressive disclosure</li>
+</ul>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>What makes code legacy</li>
+<li>Edit and pray vs cover and modify</li>
+<li>The legacy code change algorithm, with an agent in the loop</li>
+<li>Characterization tests: pin what the code does today</li>
+</ul>
+<hr />
+<h2 id="the-game">The game</h2>
+<p>A snake game written by a student in this course: one file, 244 lines, no tests.
+<a href="https://github.com/Heer117/Snake_Game/blob/e15f61a1e3830dc100a64098e7b2c03adb46c217/snake.cpp"><code>Heer117/Snake_Game</code> — <code>snake.cpp</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                       </span><span class="c1">// called once per frame</span>
+<span class="w">    </span><span class="n">snake</span><span class="p">.</span><span class="n">move</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Position</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snake</span><span class="p">.</span><span class="n">head</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">WIDTH</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">HEIGHT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">snake</span><span class="p">.</span><span class="n">collidesWithSelf</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">gameOver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">food</span><span class="p">.</span><span class="n">get</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">score</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">snake</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w">                             </span><span class="c1">// grow</span>
+<span class="w">        </span><span class="n">food</span><span class="p">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">snake</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">highScore</span><span class="p">)</span><span class="w"> </span><span class="n">highScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">speedFactor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.3</span><span class="p">)</span><span class="w"> </span><span class="n">speedFactor</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.95</span><span class="p">;</span><span class="w">   </span><span class="c1">// speed increases gradually</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>An agent is about to add a pause key. <strong>After it's done, how would you know nothing else
+changed?</strong> Would you (a) play the game, (b) read the diff, or &copy; trust the agent?</p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Each one checks something, and none of them is enough:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it misses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>play it</td>
+<td>anything you didn't happen to do in those two minutes</td>
+</tr>
+<tr>
+<td>read the diff</td>
+<td>what the changed lines do to the code you didn't read</td>
+</tr>
+<tr>
+<td>trust the agent</td>
+<td>it reports what it meant to do, not what it did</td>
+</tr>
+</tbody>
+</table>
+<p>None of them <strong>tells you</strong> when behaviour changes. That is what a test does.</p>
+</details>
+<hr />
+<h2 id="what-makes-code-legacy">What makes code legacy</h2>
+<blockquote>
+<p>To me, legacy code is simply code without tests.
+— Michael Feathers, <em>Working Effectively with Legacy Code</em></p>
+</blockquote>
+<p>Not old code. Not someone else's code. <strong>Code you can't change with confidence.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Snake games submitted for Lab 1</td>
+<td>37</td>
+</tr>
+<tr>
+<td>...with any test at all</td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Is code an agent wrote for you an hour ago legacy?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Yes, if it has no tests.</strong> Age doesn't matter. Generated code with no tests is legacy
+the moment it lands, and agents produce it faster than anyone can read it.</p>
+</details>
+<hr />
+<h2 id="edit-and-pray-vs-cover-and-modify">Edit and pray vs cover and modify</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Edit and pray</th>
+<th>Cover and modify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before the change</td>
+<td>plan carefully, read the code</td>
+<td>put tests around the area</td>
+</tr>
+<tr>
+<td>After the change</td>
+<td>run it, poke at it, hope</td>
+<td>run the tests</td>
+</tr>
+<tr>
+<td>Who notices a break</td>
+<td>a user, later</td>
+<td>the test, now</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Unfortunately, Edit and Pray is pretty much the industry standard. — Feathers</p>
+</blockquote>
+<p><strong>"The agent made the change, the game still runs, merge it." Which one is that?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Edit and pray</strong>, with the agent doing the editing. Being careful doesn't change that:
+without tests, care is the only safety net, and it doesn't scale to an agent's speed.</p>
+</details>
+<hr />
+<h2 id="the-legacy-code-change-algorithm">The legacy code change algorithm</h2>
+<p>Feathers' five steps for changing legacy code:</p>
+<ol>
+<li>Identify change points</li>
+<li>Find test points</li>
+<li>Break dependencies</li>
+<li>Write tests</li>
+<li>Make changes and refactor</li>
+</ol>
+<p><strong>With an agent in the loop, which of these can you hand over?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>The agent can</th>
+<th>You must decide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Change points</td>
+<td>suggest where pause could go</td>
+<td>where it <strong>should</strong> go, and what must not change</td>
+</tr>
+<tr>
+<td>2. Test points</td>
+<td>list what's observable</td>
+<td>which behaviour matters enough to pin</td>
+</tr>
+<tr>
+<td>3. Break dependencies</td>
+<td>do it mechanically</td>
+<td>whether the scar is acceptable</td>
+</tr>
+<tr>
+<td>4. Write tests</td>
+<td>write a dozen in a minute</td>
+<td><strong>whether each pinned behaviour is right</strong></td>
+</tr>
+<tr>
+<td>5. Change and refactor</td>
+<td>make the change</td>
+<td>whether the tests still mean what they did</td>
+</tr>
+</tbody>
+</table>
+<p>The agent does the typing in every step. The right-hand column is the job.</p>
+</details>
+<hr />
+<h4 id="your-turn-open-the-game">Your turn: open the game</h4>
+<p><a href="https://codespaces.new/Ankush-Chander/IT643-software-design-and-testing">Open the course repo in Codespaces</a>,
+or clone it on Linux/macOS. The game is in <code>docs/code/snake_legacy/</code>.</p>
+<p>Use the agent you have: Copilot's agent mode in the Chat panel, or <code>claude</code> in the terminal.</p>
+<hr />
+<div class="admonition example">
+<p class="admonition-title">🧑‍💻 Your turn — step 1: identify change points</p>
+<p>Paste this to your agent:</p>
+<div class="highlight"><pre><span></span><code>Read docs/code/snake_legacy/snake.cpp. I want to add pause: P pauses, P again
+resumes. Don&#39;t write any code. List the functions that would have to change,
+and why.
+</code></pre></div>
+<p><strong>How many functions did your agent list? Are they the ones you would have picked?</strong></p>
+<details class="hint">
+<summary>Your decision</summary>
+<p>The agent lists candidates. You decide where pause <strong>should</strong> go, and say what
+must <strong>not</strong> change: <code>update()</code>, the rules of the game.</p>
+</details>
+</div>
+<hr />
+<div class="admonition example">
+<p class="admonition-title">🧑‍💻 Your turn — step 2: find test points</p>
+<div class="highlight"><pre><span></span><code>Which behaviour of Game::update() in docs/code/snake_legacy/snake.cpp could a
+test observe without a terminal? List the values. Don&#39;t write tests yet.
+</code></pre></div>
+<p><strong>Which of those values would a player notice first if it changed?</strong></p>
+<details class="hint">
+<summary>Your decision</summary>
+<p>Pin what a player would notice: head position, length, score, <code>gameOver</code>.
+Speed matters less. The choice is yours, not the agent's.</p>
+</details>
+</div>
+<hr />
+<h2 id="characterization-tests">Characterization tests</h2>
+<p>A <strong>characterization test</strong> records what the code does <strong>now</strong>, not what it should do.</p>
+<p>Its job is to tell you when behaviour changes. Whether that behaviour is correct is a
+separate question.</p>
+<hr />
+<h4 id="getting-update-into-a-test">Getting <code>update()</code> into a test</h4>
+<p><code>update()</code> is private, and <code>Game</code> owns everything. Break in without editing the file:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
+<span class="c1">// ...standard headers first...</span>
+
+<span class="cp">#define class struct       </span><span class="c1">// Game&#39;s members become public...</span>
+<span class="cp">#define private public     </span><span class="c1">// ...and so do Snake&#39;s and Food&#39;s</span>
+<span class="cp">#define main snake_main    </span><span class="c1">// keep the game&#39;s main() out of the way</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;snake.cpp&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Game</span><span class="w"> </span><span class="nf">gameWithFoodAt</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">      </span><span class="c1">// head at (10,6), moving right</span>
+<span class="w">    </span><span class="n">Game</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">g</span><span class="p">.</span><span class="n">food</span><span class="p">.</span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ugly, and deliberate. The student's file is untouched, so nothing changed before the tests
+existed.</p>
+<hr />
+<h4 id="writing-one">Writing one</h4>
+<p>You don't know what eating does yet. Write a test you <strong>expect to fail</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">Update</span><span class="p">,</span><span class="w"> </span><span class="n">EatingFoodOneCellAhead</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Game</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gameWithFoodAt</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span><span class="w">              </span><span class="c1">// food right in front of the head</span>
+<span class="w">    </span><span class="n">g</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">head</span><span class="p">().</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">              </span><span class="c1">// no idea yet</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>What does the failure tell you?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<div class="highlight"><pre><span></span><code>Failure
+Expected equality of these values:
+  g.snake.head().x
+    Which is: 12
+  0
+</code></pre></div>
+<p>The code says <strong>12</strong>. So the test says 12:</p>
+<div class="highlight"><pre><span></span><code><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">head</span><span class="p">().</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+</code></pre></div>
+<p>That's the whole method: let the code tell you what it does, then write it down.</p>
+</details>
+<hr />
+<h4 id="the-surprise">The surprise</h4>
+<p>The head started at 10, the food was at 11, and the head ended at <strong>12</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">snake</span><span class="p">.</span><span class="n">move</span><span class="p">();</span><span class="w">          </span><span class="c1">// step 1: onto the food</span>
+<span class="p">...</span>
+<span class="n">snake</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w">      </span><span class="c1">// step 2: grow, by moving again</span>
+</code></pre></div>
+<p><strong>Eating moves the snake two cells, and the second step is never checked. Bug or feature?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>The test can't tell you, and neither can the code. A player might never notice. Or a
+player might rely on the jump to dodge something.</p>
+<p>Two places it clearly goes wrong, both pinned by passing tests:</p>
+<table>
+<thead>
+<tr>
+<th>Setup</th>
+<th>After one tick</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>food in the last column, x = 19</td>
+<td>head at <strong>x = 20</strong>, off the board, <code>gameOver = false</code></td>
+</tr>
+<tr>
+<td>second step lands on the body</td>
+<td><code>collidesWithSelf() = true</code>, <code>gameOver = false</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>You decide, and write the decision down</strong>: name the test after what it pins, and
+mark the ones you believe are bugs. Fix them later, on purpose, in a separate change.</p>
+</details>
+<hr />
+<div class="admonition example">
+<p class="admonition-title">🧑‍💻 Your turn — step 4: write tests</p>
+<div class="highlight"><pre><span></span><code>Write GoogleTest characterization tests for Game::update() in
+docs/code/snake_legacy/snake.cpp. Record what it does now, not what it should
+do. Include eating food. Don&#39;t edit snake.cpp.
+</code></pre></div>
+<p><strong>Read the tests, not the code.</strong> Find any test where eating moves the head two cells.
+Did your agent pin it as correct, flag it, or miss it?</p>
+<details class="hint">
+<summary>Your decision</summary>
+<p>Each pinned behaviour is correct, a bug, or a question for whoever owns the game.
+The agent can't tell which. Mark them.</p>
+</details>
+</div>
+<hr />
+<h4 id="let-the-agent-write-them-you-judge-them">Let the agent write them, you judge them</h4>
+<p>An agent writes characterization tests in seconds. The human job moves:</p>
+<table>
+<thead>
+<tr>
+<th>Before</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>write the tests</td>
+<td><strong>read the tests</strong></td>
+</tr>
+<tr>
+<td>read all the code</td>
+<td>read what each test pins</td>
+</tr>
+</tbody>
+</table>
+<p>A test that pins a bug passes, looks fine, and protects the bug from being fixed.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Which of these pin a bug?</p>
+<p>An agent wrote five tests for <code>update()</code>. <strong>All five pass.</strong> Mark each: correct, bug,
+or unsure.</p>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">MovesOneCellPerTick</span><span class="p">)</span><span class="w">            </span><span class="c1">// head 10 → 11</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">EatingGrowsSnakeByOne</span><span class="p">)</span><span class="w">          </span><span class="c1">// length 3 → 4</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">EatingMovesHeadTwoCells</span><span class="p">)</span><span class="w">        </span><span class="c1">// head 10 → 12</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">EatingInLastColumnKeepsPlaying</span><span class="p">)</span><span class="w"> </span><span class="c1">// head at x = 20, gameOver == false</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">Agent</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedStopsAt0_292</span><span class="p">)</span><span class="w">              </span><span class="c1">// after 100 foods, speedFactor ≈ 0.292</span>
+</code></pre></div>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Verdict</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MovesOneCellPerTick</code></td>
+<td>correct</td>
+<td>one cell per frame</td>
+</tr>
+<tr>
+<td><code>EatingGrowsSnakeByOne</code></td>
+<td>correct</td>
+<td>growing by one is the rule</td>
+</tr>
+<tr>
+<td><code>EatingMovesHeadTwoCells</code></td>
+<td><strong>bug</strong></td>
+<td>the double step</td>
+</tr>
+<tr>
+<td><code>EatingInLastColumnKeepsPlaying</code></td>
+<td><strong>bug</strong></td>
+<td>alive outside the board</td>
+</tr>
+<tr>
+<td><code>SpeedStopsAt0_292</code></td>
+<td><strong>unsure</strong></td>
+<td>the comment says it stops at 0.3; it stops after 24 foods, at 0.292. Does anyone care?</td>
+</tr>
+</tbody>
+</table>
+<p>Keep all five. Rename the two bugs so the next reader knows, for example
+<code>EatingMovesHeadTwoCells_KnownBug</code>. The "unsure" one is a question for whoever
+owns the game, not for the test.</p>
+</details>
+</div>
+<hr />
+<h2 id="back-to-the-pause-key">Back to the pause key</h2>
+<p>The same five characterization tests, run before and after an agent added pause:</p>
+<div class="highlight"><pre><span></span><code>before: [  PASSED  ] 5 tests.
+after:  [  PASSED  ] 5 tests.
+</code></pre></div>
+<p><strong>So the pause change is safe?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Safe for <code>update()</code>. Nothing more.</strong> The tests only pin <code>update()</code>. The agent
+changed four other functions, and no test watches them.</p>
+<p>Tests tell you about the code they cover. What to do about the rest is the next
+lecture.</p>
+</details>
+<hr />
+<h2 id="the-rule-to-keep">The rule to keep</h2>
+<p><mark>Cover first, then let the agent modify.</mark></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before the change</td>
+<td>What behaviour must not change? Is it pinned?</td>
+</tr>
+<tr>
+<td>Reading agent tests</td>
+<td>Is this pinned behaviour correct, a bug, or a question?</td>
+</tr>
+<tr>
+<td>After the change</td>
+<td>Did the tests pass because nothing broke, or because nothing was watched?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li><em>Working Effectively with Legacy Code</em> — Michael Feathers, ch. 1–2 (edit and pray, the change algorithm), ch. 13 (characterization tests)</li>
+<li><a href="https://approvaltests.com/">Approval Tests</a> — snapshot-style characterization tests</li>
+<li><a href="https://github.com/Heer117/Snake_Game/blob/e15f61a1e3830dc100a64098e7b2c03adb46c217/snake.cpp"><code>Heer117/Snake_Game</code> @ e15f61a</a> — the game used in this lecture; the tests were written for the course</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture26/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 26: Interfaces people can use">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                26: Interfaces people can use
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../project/" class="md-footer__link md-footer__link--next" aria-label="Next: Project">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Project
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

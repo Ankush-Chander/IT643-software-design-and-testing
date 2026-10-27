@@ -1,0 +1,2164 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture26/">
+      
+      
+        <link rel="prev" href="../Lecture25/">
+      
+      
+        <link rel="next" href="../Lecture27/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>26: Interfaces people can use - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interfaces-people-can-use" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              26: Interfaces people can use
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture19_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture21_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24: Types as design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25: Simplicity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26: Interfaces people can use
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26: Interfaces people can use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#least-astonishment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Least astonishment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Least astonishment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-name-promises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the name promises
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-question-that-changes-the-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A question that changes the answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandquery-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command–query separation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tell-dont-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tell, don't ask
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tell, don&#39;t ask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#telling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Telling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-asking-is-fine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When asking is fine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progressive-disclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressive disclosure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Progressive disclosure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-call-then-a-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One call, then a session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#too-much-up-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too much up front
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critique-these-signatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critique these signatures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27: Legacy code: code without tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#least-astonishment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Least astonishment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Least astonishment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-name-promises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the name promises
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-question-that-changes-the-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A question that changes the answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandquery-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command–query separation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tell-dont-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tell, don't ask
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tell, don&#39;t ask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#telling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Telling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-asking-is-fine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When asking is fine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progressive-disclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressive disclosure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Progressive disclosure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-call-then-a-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One call, then a session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#too-much-up-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too much up front
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critique-these-signatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critique these signatures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="interfaces-people-can-use">Interfaces people can use</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Simplicity: KISS, YAGNI, DRY, least power, information hiding</li>
+</ul>
+<hr />
+<!--## The question
+
+<div class="highlight"><pre><span></span><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</code></pre></div>
+
+**What does this print?**
+
+??? hint "Answer"
+    <div class="highlight"><pre><span></span><code>None
+</code></pre></div>
+
+    The list was sorted, then thrown away. `nums` now holds what `sort()` returned.
+
+    **Was that Python's mistake, or yours?** Hold your answer until the end.
+
+----->
+
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>Least astonishment — the call does what the caller expects</li>
+<li>Tell, don't ask — give the object the job, not the data</li>
+<li>Progressive disclosure — simple by default, more on request</li>
+</ul>
+<hr />
+<h2 id="least-astonishment">Least astonishment</h2>
+<p>A caller should be able to predict what a call does <strong>from the call site alone</strong>: its name,
+what it returns, and what it changes.</p>
+<p>If they have to open the function to find out, the interface has failed.</p>
+<hr />
+<h4 id="what-the-name-promises">What the name promises</h4>
+<p>For each call: <strong>does it change <code>a</code>? What does it return?</strong> Decide before you open the answer.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="nb">reversed</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;snake&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</code></pre></div>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Changes the original?</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a.sort()</code></td>
+<td>yes → <code>[1, 2, 3]</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>sorted(a)</code></td>
+<td>no</td>
+<td><code>[1, 2, 3]</code></td>
+</tr>
+<tr>
+<td><code>a.reverse()</code></td>
+<td>yes → <code>[2, 1, 3]</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>reversed(a)</code></td>
+<td>no</td>
+<td><code>&lt;list_reverseiterator object&gt;</code>, not a list</td>
+</tr>
+<tr>
+<td><code>s.upper()</code></td>
+<td>no (strings never change)</td>
+<td><code>'SNAKE'</code></td>
+</tr>
+</tbody>
+</table>
+<p>The names are near-identical. The behaviour is not. You learn it by memory, not by
+reading.</p>
+</details>
+<hr />
+<h4 id="a-question-that-changes-the-answer">A question that changes the answer</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isAlive</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">step</span><span class="p">();</span><span class="w">                                   </span><span class="c1">// move one cell</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="n">hitsWall</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">hitsSelf</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// renderer.cpp</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">isAlive</span><span class="p">())</span><span class="w"> </span><span class="n">drawSnake</span><span class="p">(</span><span class="n">snake</span><span class="p">);</span>
+
+<span class="c1">// hud.cpp</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">isAlive</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;ALIVE&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;DEAD&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>The snake should move one cell per frame. How far does it move?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Two cells.</strong> Every caller that asks moves it.</p>
+<div class="highlight"><pre><span></span><code>head x at start: 5
+head x after one frame: 7
+</code></pre></div>
+<p>Add a third caller, say a sound effect, and the snake speeds up. Reorder the callers,
+and the HUD shows a different answer from the renderer.</p>
+</details>
+<hr />
+<h4 id="commandquery-separation">Command–query separation</h4>
+<p>A method either <strong>does</strong> something (a command) or <strong>answers</strong> something (a query). Not both.</p>
+<blockquote>
+<p>Asking a question should not change the answer. — Bertrand Meyer</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">step</span><span class="p">();</span><span class="w">                     </span><span class="c1">// command: changes the snake, returns nothing</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isAlive</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">            </span><span class="c1">// query:   const, cannot change the snake</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><strong>What does <code>const</code> buy you here?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>The compiler enforces the split. A <code>const</code> query that tries to move the snake doesn't
+build:</p>
+<div class="highlight"><pre><span></span><code>error: passing &#39;const Snake&#39; as &#39;this&#39; argument discards qualifiers
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>head x after one frame: 6      # step() once, isAlive() twice
+</code></pre></div>
+</details>
+<hr />
+<h2 id="tell-dont-ask">Tell, don't ask</h2>
+<p>Don't pull data out of an object to make a decision <strong>about that object</strong>. Tell it what you
+want, and let it decide.</p>
+<p>On the next two slides:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the <strong>caller</strong>, who asks or tells</td>
+<td><code>game.cpp</code></td>
+</tr>
+<tr>
+<td>the <strong>object</strong> being asked or told</td>
+<td>the <code>Snake</code></td>
+</tr>
+<tr>
+<td>data the decision needs</td>
+<td>the <code>Food</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="asking">Asking</h4>
+<p><code>game.cpp</code> <strong>asks</strong> the snake for its head and length, then decides how the snake grows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// game.cpp</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">head</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">food</span><span class="p">.</span><span class="n">pos</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="c1">// ask the snake</span>
+<span class="w">    </span><span class="n">snake</span><span class="p">.</span><span class="n">setLength</span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">          </span><span class="c1">// ask again, then decide for it</span>
+<span class="w">    </span><span class="n">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="n">food</span><span class="p">.</span><span class="n">respawn</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ai.cpp — plans ahead</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">head</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">food</span><span class="p">.</span><span class="n">pos</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">snake</span><span class="p">.</span><span class="n">setLength</span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>New rule: <strong>golden food makes the snake grow by 3.</strong></p>
+<p><strong>How many places change? What can go wrong?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Every place that copied the rule. Each one reads the snake's data and decides for it.</p>
+<ul>
+<li>Miss one, and the AI plans with the wrong length.</li>
+<li><code>setLength()</code> lets anyone set any length: <code>0</code>, <code>-1</code>, or a length with no body cells
+  behind it.</li>
+</ul>
+<p>The rule about how a snake grows lives <strong>outside</strong> the snake, in every caller.</p>
+</details>
+<hr />
+<h4 id="telling">Telling</h4>
+<p>Each food knows what eating it is worth:</p>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FoodKind</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Normal</span><span class="p">,</span><span class="w"> </span><span class="n">Golden</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Food</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Point</span><span class="w">    </span><span class="n">pos_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FoodKind</span><span class="w"> </span><span class="n">kind_</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">pos</span><span class="p">()</span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">pos_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">   </span><span class="n">growth</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">kind_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">FoodKind</span><span class="o">::</span><span class="n">Golden</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// cells to grow</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">   </span><span class="n">points</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">kind_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">FoodKind</span><span class="o">::</span><span class="n">Golden</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// score to add</span>
+<span class="w">    </span><span class="kt">void</span><span class="w">  </span><span class="n">respawn</span><span class="p">();</span><span class="w">                     </span><span class="c1">// move to a new free cell</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>The snake decides whether it eats, and grows itself:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Food</span><span class="o">&amp;</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">            </span><span class="c1">// grows if the head is on the food</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">pos</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">grow</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">growth</span><span class="p">());</span><span class="w">                </span><span class="c1">// 1 for normal food, 3 for golden</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">grow</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cells</span><span class="p">);</span><span class="w">                </span><span class="c1">// no public setLength()</span>
+<span class="p">};</span>
+
+<span class="c1">// game.cpp</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">eat</span><span class="p">(</span><span class="n">food</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">                   </span><span class="c1">// tell the snake: &quot;eat this&quot;</span>
+<span class="w">    </span><span class="n">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">food</span><span class="p">.</span><span class="n">points</span><span class="p">();</span>
+<span class="w">    </span><span class="n">food</span><span class="p">.</span><span class="n">respawn</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>eat normal food:  length 1 → 2, score 0 → 10
+eat golden food:  length 2 → 5, score 10 → 40
+</code></pre></div>
+<p>Who does what now:</p>
+<ul>
+<li><code>game.cpp</code> <strong>tells</strong> the snake to eat. It no longer reads the snake's head or length.</li>
+<li>The snake <strong>asks</strong> the food for <code>growth()</code>. That's fine: it reads the food to decide
+  about <strong>itself</strong>, not about the food.</li>
+</ul>
+<p>The golden-food rule lives in <code>Food::growth()</code>. Changing it touches nothing else.</p>
+<p><strong>Wait. <code>eat()</code> changes the snake <em>and</em> returns a <code>bool</code>. Doesn't that break
+command–query separation?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Yes, a little, on purpose.</strong> The alternative is
+<code>if (snake.canEat(food)) snake.eat(food);</code>, which splits one rule into ask-then-tell
+again.</p>
+<p>The standard library makes the same trade: <code>std::set::insert</code> inserts <em>and</em> tells you
+whether it did.</p>
+<p>A command may report <strong>what it just did</strong>. It should never be a query in disguise, the
+way <code>isAlive()</code> was.</p>
+</details>
+<hr />
+<h4 id="when-asking-is-fine">When asking is fine</h4>
+<p><strong>Which of these lines should become a "tell"?</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">renderer</span><span class="p">.</span><span class="n">draw</span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">cells</span><span class="p">());</span><span class="w">                                   </span><span class="c1">// 1</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">snake</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">snake</span><span class="p">.</span><span class="n">speed</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">     </span><span class="c1">// 2</span>
+
+<span class="n">hud</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="s">&quot;Score: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="n">value</span><span class="p">()));</span><span class="w">            </span><span class="c1">// 3</span>
+</code></pre></div>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Only 2.</strong> It reads the snake's state to change the snake's state: <code>snake.speedUp()</code>
+or a rule inside <code>step()</code>.</p>
+<p>Lines 1 and 3 ask in order to <strong>display</strong>. A renderer has to read positions. That isn't
+a decision about the snake.</p>
+<p>The smell is asking <strong>in order to decide what to do to the object you asked</strong>.</p>
+</details>
+<hr />
+<h2 id="progressive-disclosure">Progressive disclosure</h2>
+<p>The common case needs <strong>one simple call</strong>. More control is there for whoever asks for it,
+and invisible to everyone else.</p>
+<hr />
+<h4 id="one-call-then-a-session">One call, then a session</h4>
+<div class="highlight"><pre><span></span><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.example.com/scores&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Authorization&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.example.com/scores&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>How much did the first call need you to know about headers, retries or connection
+pooling?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Nothing.</strong> It uses the same machinery as the second, with defaults.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Caller writes</th>
+<th>Who needs it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>requests.get(url)</code></td>
+<td>almost everyone</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>get(url, timeout=5, headers=...)</code></td>
+<td>some</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>Session</code>, adapters, retries</td>
+<td>a few</td>
+</tr>
+</tbody>
+</table>
+<p>Each layer is optional. Nobody has to learn layer 3 to use layer 1.</p>
+</details>
+<hr />
+<h4 id="too-much-up-front">Too much up front</h4>
+<div class="highlight"><pre><span></span><code><span class="n">Game</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>What does <code>false</code> mean? What does <code>3</code> mean?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>You can't tell without opening <code>Game</code>. And every caller must pass all five, even to
+get a normal game.</p>
+<p>Give each option a name and a default:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">GameOptions</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">width</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">height</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">speed</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">wrapWalls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">lives</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Game</span><span class="w"> </span><span class="n">normal</span><span class="p">;</span><span class="w">                               </span><span class="c1">// the common case: nothing to pass</span>
+<span class="n">Game</span><span class="w"> </span><span class="nf">wrapped</span><span class="p">({.</span><span class="n">wrapWalls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">});</span><span class="w">         </span><span class="c1">// C++20: name only what you change</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>normal:  20x20 speed 5 wrap 0 lives 3
+wrapped: wrap 1 lives 3
+</code></pre></div>
+</details>
+<hr />
+<h2 id="critique-these-signatures">Critique these signatures</h2>
+<p>Three Python functions. For each: <strong>which principle does it break, and how would you fix
+it?</strong></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 1 · Coupon discount</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_discount</span><span class="p">(</span><span class="n">cart</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">cart</span><span class="o">.</span><span class="n">coupon_used</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">cart</span><span class="o">.</span><span class="n">coupon_used</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">cart</span><span class="o">.</span><span class="n">total</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># cart page</span>
+<span class="n">show</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You save ₹</span><span class="si">{</span><span class="n">get_discount</span><span class="p">(</span><span class="n">cart</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># checkout</span>
+<span class="n">pay</span><span class="p">(</span><span class="n">cart</span><span class="o">.</span><span class="n">total</span> <span class="o">-</span> <span class="n">get_discount</span><span class="p">(</span><span class="n">cart</span><span class="p">))</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Least astonishment.</strong> <code>get_</code> reads like a query. It also uses up the coupon.</p>
+<div class="highlight"><pre><span></span><code>cart page:  get_discount(cart)  -&gt; 50.0
+checkout:   get_discount(cart)  -&gt; 0        # the customer pays full price
+</code></pre></div>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">discount</span><span class="p">(</span><span class="n">cart</span><span class="p">):</span>                        <span class="c1"># query: changes nothing</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">cart</span><span class="o">.</span><span class="n">coupon_used</span> <span class="k">else</span> <span class="nb">round</span><span class="p">(</span><span class="n">cart</span><span class="o">.</span><span class="n">total</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_coupon</span><span class="p">(</span><span class="n">cart</span><span class="p">):</span>                    <span class="c1"># command: named for what it does</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">discount</span><span class="p">(</span><span class="n">cart</span><span class="p">)</span>
+    <span class="n">cart</span><span class="o">.</span><span class="n">coupon_used</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">d</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>discount(cart)      -&gt; 50.0
+discount(cart)      -&gt; 50.0
+apply_coupon(cart)  -&gt; 50.0
+discount(cart)      -&gt; 0
+</code></pre></div>
+<p><strong>A query changes nothing. A command says so in its name.</strong></p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 2 · Withdrawals</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># atm.py</span>
+<span class="k">if</span> <span class="n">account</span><span class="o">.</span><span class="n">balance</span> <span class="o">&gt;=</span> <span class="n">amount</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">account</span><span class="o">.</span><span class="n">frozen</span><span class="p">:</span>
+    <span class="n">account</span><span class="o">.</span><span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+
+<span class="c1"># app.py</span>
+<span class="k">if</span> <span class="n">account</span><span class="o">.</span><span class="n">balance</span> <span class="o">&gt;=</span> <span class="n">amount</span><span class="p">:</span>
+    <span class="n">account</span><span class="o">.</span><span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Tell, don't ask.</strong> Each caller reads the account and decides for it. <code>app.py</code>
+forgot one rule.</p>
+<div class="highlight"><pre><span></span><code>frozen account, balance 1000, withdraw 300 through app.py
+balance  -&gt; 700
+</code></pre></div>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">balance</span><span class="p">,</span> <span class="n">frozen</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span> <span class="o">=</span> <span class="n">balance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_frozen</span> <span class="o">=</span> <span class="n">frozen</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_frozen</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AccountFrozen</span><span class="p">(</span><span class="s2">&quot;account is frozen&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InsufficientFunds</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;balance </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_balance</span><span class="si">}</span><span class="s2">, asked </span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span> <span class="o">-=</span> <span class="n">amount</span>
+
+<span class="c1"># atm.py and app.py</span>
+<span class="n">account</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Account(1000, frozen=True).withdraw(300)  -&gt; AccountFrozen: account is frozen
+Account(100).withdraw(300)                -&gt; InsufficientFunds: balance 100, asked 300
+</code></pre></div>
+<p><strong>The rule lives in one place: the object that owns the data.</strong></p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 3 · Sending email</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">send_email</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">bcc</span><span class="p">,</span> <span class="n">reply_to</span><span class="p">,</span>
+               <span class="n">html</span><span class="p">,</span> <span class="n">attachments</span><span class="p">,</span> <span class="n">retries</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span> <span class="o">...</span>
+
+<span class="n">send_email</span><span class="p">(</span><span class="s2">&quot;a@x.com&quot;</span><span class="p">,</span> <span class="s2">&quot;Hi&quot;</span><span class="p">,</span> <span class="s2">&quot;Body&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="p">[],</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<p><strong>Progressive disclosure.</strong> The simplest email needs ten arguments, and seven of
+them are "nothing special".</p>
+<p>Which <code>None</code> is <code>bcc</code>? Swap two of them and nothing complains.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">send_email</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+               <span class="n">cc</span><span class="o">=</span><span class="p">(),</span> <span class="n">bcc</span><span class="o">=</span><span class="p">(),</span> <span class="n">reply_to</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">attachments</span><span class="o">=</span><span class="p">(),</span> <span class="n">retries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span> <span class="o">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>send_email(&quot;a@x.com&quot;, &quot;Hi&quot;, &quot;Body&quot;)                        # the common case
+send_email(&quot;a@x.com&quot;, &quot;Hi&quot;, &quot;&lt;b&gt;Body&lt;/b&gt;&quot;, html=True)      # one option, by name
+send_email(&quot;a@x.com&quot;, &quot;Hi&quot;, &quot;Body&quot;, True)
+    -&gt; TypeError: send_email() takes 3 positional arguments but 4 were given
+</code></pre></div>
+<p><strong>Required arguments by position, everything else by name with a default.</strong> The <code>*</code>
+makes the rest keyword-only, so a bare <code>True</code> can't land in the wrong slot.</p>
+</details>
+</div>
+<hr />
+<h2 id="the-rule-to-keep">The rule to keep</h2>
+<p><mark>Make the call site tell the truth.</mark></p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Least astonishment</td>
+<td>Can a caller predict what this does without opening it?</td>
+</tr>
+<tr>
+<td>Tell, don't ask</td>
+<td>Am I reading this object's data to decide what to do to it?</td>
+</tr>
+<tr>
+<td>Progressive disclosure</td>
+<td>Does the simplest use need only the simplest call?</td>
+</tr>
+</tbody>
+</table>
+<!--Back to `nums = nums.sort()`. Python's FAQ explains the `None`:
+
+> In order to remind you of that fact [that it sorts in place], it does not return the
+> sorted list.
+
+The surprise is deliberate. Every method that changes a list in place returns `None`, so
+it can't be mistaken for one that makes a copy. **Command–query separation, built into the
+language.**-->
+
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li><em>How to Design a Good API and Why it Matters</em> — Joshua Bloch (talk, 2006)</li>
+<li><a href="https://martinfowler.com/bliki/TellDontAsk.html">TellDontAsk</a> — Martin Fowler</li>
+<li><a href="https://martinfowler.com/bliki/CommandQuerySeparation.html">CommandQuerySeparation</a> — Martin Fowler</li>
+<li><a href="https://www.nngroup.com/articles/progressive-disclosure/">Progressive Disclosure</a> — Nielsen Norman Group</li>
+<li><a href="https://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list">Why doesn't list.sort() return the sorted list?</a> — Python Design FAQ</li>
+<li><a href="https://deviq.com/principles/">Principles</a> — DevIQ</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture25/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 25: Simplicity">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                25: Simplicity
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture27/" class="md-footer__link md-footer__link--next" aria-label="Next: 27: Legacy code: code without tests">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                27: Legacy code: code without tests
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

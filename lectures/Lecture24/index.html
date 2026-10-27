@@ -1,0 +1,2459 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture24/">
+      
+      
+        <link rel="prev" href="../Lecture23/">
+      
+      
+        <link rel="next" href="../Lecture25/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>24: Types as design - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#types-as-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              24: Types as design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture19_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture21_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24: Types as design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24: Types as design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-illegal-states-unrepresentable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Make illegal states unrepresentable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Make illegal states unrepresentable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-starting-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The starting code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-alive-and-deathreason" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — alive and deathReason
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-one-field-instead-of-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — one field instead of two
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-derive-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — derive it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-the-empty-snake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — the empty snake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-a-constructor-that-needs-a-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — a constructor that needs a head
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-the-dead-snake-that-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — the dead snake that moves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-to-break-it-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try to break it now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parse-dont-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parse, don't validate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parse, don&#39;t validate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-a-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading a key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse-returns-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parse() returns proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse-once-at-the-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parse once, at the boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-boundary-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A boundary type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice — Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25: Simplicity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26: Interfaces people can use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27: Legacy code: code without tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-illegal-states-unrepresentable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Make illegal states unrepresentable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Make illegal states unrepresentable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-starting-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The starting code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-alive-and-deathreason" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — alive and deathReason
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-one-field-instead-of-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — one field instead of two
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-derive-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — derive it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-the-empty-snake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — the empty snake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-a-constructor-that-needs-a-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — a constructor that needs a head
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-the-dead-snake-that-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — the dead snake that moves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-to-break-it-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try to break it now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parse-dont-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parse, don't validate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parse, don&#39;t validate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-a-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading a key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse-returns-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parse() returns proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse-once-at-the-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parse once, at the boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-boundary-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A boundary type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice — Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="types-as-design">Types as design</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Architecture: boundaries, and the dependency rule</li>
+</ul>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>Make illegal states unrepresentable</li>
+<li>Parse, don't validate</li>
+<li>Where errors should be caught</li>
+</ul>
+<hr />
+<h2 id="make-illegal-states-unrepresentable">Make illegal states unrepresentable</h2>
+<hr />
+<h4 id="the-starting-code">The starting code</h4>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">direction</span><span class="p">;</span><span class="w">     </span><span class="c1">// 0=up 1=down 2=left 3=right</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">alive</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">deathReason</span><span class="p">;</span><span class="w">   </span><span class="c1">// 0=none 1=wall 2=self — meaningful only when !alive</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">length</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">body</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="n">Snake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w">      </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">push_front</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Which values can this struct hold that should be impossible?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Can hold</th>
+<th>Should hold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>direction</code></td>
+<td>any <code>int</code></td>
+<td>4 values</td>
+</tr>
+<tr>
+<td><code>alive</code> + <code>deathReason</code></td>
+<td>dead with no reason, alive with a reason</td>
+<td>3 combinations</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td>anything</td>
+<td>always <code>body.size()</code></td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td>empty</td>
+<td>at least a head</td>
+</tr>
+</tbody>
+</table>
+<p>Every bug on the opening slide was <strong>legal</strong>. The compiler checked the types, and the
+types allowed it.</p>
+</details>
+<hr />
+<h4 id="step-1-direction">Step 1 — <code>direction</code></h4>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Direction</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Left</span><span class="p">,</span><span class="w"> </span><span class="n">Right</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Direction</span><span class="w"> </span><span class="n">direction</span><span class="p">;</span><span class="w">    </span><span class="c1">// was: int</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">      </span><span class="n">alive</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">       </span><span class="n">deathReason</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">       </span><span class="n">length</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">body</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s</span><span class="p">.</span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>error: cannot convert &#39;int&#39; to &#39;Direction&#39; in assignment
+</code></pre></div>
+<p><code>int</code> has about 4 billion values. <code>Direction</code> has 4.</p>
+<hr />
+<h4 id="step-2-alive-and-deathreason">Step 2 — <code>alive</code> and <code>deathReason</code></h4>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">alive</span><span class="p">;</span>
+<span class="kt">int</span><span class="w">  </span><span class="n">deathReason</span><span class="p">;</span><span class="w">   </span><span class="c1">// 0=none 1=wall 2=self</span>
+</code></pre></div>
+<p><strong>How many combinations of these two make sense?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Three: alive · dead from a wall · dead from itself.</p>
+<p>The pair can hold far more. <em>Dead, no reason</em> and <em>alive, hit a wall</em> are both legal.</p>
+</details>
+<hr />
+<h4 id="step-2-one-field-instead-of-two">Step 2 — one field instead of two</h4>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Status</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Alive</span><span class="p">,</span><span class="w"> </span><span class="n">HitWall</span><span class="p">,</span><span class="w"> </span><span class="n">HitSelf</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Direction</span><span class="w"> </span><span class="n">direction</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Status</span><span class="w">    </span><span class="n">status</span><span class="p">;</span><span class="w">       </span><span class="c1">// was: alive + deathReason</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">       </span><span class="n">length</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">body</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Three values. All meaningful.</p>
+<p><mark>Two fields that must agree are one field.</mark></p>
+<hr />
+<h4 id="step-3-length">Step 3 — <code>length</code></h4>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">body</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>What happens when these disagree?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>They already did, on the opening slide: <code>length=4</code>, <code>body.size()=3</code>.</p>
+<p>Two places hold one fact. Every change must update both, and nothing makes it.</p>
+</details>
+<hr />
+<h4 id="step-3-derive-it">Step 3 — derive it</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// was: int length;</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">body_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Direction</span><span class="w">         </span><span class="n">direction_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Status</span><span class="w">            </span><span class="n">status_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">Alive</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>No field, nothing to disagree. <code>body_</code> is now private — only <code>Snake</code> can change it.</p>
+<hr />
+<h4 id="step-4-the-empty-snake">Step 4 — the empty snake</h4>
+<p>This still compiles:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Snake</span><span class="w"> </span><span class="n">empty</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>What does <code>empty.head()</code> return?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><code>head()</code> calls <code>body_.front()</code> on an empty <code>deque</code>. That is undefined behaviour — no
+error, no warning, anything can happen.</p>
+</details>
+<hr />
+<h4 id="step-4-a-constructor-that-needs-a-head">Step 4 — a constructor that needs a head</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">Snake</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">Direction</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direction</span><span class="o">::</span><span class="n">Right</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">body_</span><span class="p">{</span><span class="n">start</span><span class="p">},</span><span class="w"> </span><span class="n">direction_</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">head</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body_</span><span class="p">.</span><span class="n">front</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// body_ is never empty</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Snake</span><span class="w"> </span><span class="n">empty</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>error: no matching function for call to &#39;Snake::Snake()&#39;
+</code></pre></div>
+<p>There is no way to make a snake without a head.</p>
+<hr />
+<h4 id="step-5-the-dead-snake-that-moves">Step 5 — the dead snake that moves</h4>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">step</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">Alive</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">   </span><span class="c1">// the one new line</span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">();</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">direction_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Up</span><span class="p">:</span><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Down</span><span class="p">:</span><span class="w">  </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Left</span><span class="p">:</span><span class="w">  </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Right</span><span class="p">:</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">body_</span><span class="p">.</span><span class="n">push_front</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">body_</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>alive, stepped: head=(6,5)
+dead, stepped:  head=(6,5)
+</code></pre></div>
+<hr />
+<h4 id="try-to-break-it-now">Try to break it now</h4>
+<table>
+<thead>
+<tr>
+<th>Attempt</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s.direction_ = 5;</code></td>
+<td>does not compile</td>
+</tr>
+<tr>
+<td>dead with no reason</td>
+<td>no such value</td>
+</tr>
+<tr>
+<td><code>length</code> ≠ <code>body</code></td>
+<td>no <code>length</code> field</td>
+</tr>
+<tr>
+<td><code>Snake empty;</code></td>
+<td>does not compile</td>
+</tr>
+<tr>
+<td><code>s.body_.clear();</code></td>
+<td><code>error: 'body_' is private</code></td>
+</tr>
+<tr>
+<td>dead snake steps</td>
+<td><code>step()</code> returns</td>
+</tr>
+</tbody>
+</table>
+<p><mark>An object that cannot be built in a bad state never has to be checked for one.</mark></p>
+<details class="note">
+<summary>The whole class</summary>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Direction</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Left</span><span class="p">,</span><span class="w"> </span><span class="n">Right</span><span class="w"> </span><span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Status</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">Alive</span><span class="p">,</span><span class="w"> </span><span class="n">HitWall</span><span class="p">,</span><span class="w"> </span><span class="n">HitSelf</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Snake</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">Snake</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">Direction</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direction</span><span class="o">::</span><span class="n">Right</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">body_</span><span class="p">{</span><span class="n">start</span><span class="p">},</span><span class="w"> </span><span class="n">direction_</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="n">Point</span><span class="w">       </span><span class="n">head</span><span class="p">()</span><span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body_</span><span class="p">.</span><span class="n">front</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">body_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Status</span><span class="w">      </span><span class="n">status</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">status_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">turn</span><span class="p">(</span><span class="n">Direction</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">direction_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">die</span><span class="p">(</span><span class="n">Status</span><span class="w"> </span><span class="n">why</span><span class="p">)</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="n">status_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">why</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">step</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">Alive</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Point</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">();</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">direction_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Up</span><span class="p">:</span><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Down</span><span class="p">:</span><span class="w">  </span><span class="n">h</span><span class="p">.</span><span class="n">y</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Left</span><span class="p">:</span><span class="w">  </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Direction</span><span class="o">::</span><span class="no">Right</span><span class="p">:</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">body_</span><span class="p">.</span><span class="n">push_front</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="n">body_</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">body_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Direction</span><span class="w">         </span><span class="n">direction_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Status</span><span class="w">            </span><span class="n">status_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">Alive</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="parse-dont-validate">Parse, don't validate</h2>
+<hr />
+<h4 id="reading-a-key">Reading a key</h4>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isValidKey</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;s&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">turnByKey</span><span class="p">(</span><span class="n">Snake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w">      </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">turn</span><span class="p">(</span><span class="n">Direction</span><span class="o">::</span><span class="n">Up</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;s&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">turn</span><span class="p">(</span><span class="n">Direction</span><span class="o">::</span><span class="n">Down</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">turn</span><span class="p">(</span><span class="n">Direction</span><span class="o">::</span><span class="n">Left</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">turn</span><span class="p">(</span><span class="n">Direction</span><span class="o">::</span><span class="n">Right</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getch</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isValidKey</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="w"> </span><span class="n">turnByKey</span><span class="p">(</span><span class="n">snake</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>What stops someone calling <code>turnByKey(snake, 'x')</code>?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Nothing.</p>
+<ul>
+<li><code>isValidKey</code> returns a <code>bool</code>. Once you branch on it, the fact <em>"this key is valid"</em>
+  is gone</li>
+<li><code>turnByKey</code> still accepts any <code>char</code>. <code>'x'</code> falls through every branch, silently</li>
+<li>The valid keys are written <strong>twice</strong>. Add arrow keys and you edit both</li>
+<li>Nothing makes a caller run <code>isValidKey</code> first</li>
+</ul>
+</details>
+<hr />
+<h4 id="parse-returns-proof"><code>parse()</code> returns proof</h4>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Direction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseKey</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Direction</span><span class="o">::</span><span class="n">Up</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;s&#39;</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Direction</span><span class="o">::</span><span class="n">Down</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Direction</span><span class="o">::</span><span class="n">Left</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Direction</span><span class="o">::</span><span class="n">Right</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It does not answer <em>"is this valid?"</em>. It returns a <code>Direction</code> — or nothing.</p>
+<hr />
+<h4 id="using-it">Using it</h4>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parseKey</span><span class="p">(</span><span class="n">getch</span><span class="p">()))</span><span class="w"> </span><span class="n">snake</span><span class="p">.</span><span class="n">turn</span><span class="p">(</span><span class="o">*</span><span class="n">d</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>w -&gt; turned
+x -&gt; ignored at the boundary
+d -&gt; turned
+</code></pre></div>
+<p><code>turn</code> takes a <code>Direction</code>. There is no way to write a call that hands it <code>'x'</code>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>validate</th>
+<th>parse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>returns</td>
+<td><code>bool</code></td>
+<td><code>Direction</code>, or nothing</td>
+</tr>
+<tr>
+<td>afterwards</td>
+<td>the caller must remember</td>
+<td>the type remembers</td>
+</tr>
+<tr>
+<td>valid keys written in</td>
+<td>two places</td>
+<td>one</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="parse-once-at-the-boundary">Parse once, at the boundary</h4>
+<div class="highlight"><pre><span></span><code>keyboard · files · config   →   parse   →   Direction · Score · GridSize
+        untrusted                 edge           trusted, everywhere inside
+</code></pre></div>
+<p>Raw input becomes a trusted type at the edge. Nothing inside checks again.</p>
+<hr />
+<h4 id="a-boundary-type">A boundary type</h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GridSize</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">GridSize</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">GridSize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">()</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">w_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">h_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">GridSize</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">w_</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="w"> </span><span class="n">h_</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">w_</span><span class="p">,</span><span class="w"> </span><span class="n">h_</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>GridSize 20x15: ok
+GridSize 4x4:   rejected
+</code></pre></div>
+<p>Build one without parsing:</p>
+<div class="highlight"><pre><span></span><code>error: &#39;GridSize::GridSize(int, int)&#39; is private within this context
+</code></pre></div>
+<p>Every function that takes a <code>GridSize</code> knows it is at least 10 × 10.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Redesign this struct</p>
+<p>A two-player game:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">GameState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">running</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">paused</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">over</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">winner</span><span class="p">;</span><span class="w">    </span><span class="c1">// -1 = none, 0 = player 1, 1 = player 2</span>
+<span class="p">};</span>
+</code></pre></div>
+<ol>
+<li>Which states can this hold that make no sense?</li>
+<li>Redesign it so they cannot be constructed.</li>
+</ol>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>The contradictions:</strong></p>
+<ul>
+<li><code>running</code> and <code>over</code> both true</li>
+<li><code>paused</code> and <code>over</code> both true</li>
+<li><code>running</code> and <code>paused</code> both true</li>
+<li>a <code>winner</code> while the game is still running</li>
+<li><code>winner = -1</code> means two things: <em>not finished yet</em> and <em>draw</em></li>
+</ul>
+<p>Three flags give 8 combinations. Three of them mean something.</p>
+<p><strong>One redesign:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">One</span><span class="p">,</span><span class="w"> </span><span class="n">Two</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Running</span><span class="w"> </span><span class="p">{};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Paused</span><span class="w">  </span><span class="p">{};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Over</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Player</span><span class="o">&gt;</span><span class="w"> </span><span class="n">winner</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w">   </span><span class="c1">// nullopt = draw</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">GameState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">Running</span><span class="p">,</span><span class="w"> </span><span class="n">Paused</span><span class="p">,</span><span class="w"> </span><span class="n">Over</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>running
+over: player 2 wins
+over: draw
+</code></pre></div>
+<p>A winner can only exist inside <code>Over</code>. Try to give one to <code>Running</code>:</p>
+<div class="highlight"><pre><span></span><code>error: too many initializers for &#39;Running&#39;
+</code></pre></div>
+<p><em>Draw</em> is now spelled out, instead of hiding behind <code>-1</code>.</p>
+</details>
+</div>
+<hr />
+<h2 id="the-rule-to-keep">The rule to keep</h2>
+<p>How did a dead snake move? <strong>The struct allowed it.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>If a state is wrong</td>
+<td>make it unbuildable</td>
+</tr>
+<tr>
+<td>If input is untrusted</td>
+<td>parse it once, at the edge</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Fail at the edge, not deep inside.</mark></p>
+<p>The cost is more small types. Spend it where a bad state is a real bug — not on every
+<code>int</code>.</p>
+<hr />
+<h2 id="practice-python">Practice — Python</h2>
+<p>Five before/after pairs, one per idea in this lecture.</p>
+<p>For each: <strong>what can go wrong?</strong> Then rewrite it.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 1 · Order status</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>          <span class="c1"># &quot;pending&quot;, &quot;paid&quot; or &quot;shipped&quot;</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span><span class="s2">&quot;pending&quot;</span><span class="p">)</span>
+<span class="n">order</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;shiped&quot;</span>
+
+<span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;shipped&quot;</span><span class="p">:</span>
+    <span class="n">notify_customer</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<div class="highlight"><pre><span></span><code>order.status                -&gt; &#39;shiped&#39;
+order.status == &quot;shipped&quot;   -&gt; False
+</code></pre></div>
+<p>The typo is stored as if it were a real status. The <code>if</code> is never true, so the
+customer is never notified. No error anywhere.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Status</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">PENDING</span> <span class="o">=</span> <span class="s2">&quot;pending&quot;</span>
+    <span class="n">PAID</span>    <span class="o">=</span> <span class="s2">&quot;paid&quot;</span>
+    <span class="n">SHIPPED</span> <span class="o">=</span> <span class="s2">&quot;shipped&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="n">Status</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
+
+<span class="n">order</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">Status</span><span class="o">.</span><span class="n">SHIPPED</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Status.SHIPED      -&gt; AttributeError: type object &#39;Status&#39; has no attribute &#39;SHIPED&#39;
+Status(&quot;shiped&quot;)   -&gt; ValueError: &#39;shiped&#39; is not a valid Status
+Status(&quot;shipped&quot;)  -&gt; &lt;Status.SHIPPED: &#39;shipped&#39;&gt;
+</code></pre></div>
+<p><strong>Magic values → enum.</strong> <code>Status("shipped")</code> also parses a string from JSON or a
+database, so the enum works at the boundary too.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 2 · Verified users</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">is_verified</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">verified_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<div class="highlight"><pre><span></span><code>User(&quot;a@b.com&quot;, is_verified=True)
+  -&gt; User(email=&#39;a@b.com&#39;, is_verified=True, verified_at=None)
+</code></pre></div>
+<p>Verified — but never at any time. The reverse, unverified with a date, is legal
+too. Two fields hold one fact, and nothing keeps them in step.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">verified_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_verified</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">verified_at</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>User(&quot;a@b.com&quot;).is_verified          -&gt; False
+after setting verified_at            -&gt; True
+User(&quot;a@b.com&quot;, is_verified=True)    -&gt; TypeError: unexpected keyword argument &#39;is_verified&#39;
+</code></pre></div>
+<p><strong>Two fields that must agree are one field.</strong> The other is derived.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 3 · Hotel stays</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">book_stay</span><span class="p">(</span><span class="n">guest</span><span class="p">,</span> <span class="n">check_in</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">check_out</span><span class="p">:</span> <span class="n">date</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">check_out</span> <span class="o">&lt;=</span> <span class="n">check_in</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;check-out must be after check-in&quot;</span><span class="p">)</span>
+    <span class="n">save</span><span class="p">(</span><span class="n">guest</span><span class="p">,</span> <span class="n">check_in</span><span class="p">,</span> <span class="n">check_out</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">invoice</span><span class="p">(</span><span class="n">check_in</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">check_out</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">check_out</span> <span class="o">-</span> <span class="n">check_in</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">*</span> <span class="n">rate</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<div class="highlight"><pre><span></span><code>invoice(Oct 5, Oct 2, 100)   -&gt; -300
+</code></pre></div>
+<p>The rule lives in <code>book_stay</code> only. <code>invoice</code> trusts its caller and produces a
+negative bill. Every new function that takes two dates has to remember the check.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Stay</span><span class="p">:</span>
+    <span class="n">check_in</span><span class="p">:</span> <span class="n">date</span>
+    <span class="n">check_out</span><span class="p">:</span> <span class="n">date</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_out</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_in</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;check-out must be after check-in&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nights</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_out</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_in</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">invoice</span><span class="p">(</span><span class="n">stay</span><span class="p">:</span> <span class="n">Stay</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">stay</span><span class="o">.</span><span class="n">nights</span> <span class="o">*</span> <span class="n">rate</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Stay(Oct 5, Oct 2)            -&gt; ValueError: check-out must be after check-in
+invoice(Stay(Oct 2, Oct 5))   -&gt; 300
+stay.check_out = Oct 1        -&gt; FrozenInstanceError: cannot assign to field &#39;check_out&#39;
+</code></pre></div>
+<p><strong>Invariant in the constructor.</strong> <code>frozen=True</code> keeps it true afterwards.</p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 4 · Email signup</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_valid_email</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;@&quot;</span> <span class="ow">in</span> <span class="n">s</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">subscribe</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_valid_email</span><span class="p">(</span><span class="n">raw</span><span class="p">):</span>
+        <span class="n">send_welcome</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">add_to_newsletter</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">send_welcome</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="o">...</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_to_newsletter</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="o">...</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<ul>
+<li><code>send_welcome</code> and <code>add_to_newsletter</code> accept <strong>any</strong> <code>str</code> — nothing makes a
+  caller run <code>is_valid_email</code> first</li>
+<li>once the <code>if</code> passes, the fact <em>"this was checked"</em> is gone</li>
+<li>no normalisation: <code>" Ada@X.com"</code> and <code>"ada@x.com"</code> become two subscribers</li>
+</ul>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Email</span><span class="p">:</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">local</span> <span class="ow">or</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">domain</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;not a normalised email: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Email&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">send_welcome</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="n">Email</span><span class="p">):</span> <span class="o">...</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_to_newsletter</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="n">Email</span><span class="p">):</span> <span class="o">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Email.parse(&quot; Ada@Example.COM &quot;)   -&gt; Email(value=&#39;ada@example.com&#39;)
+Email.parse(&quot;ada.example.com&quot;)     -&gt; ValueError: not a normalised email
+Email(&quot; Ada@X.com&quot;)                -&gt; ValueError: not a normalised email
+</code></pre></div>
+<p><strong>Parse, don't validate.</strong> Functions that take an <code>Email</code> never check again.</p>
+<p><em><code>NewType("Email", str)</code> is not enough: it labels the type for a type checker,
+but <code>Email("nope")</code> returns the plain string <code>'nope'</code> at runtime.</em></p>
+</details>
+</div>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 5 · An order API</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_order</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;qty&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;qty must be positive&quot;</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;qty&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;unit_price&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coupon&quot;</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">apply_coupon</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;coupon&quot;</span><span class="p">])</span>
+    <span class="n">ship_to</span><span class="p">(</span><span class="n">payload</span><span class="p">[</span><span class="s2">&quot;address&quot;</span><span class="p">][</span><span class="s2">&quot;city&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">total</span>
+</code></pre></div>
+<details class="hint">
+<summary>Step 1 — What's wrong</summary>
+<div class="highlight"><pre><span></span><code>{&quot;qty&quot;: &quot;3&quot;, ...}   -&gt; TypeError: &#39;&lt;=&#39; not supported between &#39;str&#39; and &#39;int&#39;
+no address          -&gt; KeyError: &#39;address&#39;      (after the total was computed)
+</code></pre></div>
+<p>The raw <code>dict</code> travels into business logic. Every bad input fails in a different
+place, with a different error — some after work has already been done.</p>
+</details>
+<details class="hint">
+<summary>Step 2 — Fixed</summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OrderRequest</span><span class="p">:</span>
+    <span class="n">qty</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">unit_price</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">city</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">coupon</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qty</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;qty must be positive&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit_price</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;unit_price cannot be negative&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_order</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OrderRequest</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">OrderRequest</span><span class="p">(</span>
+            <span class="n">qty</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">payload</span><span class="p">[</span><span class="s2">&quot;qty&quot;</span><span class="p">]),</span>
+            <span class="n">unit_price</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">payload</span><span class="p">[</span><span class="s2">&quot;unit_price&quot;</span><span class="p">]),</span>
+            <span class="n">city</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">payload</span><span class="p">[</span><span class="s2">&quot;address&quot;</span><span class="p">][</span><span class="s2">&quot;city&quot;</span><span class="p">]),</span>
+            <span class="n">coupon</span><span class="o">=</span><span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coupon&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bad order: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_order</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="n">OrderRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">qty</span> <span class="o">*</span> <span class="n">order</span><span class="o">.</span><span class="n">unit_price</span>
+    <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">coupon</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">apply_coupon</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">order</span><span class="o">.</span><span class="n">coupon</span><span class="p">)</span>
+    <span class="n">ship_to</span><span class="p">(</span><span class="n">order</span><span class="o">.</span><span class="n">city</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{&quot;qty&quot;: &quot;3&quot;, ...}   -&gt; OrderRequest(qty=3, unit_price=100, city=&#39;Gandhinagar&#39;)
+no address          -&gt; ValueError: bad order: &#39;address&#39;
+qty 0               -&gt; ValueError: bad order: qty must be positive
+</code></pre></div>
+<p><strong>Parse once, at the boundary.</strong> Inside, nothing takes a <code>dict</code>. Libraries like
+pydantic automate <code>parse_order</code>.</p>
+</details>
+</div>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li><a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">Parse, don't validate</a> — Alexis King</li>
+<li><a href="https://blog.janestreet.com/effective-ml-revisited/">Effective ML Revisited</a> — Yaron Minsky (make illegal states unrepresentable)</li>
+<li><a href="https://deviq.com/principles/">Principles</a> — DevIQ</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Lecture23/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 23: Architecture: boundaries">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                23: Architecture: boundaries
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lecture25/" class="md-footer__link md-footer__link--next" aria-label="Next: 25: Simplicity">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                25: Simplicity
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,59 @@
+diff --git a/snake.cpp b/snake.cpp
+index bd54e65..f16562e 100644
+--- a/snake.cpp
++++ b/snake.cpp
+@@ -85,6 +85,21 @@ public:
+     }
+ };
+ 
++// Sprout class: pause state, independent of terminal I/O so it can be unit tested.
++class PauseController {
++    bool paused = false;
++public:
++    static bool isPauseKey(char k) { return k == 'p' || k == 'P'; }
++    // Returns true if the key was a pause key (and toggles the state).
++    bool handleKey(char k) {
++        if (!isPauseKey(k)) return false;
++        paused = !paused;
++        return true;
++    }
++    bool isPaused() const { return paused; }
++    void reset() { paused = false; }
++};
++
+ class Game {
+     Snake snake;
+     Food food;
+@@ -96,6 +111,7 @@ class Game {
+     const int baseDelay = 180000; // start slow (microseconds)
+ 
+     struct termios oldt;
++    PauseController pause;
+ 
+     void hideCursor() { cout << "\033[?25l"; }
+     void showCursor() { cout << "\033[?25h"; }
+@@ -157,8 +173,23 @@ class Game {
+         cout << "\nScore: " << score << "   High Score: " << highScore << '\n';
+     }
+ 
++    // Pause support: if the key is P, block here until P is pressed again
++    // (or Q to quit). Returns the key to process normally, or 0 if consumed.
++    char filterPause(char control) {
++        if (!pause.handleKey(control)) return control;
++        cout << "PAUSED - press P to resume" << flush;
++        while (pause.isPaused() && running) {
++            char c = readControl();
++            if (!c) { usleep(50000); continue; }
++            if (c == 'q' || c == 'Q') { pause.reset(); return c; }
++            pause.handleKey(c);
++        }
++        cout << "\r\033[2K" << flush;
++        return 0;
++    }
++
+     void processInput() {
+-        char control = readControl();
++        char control = filterPause(readControl());
+         if (!control) return;
+         if (control == 'U') snake.setDir(Snake::UP);
+         else if (control == 'D') snake.setDir(Snake::DOWN);

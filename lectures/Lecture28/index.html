@@ -1,0 +1,1727 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Home of IT643 - Software Design and Testing, DAU">
+      
+      
+      
+        <link rel="canonical" href="https://IT643.ankushchander.com/lectures/Lecture28/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Deciding what not to read - IT643 - Software Design and Testing | DAU</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deciding-what-not-to-read" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-header__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT643 - Software Design and Testing | DAU
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deciding what not to read
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Lecture0/" class="md-tabs__link">
+          
+  
+  
+  Lectures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/assignment-1/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT643 - Software Design and Testing | DAU" class="md-nav__button md-logo" aria-label="IT643 - Software Design and Testing | DAU" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IT643 - Software Design and Testing | DAU
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lectures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lectures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0:Course Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Requirements Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2:Elicitation & Stakeholder Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Code Complexity 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b.Complexity: measured on your own code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:Refactoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5-6:Smells in the data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture7_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7-8:Unit testing fundamentals & the AAA framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture9_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9-10:Choosing what to test, and what makes a test good
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture11_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11-12:Testing with external dependencies: test doubles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture13_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13-14:Testability and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture15_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15-16:Test code quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture17_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17-18: SOLID Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture19_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19-20: The data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture21_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21-22: Component principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23: Architecture: boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24: Types as design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25: Simplicity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26: Interfaces people can use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27: Legacy code: code without tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:Make it multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2_3:Detect code smell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/assignment-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4:The tests you cannot write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-diffs-one-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two diffs, one request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict-before-you-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict before you prompt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predict before you prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effect-sketch-pause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect sketch: pause
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prediction-vs-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prediction vs diff
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-the-diff-small" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keep the diff small
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keep the diff small">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sprout-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprout class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrap-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrap method
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#as-an-instruction-to-an-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As an instruction to an agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-based-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk-based review
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Risk-based review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-less-in-the-right-places" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read less, in the right places
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-always-gets-read-line-by-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What always gets read line by line
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rule-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The rule to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="deciding-what-not-to-read">Deciding what not to read</h1>
+<h2 id="quick-recap">Quick recap</h2>
+<ul>
+<li>Legacy code is code without tests: cover first, then let the agent modify</li>
+</ul>
+<hr />
+<h3 id="agenda">Agenda</h3>
+<ul>
+<li>Line count is not risk</li>
+<li>Predict the blast radius before the agent runs</li>
+<li>Keep the diff small: sprout and wrap</li>
+<li>Risk-based review: what to read line by line, what to trust</li>
+</ul>
+<hr />
+<h2 id="two-diffs-one-request">Two diffs, one request</h2>
+<p>Same game, same request to two agent runs: <em>"Press P to pause, P again to resume."</em>
+Run B was also told: <em>"put it in a new class; change at most one existing line."</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Run A</th>
+<th>Run B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lines added</td>
+<td>13</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Lines changed</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Characterization tests</td>
+<td>5 pass</td>
+<td>5 pass</td>
+</tr>
+</tbody>
+</table>
+<p><strong>You can review only one carefully. Which one is riskier?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><strong>Run A</strong>, with fewer than half the lines.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Run A</th>
+<th>Run B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Existing functions touched</td>
+<td><strong>4</strong>: <code>drawBoard</code>, <code>processInput</code>, <code>restart</code>, <code>run</code></td>
+<td><strong>1</strong> line in <code>processInput</code></td>
+</tr>
+<tr>
+<td>New code</td>
+<td>spread through the old code</td>
+<td>one new class, one new method</td>
+</tr>
+</tbody>
+</table>
+<p>Risk is about <strong>how much of the existing code changed</strong>, not how many lines arrived.
+New code beside old code can be read on its own. Edits inside old code have to be read
+against everything around them.</p>
+</details>
+<hr />
+<h2 id="predict-before-you-prompt">Predict before you prompt</h2>
+<p>Before asking for a change, sketch what it can affect. Then compare the sketch with the
+diff. Anything outside the sketch is the first thing you read.</p>
+<hr />
+<h4 id="effect-sketch-pause">Effect sketch: pause</h4>
+<p>The game loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">gameOver</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">running</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">processInput</span><span class="p">();</span>
+<span class="w">    </span><span class="n">update</span><span class="p">();</span>
+<span class="w">    </span><span class="n">drawBoard</span><span class="p">();</span>
+<span class="w">    </span><span class="n">usleep</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">baseDelay</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">speedFactor</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>What each call can change:</p>
+<div class="highlight"><pre><span></span><code>processInput() ──► snake direction, running, restart()
+update()       ──► snake, food, score, highScore, speedFactor, gameOver
+drawBoard()    ──► the screen
+</code></pre></div>
+<p><strong>Pause obviously stops <code>update()</code>. What else does it have to decide?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Three decisions nobody asked for, one per arrow:</p>
+<table>
+<thead>
+<tr>
+<th>While paused...</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>can the player still steer?</td>
+<td><code>processInput()</code> changes direction</td>
+</tr>
+<tr>
+<td>does R still restart?</td>
+<td><code>processInput()</code> calls <code>restart()</code></td>
+</tr>
+<tr>
+<td>is the screen redrawn?</td>
+<td><code>drawBoard()</code></td>
+</tr>
+</tbody>
+</table>
+<p>The request said none of this. The agent will decide all three. Your sketch tells you
+to check <strong>how</strong>.</p>
+</details>
+<hr />
+<h4 id="prediction-vs-diff">Prediction vs diff</h4>
+<p>What each run actually decided:</p>
+<table>
+<thead>
+<tr>
+<th>While paused...</th>
+<th>Run A</th>
+<th>Run B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>steering</td>
+<td>ignored</td>
+<td>ignored</td>
+</tr>
+<tr>
+<td>R restarts</td>
+<td><strong>ignored</strong></td>
+<td>ignored</td>
+</tr>
+<tr>
+<td>screen redrawn</td>
+<td>yes, every 50 ms</td>
+<td><strong>no</strong>: it waits inside <code>processInput()</code></td>
+</tr>
+</tbody>
+</table>
+<p>And Run A touched one function the sketch didn't predict: <strong><code>restart()</code></strong>.</p>
+<p><strong>Is that a problem?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p>Read it and see. It's one line: <code>paused = false;</code>, so a new game never starts paused.
+Reasonable.</p>
+<p>The point isn't that <code>restart()</code> was wrong. It's that it was <strong>outside the
+prediction</strong>, so it's the line you read first, and possibly the only one.</p>
+</details>
+<hr />
+<h2 id="keep-the-diff-small">Keep the diff small</h2>
+<p><strong>New code beside old code, not inside it.</strong> Feathers calls these <em>sprout</em> and <em>wrap</em>.</p>
+<hr />
+<h4 id="sprout-class">Sprout class</h4>
+<p>Run B's pause lives in a new class, with no terminal I/O:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PauseController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">paused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isPauseKey</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;p&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;P&#39;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">handleKey</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">            </span><span class="c1">// true if k was a pause key</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isPauseKey</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">paused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">paused</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isPaused</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">paused</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">paused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>And the one existing line that changed:</p>
+<div class="highlight"><pre><span></span><code><span class="gd">-        char control = readControl();</span>
+<span class="gi">+        char control = filterPause(readControl());</span>
+</code></pre></div>
+<p><strong>What can you test now that you couldn't in Run A?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><code>PauseController</code> on its own: press P, it's paused; press P again, it isn't; press W,
+nothing changes. No game, no terminal, no <code>#define</code> tricks.</p>
+<p>In Run A, pause is a <code>bool</code> spread across four functions. Testing it means driving the
+whole game.</p>
+</details>
+<hr />
+<h4 id="wrap-method">Wrap method</h4>
+<p>Keep the old method's body, give it a new name, and put the new behaviour around it:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                </span><span class="c1">// same name: every caller is unchanged</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">paused</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">        </span><span class="c1">// new behaviour</span>
+<span class="w">    </span><span class="n">advanceOneFrame</span><span class="p">();</span><span class="w">         </span><span class="c1">// the old update(), renamed, not edited</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Sprout or wrap: when would you pick wrap?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<table>
+<thead>
+<tr>
+<th>Use</th>
+<th>When the new behaviour...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sprout</strong></td>
+<td>is a new thing, with its own logic to test (pause state, key handling)</td>
+</tr>
+<tr>
+<td><strong>wrap</strong></td>
+<td>happens before or after something existing, every time it runs (skip, log, time)</td>
+</tr>
+</tbody>
+</table>
+<p>Either way, the old code isn't edited, so the characterization tests still say exactly
+what they said before.</p>
+</details>
+<hr />
+<h4 id="as-an-instruction-to-an-agent">As an instruction to an agent</h4>
+<table>
+<thead>
+<tr>
+<th>Prompt</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Add pause."</td>
+<td>a correct-looking change, spread through 4 functions</td>
+</tr>
+<tr>
+<td>"Add pause in a new class. Change at most one existing line."</td>
+<td>the same feature, in one new class and one changed line</td>
+</tr>
+</tbody>
+</table>
+<p>One extra sentence in the prompt, and the review got smaller.</p>
+<hr />
+<h2 id="risk-based-review">Risk-based review</h2>
+<p>You can't read every line an agent writes. <strong>Choose what to read.</strong></p>
+<hr />
+<h4 id="read-less-in-the-right-places">Read less, in the right places</h4>
+<table>
+<thead>
+<tr>
+<th>Instead of reading</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the whole diff</td>
+<td>which functions it touches; compare with your sketch</td>
+</tr>
+<tr>
+<td>the implementation</td>
+<td>the tests: do they pin the behaviour that matters?</td>
+</tr>
+<tr>
+<td>every line equally</td>
+<td>the risky paths, line by line; skim the rest</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="what-always-gets-read-line-by-line">What always gets read line by line</h4>
+<ul>
+<li>money, payments, scores that count for something</li>
+<li>authentication and permissions</li>
+<li>deleting or migrating data</li>
+<li><strong>loops that wait, block or retry</strong>: they decide whether the program can hang</li>
+</ul>
+<p><strong>Which part of Run B gets a line-by-line read?</strong></p>
+<details class="hint">
+<summary>Answer</summary>
+<p><code>filterPause()</code>, the waiting loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">pause</span><span class="p">.</span><span class="n">isPaused</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">running</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readControl</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">usleep</span><span class="p">(</span><span class="mi">50000</span><span class="p">);</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;q&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;Q&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pause</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">pause</span><span class="p">.</span><span class="n">handleKey</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The whole game sits inside this loop while paused. Can it exit? Only on P or Q. Is
+that what you want? Probably. But this is the line where "probably" has to become
+"checked". <code>PauseController</code> itself is safe to skim.</p>
+</details>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">💬 Review Run A without reading the body</p>
+<p>You get only this:</p>
+<div class="highlight"><pre><span></span><code>snake.cpp | 14 +++++++++++++-
+Game fields     +1   bool paused = false;
+drawBoard()     +3 -1
+processInput()  +3
+restart()       +1
+run()           +5
+tests: 5 characterization tests on update(), all pass
+</code></pre></div>
+<ol>
+<li>Is the blast radius what you predicted?</li>
+<li>Do the tests pin what matters?</li>
+<li>Which hunk do you read line by line?</li>
+</ol>
+<details class="hint">
+<summary>Step 1 — Answers</summary>
+<ol>
+<li><strong>No.</strong> <code>restart()</code> is outside the sketch. Read it first. It's one line.</li>
+<li><strong>No.</strong> The tests pin <code>update()</code>. The behaviour change is in <code>processInput()</code>,
+   and nothing watches it.</li>
+<li><strong><code>processInput()</code></strong>. It changes what keys do, and no test covers it.</li>
+</ol>
+</details>
+<details class="hint">
+<summary>Step 2 — What the line-by-line read finds</summary>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;p&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;P&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">paused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">paused</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;q&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;Q&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">paused</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// ignore steering/restart while paused</span>
+</code></pre></div>
+<p>Restart is now ignored while paused. Nobody asked for that. It may be fine. But it
+is a decision, so either accept it or pin it with a test, so that it doesn't
+change again unnoticed.</p>
+<p><code>drawBoard()</code> and <code>run()</code>: skim. They show a message and keep the loop polling.</p>
+</details>
+</div>
+<hr />
+<h2 id="the-rule-to-keep">The rule to keep</h2>
+<p><mark>Read what changed in old code, what the tests don't cover, and what can hang. Skim the rest.</mark></p>
+<table>
+<thead>
+<tr>
+<th>Before the agent runs</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sketch the effects</td>
+<td>compare the touched functions with the sketch</td>
+</tr>
+<tr>
+<td>ask for sprout or wrap</td>
+<td>read old-code edits before new code</td>
+</tr>
+<tr>
+<td></td>
+<td>read line by line only where the tests don't reach, or where it's risky</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="references">References:</h2>
+<ol>
+<li><em>Working Effectively with Legacy Code</em> — Michael Feathers, ch. 6 (sprout and wrap), ch. 11 (effect sketches)</li>
+<li><a href="https://google.github.io/eng-practices/review/">Google Engineering Practices: Code Review</a> — Google</li>
+<li><a href="https://github.com/Heer117/Snake_Game/blob/e15f61a1e3830dc100a64098e7b2c03adb46c217/snake.cpp"><code>Heer117/Snake_Game</code> @ e15f61a</a> — the game; both pause diffs were generated by agents for this lecture</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Ankush Chander
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/slides/js/slides.js"></script>
+      
+    
+  </body>
+</html>
