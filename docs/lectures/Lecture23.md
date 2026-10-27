@@ -5,13 +5,6 @@
 - Component principles — what ships together, and which way components point
 
 ---
-## The question
-
-Where does **design** end and **architecture** begin?
-
-Hold that. It gets answered at the end.
-
----
 ## Four scales
 
 | Scale | Unit | Asks |
@@ -21,7 +14,7 @@ Hold that. It gets answered at the end.
 | Component | a group of classes | which way do dependencies point? |
 | **System** | the whole thing | **what is inside the boundary?** |
 
-This lecture is the top row.
+This lecture is the bottom row.
 
 ---
 ## Start with a small system
@@ -39,35 +32,25 @@ class Game:
 Works. Ships. Now three change requests arrive.
 
 ---
-#### Change request 1
+#### Three change requests
 
-*"Store scores in a database, not a file."*
-
-What do you edit? **`Game`.**
-
----
-#### Change request 2
-
-*"Show a leaderboard on a website."*
-
-What do you edit? **`Game`** — it is the only thing that knows where scores live.
-
----
-#### Change request 3
-
-*"Let two players share one leaderboard over the network."*
-
-What do you edit? **`Game`. Again.**
-
----
-#### Look at what changed
-
-| | Changes how often |
+| Change request | You edit |
 |---|---|
-| the rule — *a high score is saved only if beaten* | almost never |
-| where scores are stored | three times this term |
+| store scores in a database, not a file | `Game` |
+| show a leaderboard on a website | `Game` |
+| two players share one leaderboard over the network | `Game` |
 
-==The part that changes least is being edited for the parts that change most.==
+**`Game` changed three times. What's wrong?**
+
+??? hint "Answer"
+    Code that changes often sits next to a rule that doesn't.
+
+    | | Changes how often |
+    |---|---|
+    | the rule — *a high score is saved only if beaten* | almost never |
+    | where scores are stored | three times this term |
+
+    ==The part that changes least is being edited for the parts that change most.==
 
 So which way should the dependency point?
 
@@ -81,6 +64,9 @@ The file, database and website all know about the rules.
 
 ---
 #### The rings
+
+
+![](../images/component_coupling/clean_architecture.png)
 
 | Ring | Contains | Changes |
 |---|---|---|
@@ -126,6 +112,46 @@ class Game:
 No `json`. No `open`. No filename.
 
 ---
+
+!!! question "💬 Who owns the port?"
+
+    Same classes, two folder layouts. In each, which way does the import arrow point?
+
+    ```
+    Layout A                                  Layout B
+
+    game/                                     game/
+      game.py                                   game.py
+        from storage.score_store                  class ScoreStore(Protocol)
+             import ScoreStore                    class Game
+        class Game
+                                              storage/
+    storage/                                    file_store.py
+      score_store.py                              from game.game import ScoreStore
+        class ScoreStore(Protocol)                class FileScoreStore
+      file_store.py
+        class FileScoreStore
+    ```
+
+    ??? hint "Answer"
+        | | Arrow | Verdict |
+        |---|---|---|
+        | A | `game` → `storage` | **outward. Violation** |
+        | B | `storage` → `game` | inward. Correct |
+
+        In both, `Game` depends only on an interface. That is not enough.
+
+        In A the interface lives in `storage`, so the rules still import the storage
+        package. Rename or move `storage` and `game.py` changes.
+
+        ==The port belongs to the code that needs it, not the code that implements it.==
+        That ownership is what makes the dependency point inward.
+
+        *In Python a `Protocol` is structural, so `file_store.py` could skip the import
+        entirely. In C++ or Java the adapter must import the interface — and the arrow
+        shows.*
+
+---
 #### Adapters, outside
 
 ```python
@@ -166,7 +192,7 @@ InMemoryScoreStore  True  False  True   best=55
 
 A boundary lets you make a decision **later**.
 
-| Decision | Without a boundary | With one |
+| Decision | Without a boundary | With a boundary |
 |---|---|---|
 | which database | before writing game logic | when you have real data |
 | which web framework | before the first screen | when you know what the screens are |
@@ -234,7 +260,7 @@ everywhere a boundary could be drawn.
         Pick the one most likely to change. That is where your first port goes.
 
 ---
-## Back to the question
+## Design or architecture?
 
 Where does design end and architecture begin?
 

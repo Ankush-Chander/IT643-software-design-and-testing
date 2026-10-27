@@ -36,6 +36,16 @@ This course covers the foundations of software engineering in the post-LLM era â
 - [21_22: Component principles](Lecture21_22.md)
 - [23: Architecture: boundaries](Lecture23.md)
 
+### Module 5: Design Judgement
+- [24: Types as design](Lecture24.md)
+- [25: Simplicity â€” KISS, YAGNI, DRY, least power, information hiding](Lecture25.md)
+- [26: Interfaces people can use](Lecture26.md)  
+
+### Module 6: Changing code you didn't write
+- [27: Legacy code: code without tests](Lecture27.md) 
+<!-- [28: Deciding what not to read](Lecture28.md) -->
+<!-- [29: Demo: the same refactor, with and without a net (optional)](Lecture29.md) -->
+
 ---
 
 ## Prerequisites

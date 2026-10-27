@@ -1,0 +1,21 @@
+{
+  "name": "IT643 — snake_legacy",
+  "image": "mcr.microsoft.com/devcontainers/cpp:1-ubuntu-24.04",
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libgtest-dev",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot-chat",
+        "ms-vscode.cpptools"
+      ]
+    },
+    "codespaces": {
+      "openFiles": [
+        "docs/code/snake_legacy/README.md"
+      ]
+    }
+  }
+}

@@ -27,6 +27,10 @@ nav:
       - "19-20: The data model": 'lectures/Lecture19_20.md'
       - "21-22: Component principles": 'lectures/Lecture21_22.md'
       - "23: Architecture: boundaries": 'lectures/Lecture23.md'
+      - "24: Types as design": 'lectures/Lecture24.md'
+      - "25: Simplicity": 'lectures/Lecture25.md'
+      - "26: Interfaces people can use": 'lectures/Lecture26.md'
+      - "27: Legacy code: code without tests": 'lectures/Lecture27.md'
   - Project: 'project.md'
   - Labs:
       - "1:Make it multiplayer": 'labs/assignment-1.md'

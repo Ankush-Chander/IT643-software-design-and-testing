@@ -39,6 +39,16 @@ This course argues that the scarce skill is shifting from *producing code* to **
 - [19_20: The data model](docs/lectures/Lecture19_20.md)
 - [21_22: Component principles](docs/lectures/Lecture21_22.md)
 - [23: Architecture: boundaries](docs/lectures/Lecture23.md)
+
+### Module 5: Design Judgement
+- [24: Types as design](docs/lectures/Lecture24.md)
+- [25: Simplicity — KISS, YAGNI, DRY](docs/lectures/Lecture25.md)
+- [26: Interfaces people can use](docs/lectures/Lecture26.md)
+
+### Module 6: Changing code you didn't write
+- [27: Legacy code: code without tests](docs/lectures/Lecture27.md)
+<!-- - [28: Deciding what not to read](docs/lectures/Lecture28.md)
+- [29: Demo: the same refactor, with and without a net (optional)](docs/lectures/Lecture29.md)-->
 ---
 
 ## Labs

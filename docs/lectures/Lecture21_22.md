@@ -183,7 +183,7 @@ not have yet. As a component matures and gains consumers, the balance shifts tow
 ## Coupling: which way the dependencies point
 
 ---
-#### ADP — Acyclic Dependencies: the problem
+### ADP — Acyclic Dependencies: the problem
 
 Friday: working code. Monday: broken build. You changed nothing.
 
@@ -232,15 +232,97 @@ Integrate **released components** instead:
 Requires one thing: **no cycles**.
 
 ---
-#### Cycles
+#### Without cycles
+
+![](../images/component_coupling/component_diagram_no_cycle.png)
+
+Every arrow points one way. Nothing loops back.
+
+Release a component — only what depends on it has to react:
+
+| You release | Who has to check |
+|---|---|
+| `Main` | nobody |
+| `View` | `Main` |
+| `Presenters` | `View`, `Main` |
+| `Entities` | all seven others — release it with care |
+
+And there is a build order: `Entities` first, then `Interactors`, then work upward to
+`Main`.
+
+==Every team can see exactly who a release affects — and who it doesn't.==
+
+*Diagram: Clean Architecture, Robert C. Martin.*
+
+---
+#### Add one arrow
 
 ![](../images/component_coupling/dependency_cycle.png)
 
-A cycle means the components "have, in effect, become one large component."
+Same system. One new dependency, in bold: **`Entities → Authorizer`**.
 
-- they cannot be released independently
-- they cannot be unit tested in isolation
-- there may be **no correct build order** at all
+Now `Entities → Authorizer → Interactors → Entities` is a loop.
+
+---
+#### Why a release needs a floor
+
+A release is a **frozen version** others build against — not whatever is on someone's
+laptop.
+
+Without the loop, you release bottom-up:
+
+```
+Entities v2      depends on nothing         → release
+Interactors v2   built on Entities v2       → release
+Authorizer v2    built on Interactors v2    → release
+```
+
+Every step stands on something already frozen.
+
+---
+#### Now try to release `Entities v2`
+
+1. `Entities` imports `Authorizer` → needs a released `Authorizer`
+2. Latest is `Authorizer v1` → built on `Interactors v1`
+3. `Interactors v1` → built on **`Entities v1`**
+
+`Entities v2` drags in `Entities v1`. Two versions of one component in one build.
+
+Start with `Authorizer` or `Interactors` instead — same wall.
+
+==Each of the three needs another released first. None can go first.==
+
+---
+#### Lockstep
+
+The only consistent release:
+
+```
+Entities v2 + Authorizer v2 + Interactors v2   — together, or not at all
+```
+
+| | Before | After |
+|---|---|---|
+| Release `Entities` | alone | with `Authorizer` and `Interactors` |
+| Unit test `Entities` | build `Entities` | build all three |
+| Build order | bottom-up | none of the three can go first |
+
+They have ==in effect become one large component==. Nobody decided that. The arrow did.
+
+---
+#### What lockstep costs
+
+**Coordination.** Three teams, one release. If `Authorizer` isn't ready, `Entities` can't
+ship.
+
+**Stability.** `Entities` had seven dependents and no dependencies — `I = 0`. Now it
+depends on `Authorizer`, which changes far more often. Every `Authorizer` change can
+rebuild `Entities`, and through it **all seven** components above.
+
+The most stable component is now at the mercy of one of the least stable.
+
+> ==Without a cycle, releasing is a walk up from a fixed floor. With one, there is no
+> floor — the loop moves together, at the speed of its slowest team.==
 
 ---
 #### Two ways out
@@ -256,33 +338,84 @@ on.
 ![](../images/component_coupling/cycle_removal_via_new_component.png)
 
 ---
-#### SDP — Stable Dependencies
+### SDP — Stable Dependencies
 
 > ==Depend in the direction of stability.==
 
 "Stable" here does not mean *good* or *unchanging by nature*. It means **hard to change,
 because many things depend on you.**
 
-| | Unstable | Stable |
-|---|---|---|
-| Incoming dependencies | few | many |
-| Outgoing dependencies | many | few |
-| Changing it | easy, nothing breaks | expensive, everything breaks |
-| Martin's phrasing | "irresponsible and dependent" | "responsible and independent" |
+---
+#### A stable component
+
+![](../images/component_coupling/stable_component.png)
+
+Three components depend on `X`. `X` depends on nothing.
+
+- Change `X` → three components may break. So nobody changes it lightly.
+- Nothing outside `X` can force it to change.
+
+Martin calls `X` **responsible** — three components rely on it — and **independent** —
+it relies on no one.
 
 ---
-#### Examples
+#### An unstable component
 
-| Stable — many depend on it | Unstable — it depends on many |
-|---|---|
-| the standard library | `main()` / the entry point |
-| a logging interface | a UI screen |
-| core entities: `Order`, `Customer` | a report generator |
-| a shared `Money` or `Date` type | a one-off migration script |
-| a database schema several services read | the test suite |
+![](../images/component_coupling/unstable_component.png)
 
-Stability is about **position in the dependency graph**, not code quality.
-A stable component can be badly written. An unstable one can be excellent.
+`Y` depends on three components. Nothing depends on `Y`.
+
+- Change `Y` → nothing breaks. Change it freely.
+- Any of those three can force `Y` to change.
+
+Martin calls `Y` **irresponsible** — no one relies on it — and **dependent** — it relies
+on three others.
+
+---
+#### Side by side
+
+| | `Y` — unstable | `X` — stable |
+|---|---|---|
+| Incoming dependencies | 0 | 3 |
+| Outgoing dependencies | 3 | 0 |
+| Changing it | easy, nothing breaks | expensive, three things may break |
+| Reasons it might change | three | none from outside |
+
+Neither is wrong. A system needs both. SDP is about **which one depends on which**.
+
+---
+!!! question "💬 Stable or unstable?"
+
+    For each, ask one thing: **how many components would break if it changed?**
+
+    | | Component |
+    |---|---|
+    | a | `main()` |
+    | b | a shared `Money` type |
+    | c | the test suite |
+    | d | a logging interface |
+    | e | a UI screen |
+    | f | a database schema read by several services |
+    | g | a report generator |
+    | h | core entities: `Order`, `Customer` |
+
+    ??? hint "Answer"
+        | | Component | | Why |
+        |---|---|---|---|
+        | a | `main()` | **unstable** | depends on everything, nothing depends on it |
+        | b | a shared `Money` type | **stable** | used everywhere money appears |
+        | c | the test suite | **unstable** | depends on all the code, nothing depends on the tests |
+        | d | a logging interface | **stable** | every component that logs depends on it |
+        | e | a UI screen | **unstable** | depends on the logic below it, nothing depends on a screen |
+        | f | a database schema read by several services | **stable** | every service reading it breaks if a column changes |
+        | g | a report generator | **unstable** | pulls from many sources, no one imports it |
+        | h | core entities: `Order`, `Customer` | **stable** | most of the system is built on top of them |
+
+        **The test suite and the database schema catch people.** Tests feel solid; a database feels like volatile
+        infrastructure. The arrows say the opposite.
+
+        ==Stability is position in the graph, not code quality.== A stable component can
+        be badly written. An unstable one can be excellent.
 
 ---
 #### The instability metric
@@ -296,6 +429,13 @@ A stable component can be badly written. An unstable one can be excellent.
 - **I = 0** — maximally stable. Everyone depends on it, it depends on nobody
 - **I = 1** — maximally unstable. Nobody depends on it, it depends on everyone
 
+For the two diagrams:
+
+| | fan-in | fan-out | I |
+|---|---|---|---|
+| `X` | 3 | 0 | `0 ÷ 3 = 0` |
+| `Y` | 0 | 3 | `3 ÷ 3 = 1` |
+
 **The rule:** `I` should *decrease* in the direction of dependency. A component must
 depend only on components more stable than itself.
 
@@ -303,7 +443,7 @@ depend only on components more stable than itself.
 database code rebuilds.
 
 ---
-#### SAP — Stable Abstractions
+### SAP — Stable Abstractions
 
 > ==A component should be as abstract as it is stable.==
 
@@ -319,6 +459,56 @@ abstract classes and interfaces — extended without being modified.
 Together, SDP and SAP are ==the Dependency Inversion Principle at component scale:
 dependencies run in the direction of abstraction==. The difference from the class-level
 version is that a component can be *partly* abstract and *partly* stable.
+
+---
+#### Example: a logging component
+
+Twelve modules import it. Nothing it imports is ours. **`I = 0` — maximally stable.**
+
+```python
+# logging/
+class Logger:
+    def log(self, msg):
+        with open("app.log", "a") as f:
+            f.write(msg + "\n")
+```
+
+One class, concrete: **`A = 0`**.
+
+New request: *also send errors to a monitoring service.*
+
+You must edit `Logger` — and all twelve modules rebuild and retest.
+
+Stable **and** concrete: too many dependents to change, nothing to extend instead.
+
+---
+#### Same component, made abstract
+
+```python
+# logging/            stable, abstract
+class Logger(ABC):
+    @abstractmethod
+    def log(self, msg: str) -> None: ...
+```
+
+```python
+# logging_impl/       unstable, concrete
+class FileLogger(Logger):
+    def log(self, msg): ...
+
+class RemoteLogger(Logger):
+    def log(self, msg): ...
+```
+
+The twelve modules depend on `Logger` only. The monitoring request is a new class in
+`logging_impl/`. ==`logging/` is not edited, and nothing that depends on it rebuilds.==
+
+| `logging/` | I | A | D |
+|---|---|---|---|
+| before | 0 | 0 | **1** |
+| after | 0 | 1 | **0** |
+
+Still exactly as stable. Now as abstract as it is stable.
 
 ---
 #### The main sequence, and two places not to be
